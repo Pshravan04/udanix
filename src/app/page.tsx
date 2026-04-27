@@ -26,10 +26,9 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: '50K+', label: 'Students Guided', icon: GraduationCap },
+  { value: '50,000+', label: 'Students Guided', icon: GraduationCap },
   { value: '200+', label: 'Expert Counselors', icon: Users },
-  { value: '98%', label: 'Satisfaction Rate', icon: Star },
-  { value: '<24h', label: 'Avg Response Time', icon: Clock },
+  { value: '95%', label: 'Success Rate', icon: Star },
 ];
 
 const STEPS = [
@@ -130,10 +129,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[56px] sm:text-[68px] lg:text-[80px] font-extrabold text-[#111827] leading-[1.05] tracking-[-0.03em] max-w-3xl mx-auto"
+            className="text-[56px] sm:text-[68px] lg:text-[80px] font-extrabold text-[#111827] leading-[1.05] tracking-[-0.03em] max-w-4xl mx-auto"
           >
-            Career Clarity,
-            <br />Powered by <span className="gradient-text-blue">Experts.</span>
+            Your Career Journey
+            <br /> <span className="gradient-text-blue">Starts Here</span>
           </motion.h1>
 
           {/* Sub */}
@@ -141,10 +140,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.2 }}
-            className="mt-5 text-lg text-[#4B5563] max-w-xl mx-auto leading-[1.7]"
+            className="mt-6 text-xl text-[#4B5563] max-w-3xl mx-auto leading-relaxed"
           >
-            Effortlessly connect with verified counselors, explore career paths,
-            and make confident decisions in minutes.
+            Get expert guidance on stream selection, career paths, entrance exams, and future opportunities.
+            Make informed decisions with personalized counseling.
           </motion.p>
 
           {/* CTAs */}
@@ -155,14 +154,13 @@ export default function Home() {
             className="mt-8 flex flex-wrap items-center justify-center gap-3"
           >
             <Link href="/register">
-              <button className="btn-primary">
-                Try for Free
+              <button className="bg-white text-[#0056D2] text-sm font-black py-4 px-8 rounded-2xl shadow-xl shadow-blue-500/10 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest border-b-4 border-slate-100">
+                Take Free Assessment
               </button>
             </Link>
             <Link href="/student/directory">
-              <button className="inline-flex items-center gap-2 text-sm font-semibold text-[#111827] bg-white border border-[#E5E7EB] px-6 py-3 rounded-full shadow-float hover:shadow-float-lg hover:-translate-y-0.5 transition-all">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                Schedule a Demo
+              <button className="inline-flex items-center gap-2 text-sm font-bold text-[#111827] bg-white/40 backdrop-blur-md border border-white/40 px-8 py-4 rounded-2xl shadow-float hover:shadow-float-lg hover:-translate-y-0.5 transition-all uppercase tracking-widest">
+                Talk to Counselor
               </button>
             </Link>
           </motion.div>
