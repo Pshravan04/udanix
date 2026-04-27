@@ -1,8 +1,14 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ChevronLeft, Info, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { VideoPlayer } from '@/components/video-player';
+import { ChatBox } from '@/components/chat-box';
 
 export default function SessionPage() {
   const { id } = useParams();

@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UDANIX - Integrated Counseling Platform
 
-## Getting Started
+UDANIX is a professional, production-ready counseling platform built with Next.js 15, Tailwind CSS, and Supabase. It features distinct portals for Students, Counselors, and Administrators, with real-time data synchronization and live session management.
 
-First, run the development server:
+## 🚀 Deployment to Vercel
 
+The platform is designed to be hosted on Vercel. Follow these steps to go live:
+
+1. **GitHub Integration**: Push your changes to your GitHub repository.
+2. **Import Project**: In the Vercel Dashboard, select "Add New" > "Project" and choose your UDANIX repository.
+3. **Environment Variables**: Add these keys from your `.env.local`:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. **Deploy**: Click "Deploy". Vercel will handle the build and hosting automatically.
+
+## 🛠️ Project Setup
+
+### Supabase Integration
+The platform uses Supabase for Authentication and PostgreSQL database services. To initialize your database:
+1. Copy the contents of `supabase_setup.sql` (located in the project root).
+2. Go to your Supabase Project > **SQL Editor**.
+3. Paste and **Run** the script to create the `profiles`, `sessions`, and `achievements` tables with Row Level Security (RLS) policies.
+
+### Local Development
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏗️ Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js App Router**: Provides high-performance layouts and routing.
+- **Supabase Auth**: Handles secure user registration, login, and Google OAuth.
+- **Middleware (RBAC)**: Enforces server-side role-based access control for Student, Counselor, and Admin portals.
+- **Framer Motion**: Delivers smooth, "SaaS-Light" user experience with micro-animations.
+- **Dynamic Portals**: All dashboards and directory listings consume live database data via Supabase client.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👨‍💻 Key Portals
 
-## Learn More
+- `/student`: Search counselors, book sessions, and track progress.
+- `/counselor`: Manage session requests, set rates, and update profile.
+- `/admin`: Platform-wide oversight and analytics.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Built with UDANIX Production Intelligence.
