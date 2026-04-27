@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { NeuralBackground } from "@/components/ui/neural-background";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -13,8 +22,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UDANIX",
-  description: "Connect students with professional counselors for consultations.",
+  title: "UDANIX — Your Future, Designed by You",
+  description: "Connect with 200+ verified counselors. Get clarity on your next big career move. UDANIX is the next-generation platform for students and professionals.",
+  keywords: ["counseling", "career guidance", "student platform", "mentorship", "UDANIX"],
 };
 
 export default function RootLayout({
@@ -25,10 +35,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>{children}</body>
+      <body className="min-h-full flex flex-col relative bg-white" suppressHydrationWarning>
+        <NeuralBackground />
+        {children}
+      </body>
     </html>
   );
 }

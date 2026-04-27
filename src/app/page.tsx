@@ -1,415 +1,445 @@
+'use client';
+
 import Link from 'next/link';
-import { Search, User, Sparkles, FlaskConical, Calculator, Palette, Star, MessageSquare, Calendar, ChevronRight, Clock, Briefcase, GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
+import {
+  GraduationCap, ArrowRight, Star, MessageSquare, Calendar, Sparkles,
+  Users, Clock, Video, Zap, Shield, BookOpen, ChevronDown,
+  TrendingUp, Award, Globe, Layers, Search, User
+} from 'lucide-react';
+import { StreamExplorer } from '@/components/stream-explorer';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as any } },
+};
+const stagger = { visible: { transition: { staggerChildren: 0.09 } } };
+
+const FEATURES = [
+  { icon: Video, title: 'HD Video Sessions', desc: 'Crystal-clear consultations with built-in recording and notes.' },
+  { icon: Shield, title: 'Verified Experts', desc: 'Every counselor is credential-verified before joining.' },
+  { icon: Zap, title: 'Instant Booking', desc: 'Schedule sessions in under 60 seconds with live availability.' },
+  { icon: BookOpen, title: 'Progress Tracking', desc: 'Monitor growth with session summaries and goal tracking.' },
+  { icon: MessageSquare, title: 'Async Chat', desc: 'Message your counselor between sessions, any time.' },
+  { icon: Calendar, title: 'Smart Scheduling', desc: 'AI-powered schedule matching across time zones.' },
+];
+
+const STATS = [
+  { value: '50K+', label: 'Students Guided', icon: GraduationCap },
+  { value: '200+', label: 'Expert Counselors', icon: Users },
+  { value: '98%', label: 'Satisfaction Rate', icon: Star },
+  { value: '<24h', label: 'Avg Response Time', icon: Clock },
+];
+
+const STEPS = [
+  { step: '01', title: 'Create Your Profile', desc: 'Tell us your goals, interests, and the kind of guidance you need.' },
+  { step: '02', title: 'Match With Experts', desc: 'Our algorithm connects you with the best-fit counselors.' },
+  { step: '03', title: 'Book & Connect', desc: 'Schedule a session via video, audio, or chat.' },
+  { step: '04', title: 'Grow Continuously', desc: 'Track progress, revisit notes, and keep moving forward.' },
+];
+
+const WHY_CARDS = [
+  { icon: TrendingUp, color: '#EFF6FF', iconColor: '#0056D2', title: 'Clarity on Career Paths', desc: 'Thousands of students lack proper guidance. Our platform simplifies your decision, enabling faster, smarter choices.' },
+  { icon: Globe, color: '#ECFDF5', iconColor: '#059669', title: 'Access Expert Network', desc: 'Finding a verified counselor is hard. Our system connects you to trusted experts instantly without the hassle.' },
+  { icon: Layers, color: '#F5F3FF', iconColor: '#7C3AED', title: 'Missed Growth Insights', desc: 'Without the right tools, your potential goes untapped. UDANIX surfaces growth data and opportunities you never saw.' },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans">
-      {/* Navigation */}
-      <header className="fixed top-0 w-full bg-white z-50 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white">
-                <GraduationCap className="w-5 h-5 fill-current" />
+    <div className="min-h-screen bg-white text-[#111827] overflow-x-hidden">
+
+      {/* ─── NAV ─── */}
+      <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#E5E7EB]/70">
+        <div className="max-w-[1440px] mx-auto h-[72px] px-8 flex items-center justify-between gap-8">
+          {/* Left: Logo + Nav */}
+          <div className="flex items-center gap-12">
+            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+              <div className="w-9 h-9 bg-[#0056D2] rounded-lg flex items-center justify-center">
+                <GraduationCap className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-xl tracking-tight text-blue-700">UDANIX</span>
-            </div>
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-              <Link href="#" className="hover:text-blue-600">Explore Streams</Link>
-              <Link href="/student/directory" className="hover:text-blue-600">Counselors</Link>
-              <Link href="#" className="hover:text-blue-600">Resources</Link>
-              <Link href="#" className="hover:text-blue-600">Career Paths</Link>
-              <Link href="#" className="hover:text-blue-600">Assessment</Link>
+              <span className="font-bold text-xl tracking-tight text-[#111827]">Udanix.</span>
+            </Link>
+
+            <nav className="hidden xl:flex items-center gap-2">
+              {[
+                'Explore Streams',
+                'Counselors',
+                'Resources',
+                'Career Paths',
+                'Assessment'
+              ].map((label) => (
+                <button key={label} className="text-[14px] font-medium text-[#6B7280] hover:text-[#111827] transition-colors px-3 py-2 rounded-lg whitespace-nowrap">
+                  {label}
+                </button>
+              ))}
             </nav>
           </div>
 
-          <div className="flex-1 max-w-md hidden lg:block">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <Input placeholder="Search careers, courses..." className="pl-10 bg-slate-50 border-none h-10 rounded-full" />
+          {/* Right: Search + Profile + CTA */}
+          <div className="flex items-center gap-5 flex-1 justify-end max-w-2xl">
+            <div className="relative group flex-1 hidden md:block">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-[#9CA3AF] group-focus-within:text-[#0056D2] transition-colors" />
+              <input
+                type="text"
+                placeholder="Search careers, courses..."
+                className="w-full bg-[#F3F4F6] border-none rounded-xl py-3 pl-11 pr-4 text-sm font-medium focus:ring-2 focus:ring-[#0056D2]/10 transition-all placeholder:text-[#9CA3AF]"
+              />
             </div>
-          </div>
 
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-slate-600">
-              <User className="w-5 h-5" />
-            </Button>
-            <Link href="/login">
-              <Button className="bg-blue-600 hover:bg-blue-700 rounded-md px-5 h-10">
-                Book Counseling
-              </Button>
-            </Link>
+            <div className="flex items-center gap-4 flex-shrink-0">
+              <Link href="/student/profile">
+                <button className="w-10 h-10 rounded-full flex items-center justify-center text-[#4B5563] hover:bg-[#F9FAFB] transition-colors border border-[#E5E7EB]">
+                  <User className="w-5 h-5" />
+                </button>
+              </Link>
+
+              <Link href="/register">
+                <button className="bg-gradient-to-r from-[#0052FF] to-[#6E00FF] text-white text-sm font-bold py-3 px-6 rounded-xl shadow-lg shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
+                  Book Counseling
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-20 relative overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-[600px] bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 -z-10" />
-        <div className="max-w-4xl mx-auto px-4 pt-20 pb-32 text-center text-white space-y-8">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase opacity-90">Your Career Journey Starts Here</p>
-          <h1 className="text-4xl md:text-6xl font-normal leading-[1.1] tracking-tight">
-            Get expert guidance on stream selection, career paths, entrance exams, and future opportunities.
-          </h1>
-          <p className="text-lg font-light opacity-90 max-w-2xl mx-auto">
-            Make informed decisions with personalized counseling.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button className="bg-white text-blue-600 hover:bg-slate-50 h-12 px-8 rounded-md font-medium">
-              Take Free Assessment
-            </Button>
-            <Link href="/student/directory">
-              <Button variant="link" className="text-white hover:text-blue-100 font-medium group">
-                Talk to Counselor
-                <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </Button>
+      {/* ─── HERO ─── */}
+      <section className="relative pt-32 pb-0 overflow-hidden">
+        {/* Dreamy background — sky radial gradient */}
+        <div className="absolute inset-0 -z-10" style={{
+          background: 'radial-gradient(ellipse 100% 60% at 50% -10%, #C7E2FF 0%, #E8F4FF 30%, #F0F9FF 55%, #ffffff 80%)'
+        }} />
+
+        {/* Floating light orbs */}
+        <div className="absolute top-24 left-[10%] w-72 h-72 rounded-full bg-blue-200/30 blur-[80px] -z-10" />
+        <div className="absolute top-32 right-[8%] w-56 h-56 rounded-full bg-sky-200/30 blur-[60px] -z-10" />
+        <div className="absolute top-16 left-[40%] w-40 h-40 rounded-full bg-blue-100/40 blur-[50px] -z-10" />
+
+        <div className="max-w-[1280px] mx-auto px-8 text-center">
+          {/* Badge */}
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-[#BFDBFE] text-[#0056D2] text-[11px] font-bold uppercase tracking-[0.15em] shadow-float">
+              <Sparkles className="w-3 h-3" />
+              Next-Gen Student Counselling
+            </span>
+          </motion.div>
+
+          {/* Main Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[56px] sm:text-[68px] lg:text-[80px] font-extrabold text-[#111827] leading-[1.05] tracking-[-0.03em] max-w-3xl mx-auto"
+          >
+            Career Clarity,
+            <br />Powered by <span className="gradient-text-blue">Experts.</span>
+          </motion.h1>
+
+          {/* Sub */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.2 }}
+            className="mt-5 text-lg text-[#4B5563] max-w-xl mx-auto leading-[1.7]"
+          >
+            Effortlessly connect with verified counselors, explore career paths,
+            and make confident decisions in minutes.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          >
+            <Link href="/register">
+              <button className="btn-primary">
+                Try for Free
+              </button>
             </Link>
-          </div>
+            <Link href="/student/directory">
+              <button className="inline-flex items-center gap-2 text-sm font-semibold text-[#111827] bg-white border border-[#E5E7EB] px-6 py-3 rounded-full shadow-float hover:shadow-float-lg hover:-translate-y-0.5 transition-all">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                Schedule a Demo
+              </button>
+            </Link>
+          </motion.div>
 
-          <div className="grid grid-cols-3 gap-8 pt-20 max-w-3xl mx-auto">
-            <div className="space-y-1">
-              <p className="text-3xl font-semibold">50,000+</p>
-              <p className="text-xs font-light tracking-wide uppercase opacity-80">Students Guided</p>
+          {/* Trust line */}
+          <motion.p
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+            className="mt-4 text-xs text-[#9CA3AF] font-medium"
+          >
+            No credit card required · Free to explore · 200+ verified experts
+          </motion.p>
+
+          {/* ── Floating App Mockup ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-16 relative mx-auto max-w-5xl"
+          >
+            {/* Browser frame */}
+            <div className="bg-white rounded-[20px] shadow-float-xl border border-[#E5E7EB] overflow-hidden">
+              {/* Browser chrome */}
+              <div className="bg-[#F9FAFB] border-b border-[#E5E7EB] px-5 py-3 flex items-center gap-3">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+                  <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
+                  <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+                </div>
+                <div className="flex-1 bg-white border border-[#E5E7EB] rounded-lg px-4 py-1.5 mx-4 text-xs text-[#9CA3AF] font-medium text-left">
+                  app.udanix.com/dashboard
+                </div>
+              </div>
+
+              {/* Dashboard content simulation */}
+              <div className="bg-[#F8FAFC] p-6 min-h-[340px]">
+                <div className="flex gap-4 h-full">
+                  {/* Sidebar */}
+                  <div className="w-52 bg-white rounded-xl border border-[#E5E7EB] p-4 flex flex-col gap-3 flex-shrink-0">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-7 h-7 bg-[#0056D2] rounded-lg" />
+                      <span className="font-bold text-sm text-[#111827]">Udanix</span>
+                    </div>
+                    {['Dashboard', 'Counselors', 'Sessions', 'Progress', 'Settings'].map((item, i) => (
+                      <div key={item} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold ${i === 0 ? 'bg-[#EFF6FF] text-[#0056D2]' : 'text-[#9CA3AF] hover:text-[#4B5563]'}`}>
+                        <div className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-[#0056D2]' : 'bg-[#E5E7EB]'}`} />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Main dashboard */}
+                  <div className="flex-1 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-base font-bold text-[#111827]">Good morning, Aryan! 👋</p>
+                        <p className="text-xs text-[#9CA3AF]">Your next session is Tomorrow, 4:00 PM</p>
+                      </div>
+                      <button className="btn-primary text-xs py-2 px-4">Book Session</button>
+                    </div>
+
+                    {/* Stat cards */}
+                    <div className="grid grid-cols-3 gap-3">
+                      {[
+                        { label: 'Sessions Done', value: '12', delta: '+3 this month', color: '#EFF6FF', icon: '🎯' },
+                        { label: 'Avg. Rating', value: '4.9', delta: 'Excellent', color: '#ECFDF5', icon: '⭐' },
+                        { label: 'Goals Met', value: '68%', delta: 'On track', color: '#F5F3FF', icon: '📈' },
+                      ].map(card => (
+                        <div key={card.label} className="bg-white border border-[#E5E7EB] rounded-xl p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-[#9CA3AF] font-medium">{card.label}</span>
+                            <span className="text-base">{card.icon}</span>
+                          </div>
+                          <p className="text-2xl font-extrabold text-[#111827]">{card.value}</p>
+                          <p className="text-xs text-emerald-600 font-semibold mt-0.5">{card.delta}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Upcoming sessions */}
+                    <div className="bg-white border border-[#E5E7EB] rounded-xl p-4">
+                      <p className="text-xs font-bold text-[#111827] uppercase tracking-wider mb-3">Upcoming Sessions</p>
+                      <div className="space-y-2">
+                        {[
+                          { name: 'Dr. Sarah Jenkins', topic: 'Career Roadmap', time: 'Tomorrow 4:00 PM', online: true },
+                          { name: 'Michael Chen', topic: 'Resume Review', time: 'Friday 11:00 AM', online: false },
+                        ].map(session => (
+                          <div key={session.name} className="flex items-center justify-between py-2 border-b border-[#F3F4F6] last:border-0">
+                            <div className="flex items-center gap-3">
+                              <div className="w-7 h-7 rounded-lg bg-[#EFF6FF] flex items-center justify-center text-[#0056D2] text-xs font-bold">
+                                {session.name.split(' ').map(w => w[0]).join('').slice(0, 2)}
+                              </div>
+                              <div>
+                                <p className="text-xs font-semibold text-[#111827]">{session.name}</p>
+                                <p className="text-[10px] text-[#9CA3AF]">{session.topic}</p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-[10px] font-semibold text-[#4B5563]">{session.time}</p>
+                              <span className={`text-[9px] font-bold ${session.online ? 'text-emerald-500' : 'text-[#9CA3AF]'}`}>
+                                {session.online ? '● Video' : '○ Pending'}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="space-y-1">
-              <p className="text-3xl font-semibold">200+</p>
-              <p className="text-xs font-light tracking-wide uppercase opacity-80">Expert Counselors</p>
+            {/* Bottom fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── WHY UDANIX ─── */}
+      <section className="py-28 bg-white">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <div className="flex flex-col md:flex-row items-start justify-between gap-6 mb-14">
+              <div className="space-y-2">
+                <motion.p variants={fadeUp} className="text-[#0056D2] text-xs font-bold uppercase tracking-[0.2em]">Why Udanix</motion.p>
+                <motion.h2 variants={fadeUp} className="text-4xl font-extrabold text-[#111827] tracking-tight max-w-sm leading-tight">
+                  The Challenge Every Student Faces
+                </motion.h2>
+              </div>
+              <motion.div variants={fadeUp} className="flex flex-col gap-1 md:text-right max-w-xs">
+                <p className="text-[#4B5563] text-sm leading-relaxed">
+                  Turning confusion into clarity is a challenge for every student. Our platform simplifies your journey, enabling faster, smarter decisions.
+                </p>
+                <button className="text-[#0056D2] text-xs font-bold mt-2 self-start md:self-end hover:underline">
+                  How It Works →
+                </button>
+              </motion.div>
             </div>
-            <div className="space-y-1">
-              <p className="text-3xl font-semibold">95%</p>
-              <p className="text-xs font-light tracking-wide uppercase opacity-80">Success Rate</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {WHY_CARDS.map((c, i) => (
+                <motion.div key={c.title} variants={fadeUp} className="bento-card p-8 group">
+                  <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style={{ background: c.color }}>
+                    <c.icon className="w-5 h-5" style={{ color: c.iconColor }} />
+                  </div>
+                  <h3 className="font-bold text-[#111827] text-base mb-3 tracking-tight">{c.title}</h3>
+                  <p className="text-[#4B5563] text-sm leading-relaxed">{c.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── STREAM EXPLORER ─── */}
+      <StreamExplorer />
+
+      {/* ─── STATS ─── */}
+      <section className="py-24 bg-[#F9FAFB] border-y border-[#E5E7EB]">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-2 md:grid-cols-4 gap-12">
+            {STATS.map((s) => (
+              <motion.div variants={fadeUp} key={s.label} className="text-center">
+                <div className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-[#EFF6FF] mb-4">
+                  <s.icon className="w-5 h-5 text-[#0056D2]" />
+                </div>
+                <p className="text-4xl font-extrabold text-[#111827] tracking-tight">{s.value}</p>
+                <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-wider mt-2">{s.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── ALL THE TOOLS ─── */}
+      <section className="py-28 bg-white">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-14 space-y-3">
+            <motion.p variants={fadeUp} className="text-[#0056D2] text-xs font-bold uppercase tracking-[0.2em]">Platform Features</motion.p>
+            <motion.h2 variants={fadeUp} className="text-4xl font-extrabold text-[#111827] tracking-tight">
+              All the Tools You Need for<br />Powerful Guidance.
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-[#4B5563] text-base max-w-lg mx-auto leading-relaxed">
+              Everything in one place — from expert matching to progress tracking and seamless communication.
+            </motion.p>
+          </motion.div>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {FEATURES.map((f) => (
+              <motion.div key={f.title} variants={fadeUp} className="bento-card p-7 group">
+                <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] flex items-center justify-center mb-5 group-hover:bg-[#0056D2] transition-colors duration-200">
+                  <f.icon className="w-5 h-5 text-[#0056D2] group-hover:text-white transition-colors duration-200" />
+                </div>
+                <h3 className="font-bold text-[#111827] text-base mb-2 tracking-tight">{f.title}</h3>
+                <p className="text-[#4B5563] text-sm leading-relaxed">{f.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── HOW IT WORKS ─── */}
+      <section className="py-28" style={{ background: 'linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)' }}>
+        <div className="max-w-[1280px] mx-auto px-8">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-14">
+            <motion.p variants={fadeUp} className="text-[#0056D2] text-xs font-bold uppercase tracking-[0.2em] mb-3">How It Works</motion.p>
+            <motion.h2 variants={fadeUp} className="text-4xl font-extrabold text-[#111827] tracking-tight">
+              Up and running in minutes.
+            </motion.h2>
+          </motion.div>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {STEPS.map((s) => (
+              <motion.div key={s.step} variants={fadeUp}>
+                <span className="text-6xl font-extrabold text-[#F3F4F6] tracking-tighter block mb-3">{s.step}</span>
+                <h3 className="font-bold text-[#111827] text-base mb-2">{s.title}</h3>
+                <p className="text-[#4B5563] text-sm leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── CTA BAND ─── */}
+      <section className="py-24" style={{ background: 'radial-gradient(ellipse 120% 80% at 50% 0%, #C7E2FF 0%, #E8F4FF 30%, #F0F9FF 55%, #ffffff 100%)' }}>
+        <div className="max-w-[720px] mx-auto px-8 text-center">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-6">
+            <motion.h2 variants={fadeUp} className="text-5xl font-extrabold text-[#111827] tracking-tight leading-tight">
+              Ready to design<br />your future?
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-[#4B5563] text-lg leading-relaxed">
+              Join thousands of students already shaping their futures with Udanix.
+              Start free, upgrade anytime.
+            </motion.p>
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-3 justify-center">
+              <Link href="/register"><button className="btn-primary">Try for Free</button></Link>
+              <Link href="/login"><button className="btn-secondary">Sign in</button></Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── FOOTER ─── */}
+      <footer className="bg-[#111827] text-white">
+        <div className="max-w-[1280px] mx-auto px-8 py-14">
+          <div className="flex flex-col md:flex-row items-start justify-between gap-14">
+            <div className="space-y-4 max-w-xs">
+              <Link href="/" className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-[#0056D2] rounded-lg flex items-center justify-center">
+                  <GraduationCap className="w-4 h-4 text-white" />
+                </div>
+                <span className="font-bold text-lg tracking-tight">Udanix.</span>
+              </Link>
+              <p className="text-[#9CA3AF] text-sm leading-relaxed">
+                Empowering the next generation of thinkers and leaders through precision guidance.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-10">
+              {[
+                { title: 'Platform', links: ['Pathways', 'Counselors', 'Pricing', 'Labs'] },
+                { title: 'Company', links: ['About', 'Careers', 'Blog', 'Press'] },
+                { title: 'Legal', links: ['Privacy', 'Terms', 'Security', 'GDPR'] },
+              ].map(col => (
+                <div key={col.title}>
+                  <p className="text-white font-semibold text-xs uppercase tracking-widest mb-4">{col.title}</p>
+                  <ul className="space-y-2.5">
+                    {col.links.map(l => (
+                      <li key={l}><Link href="#" className="text-[#6B7280] hover:text-white text-sm transition-colors">{l}</Link></li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Explore Your Stream */}
-      <section className="py-24 max-w-7xl mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-2xl font-semibold text-slate-800 tracking-tight">Explore Your Stream</h2>
-          <p className="text-slate-500 max-w-2xl mx-auto">Choose your path based on your interests, skills, and career goals. Each stream opens doors to unique opportunities.</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <StreamCard 
-            title="Science Stream" 
-            icon={<FlaskConical className="w-8 h-8" />} 
-            color="bg-cyan-500" 
-            subjects={['Physics', 'Chemistry', 'Biology', 'Mathematics']}
-            description="Explore careers in STEM fields with cutting edge technology and research opportunities"
-            options="150+ Career Options"
-          />
-          <StreamCard 
-            title="Commerce Stream" 
-            icon={<Calculator className="w-8 h-8" />} 
-            color="bg-emerald-500" 
-            subjects={['Accountancy', 'Business Studies', 'Economics', 'Finance']}
-            description="Master business, finance, and economics to build a successful career in corporate world"
-            options="120+ Career Options"
-          />
-          <StreamCard 
-            title="Arts & Humanities" 
-            icon={<Palette className="w-8 h-8" />} 
-            color="bg-pink-500" 
-            subjects={['History', 'Political Science', 'Psychology', 'Literature']}
-            description="Pursue creative and analytical careers in media, design, law, and social sciences"
-            options="100+ Career Options"
-          />
-        </div>
-      </section>
-
-      {/* Popular Career Paths */}
-      <section className="py-24 bg-slate-50/50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-slate-800 tracking-tight">Popular Career Paths</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Explore trending careers across different streams with detailed insights on growth, salary, and skills required</p>
+          <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-[#6B7280] text-xs">© 2026 Udanix Technologies. All rights reserved.</p>
+            <p className="text-[#6B7280] text-xs">Built for the infinite future.</p>
           </div>
-
-          <div className="flex justify-center mb-12">
-            <div className="inline-flex bg-slate-100 p-1 rounded-full text-sm font-medium">
-              <button className="px-8 py-2 rounded-full bg-white shadow-sm text-slate-900">Science</button>
-              <button className="px-8 py-2 rounded-full text-slate-500">Commerce</button>
-              <button className="px-8 py-2 rounded-full text-slate-500">Arts</button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <CareerCard title="Software Engineer" demand="High Demand" growth="22% annually" salary="₹8 - 25 LPA" duration="4 years" skills="Programming, Problem Solving" />
-            <CareerCard title="Medical Doctor" demand="High Demand" growth="15% annually" salary="₹10 - 50 LPA" duration="5.5 years" skills="Medical Knowledge, Patient Care" />
-            <CareerCard title="Data Scientist" demand="High Demand" growth="28% annually" salary="₹12 - 30 LPA" duration="4 years" skills="Statistics, Python" />
-            <CareerCard title="Civil Engineer" demand="Medium Demand" growth="12% annually" salary="₹6 - 20 LPA" duration="4 years" skills="AutoCAD, Structural Design" />
-          </div>
-
-          <div className="text-center mt-12">
-            <Button variant="outline" className="rounded-full px-8 h-12 text-slate-600 border-slate-200">
-              Explore All Careers (500+)
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Expert Career Counselors */}
-      <section className="py-24 max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-end mb-12">
-          <div className="space-y-2">
-            <h2 className="text-2xl font-semibold text-slate-800 tracking-tight">Expert Career Counselors</h2>
-            <p className="text-slate-500">Connect with certified professionals for personalized guidance</p>
-          </div>
-          <Link href="/student/directory">
-            <Button variant="outline" className="rounded-md px-6 text-slate-600 border-slate-200 hover:bg-slate-50 shadow-sm">
-              View All Counselors
-            </Button>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <CounselorRowCard 
-            name="Dr. Priya Sharma" 
-            title="PhD in Career Counseling" 
-            rating="4.9" 
-            reviews="2345" 
-            sessions="5000" 
-            exp="12" 
-            tags={['Career Planning', 'Stream Selection', 'Abroad Education']} 
-          />
-          <CounselorRowCard 
-            name="Mr. Rajesh Kumar" 
-            title="M.Ed. Career Counselor" 
-            rating="4.8" 
-            reviews="1876" 
-            sessions="4200" 
-            exp="15" 
-            tags={['Engineering', 'Medical', 'Entrance Exams']} 
-          />
-        </div>
-      </section>
-
-      {/* Career Assessment Tests */}
-      <section className="py-24 bg-slate-50/30">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-2xl font-semibold text-slate-800 tracking-tight">Career Assessment Tests</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Take scientifically designed tests to discover your interests, aptitude, and ideal career paths</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <AssessmentCard 
-              title="Psychometric Test" 
-              desc="Deep dive into your personality traits and natural inclinations" 
-              questions="45" 
-              time="20 mins" 
-            />
-            <AssessmentCard 
-              title="Aptitude Test" 
-              desc="Evaluate your numerical, logical, and verbal reasoning abilities" 
-              questions="60" 
-              time="40 mins" 
-            />
-            <AssessmentCard 
-              title="Interest Inventory" 
-              desc="Align your career choices with your passion and daily interests" 
-              questions="30" 
-              time="15 mins" 
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 border-t border-slate-800 py-12 text-white/50 text-sm">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p>© 2026 UDANIX Career Guidance Portal. All rights reserved.</p>
         </div>
       </footer>
+
     </div>
-  );
-}
-
-function StreamCard({ title, icon, color, subjects, description, options }: any) {
-  return (
-    <Card className="border-slate-100 shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
-      <div className={`h-40 ${color} flex items-center justify-center text-white relative`}>
-        <div className="absolute inset-0 bg-black/5" />
-        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center z-10">
-          {icon}
-        </div>
-      </div>
-      <CardContent className="p-8 space-y-6">
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-slate-800">{title}</h3>
-          <p className="text-sm text-slate-500 leading-relaxed font-light">{description}</p>
-        </div>
-        <div className="space-y-3">
-          <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Key Subjects:</p>
-          <div className="flex flex-wrap gap-2">
-            {subjects.map((s: string) => (
-              <Badge key={s} variant="secondary" className="bg-slate-50 text-slate-600 font-normal hover:bg-slate-100">{s}</Badge>
-            ))}
-            <Badge variant="secondary" className="bg-slate-50 text-slate-600 font-normal hover:bg-slate-100">+2 more</Badge>
-          </div>
-        </div>
-        <div className="pt-4 border-t border-slate-50 flex items-center justify-between">
-          <span className="text-sm font-medium text-slate-700">{options}</span>
-          <Button size="sm" className={`rounded-md px-6 ${color} hover:opacity-90 border-none group`}>
-            Explore Stream
-            <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function CareerCard({ title, demand, growth, salary, duration, skills }: any) {
-  return (
-    <Card className="border-slate-200 shadow-sm group hover:border-blue-200 transition-colors">
-      <CardContent className="p-6 space-y-4">
-        <div className="flex justify-between items-start">
-          <h3 className="font-semibold text-slate-800 leading-tight">{title}</h3>
-          <Badge className="bg-green-50 text-green-600 hover:bg-green-50 border-none text-[10px] font-bold px-2 py-0.5">{demand}</Badge>
-        </div>
-        <p className="text-xs text-slate-500 font-light leading-relaxed">Design, develop, and maintain software applications and systems for various industries</p>
-        <div className="grid grid-cols-2 gap-y-4 pt-2">
-          <div className="flex items-center gap-2">
-            <TrendingUpIcon className="w-4 h-4 text-green-500" />
-            <div>
-              <p className="text-[8px] text-slate-400 uppercase font-bold leading-none">Growth Rate</p>
-              <p className="text-xs font-semibold text-slate-700">{growth}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <p className="text-blue-600 font-bold text-lg">₹</p>
-            <div>
-              <p className="text-[8px] text-slate-400 uppercase font-bold leading-none">Salary Range</p>
-              <p className="text-xs font-semibold text-slate-700">{salary}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-purple-500" />
-            <div>
-              <p className="text-[8px] text-slate-400 uppercase font-bold leading-none">Duration</p>
-              <p className="text-xs font-semibold text-slate-700">{duration}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-orange-500" />
-            <div>
-              <p className="text-[8px] text-slate-400 uppercase font-bold leading-none">4 Skills</p>
-              <p className="text-xs font-semibold text-slate-700 truncate max-w-[80px]">{skills}</p>
-            </div>
-          </div>
-        </div>
-        <Button variant="ghost" className="w-full text-xs font-light text-slate-400 hover:text-blue-600 hover:bg-blue-50 border border-slate-100 group">
-          View Details
-          <ChevronRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-
-function CounselorRowCard({ name, title, rating, reviews, sessions, exp, tags }: any) {
-  return (
-    <Card className="border-slate-200 shadow-sm hover:shadow-md transition-all overflow-hidden group">
-      <CardContent className="p-8">
-        <div className="flex gap-6">
-          <div className="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center shrink-0 border border-slate-100 relative">
-            <span className="text-2xl font-light text-slate-400">{name.charAt(name.indexOf(' ') + 1)}</span>
-            <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 border-4 border-white rounded-full" />
-          </div>
-          <div className="flex-1 space-y-4">
-            <div className="flex justify-between items-start">
-              <div className="space-y-1">
-                <h3 className="text-xl font-semibold text-slate-800">{name}</h3>
-                <p className="text-sm text-blue-600 font-medium flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4" />
-                  {title}
-                </p>
-              </div>
-              <div className="text-right">
-                <div className="flex items-center gap-1 font-semibold text-slate-900">
-                  <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  {rating} <span className="text-slate-400 font-normal text-xs">({reviews})</span>
-                </div>
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">{sessions} sessions</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4 text-xs">
-              <div className="flex items-center gap-2 text-slate-600">
-                <p className="font-bold text-slate-900">{exp} years</p>
-                <p className="font-light">experience</p>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {tags.map((t: string) => (
-                  <Badge key={t} variant="secondary" className="bg-slate-100 text-slate-600 font-normal text-[10px] hover:bg-slate-200">{t}</Badge>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4 mt-8">
-          <Button variant="ghost" className="rounded-md border border-slate-100 text-slate-600">
-            <MessageSquare className="w-4 h-4 mr-2" />
-            Chat
-          </Button>
-          <Button className="bg-blue-600 hover:bg-blue-700 rounded-md">
-            <Calendar className="w-4 h-4 mr-2" />
-            Book Session
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function AssessmentCard({ title, desc, questions, time }: any) {
-  return (
-    <Card className="border-slate-200 shadow-sm hover:border-blue-200 transition-colors bg-white">
-      <CardContent className="p-8 space-y-6">
-        <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
-          <Sparkles className="w-6 h-6" />
-        </div>
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-slate-800">{title}</h3>
-          <p className="text-sm text-slate-500 font-light leading-relaxed">{desc}</p>
-        </div>
-        <div className="flex items-center justify-between pt-4 border-t border-slate-50">
-          <div className="flex gap-4 text-xs font-medium text-slate-400">
-            <span className="flex items-center gap-1"><MessageSquare className="w-3 h-3" /> {questions} Qs</span>
-            <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {time}</span>
-          </div>
-          <Button variant="link" className="text-blue-600 text-xs font-bold p-0 h-auto">
-            Start Test <ChevronRight className="w-3 h-3 ml-1" />
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function TrendingUpIcon({ className }: { className?: string }) {
-  return (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width="24" 
-      height="24" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      className={className}
-    >
-      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-      <polyline points="17 6 23 6 23 12" />
-    </svg>
   );
 }

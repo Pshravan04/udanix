@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,6 +16,7 @@ interface CounselorProps {
   isOnline: boolean;
   imageUrl?: string;
   price: string;
+  id: string;
   experience?: string;
 }
 
@@ -24,80 +26,109 @@ export function CounselorCard({
   rating,
   reviews,
   languages,
-  isOnline,
+  isOnline: initialIsOnline,
   price,
+  id,
   experience = "10+",
 }: CounselorProps) {
+  const [liveStatus, setLiveStatus] = useState(initialIsOnline);
+
+  useEffect(() => {
+    // Specifically for Dr. Jenkins simulation, but could be generalized
+    const checkStatus = () => {
+      if (name.includes('Jenkins') || name.includes('Sharma')) {
+        const stored = localStorage.getItem('udanix_jenkins_live');
+        if (stored !== null) {
+          setLiveStatus(stored === 'true');
+        }
+      }
+    };
+
+    checkStatus();
+    window.addEventListener('storage', checkStatus);
+    return () => window.removeEventListener('storage', checkStatus);
+  }, [name]);
+
   return (
-    <Card className="overflow-hidden border-slate-200 hover:shadow-lg transition-all duration-300 group bg-white">
+    <Card className="overflow-hidden border-slate-100 hover:border-udanix-blue/30 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 group bg-white rounded-[2rem]">
       <CardHeader className="p-0">
-        <div className="relative h-44 bg-slate-50 overflow-hidden">
-          {/* Decorative background pattern */}
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]" />
-          
+        <div className="relative h-48 bg-[#F8FAFC] overflow-hidden">
+          {/* Futuristic Grid Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:20px_20px]" />
+
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 border-2 border-white shadow-sm">
-              <span className="text-2xl font-semibold">{name.charAt(0)}</span>
+            <div className="relative">
+              <div className="w-20 h-20 rounded-[1.5rem] bg-white flex items-center justify-center text-slate-900 border border-slate-100 shadow-xl group-hover:scale-110 transition-transform duration-500">
+                <span style={{ fontFamily: 'var(--font-space-grotesk)' }} className="text-3xl font-black">{name.charAt(0)}</span>
+              </div>
+              {liveStatus && (
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg border border-slate-50">
+                  <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
+                </div>
+              )}
             </div>
           </div>
-          
-          {isOnline && (
-            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-2 py-1 bg-white/90 backdrop-blur-sm rounded-full border border-slate-100 shadow-sm">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tight">Live</span>
+
+          {liveStatus && (
+            <div className="absolute top-5 left-5 px-3 py-1 bg-white/80 backdrop-blur-md rounded-full border border-slate-100/50 shadow-sm">
+              <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Live Node</span>
             </div>
           )}
-          
-          <div className="absolute bottom-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-md text-xs font-bold shadow-sm">
-            {price}/session
+
+          <div className="absolute bottom-5 right-5 bg-slate-900 text-white px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl">
+            {price}/H
           </div>
         </div>
       </CardHeader>
-      <CardContent className="p-6 space-y-4">
-        <div className="space-y-1">
+      <CardContent className="p-7 space-y-5">
+        <div className="space-y-1.5">
           <div className="flex justify-between items-start">
-            <h3 className="text-lg font-bold text-slate-800 leading-none group-hover:text-blue-600 transition-colors">{name}</h3>
-            <div className="flex items-center gap-1 text-sm font-bold text-slate-700">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              {rating}
+            <h3 style={{ fontFamily: 'var(--font-space-grotesk)' }} className="text-lg font-black text-slate-900 leading-tight uppercase tracking-tight group-hover:text-udanix-blue transition-colors">
+              {name}
+            </h3>
+            <div className="flex items-center gap-1.5 px-2 py-0.5 bg-amber-50 rounded-lg">
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+              <span className="text-[11px] font-black text-amber-700">{rating}</span>
             </div>
           </div>
-          <p className="text-xs font-medium text-blue-600 flex items-center gap-1">
-            <GraduationCap className="w-3 h-3" />
-            {specialty}
-          </p>
-        </div>
-        
-        <div className="flex items-center gap-4 text-[11px] text-slate-500 border-y border-slate-50 py-3">
-          <div className="flex items-center gap-1">
-            <Clock className="w-3 h-3 text-slate-400" />
-            <span className="font-semibold text-slate-700">{experience} yrs</span> exp.
-          </div>
-          <div className="w-px h-3 bg-slate-200" />
-          <div className="flex items-center gap-1">
-            <span className="font-semibold text-slate-700">{reviews}</span> reviews
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-udanix-blue/30" />
+            <p className="text-[10px] font-black uppercase tracking-widest text-udanix-blue">
+              {specialty}
+            </p>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-1.5 min-h-[44px] content-start">
-          {languages.map((lang) => (
-            <Badge key={lang} variant="secondary" className="bg-slate-50 text-slate-500 hover:bg-slate-100 rounded px-2 py-0 font-normal text-[10px] border-slate-100 italic">
+        <div className="flex items-center gap-6 py-4 border-y border-slate-100">
+          <div className="space-y-1">
+            <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Experience</p>
+            <p className="text-xs font-bold text-slate-900">{experience} Years</p>
+          </div>
+          <div className="w-px h-6 bg-slate-100" />
+          <div className="space-y-1">
+            <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Verification</p>
+            <p className="text-xs font-bold text-slate-900">Validated</p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          {languages.slice(0, 3).map((lang) => (
+            <span key={lang} className="text-[9px] font-black uppercase tracking-wider text-slate-400 px-2 py-1 bg-slate-50 rounded-lg">
               {lang}
-            </Badge>
+            </span>
           ))}
         </div>
       </CardContent>
-      <CardFooter className="p-6 pt-0 flex gap-3">
-        <Button variant="outline" size="sm" className="flex-1 text-xs font-bold text-slate-600 border-slate-200 hover:bg-slate-50 h-9">
-          <MessageSquare className="w-3.5 h-3.5 mr-1.5" />
-          Chat
+      <CardFooter className="p-7 pt-0 flex gap-4">
+        <Button variant="outline" size="sm" className="flex-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 border-slate-100 hover:bg-slate-50 h-11 rounded-xl transition-all">
+          Query
         </Button>
-        <BookingDialog 
-          counselorName={name} 
+        <BookingDialog
+          counselorId={id}
+          counselorName={name}
           trigger={
-            <Button size="sm" className="flex-1 text-xs font-bold bg-blue-600 hover:bg-blue-700 h-9 shadow-md shadow-blue-100">
-              <Calendar className="w-3.5 h-3.5 mr-1.5" />
-              Book
+            <Button size="sm" className="flex-[1.5] text-[10px] font-black uppercase tracking-[0.2em] bg-slate-900 hover:bg-slate-800 h-11 rounded-xl shadow-xl shadow-slate-200 transition-all active:scale-95 text-white">
+              Initialize
             </Button>
           }
         />

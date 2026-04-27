@@ -1,27 +1,30 @@
 'use client';
 
 import { useState } from 'react';
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogDescription, 
-  DialogFooter, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogTrigger 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar as CalendarIcon, Clock, CheckCircle2 } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, CheckCircle2, ChevronRight, ArrowLeft } from "lucide-react";
 import { format } from "date-fns";
 import { createCalendarEvent, getAvailableSlots } from "@/lib/calendar/google";
+import { motion, AnimatePresence } from "framer-motion";
+import { createClient } from "@/lib/supabase/client";
 
 interface BookingDialogProps {
+  counselorId?: string;
   counselorName: string;
-  trigger?: React.ReactNode;
+  trigger?: React.ReactElement;
 }
 
-export function BookingDialog({ counselorName, trigger }: BookingDialogProps) {
+export function BookingDialog({ counselorId, counselorName, trigger }: BookingDialogProps) {
   const [step, setStep] = useState<'pick' | 'confirm' | 'success'>('pick');
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
@@ -31,23 +34,50 @@ export function BookingDialog({ counselorName, trigger }: BookingDialogProps) {
 
   const handleBook = async () => {
     if (!selectedSlot) return;
-    
+
     setIsBooking(true);
-    
-    // Simulate end time 1 hour later
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      alert("Please login to book a session.");
+      setIsBooking(false);
+      return;
+    }
+
     const startTime = new Date(selectedDate);
     const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
-    
+
+    // 1. Save to Supabase
+    const { error } = await supabase
+      .from('sessions')
+      .insert({
+        student_id: user.id,
+        counselor_id: counselorId, // If provided, else we need a lookup or mock
+        topic: 'Initial Consultation',
+        date: format(selectedDate, 'yyyy-MM-dd'),
+        start_time: startTime.toISOString(),
+        end_time: endTime.toISOString(),
+        status: 'scheduled'
+      });
+
+    if (error) {
+      console.error("Booking failed:", error.message);
+      setIsBooking(false);
+      return;
+    }
+
+    // 2. Sync with Google Calendar (Optional Simulation)
     await createCalendarEvent({
       counselorName,
-      studentName: 'John Doe', // Mock current user
+      studentName: user.email || 'Student',
       startTime,
       endTime,
       type: 'Initial Consultation'
     });
 
-    setIsBooking(false);
     setStep('success');
+    setIsBooking(false);
   };
 
   const reset = () => {
@@ -57,116 +87,161 @@ export function BookingDialog({ counselorName, trigger }: BookingDialogProps) {
 
   return (
     <Dialog onOpenChange={(open) => !open && reset()}>
-      <DialogTrigger asChild>
-        {trigger || <Button size="sm">Book Session</Button>}
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] overflow-hidden">
-        {step === 'pick' && (
-          <>
-            <DialogHeader>
-              <DialogTitle>Schedule a Session</DialogTitle>
-              <DialogDescription>
-                Pick a date and time for your meeting with {counselorName}.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="py-4 space-y-6">
-              <div className="space-y-3">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Select Time Slot</label>
-                <div className="grid grid-cols-3 gap-2">
+      <DialogTrigger render={trigger || <Button size="sm">Book Session</Button>} />
+      <DialogContent className="sm:max-w-[440px] p-0 overflow-hidden border-none shadow-2xl rounded-[2rem]">
+        <AnimatePresence mode="wait">
+          {step === 'pick' && (
+            <motion.div
+              key="pick"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="p-8 space-y-8"
+            >
+              <div className="space-y-2">
+                <DialogTitle className="text-2xl font-bold tracking-tight">Schedule Session</DialogTitle>
+                <DialogDescription className="text-slate-500 font-medium">
+                  Connect with <span className="text-blue-600 font-bold">{counselorName}</span> at your convenience.
+                </DialogDescription>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Available Slots</label>
+                  <Badge variant="outline" className="text-[9px] border-slate-100 text-slate-400 font-bold italic">GMT +5:30</Badge>
+                </div>
+                <div className="grid grid-cols-3 gap-3">
                   {slots.map((slot) => (
-                    <Button
+                    <button
                       key={slot}
-                      variant={selectedSlot === slot ? "default" : "outline"}
-                      className={`text-xs h-9 ${selectedSlot === slot ? 'bg-blue-600' : 'border-slate-200'}`}
                       onClick={() => setSelectedSlot(slot)}
+                      className={`h-12 rounded-xl text-xs font-bold transition-all border ${selectedSlot === slot
+                        ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-200'
+                        : 'bg-white border-slate-100 text-slate-600 hover:border-blue-200 hover:bg-blue-50/50'
+                        }`}
                     >
                       {slot}
-                    </Button>
+                    </button>
                   ))}
                 </div>
               </div>
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <CalendarIcon className="w-5 h-5 text-slate-400" />
-                  <span className="text-sm font-medium text-slate-700">{format(selectedDate, "PPP")}</span>
+
+              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between group cursor-pointer hover:bg-white hover:shadow-sm transition-all">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
+                    <CalendarIcon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Selected Date</p>
+                    <p className="text-sm font-bold text-slate-900">{format(selectedDate, "PPP")}</p>
+                  </div>
                 </div>
-                <Button variant="link" size="sm" className="text-blue-600 text-xs">Change Date</Button>
+                <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-blue-500 transition-colors" />
               </div>
-            </div>
-            <DialogFooter>
-              <Button 
-                className="w-full bg-blue-600 hover:bg-blue-700" 
+
+              <Button
+                className="w-full h-14 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold text-base shadow-xl shadow-slate-200 group"
                 disabled={!selectedSlot}
                 onClick={() => setStep('confirm')}
               >
-                Continue to Payment
+                Verification & Details
+                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </DialogFooter>
-          </>
-        )}
+            </motion.div>
+          )}
 
-        {step === 'confirm' && (
-          <>
-            <DialogHeader>
-              <DialogTitle>Confirm Booking</DialogTitle>
-              <DialogDescription>
-                Review your session details before confirming.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="py-6 space-y-4">
-              <div className="p-6 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-4">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="font-semibold text-slate-900">{counselorName}</h4>
-                    <p className="text-xs text-slate-500 italic">Initial Consultation</p>
-                  </div>
-                  <Badge className="bg-blue-600">60 min</Badge>
+          {step === 'confirm' && (
+            <motion.div
+              key="confirm"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="p-8 space-y-8"
+            >
+              <button
+                onClick={() => setStep('pick')}
+                className="flex items-center gap-2 text-slate-400 hover:text-slate-600 transition-colors text-[10px] font-bold uppercase tracking-widest"
+              >
+                <ArrowLeft className="w-3 h-3" />
+                Edit Time
+              </button>
+
+              <div className="space-y-2">
+                <DialogTitle className="text-2xl font-bold tracking-tight">Final Confirmation</DialogTitle>
+                <DialogDescription className="text-slate-500 font-medium">Verify your session summary before we sync.</DialogDescription>
+              </div>
+
+              <div className="p-6 rounded-3xl bg-blue-600 text-white space-y-6 shadow-2xl shadow-blue-200 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-8 opacity-10">
+                  <Clock className="w-24 h-24" />
                 </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm text-slate-600">
-                    <CalendarIcon className="w-4 h-4" />
-                    <span>{format(selectedDate, "PPP")}</span>
+                <div className="flex justify-between items-start relative z-10">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-200 opacity-80">Counselor</p>
+                    <h4 className="text-xl font-bold">{counselorName}</h4>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-600">
-                    <Clock className="w-4 h-4" />
-                    <span>{selectedSlot}</span>
+                  <Badge className="bg-white/20 backdrop-blur-md border-none text-white font-bold text-[10px]">60 MIN</Badge>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 relative z-10">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-200 opacity-80">Date</p>
+                    <p className="text-sm font-bold">{format(selectedDate, "MMM do, yyyy")}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-200 opacity-80">Time Slot</p>
+                    <p className="text-sm font-bold">{selectedSlot}</p>
                   </div>
                 </div>
               </div>
-              <p className="text-[10px] text-slate-400 text-center leading-relaxed">
-                By confirming, a Google Calendar invite will be sent to both parties. 
-                Cancellations must be made 24 hours in advance.
-              </p>
-            </div>
-            <DialogFooter className="flex flex-col sm:flex-row gap-2">
-              <Button variant="ghost" onClick={() => setStep('pick')} className="flex-1">Back</Button>
-              <Button 
-                className="flex-[2] bg-blue-600 hover:bg-blue-700" 
+
+              <div className="bg-slate-50 p-4 rounded-xl text-[10px] text-slate-400 text-center italic">
+                A Google Calendar invite will be automatically generated upon confirmation.
+              </div>
+
+              <Button
+                className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold shadow-2xl shadow-blue-500/20"
                 onClick={handleBook}
                 disabled={isBooking}
               >
-                {isBooking ? 'Processing...' : 'Confirm & Sync Calendar'}
+                {isBooking ? 'Securing Slot...' : 'Confirm & Sync Calendar'}
               </Button>
-            </DialogFooter>
-          </>
-        )}
+            </motion.div>
+          )}
 
-        {step === 'success' && (
-          <div className="py-10 flex flex-col items-center justify-center text-center space-y-6">
-            <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center">
-              <CheckCircle2 className="w-12 h-12 text-green-500" />
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-2xl font-semibold text-slate-900">Session Scheduled!</h3>
-              <p className="text-slate-500 text-sm max-w-[280px]">
-                A Google Calendar event has been created. You can find the link in your dashboard.
-              </p>
-            </div>
-            <Button variant="outline" className="w-full max-w-[200px]" onClick={() => reset()}>
-              Done
-            </Button>
-          </div>
-        )}
+          {step === 'success' && (
+            <motion.div
+              key="success"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="p-10 flex flex-col items-center text-center space-y-8"
+            >
+              <div className="w-24 h-24 rounded-full bg-green-50 flex items-center justify-center relative">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", damping: 12 }}
+                >
+                  <CheckCircle2 className="w-16 h-16 text-green-500" />
+                </motion.div>
+                <div className="absolute inset-0 rounded-full border-4 border-green-100 animate-ping opacity-20" />
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="text-3xl font-black text-slate-900 tracking-tight">Mission Success</h3>
+                <p className="text-slate-500 font-medium leading-relaxed">
+                  Your career session is globally synced.<br />Check your inbox for the access link.
+                </p>
+              </div>
+
+              <div className="w-full pt-4">
+                <Button className="w-full h-14 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold" onClick={() => reset()}>
+                  Go to Student Hub
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </DialogContent>
     </Dialog>
   );
