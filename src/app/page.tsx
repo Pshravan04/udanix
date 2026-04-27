@@ -9,6 +9,7 @@ import {
   TrendingUp, Award, Globe, Layers, Search, User
 } from 'lucide-react';
 import { StreamExplorer } from '@/components/stream-explorer';
+import { CareerPaths } from '@/components/career-paths';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -315,6 +316,9 @@ export default function Home() {
 
       {/* ─── STREAM EXPLORER ─── */}
       <StreamExplorer />
+
+      {/* ─── CAREER PATHS ─── */}
+      <CareerPaths />
 
       {/* ─── STATS ─── */}
       <section className="py-24 bg-[#F9FAFB] border-y border-[#E5E7EB]">
