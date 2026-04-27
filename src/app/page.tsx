@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { StreamExplorer } from '@/components/stream-explorer';
 import { CareerPaths } from '@/components/career-paths';
+import { CounselorSection } from '@/components/counselor-section';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -319,6 +320,9 @@ export default function Home() {
 
       {/* ─── CAREER PATHS ─── */}
       <CareerPaths />
+
+      {/* ─── COUNSELORS ─── */}
+      <CounselorSection />
 
       {/* ─── STATS ─── */}
       <section className="py-24 bg-[#F9FAFB] border-y border-[#E5E7EB]">
