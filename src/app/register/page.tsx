@@ -13,6 +13,7 @@ import {
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { UNIVERSITIES, DEGREES, COURSES } from '@/lib/edu-data';
 import { createClient } from '@/lib/supabase/client';
+import { GoogleLoginButton } from '@/components/auth/google-login-button';
 
 const ROLES = [
     { id: 'student', label: 'Student', emoji: '🎓', desc: 'Discover my path, connect with experts' },
@@ -273,6 +274,17 @@ export default function RegisterPage() {
                                 Continue
                                 <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
                             </Button>
+
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <span className="w-full border-t border-slate-100" />
+                                </div>
+                                <div className="relative flex justify-center text-[10px] font-black uppercase tracking-[0.3em]">
+                                    <span className="bg-white px-4 text-slate-400">OR</span>
+                                </div>
+                            </div>
+
+                            <GoogleLoginButton role={role} />
 
                             <div className="pt-2 text-center">
                                 <p className="text-[13px] font-bold text-slate-400 tracking-tight">

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
-export function GoogleLoginButton() {
+export function GoogleLoginButton({ role = 'student' }: { role?: 'student' | 'counselor' }) {
     const [isConnecting, setIsConnecting] = useState(false);
     const router = useRouter();
 
@@ -17,7 +17,11 @@ export function GoogleLoginButton() {
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    redirectTo: `${window.location.origin}/student`,
+                    redirectTo: `${window.location.origin}/${role}?next_role=${role}`,
+                    queryParams: {
+                        access_type: 'offline',
+                        prompt: 'consent',
+                    },
                 }
             });
 
