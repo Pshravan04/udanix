@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/lib/supabase/client';
 import {
   GraduationCap, ArrowRight, Star, MessageSquare, Calendar, Sparkles,
   Users, Clock, Video, Zap, Shield, BookOpen, Search, 
