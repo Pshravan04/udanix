@@ -63,14 +63,13 @@ export default function Home() {
   }, [supabase]);
 
   return (
-    <div className="min-h-screen bg-white text-[#111827] overflow-x-hidden">
+    <div className="min-h-screen bg-white text-[#111827] overflow-x-hidden selection:bg-udanix-blue/10 selection:text-udanix-blue">
 
       {/* ─── NAV ─── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#E5E7EB]/70 px-6 sm:px-12">
-        <div className="max-w-[1440px] mx-auto h-[72px] flex items-center justify-between gap-8">
-          {/* Left: Logo + Nav */}
+      <header className="fixed top-0 inset-x-0 z-50 glass-premium border-b border-white/20 px-6 sm:px-12">
+        <div className="max-w-[1440px] mx-auto h-[80px] flex items-center justify-between gap-8">
           <div className="flex items-center gap-12">
-            <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+            <Link href="/" className="flex items-center gap-3 flex-shrink-0 hover:scale-105 transition-transform">
               <img src="/logo.jpg" alt="Udaanix" className="h-10 w-auto" />
             </Link>
 
@@ -82,7 +81,7 @@ export default function Home() {
                 { label: 'Assessment', href: '/register' }
               ].map((link) => (
                 <Link key={link.label} href={link.href}>
-                  <button className="text-[14px] font-medium text-[#6B7280] hover:text-udanix-blue transition-colors px-3 py-2 rounded-lg whitespace-nowrap">
+                  <button className="text-[13px] font-bold text-slate-500 hover:text-udanix-blue transition-all px-4 py-2 rounded-xl hover:bg-udanix-blue/5 whitespace-nowrap uppercase tracking-wider">
                     {link.label}
                   </button>
                 </Link>
@@ -90,36 +89,37 @@ export default function Home() {
             </nav>
           </div>
 
-          {/* Right: Search + Profile + CTA */}
           <div className="flex items-center gap-5 flex-1 justify-end max-w-2xl">
             <div className="relative group flex-1 hidden md:block">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-[#9CA3AF] group-focus-within:text-udanix-blue transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-udanix-blue transition-colors" />
               <input
                 type="text"
                 placeholder="Search careers, courses..."
-                className="w-full bg-[#F3F4F6] border-none rounded-xl py-3 pl-11 pr-4 text-sm font-medium focus:ring-2 focus:ring-udanix-blue/10 transition-all placeholder:text-[#9CA3AF]"
+                className="w-full bg-slate-100/50 border border-slate-200/50 rounded-2xl py-3.5 pl-11 pr-4 text-sm font-semibold focus:ring-4 focus:ring-udanix-blue/5 focus:bg-white focus:border-udanix-blue/20 transition-all placeholder:text-slate-400"
               />
             </div>
 
-            <div className="flex items-center gap-4 flex-shrink-0 font-bold">
+            <div className="flex items-center gap-4 flex-shrink-0">
               {user ? (
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   <Link href="/student/profile">
-                    <button className="text-[11px] font-black text-slate-500 hover:text-udanix-blue uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-50">
-                      My Profile
+                    <button className="text-[12px] font-black text-slate-500 hover:text-udanix-blue uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-50">
+                      Profile
                     </button>
                   </Link>
                   <Link href="/student">
-                    <button className="bg-udanix-blue text-white text-sm font-black py-3 px-8 rounded-xl shadow-lg shadow-blue-500/10 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
+                    <button className="bg-brand-gradient text-white text-[13px] font-black py-3.5 px-8 rounded-2xl shadow-premium hover:shadow-premium-xl hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
                       Dashboard
                     </button>
                   </Link>
                 </div>
               ) : (
                 <>
-                  <StudentLoginModal />
+                  <div className="hidden sm:block">
+                    <StudentLoginModal />
+                  </div>
                   <Link href="/register">
-                    <button className="bg-udanix-blue text-white text-sm font-black py-3 px-8 rounded-xl shadow-lg shadow-blue-500/10 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
+                    <button className="bg-brand-gradient text-white text-[13px] font-black py-3.5 px-8 rounded-2xl shadow-premium hover:shadow-premium-xl hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
                       Join Now
                     </button>
                   </Link>
@@ -128,161 +128,222 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </header>
+           {/* ─── HERO ─── */}
+      <section className="relative pt-44 pb-32 overflow-hidden bg-mesh-blue">
+        {/* Ambient Glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-40">
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+              rotate: [0, 90, 0]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-udanix-blue/20 blur-[120px]" 
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.4, 0.2],
+              rotate: [0, -90, 0]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-udanix-orange/15 blur-[120px]" 
+          />
+        </div>
 
-      {/* ─── HERO ─── */}
-      <section className="relative pt-32 pb-0 overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{
-          background: 'radial-gradient(ellipse 100% 60% at 50% -10%, #C7E2FF 0%, #E8F4FF 30%, #F0F9FF 55%, #ffffff 80%)'
-        }} />
+        <div className="max-w-[1440px] mx-auto px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            {/* Left Column: Content */}
+            <div className="lg:col-span-7 text-left space-y-10">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }} 
+                animate={{ opacity: 1, x: 0 }} 
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[13px] font-black uppercase tracking-[0.25em] shadow-premium"
+              >
+                <Sparkles className="w-4 h-4 text-udanix-orange animate-pulse" />
+                Empowering 50k+ Future Leaders
+              </motion.div>
 
-        <div className="max-w-[1280px] mx-auto px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-[#BFDBFE] text-udanix-blue text-[11px] font-black uppercase tracking-[0.15em] shadow-float">
-              <Sparkles className="w-3 h-3" />
-              Next-Gen Student Counselling
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[56px] sm:text-[68px] lg:text-[80px] font-black text-[#111827] leading-[1.05] tracking-[-0.03em] max-w-4xl mx-auto uppercase"
-            style={{ fontFamily: 'var(--font-space-grotesk)' }}
-          >
-            Your Career Journey
-            <br /> <span className="text-udanix-blue">Starts Here</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.2 }}
-            className="mt-6 text-xl text-[#4B5563] max-w-3xl mx-auto leading-relaxed font-medium"
-          >
-            Get expert guidance on stream selection, career paths, entrance exams, and future opportunities.
-            Make informed decisions with personalized counseling.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-3"
-          >
-            {user ? (
-              <Link href="/student">
-                <button className="bg-udanix-blue text-white text-sm font-black py-4 px-10 rounded-2xl shadow-2xl shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
-                  Launch Dashboard
-                </button>
-              </Link>
-            ) : (
-              <>
-                <Link href="/register">
-                  <button className="bg-udanix-blue text-white text-sm font-black py-4 px-10 rounded-2xl shadow-2xl shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
-                    Start My Journey
-                  </button>
-                </Link>
-                <Link href="/student/directory">
-                  <button className="inline-flex items-center gap-2 text-sm font-bold text-[#111827] bg-white/40 backdrop-blur-md border border-white/40 px-10 py-4 rounded-2xl shadow-float hover:shadow-float-lg hover:-translate-y-0.5 transition-all uppercase tracking-widest">
-                    Talk to Counselor
-                  </button>
-                </Link>
-              </>
-            )}
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-            className="mt-4 text-xs text-[#9CA3AF] font-bold uppercase tracking-widest"
-          >
-            No credit card required · Free to explore · 200+ verified experts
-          </motion.p>
-
-          {/* ── Dashboard Simulation ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-16 relative mx-auto max-w-5xl"
-          >
-            <div className="bg-white rounded-[2.5rem] shadow-premium-xl border border-[#E5E7EB] overflow-hidden">
-               <div className="bg-[#F9FAFB] border-b border-[#E5E7EB] px-5 py-3 flex items-center gap-3">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
-                  <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
-                  <div className="w-3 h-3 rounded-full bg-[#28C840]" />
-                </div>
-                <div className="flex-1 bg-white border border-[#E5E7EB] rounded-lg px-4 py-1.5 mx-4 text-[10px] font-black uppercase tracking-widest text-[#9CA3AF] text-left">
-                  network.udanix.com/student/node_01
-                </div>
+              <div className="space-y-6">
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-[64px] sm:text-[90px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.85] filter drop-shadow-sm"
+                >
+                  Your Career,<br /> 
+                  <span className="text-brand-gradient">Precision</span> Engineered.
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-slate-500 text-2xl leading-relaxed font-bold italic max-w-2xl"
+                >
+                  "The gap between who you are and who you want to be is bridged by the right guidance. Connect with world-class experts today."
+                </motion.p>
               </div>
-              <div className="bg-[#F8FAFC] p-8 min-h-[400px]">
-                 <div className="flex gap-6 h-full">
-                    {/* Sidebar Sim */}
-                    <div className="w-56 bg-white rounded-3xl border border-[#E5E7EB] p-5 flex flex-col gap-4 flex-shrink-0 shadow-sm">
-                        <img src="/logo.jpg" alt="Logo" className="h-6 w-fit mb-4" />
-                        {['Dashboard', 'Experts', 'Sessions', 'Analytics'].map((item, i) => (
-                           <div key={item} className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest ${i === 0 ? 'bg-udanix-blue/5 text-udanix-blue border border-udanix-blue/10' : 'text-slate-400 opacity-60'}`}>
-                              <div className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-udanix-blue' : 'bg-slate-200'}`} />
-                              {item}
-                           </div>
-                        ))}
-                    </div>
-                    {/* Content Sim */}
-                    <div className="flex-1 space-y-6 text-left">
-                        <div className="flex items-center justify-between">
-                            <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase">Welcome, Aryan! 👋</h3>
-                            <div className="w-10 h-10 rounded-full bg-udanix-blue/10 border border-udanix-blue/20 flex items-center justify-center text-udanix-blue font-black tracking-tighter">AS</div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex flex-wrap gap-6 pt-4"
+              >
+                <Link href="/register">
+                  <button className="bg-brand-gradient text-white text-[15px] font-black py-6 px-14 rounded-[2rem] shadow-premium-xl hover:scale-[1.05] active:scale-[0.95] transition-all uppercase tracking-[0.3em] flex items-center gap-4">
+                    Get Started Free
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+                <div className="scale-125 origin-center ml-4">
+                  <StudentLoginModal />
+                </div>
+              </motion.div>
+
+              {/* Trust Indicators */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="flex items-center gap-12 pt-12 border-t border-slate-100/50"
+              >
+                {STATS.map((stat, i) => (
+                  <div key={i} className="space-y-2">
+                    <p className="text-3xl font-black text-udanix-navy tracking-tighter uppercase">{stat.value}</p>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Right Column: Visual Bento */}
+            <div className="lg:col-span-5 relative hidden lg:block">
+              <div className="relative w-full aspect-square">
+                {/* Main Dashboard Card */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="absolute inset-0 glass-premium rounded-[4rem] border border-white/60 shadow-premium-xl overflow-hidden p-10 z-10"
+                >
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-brand-gradient p-0.5">
+                        <div className="w-full h-full rounded-[0.9rem] bg-white flex items-center justify-center">
+                          <img src="/logo.jpg" alt="" className="w-8 h-auto" />
                         </div>
-                        <div className="grid grid-cols-3 gap-4">
-                            {[1, 2, 3].map(i => (
-                                <div key={i} className="bg-white p-5 rounded-[1.5rem] border border-slate-100 shadow-sm h-32 flex flex-col justify-between">
-                                    <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-xs">📊</div>
-                                    <div>
-                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Metric 0{i}</p>
-                                        <p className="text-2xl font-black text-slate-900 tracking-tighter uppercase">-- Data --</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                      </div>
+                      <div>
+                        <p className="text-xs font-black text-udanix-navy uppercase">Student Portal</p>
+                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Active Session</p>
+                      </div>
                     </div>
-                 </div>
+                    <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center">
+                       <Users className="w-5 h-5 text-udanix-blue" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="h-4 w-2/3 bg-slate-100 rounded-full animate-pulse" />
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="h-24 rounded-3xl bg-udanix-blue/5 border border-udanix-blue/10 p-5">
+                         <TrendingUp className="w-5 h-5 text-udanix-blue mb-2" />
+                         <div className="h-3 w-1/2 bg-udanix-blue/10 rounded-full" />
+                      </div>
+                      <div className="h-24 rounded-3xl bg-udanix-orange/5 border border-udanix-orange/10 p-5">
+                         <Zap className="w-5 h-5 text-udanix-orange mb-2" />
+                         <div className="h-3 w-1/2 bg-udanix-orange/10 rounded-full" />
+                      </div>
+                    </div>
+                    <div className="h-40 rounded-[2.5rem] bg-slate-50/50 border border-slate-100 border-dashed flex items-center justify-center">
+                       <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Growth Map Loading...</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Floating Elements */}
+                <motion.div 
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -right-10 glass-premium p-6 rounded-3xl border border-white/60 shadow-premium z-20"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center text-white">
+                      <Star className="w-5 h-5 fill-white" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-black text-udanix-navy uppercase">Verified Expert</p>
+                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Dr. Sarah Johnson</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  animate={{ y: [0, 20, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -bottom-10 -left-10 glass-premium p-6 rounded-3xl border border-white/60 shadow-premium z-20"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-udanix-blue flex items-center justify-center text-white">
+                      <MessageSquare className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-black text-udanix-navy uppercase">Live Guidance</p>
+                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">34 Students Online</p>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
-          </motion.div>
+          </div>
         </div>
       </section>
-
       {/* ─── WHY UDANIX ─── */}
-      <section className="py-28 bg-white border-b border-slate-50">
-        <div className="max-w-[1280px] mx-auto px-8">
+      <section className="py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-udanix-orange/5 blur-[180px] rounded-full animate-pulse" />
+        <div className="max-w-[1280px] mx-auto px-8 relative z-10">
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <div className="flex flex-col md:flex-row items-start justify-between gap-6 mb-14">
-              <div className="space-y-2">
-                <motion.p variants={fadeUp} className="text-udanix-blue text-xs font-black uppercase tracking-[0.2em]">Our Mission</motion.p>
-                <motion.h2 variants={fadeUp} className="text-[42px] font-black text-[#111827] tracking-tighter uppercase leading-none" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-                  Clarity Over Confusion
+            <div className="flex flex-col md:flex-row items-end justify-between gap-10 mb-24">
+              <div className="space-y-6 max-w-2xl">
+                <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[11px] font-black uppercase tracking-[0.2em] shadow-sm">
+                  <Zap className="w-3.5 h-3.5 text-udanix-orange fill-udanix-orange" />
+                  Our Impact
+                </motion.div>
+                <motion.h2 variants={fadeUp} className="text-[56px] sm:text-[72px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.85]">
+                  Clarity Over <br /><span className="text-brand-gradient">Confusion</span>
                 </motion.h2>
+                <motion.p variants={fadeUp} className="text-slate-500 text-xl leading-relaxed font-semibold italic max-w-xl">
+                  "Turning uncertainty into an unfair advantage. We provide the tools you need to outpace the competition."
+                </motion.p>
               </div>
-              <motion.div variants={fadeUp} className="flex flex-col gap-1 md:text-right max-w-sm">
-                <p className="text-[#4B5563] text-base leading-relaxed font-medium">
-                  Turning confusion into clarity is a challenge for every student. Our platform simplifies your journey, enabling faster, smarter decisions.
-                </p>
+              <motion.div variants={fadeUp} className="pb-4">
+                 <Link href="/register">
+                    <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group flex items-center gap-4 text-udanix-blue font-black uppercase tracking-[0.2em] text-[12px] bg-white shadow-premium px-8 py-4 rounded-2xl hover:shadow-premium-xl transition-all border border-slate-100"
+                    >
+                       Explore platform
+                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </motion.button>
+                 </Link>
               </motion.div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {WHY_CARDS.map((c, i) => (
-                <motion.div key={c.title} variants={fadeUp} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-premium hover:shadow-2xl transition-all group relative overflow-hidden">
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-udanix-blue/[0.02] rounded-full group-hover:scale-150 transition-transform duration-700" />
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 border border-slate-100 shadow-sm" style={{ background: c.color }}>
-                    <c.icon className="w-7 h-7" style={{ color: c.iconColor }} />
+                <motion.div key={c.title} variants={fadeUp} className="group relative">
+                  <div className="relative glass-premium p-12 rounded-[3.5rem] border border-white/60 shadow-premium hover:shadow-premium-xl transition-all duration-500 h-full flex flex-col">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-bl-[4rem] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    
+                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-10 border border-white shadow-premium group-hover:scale-110 group-hover:rotate-3 transition-all duration-500" style={{ background: c.color }}>
+                      <c.icon className="w-8 h-8" style={{ color: c.iconColor }} />
+                    </div>
+                    <h3 className="font-black text-udanix-navy text-2xl mb-5 tracking-tight uppercase leading-tight">{c.title}</h3>
+                    <p className="text-slate-500 text-[15px] leading-relaxed font-semibold">{c.desc}</p>
                   </div>
-                  <h3 className="font-black text-[#111827] text-xl mb-4 tracking-tight uppercase" style={{ fontFamily: 'var(--font-space-grotesk)' }}>{c.title}</h3>
-                  <p className="text-[#6B7280] text-base leading-relaxed font-medium">{c.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -294,75 +355,97 @@ export default function Home() {
       <CareerAssessment />
 
       {/* ─── STREAM EXPLORER ─── */}
-      <div id="streams">
+      <div id="streams" className="relative py-12">
+         <div className="absolute top-1/2 left-0 w-64 h-64 bg-udanix-blue/5 blur-[120px] rounded-full" />
          <StreamExplorer />
       </div>
 
       {/* ─── CAREER PATHS ─── */}
-      <div id="paths">
+      <div id="paths" className="py-12">
          <CareerPaths />
       </div>
 
       {/* ─── COUNSELORS ─── */}
-      <div id="counselors">
+      <div id="counselors" className="relative py-12">
+         <div className="absolute bottom-0 right-0 w-80 h-80 bg-udanix-orange/5 blur-[150px] rounded-full" />
          <CounselorSection />
       </div>
 
       {/* ─── CTA BAND ─── */}
-      <section className="py-32" style={{ background: 'radial-gradient(ellipse 120% 80% at 50% 100%, #C7E2FF 0%, #E8F4FF 30%, #F0F9FF 55%, #ffffff 100%)' }}>
-        <div className="max-w-[840px] mx-auto px-8 text-center">
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-8">
-            <motion.h2 variants={fadeUp} className="text-[52px] font-black text-[#111827] tracking-tighter uppercase leading-none" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-              Ready to design<br />your future?
+      <section className="py-40 relative overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-blue -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] -z-10 opacity-20">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,var(--udanix-blue)_0%,transparent_70%)] animate-float" />
+        </div>
+        
+        <div className="max-w-[940px] mx-auto px-8 text-center relative">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-10">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-premium border border-white/60 text-udanix-blue text-[12px] font-black uppercase tracking-[0.3em] shadow-premium">
+              Final Step
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-[64px] sm:text-[80px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.9]">
+              Ready to design<br /><span className="text-brand-gradient">your future?</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-[#4B5563] text-xl leading-relaxed font-medium">
-              Join thousands of students already shaping their futures with Udanix.
-              Start free, upgrade anytime.
+            <motion.p variants={fadeUp} className="text-slate-500 text-2xl leading-relaxed font-bold italic max-w-2xl mx-auto">
+              "Join thousands of students already shaping their futures with Udanix. Start free, upgrade anytime."
             </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center pt-4">
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-6 justify-center pt-8">
               <Link href="/register">
-                 <button className="bg-udanix-blue text-white text-sm font-black py-5 px-12 rounded-[2rem] shadow-2xl shadow-blue-900/40 hover:scale-[1.05] active:scale-[0.95] transition-all uppercase tracking-widest">
+                 <button className="bg-brand-gradient text-white text-[15px] font-black py-6 px-14 rounded-[2.5rem] shadow-premium-xl hover:scale-[1.05] active:scale-[0.95] transition-all uppercase tracking-[0.25em]">
                     Try for Free
                  </button>
               </Link>
-              <StudentLoginModal />
+              <div className="scale-125 origin-center ml-4">
+                 <StudentLoginModal />
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="bg-slate-900 text-white border-t border-slate-800">
-        <div className="max-w-[1280px] mx-auto px-8 py-20">
-          <div className="flex flex-col md:flex-row items-start justify-between gap-16">
-            <div className="space-y-6 max-w-sm">
-              <Link href="/" className="flex items-center gap-3">
-                <img src="/logo.jpg" alt="Udaanix" className="h-10 w-auto invert brightness-100" />
+      <footer className="bg-udanix-navy text-white relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div className="space-y-10 max-w-md">
+              <Link href="/" className="flex items-center gap-3 hover:scale-105 transition-transform origin-left">
+                <img src="/logo.jpg" alt="Udaanix" className="h-12 w-auto invert brightness-0 underline-offset-8" />
               </Link>
-              <p className="text-slate-400 text-lg leading-relaxed font-medium">
-                Empowering the next generation of thinkers and leaders through precision guidance.
+              <p className="text-slate-400 text-2xl leading-relaxed font-semibold italic">
+                "Empowering the next generation of thinkers and leaders through precision guidance."
               </p>
+              <div className="flex gap-4">
+                 {[1,2,3,4].map(i => (
+                   <div key={i} className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+                      <Globe className="w-5 h-5 text-slate-400" />
+                   </div>
+                 ))}
+              </div>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 lg:gap-20">
               {[
                 { title: 'Platform', links: ['Pathways', 'Counselors', 'Pricing', 'Labs'] },
                 { title: 'Company', links: ['About', 'Careers', 'Blog', 'Press'] },
                 { title: 'Legal', links: ['Privacy', 'Terms', 'Security', 'GDPR'] },
               ].map(col => (
-                <div key={col.title} className="space-y-6">
-                  <p className="text-white font-black text-xs uppercase tracking-[0.2em]">{col.title}</p>
-                  <ul className="space-y-4">
+                <div key={col.title} className="space-y-10">
+                  <p className="text-white font-black text-xs uppercase tracking-[0.3em] opacity-50">{col.title}</p>
+                  <ul className="space-y-6">
                     {col.links.map(l => (
-                      <li key={l}><Link href="#" className="text-slate-500 hover:text-white text-base transition-colors font-semibold uppercase tracking-tight">{l}</Link></li>
+                      <li key={l}><Link href="#" className="text-slate-400 hover:text-udanix-orange text-sm transition-all font-bold uppercase tracking-widest">{l}</Link></li>
                     ))}
                   </ul>
                 </div>
               ))}
             </div>
           </div>
-          <div className="mt-20 pt-10 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <p className="text-slate-500 text-sm font-bold uppercase tracking-widest">© 2026 Udanix Technologies. All rights reserved.</p>
-            <p className="text-slate-600 text-sm font-black tracking-tighter uppercase italic opacity-40">Built for the infinite future.</p>
+          <div className="mt-32 pt-12 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-8">
+            <p className="text-slate-500 text-[11px] font-black uppercase tracking-[0.25em]">© 2026 Udanix Technologies. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+               <p className="text-slate-600 text-[11px] font-black tracking-widest uppercase italic opacity-60">Built for the infinite future.</p>
+               <div className="w-2 h-2 rounded-full bg-udanix-orange animate-pulse" />
+            </div>
           </div>
         </div>
       </footer>

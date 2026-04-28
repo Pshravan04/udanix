@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star, MessageSquare, Video, ArrowRight } from 'lucide-react';
+import { Star, MessageSquare, Video, ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
 const COUNSELORS = [
@@ -57,76 +57,110 @@ const COUNSELORS = [
 
 export function CounselorSection() {
     return (
-        <section className="py-28 bg-white">
-            <div className="max-w-[1280px] mx-auto px-8">
+        <section className="py-32 relative overflow-hidden">
+            <div className="max-w-[1280px] mx-auto px-8 relative z-10">
 
                 {/* Header Row */}
-                <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
-                    <div className="space-y-3">
-                        <h2 className="text-3xl font-extrabold text-[#111827] tracking-tight">
-                            Expert Career Counselors
-                        </h2>
-                        <p className="text-[#4B5563] text-base">
-                            Connect with certified professionals for personalized guidance
-                        </p>
+                <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-20">
+                    <div className="space-y-6 max-w-2xl">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[11px] font-black uppercase tracking-[0.2em] shadow-sm"
+                        >
+                            <ShieldCheck className="w-3.5 h-3.5 text-udanix-orange" />
+                            Verified Experts
+                        </motion.div>
+                        <motion.h2 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-[48px] sm:text-[56px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.9]"
+                        >
+                            Connect with <span className="text-brand-gradient">Elite Counselors</span>
+                        </motion.h2>
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-slate-500 text-xl leading-relaxed font-semibold italic"
+                        >
+                            "Connect with certified professionals for personalized guidance on your academic and professional journey."
+                        </motion.p>
                     </div>
                     <Link href="/student/directory">
-                        <button className="px-6 py-2.5 rounded-xl border border-[#E5E7EB] text-[#111827] text-sm font-bold hover:bg-[#F9FAFB] transition-all flex items-center gap-2">
-                            View All Counselors
-                        </button>
+                        <motion.button 
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-8 py-4 rounded-2xl glass-premium border border-white/60 text-udanix-navy text-[12px] font-black uppercase tracking-[0.2em] shadow-premium hover:shadow-premium-xl transition-all flex items-center gap-3"
+                        >
+                            Directory
+                            <ArrowRight className="w-4 h-4" />
+                        </motion.button>
                     </Link>
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {COUNSELORS.map((c) => (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {COUNSELORS.map((c, i) => (
                         <motion.div
                             key={c.id}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-white border border-[#E5E7EB] rounded-[24px] p-6 hover:shadow-xl hover:shadow-blue-500/5 transition-all group"
+                            transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            className="glass-premium border border-white/50 rounded-[3rem] p-10 hover:shadow-premium-xl hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden"
                         >
-                            <div className="flex items-start gap-6">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-bl-[4rem] opacity-0 group-hover:opacity-100 transition-opacity" />
+                            
+                            <div className="flex flex-col sm:flex-row items-start gap-10">
                                 {/* Avatar + Status */}
-                                <div className="relative flex-shrink-0">
-                                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-[#F3F4F6] group-hover:border-udanix-blue/10 transition-colors">
+                                <div className="relative flex-shrink-0 mx-auto sm:mx-0">
+                                    <div className="w-32 h-32 rounded-[2.5rem] overflow-hidden border-4 border-white shadow-premium group-hover:scale-105 transition-transform duration-500">
                                         <img src={c.avatar} alt={c.name} className="w-full h-full object-cover" />
                                     </div>
                                     {c.online && (
-                                        <div className="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-4 border-white rounded-full shadow-sm" />
+                                        <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-emerald-500 border-4 border-white rounded-full shadow-premium flex items-center justify-center">
+                                            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                                        </div>
                                     )}
                                 </div>
 
                                 {/* Content */}
-                                <div className="flex-1 min-w-0">
-                                    <div className="flex flex-col gap-1 mb-3">
-                                        <h3 className="text-xl font-bold text-[#111827] group-hover:text-udanix-blue transition-colors truncate">
+                                <div className="flex-1 min-w-0 w-full">
+                                    <div className="flex flex-col gap-2 mb-6 text-center sm:text-left">
+                                        <h3 className="text-2xl font-black text-udanix-navy group-hover:text-udanix-blue transition-colors uppercase tracking-tight">
                                             {c.name}
                                         </h3>
-                                        <p className="text-sm font-medium text-[#6B7280]">{c.role}</p>
+                                        <p className="text-[12px] font-black text-slate-400 uppercase tracking-widest opacity-70 italic">{c.role}</p>
                                     </div>
 
-                                    {/* Stats */}
-                                    <div className="flex items-center gap-4 text-xs font-semibold mb-4">
-                                        <div className="flex items-center gap-1.5 text-amber-500">
-                                            <Star className="w-4 h-4 fill-current" />
-                                            <span>{c.rating} <span className="text-[#9CA3AF] font-medium">({c.reviews})</span></span>
+                                    {/* Stats Grid */}
+                                    <div className="grid grid-cols-2 gap-4 mb-8">
+                                        <div className="bg-white/40 p-4 rounded-2xl border border-white/60 shadow-sm flex items-center justify-between group-hover:bg-white transition-colors">
+                                            <div className="flex items-center gap-2 text-amber-500">
+                                                <Star className="w-4 h-4 fill-current" />
+                                                <span className="text-[13px] font-black">{c.rating}</span>
+                                            </div>
+                                            <span className="text-[10px] font-black text-slate-400 uppercase">Rating</span>
                                         </div>
-                                        <div className="w-1 h-1 rounded-full bg-[#E5E7EB]" />
-                                        <div className="text-[#4B5563]">
-                                            <span className="text-[#111827]">{c.sessions}</span> sessions
+                                        <div className="bg-white/40 p-4 rounded-2xl border border-white/60 shadow-sm flex items-center justify-between group-hover:bg-white transition-colors">
+                                            <span className="text-[13px] font-black text-udanix-navy">{c.sessions}</span>
+                                            <span className="text-[10px] font-black text-slate-400 uppercase">Sessions</span>
                                         </div>
                                     </div>
 
-                                    <p className="text-sm font-bold text-[#111827] mb-4">
-                                        {c.exp} years experience
-                                    </p>
+                                    <div className="flex items-center gap-2 mb-6">
+                                        <div className="h-px flex-1 bg-slate-100" />
+                                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] whitespace-nowrap">{c.exp} Years Expertise</span>
+                                        <div className="h-px flex-1 bg-slate-100" />
+                                    </div>
 
                                     {/* Tags */}
-                                    <div className="flex flex-wrap gap-2">
+                                    <div className="flex flex-wrap gap-2.5 justify-center sm:justify-start">
                                         {c.specialties.map(s => (
-                                            <span key={s} className="px-3 py-1 rounded-lg bg-[#F3F4F6] text-[#4B5563] text-[11px] font-bold">
+                                            <span key={s} className="px-4 py-2 rounded-xl glass-premium border border-white/60 text-slate-600 text-[11px] font-black uppercase tracking-widest hover:bg-white transition-colors">
                                                 {s}
                                             </span>
                                         ))}
@@ -135,14 +169,14 @@ export function CounselorSection() {
                             </div>
 
                             {/* Actions */}
-                            <div className="grid grid-cols-2 gap-3 mt-8">
-                                <button className="flex items-center justify-center gap-2 py-3 rounded-xl border border-[#E5E7EB] text-[#4B5563] text-sm font-bold hover:bg-[#F9FAFB] transition-all">
-                                    <MessageSquare className="w-4 h-4" />
+                            <div className="grid grid-cols-2 gap-5 mt-10">
+                                <button className="group/btn flex items-center justify-center gap-3 py-4 rounded-2xl glass-premium border border-white/60 text-slate-500 text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-udanix-blue transition-all shadow-sm">
+                                    <MessageSquare className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
                                     Chat
                                 </button>
-                                <button className="flex items-center justify-center gap-2 py-3 rounded-xl bg-udanix-blue text-white text-sm font-bold hover:shadow-lg hover:shadow-udanix-blue/20 transition-all">
-                                    <Video className="w-4 h-4" />
-                                    Book Session
+                                <button className="group/btn flex items-center justify-center gap-3 py-4 rounded-2xl bg-brand-gradient text-white text-[11px] font-black uppercase tracking-[0.2em] hover:shadow-premium-xl hover:scale-105 active:scale-95 transition-all shadow-premium">
+                                    <Video className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+                                    Book Live
                                 </button>
                             </div>
                         </motion.div>

@@ -1,16 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FlaskConical, Calculator, Palette, ArrowRight } from 'lucide-react';
+import { FlaskConical, Calculator, Palette, ArrowRight, Sparkles } from 'lucide-react';
 
 const STREAMS = [
     {
         title: 'Science Stream',
         desc: 'Explore careers in STEM fields with cutting-edge technology and research opportunities',
         icon: FlaskConical,
-        accentBg: '#E0F2FE',
-        accentIcon: '#0284C7',
-        accentBtn: '#00B4D8',
+        accentBg: 'rgba(0, 62, 138, 0.05)',
+        accentIcon: 'var(--udanix-blue)',
+        accentBtn: 'bg-brand-gradient',
         subjects: ['Physics', 'Chemistry', 'Biology', 'Mathematics'],
         stat: '150+ Career Options',
         tag: 'STEM',
@@ -19,9 +19,9 @@ const STREAMS = [
         title: 'Commerce Stream',
         desc: 'Master business, finance, and economics to build a successful career in corporate world',
         icon: Calculator,
-        accentBg: '#DCFCE7',
-        accentIcon: '#059669',
-        accentBtn: '#10B981',
+        accentBg: 'rgba(223, 89, 14, 0.05)',
+        accentIcon: 'var(--udanix-orange)',
+        accentBtn: 'bg-udanix-orange',
         subjects: ['Accountancy', 'Business Studies', 'Economics', 'Finance'],
         stat: '120+ Career Options',
         tag: 'Business',
@@ -30,49 +30,74 @@ const STREAMS = [
         title: 'Arts & Humanities',
         desc: 'Pursue creative and analytical careers in media, design, law, and social sciences',
         icon: Palette,
-        accentBg: '#F5F3FF',
+        accentBg: 'rgba(124, 58, 237, 0.05)',
         accentIcon: '#7C3AED',
-        accentBtn: '#D946EF',
+        accentBtn: 'bg-purple-600',
         subjects: ['History', 'Political Science', 'Psychology', 'Literature'],
         stat: '100+ Career Options',
         tag: 'Creative',
     }
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
+
 export function StreamExplorer() {
     return (
-        <section className="py-28 bg-white">
-            <div className="max-w-[1280px] mx-auto px-8">
+        <section className="py-32 relative overflow-hidden">
+            <div className="max-w-[1280px] mx-auto px-8 relative z-10">
 
                 {/* Header */}
-                <div className="text-center mb-16 space-y-4 max-w-3xl mx-auto">
-                    <p className="text-udanix-blue text-xs font-bold uppercase tracking-[0.2em] mb-1">Career Pathways</p>
-                    <h2 className="text-4xl font-extrabold text-[#111827] tracking-tight">
-                        Explore Your Stream
-                    </h2>
-                    <p className="text-[#4B5563] text-base leading-relaxed max-w-2xl mx-auto">
-                        Choose your path based on your interests, skills, and career goals. Each stream opens doors to unique opportunities.
-                    </p>
+                <div className="text-center mb-20 space-y-6 max-w-3xl mx-auto">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[11px] font-black uppercase tracking-[0.2em] shadow-sm"
+                    >
+                        <Sparkles className="w-3.5 h-3.5 text-udanix-orange" />
+                        Academic Pathways
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-[48px] sm:text-[56px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.9]"
+                    >
+                        Explore Your <span className="text-brand-gradient">Stream</span>
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-slate-500 text-xl leading-relaxed font-semibold italic"
+                    >
+                        "Choose your path based on your interests, skills, and career goals. Each stream opens doors to unique opportunities."
+                    </motion.p>
                 </div>
 
                 {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     {STREAMS.map((s, i) => (
                         <motion.div
                             key={s.title}
-                            initial={{ opacity: 0, y: 28 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94], duration: 0.6 }}
-                            className="bento-card p-8 flex flex-col justify-between group"
+                            className="glass-premium p-10 rounded-[3rem] flex flex-col border border-white/50 shadow-premium hover:shadow-premium-xl hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden"
                         >
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-bl-[4rem] opacity-0 group-hover:opacity-100 transition-opacity" />
+                            
                             {/* Icon + Tag */}
-                            <div className="flex items-start justify-between mb-6">
-                                <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: s.accentBg }}>
-                                    <s.icon className="w-5.5 h-5.5" style={{ color: s.accentIcon }} />
+                            <div className="flex items-start justify-between mb-10">
+                                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-white group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500" style={{ background: s.accentBg }}>
+                                    <s.icon className="w-8 h-8" style={{ color: s.accentIcon }} />
                                 </div>
                                 <span
-                                    className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                                    className="text-[11px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm border border-white/40"
                                     style={{ background: s.accentBg, color: s.accentIcon }}
                                 >
                                     {s.tag}
@@ -80,37 +105,36 @@ export function StreamExplorer() {
                             </div>
 
                             {/* Title + Description */}
-                            <div className="space-y-3 mb-6">
-                                <h3 className="font-bold text-[#111827] text-xl tracking-tight">{s.title}</h3>
-                                <p className="text-[#4B5563] text-sm leading-relaxed">{s.desc}</p>
+                            <div className="space-y-4 mb-10">
+                                <h3 className="font-black text-udanix-navy text-2xl tracking-tight uppercase">{s.title}</h3>
+                                <p className="text-slate-500 text-base leading-relaxed font-semibold">{s.desc}</p>
                             </div>
 
                             {/* Key Subjects */}
-                            <div className="mb-7">
-                                <p className="text-[11px] text-[#9CA3AF] font-semibold uppercase tracking-wider mb-3">Key Subjects</p>
-                                <div className="flex flex-wrap gap-2">
+                            <div className="mb-10 flex-1">
+                                <p className="text-[11px] text-slate-400 font-black uppercase tracking-widest mb-4 opacity-70">Key Subjects</p>
+                                <div className="flex flex-wrap gap-2.5">
                                     {s.subjects.map(sub => (
                                         <span
                                             key={sub}
-                                            className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB] text-[#4B5563]"
+                                            className="text-[11px] font-bold px-4 py-2 rounded-xl glass-premium border border-white/60 text-slate-600 shadow-sm hover:bg-white transition-colors"
                                         >
                                             {sub}
                                         </span>
                                     ))}
-                                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB] text-[#9CA3AF]">
+                                    <span className="text-[11px] font-bold px-4 py-2 rounded-xl bg-slate-50/50 text-slate-400 border border-slate-100">
                                         +2 more
                                     </span>
                                 </div>
                             </div>
 
                             {/* Footer: Stat + CTA */}
-                            <div className="border-t border-[#E5E7EB] pt-6 flex items-center justify-between">
-                                <p className="text-xs text-[#9CA3AF] font-semibold">{s.stat}</p>
+                            <div className="pt-8 border-t border-slate-100/50 flex items-center justify-between">
+                                <p className="text-xs text-slate-400 font-black uppercase tracking-widest">{s.stat}</p>
                                 <button
-                                    className="inline-flex items-center gap-1.5 text-xs font-bold px-6 py-2.5 rounded-xl text-white transition-opacity hover:opacity-90 shadow-lg shadow-black/5"
-                                    style={{ background: s.accentBtn }}
+                                    className={`inline-flex items-center gap-2.5 text-[11px] font-black uppercase tracking-[0.2em] px-8 py-3.5 rounded-2xl text-white transition-all hover:scale-105 active:scale-95 shadow-premium ${s.accentBtn}`}
                                 >
-                                    Explore Stream <ArrowRight className="w-3.5 h-3.5" />
+                                    Explore <ArrowRight className="w-4 h-4" />
                                 </button>
                             </div>
                         </motion.div>

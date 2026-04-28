@@ -6,7 +6,7 @@ import {
     TrendingUp, DollarSign, Clock, BookOpen,
     ExternalLink, Code, Stethoscope, BarChart,
     HardHat, Calculator, Landmark, LineChart,
-    Megaphone, PenTool, Pen, Scale, Brain
+    Megaphone, PenTool, Pen, Scale, Brain, Sparkles
 } from 'lucide-react';
 
 const CATEGORIES = ['Science', 'Commerce', 'Arts'];
@@ -168,29 +168,49 @@ export function CareerPaths() {
     const [activeTab, setActiveTab] = useState('Science');
 
     return (
-        <section className="py-28 bg-[#F9FAFB]/50 border-y border-[#E5E7EB]">
-            <div className="max-w-[1280px] mx-auto px-8">
+        <section className="py-32 relative overflow-hidden bg-slate-50/30">
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+            <div className="max-w-[1280px] mx-auto px-8 relative z-10">
 
                 {/* Header */}
-                <div className="text-center mb-12 space-y-4">
-                    <h2 className="text-3xl font-extrabold text-[#111827] tracking-tight">
-                        Popular Career Paths
-                    </h2>
-                    <p className="text-[#4B5563] text-base leading-relaxed max-w-2xl mx-auto">
-                        Explore trending careers across different streams with detailed insights on growth, salary, and skills required.
-                    </p>
+                <div className="text-center mb-16 space-y-6">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[11px] font-black uppercase tracking-[0.2em] shadow-sm"
+                    >
+                        <TrendingUp className="w-3.5 h-3.5 text-udanix-orange" />
+                        Market Insights
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-[48px] sm:text-[56px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.9]"
+                    >
+                        Popular <span className="text-brand-gradient">Career Paths</span>
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-slate-500 text-xl leading-relaxed font-semibold italic max-w-2xl mx-auto"
+                    >
+                        "Explore trending careers across different streams with detailed insights on growth, salary, and skills required."
+                    </motion.p>
                 </div>
 
                 {/* Tabs */}
-                <div className="flex justify-center mb-16">
-                    <div className="inline-flex items-center bg-[#F3F4F6] p-1.5 rounded-2xl border border-[#E5E7EB]">
+                <div className="flex justify-center mb-20">
+                    <div className="inline-flex items-center glass-premium p-2 rounded-[2rem] border border-white/60 shadow-premium">
                         {CATEGORIES.map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`px-10 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === tab
-                                        ? 'bg-white text-[#111827] shadow-sm ring-1 ring-[#E5E7EB]'
-                                        : 'text-[#6B7280] hover:text-[#111827]'
+                                className={`px-12 py-3.5 rounded-[1.5rem] text-[12px] font-black uppercase tracking-widest transition-all duration-500 ${activeTab === tab
+                                        ? 'bg-brand-gradient text-white shadow-premium'
+                                        : 'text-slate-500 hover:text-udanix-blue hover:bg-white/50'
                                     }`}
                             >
                                 {tab}
@@ -200,107 +220,118 @@ export function CareerPaths() {
                 </div>
 
                 {/* Grid */}
-                <div className="relative min-h-[460px]">
+                <div className="relative min-h-[500px]">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.3 }}
-                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
                         >
-                            {(CAREERS as any)[activeTab].map((career: any) => (
-                                <div
+                            {(CAREERS as any)[activeTab].map((career: any, i: number) => (
+                                <motion.div
                                     key={career.title}
-                                    className="bg-white border border-[#E5E7EB] rounded-2xl p-6 flex flex-col hover:shadow-xl hover:shadow-blue-500/5 transition-all group"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="glass-premium border border-white/50 rounded-[2.5rem] p-8 flex flex-col hover:shadow-premium-xl hover:-translate-y-2 transition-all duration-500 group"
                                 >
-                                    {/* Header: Title + Badge */}
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div className="space-y-1">
-                                            <h3 className="font-bold text-[#111827] text-lg leading-tight group-hover:text-udanix-blue transition-colors">
-                                                {career.title}
-                                            </h3>
-                                            <div className="flex items-center gap-2">
-                                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${career.demandColor}`}>
-                                                    {career.demand}
-                                                </span>
-                                            </div>
+                                    {/* Icon Header */}
+                                    <div className="flex items-start justify-between mb-8">
+                                        <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-slate-50 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                                            <career.icon className="w-7 h-7 text-udanix-blue" />
                                         </div>
+                                        <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-sm border border-white ${career.demandColor}`}>
+                                            {career.demand}
+                                        </span>
                                     </div>
 
-                                    {/* Stream Tag */}
-                                    <div className="mb-4">
-                                        <span className="text-[10px] font-bold text-[#6B7280] border border-[#E5E7EB] px-2 py-0.5 rounded-md bg-[#F9FAFB]">
+                                    {/* Title */}
+                                    <div className="space-y-2 mb-6">
+                                        <h3 className="font-black text-udanix-navy text-xl leading-tight group-hover:text-udanix-blue transition-colors uppercase tracking-tight">
+                                            {career.title}
+                                        </h3>
+                                        <span className="inline-block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-60">
                                             {career.stream}
                                         </span>
                                     </div>
 
                                     {/* Description */}
-                                    <p className="text-[#6B7280] text-[13px] leading-relaxed mb-6 line-clamp-2">
+                                    <p className="text-slate-500 text-[13px] leading-relaxed mb-8 font-semibold line-clamp-2">
                                         {career.desc}
                                     </p>
 
                                     {/* Stats Row */}
-                                    <div className="grid grid-cols-2 gap-4 mb-6">
-                                        <div className="space-y-1">
-                                            <div className="flex items-center gap-1.5 text-[#6B7280]">
-                                                <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
-                                                <span className="text-[11px] font-medium">Growth Rate</span>
+                                    <div className="grid grid-cols-1 gap-5 mb-8 bg-white/40 p-5 rounded-3xl border border-white/40">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2.5 text-slate-400">
+                                                <TrendingUp className="w-4 h-4 text-emerald-500" />
+                                                <span className="text-[11px] font-black uppercase tracking-widest">Growth</span>
                                             </div>
-                                            <p className="text-[12px] font-bold text-[#111827] pl-5">{career.growth}</p>
+                                            <p className="text-[12px] font-black text-udanix-navy uppercase">{career.growth}</p>
                                         </div>
-                                        <div className="space-y-1">
-                                            <div className="flex items-center gap-1.5 text-[#6B7280]">
-                                                <DollarSign className="w-3.5 h-3.5 text-blue-500" />
-                                                <span className="text-[11px] font-medium">Salary Range</span>
+                                        <div className="w-full h-px bg-white/60" />
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2.5 text-slate-400">
+                                                <DollarSign className="w-4 h-4 text-udanix-blue" />
+                                                <span className="text-[11px] font-black uppercase tracking-widest">Salary</span>
                                             </div>
-                                            <p className="text-[12px] font-bold text-[#111827] pl-5">{career.salary}</p>
+                                            <p className="text-[12px] font-black text-udanix-navy uppercase">{career.salary}</p>
                                         </div>
                                     </div>
 
                                     {/* Duration + Skills */}
-                                    <div className="mt-auto space-y-4">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-lg bg-[#F3F4F6] flex items-center justify-center">
-                                                <Clock className="w-4 h-4 text-[#4B5563]" />
+                                    <div className="mt-auto space-y-5">
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-10 h-10 rounded-xl glass-premium border border-white flex items-center justify-center shadow-sm">
+                                                <Clock className="w-5 h-5 text-slate-400" />
                                             </div>
                                             <div>
-                                                <p className="text-[10px] text-[#9CA3AF] font-medium uppercase tracking-wider">Duration</p>
-                                                <p className="text-[12px] font-bold text-[#111827]">{career.duration}</p>
+                                                <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">Duration</p>
+                                                <p className="text-[12px] font-black text-udanix-navy uppercase tracking-tight">{career.duration}</p>
                                             </div>
                                         </div>
-                                        <div className="flex items-start gap-3">
-                                            <div className="w-8 h-8 rounded-lg bg-[#F3F4F6] flex items-center justify-center flex-shrink-0">
-                                                <BookOpen className="w-4 h-4 text-[#4B5563]" />
+                                        <div className="flex items-start gap-4">
+                                            <div className="w-10 h-10 rounded-xl glass-premium border border-white flex items-center justify-center shadow-sm flex-shrink-0">
+                                                <BookOpen className="w-5 h-5 text-slate-400" />
                                             </div>
                                             <div>
-                                                <p className="text-[10px] text-[#9CA3AF] font-medium uppercase tracking-wider">Skills</p>
-                                                <p className="text-[12px] font-bold text-[#111827] line-clamp-2">{career.skills}</p>
+                                                <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">Core Skills</p>
+                                                <p className="text-[12px] font-black text-udanix-navy uppercase tracking-tight leading-tight">{career.skills}</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Footer Link */}
-                                    <div className="mt-6 pt-5 border-t border-[#F3F4F6]">
-                                        <button className="flex items-center justify-center gap-2 w-full text-[13px] font-bold text-[#4B5563] hover:text-udanix-blue transition-colors">
-                                            View Details
-                                            <ExternalLink className="w-3.5 h-3.5" />
+                                    <div className="mt-8 pt-6 border-t border-slate-100/50">
+                                        <button className="group/btn flex items-center justify-center gap-3 w-full py-2 text-[12px] font-black text-slate-400 hover:text-udanix-blue uppercase tracking-[0.2em] transition-all">
+                                            View Roadmap
+                                            <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
                                         </button>
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
                         </motion.div>
                     </AnimatePresence>
                 </div>
 
                 {/* Footer Button */}
-                <div className="mt-16 text-center">
-                    <button className="inline-flex items-center gap-2 px-8 py-3 bg-white border border-[#E5E7EB] text-[#111827] text-sm font-bold rounded-2xl shadow-float hover:shadow-float-lg transition-all hover:-translate-y-0.5">
-                        Explore All Careers (500+)
-                    </button>
+                <div className="mt-20 text-center">
+                    <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-4 px-10 py-5 glass-premium border border-white text-udanix-navy text-[13px] font-black uppercase tracking-[0.3em] rounded-[2rem] shadow-premium hover:shadow-premium-xl transition-all"
+                    >
+                        Explore 500+ Careers
+                        <div className="w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-white shadow-sm">
+                            <Sparkles className="w-4 h-4" />
+                        </div>
+                    </motion.button>
                 </div>
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         </section>
     );
 }

@@ -30,6 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { BottomNav } from "@/components/layout/bottom-nav";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,9 +43,10 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col relative bg-white" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col relative bg-white pb-32 md:pb-0" suppressHydrationWarning>
         <NeuralBackground />
         {children}
+        <BottomNav />
       </body>
     </html>
   );
