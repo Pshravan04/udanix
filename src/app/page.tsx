@@ -14,6 +14,7 @@ import { StreamExplorer } from '@/components/stream-explorer';
 import { CareerPaths } from '@/components/career-paths';
 import { CounselorSection } from '@/components/counselor-section';
 import { StudentLoginModal } from '@/components/auth/student-login-modal';
+import { CareerAssessment } from '@/components/career-assessment';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -288,6 +289,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* ─── CAREER ASSESSMENT ─── */}
+      <CareerAssessment />
 
       {/* ─── STREAM EXPLORER ─── */}
       <div id="streams">
