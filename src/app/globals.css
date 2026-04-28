@@ -61,10 +61,12 @@
 
 :root {
   /* ── Brand Palette (Extracted from Logo) ── */
-  --udanix-blue:       #005696;   /* Professional Deep Blue */
-  --udanix-blue-mid:   #007AC1;   /* Accessible Mid Blue */
-  --udanix-orange:     #F15A24;   /* Energetic Action Orange */
-  --udanix-gold:       #FBB03B;   /* Success & Excellence Gold */
+  --udanix-blue:       #003E8A;
+  --udanix-blue-mid:   #0274C1;
+  --udanix-orange:     #DF590E;
+  --udanix-gold:       #FBB03B;
+  --udanix-gradient-start: #0E399A;
+  --udanix-gradient-end: #0274C1;
   --udanix-cyan:       #0EA5E9;
   --udanix-green:      #10B981;
   --udanix-purple:     #7C3AED;
@@ -111,6 +113,8 @@
 .dark {
   --background: #0A0F1E;
   --foreground: #F9FAFB;
+  --udanix-blue: #0274C1;
+  --udanix-blue-mid: #003E8A;
 }
 
 @layer base {
@@ -192,10 +196,13 @@
 
   /* ── Gradient Text ── */
   .gradient-text-blue {
-    background: linear-gradient(135deg, #0056D2 0%, #1A7AF8 100%);
+    background: linear-gradient(135deg, var(--udanix-gradient-start) 0%, var(--udanix-gradient-end) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  .gradient-bg-blue {
+    background: linear-gradient(135deg, var(--udanix-gradient-start) 0%, var(--udanix-gradient-end) 100%);
   }
   .gradient-text-white {
     background: linear-gradient(135deg, #FFFFFF 0%, #BFDBFE 100%);

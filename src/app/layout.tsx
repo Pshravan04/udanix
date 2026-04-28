@@ -22,9 +22,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UDANIX — Your Future, Designed by You",
-  description: "Connect with 200+ verified counselors. Get clarity on your next big career move. UDANIX is the next-generation platform for students and professionals.",
-  keywords: ["counseling", "career guidance", "student platform", "mentorship", "UDANIX"],
+  title: "Udaanix — Guiding the Path to Excellence",
+  description: "Connect with 200+ verified counselors. Get clarity on your next big career move. Udaanix is the next-generation platform for students and professionals.",
+  keywords: ["counseling", "career guidance", "student platform", "mentorship", "Udaanix"],
+  icons: {
+    icon: "/favicon.jpg",
+  },
 };
 
 export default function RootLayout({
