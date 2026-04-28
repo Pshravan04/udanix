@@ -10,6 +10,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/client';
 
+import { StudentSidebar } from '@/components/dashboard/student-sidebar';
+
 const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
