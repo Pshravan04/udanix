@@ -48,6 +48,17 @@ const WHY_CARDS = [
 ];
 
 export default function Home() {
+  const [user, setUser] = useState<any>(null);
+  const supabase = createClient();
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+    };
+    checkUser();
+  }, [supabase]);
+
   return (
     <div className="min-h-screen bg-white text-[#111827] overflow-x-hidden">
 
@@ -88,12 +99,29 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-4 flex-shrink-0 font-bold">
-              <StudentLoginModal />
-              <Link href="/register">
-                <button className="bg-udanix-blue text-white text-sm font-black py-3 px-8 rounded-xl shadow-lg shadow-blue-500/10 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
-                  Join Now
-                </button>
-              </Link>
+              {user ? (
+                <div className="flex items-center gap-3">
+                  <Link href="/student/profile">
+                    <button className="text-[11px] font-black text-slate-500 hover:text-udanix-blue uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-50">
+                      My Profile
+                    </button>
+                  </Link>
+                  <Link href="/student">
+                    <button className="bg-udanix-blue text-white text-sm font-black py-3 px-8 rounded-xl shadow-lg shadow-blue-500/10 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
+                      Dashboard
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <>
+                  <StudentLoginModal />
+                  <Link href="/register">
+                    <button className="bg-udanix-blue text-white text-sm font-black py-3 px-8 rounded-xl shadow-lg shadow-blue-500/10 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
+                      Join Now
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -140,16 +168,26 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-8 flex flex-wrap items-center justify-center gap-3"
           >
-            <Link href="/register">
-              <button className="bg-udanix-blue text-white text-sm font-black py-4 px-10 rounded-2xl shadow-2xl shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
-                Start My Journey
-              </button>
-            </Link>
-            <Link href="/student/directory">
-              <button className="inline-flex items-center gap-2 text-sm font-bold text-[#111827] bg-white/40 backdrop-blur-md border border-white/40 px-10 py-4 rounded-2xl shadow-float hover:shadow-float-lg hover:-translate-y-0.5 transition-all uppercase tracking-widest">
-                Talk to Counselor
-              </button>
-            </Link>
+            {user ? (
+              <Link href="/student">
+                <button className="bg-udanix-blue text-white text-sm font-black py-4 px-10 rounded-2xl shadow-2xl shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
+                  Launch Dashboard
+                </button>
+              </Link>
+            ) : (
+              <>
+                <Link href="/register">
+                  <button className="bg-udanix-blue text-white text-sm font-black py-4 px-10 rounded-2xl shadow-2xl shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
+                    Start My Journey
+                  </button>
+                </Link>
+                <Link href="/student/directory">
+                  <button className="inline-flex items-center gap-2 text-sm font-bold text-[#111827] bg-white/40 backdrop-blur-md border border-white/40 px-10 py-4 rounded-2xl shadow-float hover:shadow-float-lg hover:-translate-y-0.5 transition-all uppercase tracking-widest">
+                    Talk to Counselor
+                  </button>
+                </Link>
+              </>
+            )}
           </motion.div>
 
           <motion.p

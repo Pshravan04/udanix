@@ -87,8 +87,11 @@ export function StudentLoginModal() {
             }
 
             setIsOpen(false);
-            router.push('/student');
-            router.refresh();
+            if (window.location.pathname === '/') {
+                router.refresh();
+            } else {
+                router.push('/student');
+            }
         } catch (err) {
             console.error('Auth error:', err);
             setIsLoading(false);
