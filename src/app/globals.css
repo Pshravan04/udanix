@@ -138,6 +138,12 @@
   .shadow-orange {
     box-shadow: 0 10px 30px -10px rgba(223, 89, 14, 0.2);
   }
+  .shadow-blue-glow {
+    box-shadow: 0 0 40px -10px rgba(0, 62, 138, 0.3);
+  }
+  .shadow-orange-glow {
+    box-shadow: 0 0 40px -10px rgba(223, 89, 14, 0.3);
+  }
 
   /* ── Glassmorphism ── */
   .glass-premium {
@@ -153,6 +159,18 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(229, 231, 235, 0.5);
+  }
+
+  .glass-dark {
+    background: rgba(0, 45, 82, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .border-gradient-blue {
+    border-image: linear-gradient(135deg, var(--udanix-gradient-start), var(--udanix-gradient-end)) 1;
   }
 
   /* ── Gradients ── */
@@ -212,4 +230,14 @@
   .animate-mesh-orange {
     animation: mesh-orange 18s ease-in-out infinite;
   }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee-slow {
+  animation: marquee 60s linear infinite;
 }

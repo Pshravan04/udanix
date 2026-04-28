@@ -128,7 +128,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-           {/* ─── HERO ─── */}
+      </header>
+
+      {/* ─── HERO ─── */}
       <section className="relative pt-44 pb-32 overflow-hidden bg-mesh-blue">
         {/* Ambient Glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-40">
@@ -156,30 +158,31 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             {/* Left Column: Content */}
-            <div className="lg:col-span-7 text-left space-y-10">
+            <div className="lg:col-span-7 text-left space-y-12">
               <motion.div 
                 initial={{ opacity: 0, x: -20 }} 
                 animate={{ opacity: 1, x: 0 }} 
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[13px] font-black uppercase tracking-[0.25em] shadow-premium"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[13px] font-black uppercase tracking-[0.25em] shadow-premium shadow-blue-glow"
               >
                 <Sparkles className="w-4 h-4 text-udanix-orange animate-pulse" />
                 Empowering 50k+ Future Leaders
               </motion.div>
-
-              <div className="space-y-6">
+ 
+              <div className="space-y-8">
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-[64px] sm:text-[90px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.85] filter drop-shadow-sm"
+                  className="text-[48px] xs:text-[64px] sm:text-[96px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.85] sm:leading-[0.8] filter drop-shadow-sm"
                 >
                   Your Career,<br /> 
                   <span className="text-brand-gradient">Precision</span> Engineered.
                 </motion.h1>
+           </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-slate-500 text-2xl leading-relaxed font-bold italic max-w-2xl"
+                  className="text-slate-500 text-2xl leading-relaxed font-bold italic max-w-2xl border-l-4 border-udanix-orange/30 pl-8"
                 >
                   "The gap between who you are and who you want to be is bridged by the right guidance. Connect with world-class experts today."
                 </motion.p>
@@ -189,15 +192,15 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="flex flex-wrap gap-6 pt-4"
+                className="flex flex-wrap gap-8 pt-4"
               >
                 <Link href="/register">
-                  <button className="bg-brand-gradient text-white text-[15px] font-black py-6 px-14 rounded-[2rem] shadow-premium-xl hover:scale-[1.05] active:scale-[0.95] transition-all uppercase tracking-[0.3em] flex items-center gap-4">
+                  <button className="bg-brand-gradient text-white text-[16px] font-black py-7 px-16 rounded-[2.5rem] shadow-premium-xl hover:scale-[1.05] active:scale-[0.95] transition-all uppercase tracking-[0.3em] flex items-center gap-5 shadow-blue-glow">
                     Get Started Free
-                    <ArrowRight className="w-5 h-5" />
+                    <ArrowRight className="w-6 h-6" />
                   </button>
                 </Link>
-                <div className="scale-125 origin-center ml-4">
+                <div className="scale-125 origin-center ml-6">
                   <StudentLoginModal />
                 </div>
               </motion.div>
@@ -207,12 +210,12 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-center gap-12 pt-12 border-t border-slate-100/50"
+                className="flex items-center gap-16 pt-16 border-t border-slate-100/50"
               >
                 {STATS.map((stat, i) => (
-                  <div key={i} className="space-y-2">
-                    <p className="text-3xl font-black text-udanix-navy tracking-tighter uppercase">{stat.value}</p>
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</p>
+                  <div key={i} className="space-y-3">
+                    <p className="text-4xl font-black text-udanix-navy tracking-tighter uppercase">{stat.value}</p>
+                    <p className="text-[11px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</p>
                   </div>
                 ))}
               </motion.div>
@@ -334,15 +337,27 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {WHY_CARDS.map((c, i) => (
-                <motion.div key={c.title} variants={fadeUp} className="group relative">
-                  <div className="relative glass-premium p-12 rounded-[3.5rem] border border-white/60 shadow-premium hover:shadow-premium-xl transition-all duration-500 h-full flex flex-col">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-bl-[4rem] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <motion.div 
+                  key={c.title} 
+                  variants={fadeUp} 
+                  whileHover={{ y: -10 }}
+                  className="group relative"
+                >
+                  <div className="relative glass-premium p-12 rounded-[3.5rem] border border-white/60 shadow-premium group-hover:shadow-blue-glow transition-all duration-500 h-full flex flex-col overflow-hidden">
+                    {/* Hover Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-udanix-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-10 border border-white shadow-premium group-hover:scale-110 group-hover:rotate-3 transition-all duration-500" style={{ background: c.color }}>
-                      <c.icon className="w-8 h-8" style={{ color: c.iconColor }} />
+                    <div className="relative z-10">
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-10 border border-white shadow-premium group-hover:scale-110 group-hover:rotate-3 transition-all duration-500" style={{ background: c.color }}>
+                        <c.icon className="w-8 h-8" style={{ color: c.iconColor }} />
+                      </div>
+                      <h3 className="font-black text-udanix-navy text-2xl mb-5 tracking-tight uppercase leading-tight group-hover:text-udanix-blue transition-colors">{c.title}</h3>
+                      <p className="text-slate-500 text-[15px] leading-relaxed font-semibold">{c.desc}</p>
                     </div>
-                    <h3 className="font-black text-udanix-navy text-2xl mb-5 tracking-tight uppercase leading-tight">{c.title}</h3>
-                    <p className="text-slate-500 text-[15px] leading-relaxed font-semibold">{c.desc}</p>
+
+                    <div className="mt-auto pt-8 flex items-center gap-3 text-udanix-blue font-black uppercase tracking-widest text-[10px] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                      Learn More <ArrowRight className="w-3 h-3" />
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -352,10 +367,12 @@ export default function Home() {
       </section>
 
       {/* ─── CAREER ASSESSMENT ─── */}
-      <CareerAssessment />
+      <div className="overflow-x-auto pb-12 hide-scrollbar lg:overflow-x-hidden">
+        <CareerAssessment />
+      </div>
 
       {/* ─── STREAM EXPLORER ─── */}
-      <div id="streams" className="relative py-12">
+      <div id="streams" className="relative py-12 overflow-x-auto pb-20 hide-scrollbar lg:overflow-x-hidden">
          <div className="absolute top-1/2 left-0 w-64 h-64 bg-udanix-blue/5 blur-[120px] rounded-full" />
          <StreamExplorer />
       </div>
@@ -366,7 +383,7 @@ export default function Home() {
       </div>
 
       {/* ─── COUNSELORS ─── */}
-      <div id="counselors" className="relative py-12">
+      <div id="counselors" className="relative py-12 overflow-x-auto pb-20 hide-scrollbar lg:overflow-x-hidden">
          <div className="absolute bottom-0 right-0 w-80 h-80 bg-udanix-orange/5 blur-[150px] rounded-full" />
          <CounselorSection />
       </div>
@@ -400,6 +417,64 @@ export default function Home() {
               </div>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ─── SUCCESS STORIES MARQUEE ─── */}
+      <section className="py-20 border-y border-slate-100 bg-white/50 overflow-hidden">
+        <div className="flex flex-col gap-10">
+          <div className="flex items-center justify-center gap-4 text-udanix-blue font-black uppercase tracking-[0.3em] text-[10px]">
+             <Sparkles className="w-4 h-4 text-udanix-orange" />
+             Alumni Success Stories
+          </div>
+          
+          <div className="relative flex overflow-x-hidden">
+            <div className="animate-marquee whitespace-nowrap flex gap-8 py-4">
+              {[
+                { name: "Aryan S.", role: "Software Engineer at Google", desc: "Udanix helped me find my true passion in AI." },
+                { name: "Meera K.", role: "UX Designer at Microsoft", desc: "The counselors here are truly world-class." },
+                { name: "Rahul V.", role: "Data Scientist at Meta", desc: "Best career decision I ever made." },
+                { name: "Sneha P.", role: "Product Manager at Amazon", desc: "Precision guidance at its best." },
+                { name: "Aman J.", role: "Blockchain dev at Coinbase", desc: "Transformed my career trajectory." },
+                { name: "Riya M.", role: "Architect at Foster + Partners", desc: "Clear, actionable career roadmaps." }
+              ].map((story, i) => (
+                <div key={i} className="glass-premium px-10 py-8 rounded-[2rem] border border-white/60 shadow-sm flex flex-col gap-3 min-w-[350px]">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-brand-gradient flex items-center justify-center text-white text-[10px] font-black">
+                      {story.name[0]}
+                    </div>
+                    <div>
+                      <p className="text-[12px] font-black text-udanix-navy uppercase">{story.name}</p>
+                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">{story.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-[13px] text-slate-500 font-semibold italic">"{story.desc}"</p>
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {[
+                { name: "Aryan S.", role: "Software Engineer at Google", desc: "Udanix helped me find my true passion in AI." },
+                { name: "Meera K.", role: "UX Designer at Microsoft", desc: "The counselors here are truly world-class." },
+                { name: "Rahul V.", role: "Data Scientist at Meta", desc: "Best career decision I ever made." },
+                { name: "Sneha P.", role: "Product Manager at Amazon", desc: "Precision guidance at its best." },
+                { name: "Aman J.", role: "Blockchain dev at Coinbase", desc: "Transformed my career trajectory." },
+                { name: "Riya M.", role: "Architect at Foster + Partners", desc: "Clear, actionable career roadmaps." }
+              ].map((story, i) => (
+                <div key={i} className="glass-premium px-10 py-8 rounded-[2rem] border border-white/60 shadow-sm flex flex-col gap-3 min-w-[350px]">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-brand-gradient flex items-center justify-center text-white text-[10px] font-black">
+                      {story.name[0]}
+                    </div>
+                    <div>
+                      <p className="text-[12px] font-black text-udanix-navy uppercase">{story.name}</p>
+                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">{story.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-[13px] text-slate-500 font-semibold italic">"{story.desc}"</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
