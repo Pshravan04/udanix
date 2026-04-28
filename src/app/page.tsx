@@ -57,7 +57,7 @@ export default function Home() {
           {/* Left: Logo + Nav */}
           <div className="flex items-center gap-12">
             <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-              <img src="/logo.png" alt="Udaanix" className="h-10 w-auto" />
+              <img src="/logo.jpg" alt="Udaanix" className="h-10 w-auto" />
             </Link>
 
             <nav className="hidden xl:flex items-center gap-2">
@@ -196,7 +196,7 @@ export default function Home() {
                   {/* Sidebar */}
                   <div className="w-52 bg-white rounded-xl border border-[#E5E7EB] p-4 flex flex-col gap-3 flex-shrink-0">
                     <div className="flex items-center gap-2 mb-2">
-                       <img src="/logo.png" alt="Udaanix" className="h-6 w-auto" />
+                      <img src="/logo.jpg" alt="Udaanix" className="h-6 w-auto" />
                     </div>
                     {['Dashboard', 'Counselors', 'Sessions', 'Progress', 'Settings'].map((item, i) => (
                       <div key={item} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold ${i === 0 ? 'bg-[#EFF6FF] text-[#0056D2]' : 'text-[#9CA3AF] hover:text-[#4B5563]'}`}>
@@ -406,7 +406,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-start justify-between gap-14">
             <div className="space-y-4 max-w-xs">
               <Link href="/" className="flex items-center gap-2">
-                <img src="/logo.png" alt="Udaanix" className="h-8 w-auto invert brightness-0" />
+                <img src="/logo.jpg" alt="Udaanix" className="h-8 w-auto invert brightness-0" />
               </Link>
               <p className="text-[#9CA3AF] text-sm leading-relaxed">
                 Empowering the next generation of thinkers and leaders through precision guidance.
