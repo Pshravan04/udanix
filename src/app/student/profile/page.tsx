@@ -465,6 +465,7 @@ export default function StudentProfile() {
           </motion.div>
         </div>
       )}
+    </main>
     </div>
   );
 }
