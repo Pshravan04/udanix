@@ -39,6 +39,8 @@
   --color-udanix-navy: var(--udanix-navy);
   --color-udanix-blue: var(--udanix-blue);
   --color-udanix-blue-mid: var(--udanix-blue-mid);
+  --color-udanix-orange: var(--udanix-orange);
+  --color-udanix-gold: var(--udanix-gold);
   --color-udanix-cyan: var(--udanix-cyan);
   --color-udanix-light: var(--udanix-light);
   --color-udanix-border: var(--udanix-border);
@@ -58,21 +60,23 @@
 }
 
 :root {
-  /* ── SaaS-Light Palette ── */
-  --udanix-blue:       #0056D2;   /* Primary Tech Blue */
-  --udanix-blue-mid:   #1A7AF8;   /* Hover/mid state */
+  /* ── Brand Palette (Extracted from Logo) ── */
+  --udanix-blue:       #005696;   /* Professional Deep Blue */
+  --udanix-blue-mid:   #007AC1;   /* Accessible Mid Blue */
+  --udanix-orange:     #F15A24;   /* Energetic Action Orange */
+  --udanix-gold:       #FBB03B;   /* Success & Excellence Gold */
   --udanix-cyan:       #0EA5E9;
   --udanix-green:      #10B981;
   --udanix-purple:     #7C3AED;
-  --udanix-navy:       #111827;   /* Footer & contrast */
-  --udanix-heading:    #111827;   /* Deep charcoal */
+  --udanix-navy:       #002D52;   /* Deep Brand Navy */
+  --udanix-heading:    #002D52;   /* Deep brand heading */
   --udanix-body:       #4B5563;   /* Medium grey */
   --udanix-sub:        #9CA3AF;   /* Muted labels */
-  --udanix-sky:        #F0F9FF;   /* Sky-tint atmosphere */
+  --udanix-sky:        #F0F7FF;   /* Refined sky tint */
   --udanix-surface:    #F9FAFB;   /* Off-white surface */
   --udanix-light:      #F3F4F6;
   --udanix-border:     #E5E7EB;   /* Bento 1px border */
-  --udanix-shadow:     rgba(0, 0, 0, 0.05);
+  --udanix-shadow:     rgba(0, 86, 150, 0.05);
 
   /* ── Semantic Tokens ── */
   --background:              #FFFFFF;

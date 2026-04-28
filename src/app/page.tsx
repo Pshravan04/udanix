@@ -56,11 +56,8 @@ export default function Home() {
         <div className="max-w-[1440px] mx-auto h-[72px] px-8 flex items-center justify-between gap-8">
           {/* Left: Logo + Nav */}
           <div className="flex items-center gap-12">
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-              <div className="w-9 h-9 bg-[#0056D2] rounded-lg flex items-center justify-center">
-                <GraduationCap className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-xl tracking-tight text-[#111827]">Udanix.</span>
+            <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+              <img src="/logo.png" alt="Udaanix" className="h-10 w-auto" />
             </Link>
 
             <nav className="hidden xl:flex items-center gap-2">
@@ -199,8 +196,7 @@ export default function Home() {
                   {/* Sidebar */}
                   <div className="w-52 bg-white rounded-xl border border-[#E5E7EB] p-4 flex flex-col gap-3 flex-shrink-0">
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-7 h-7 bg-[#0056D2] rounded-lg" />
-                      <span className="font-bold text-sm text-[#111827]">Udanix</span>
+                       <img src="/logo.png" alt="Udaanix" className="h-6 w-auto" />
                     </div>
                     {['Dashboard', 'Counselors', 'Sessions', 'Progress', 'Settings'].map((item, i) => (
                       <div key={item} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold ${i === 0 ? 'bg-[#EFF6FF] text-[#0056D2]' : 'text-[#9CA3AF] hover:text-[#4B5563]'}`}>
@@ -410,10 +406,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-start justify-between gap-14">
             <div className="space-y-4 max-w-xs">
               <Link href="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#0056D2] rounded-lg flex items-center justify-center">
-                  <GraduationCap className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-bold text-lg tracking-tight">Udanix.</span>
+                <img src="/logo.png" alt="Udaanix" className="h-8 w-auto invert brightness-0" />
               </Link>
               <p className="text-[#9CA3AF] text-sm leading-relaxed">
                 Empowering the next generation of thinkers and leaders through precision guidance.

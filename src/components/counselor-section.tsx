@@ -90,7 +90,7 @@ export function CounselorSection() {
                             <div className="flex items-start gap-6">
                                 {/* Avatar + Status */}
                                 <div className="relative flex-shrink-0">
-                                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-[#F3F4F6] group-hover:border-[#0056D2]/10 transition-colors">
+                                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-[#F3F4F6] group-hover:border-udanix-blue/10 transition-colors">
                                         <img src={c.avatar} alt={c.name} className="w-full h-full object-cover" />
                                     </div>
                                     {c.online && (
@@ -101,7 +101,7 @@ export function CounselorSection() {
                                 {/* Content */}
                                 <div className="flex-1 min-w-0">
                                     <div className="flex flex-col gap-1 mb-3">
-                                        <h3 className="text-xl font-bold text-[#111827] group-hover:text-[#0056D2] transition-colors truncate">
+                                        <h3 className="text-xl font-bold text-[#111827] group-hover:text-udanix-blue transition-colors truncate">
                                             {c.name}
                                         </h3>
                                         <p className="text-sm font-medium text-[#6B7280]">{c.role}</p>
@@ -140,7 +140,7 @@ export function CounselorSection() {
                                     <MessageSquare className="w-4 h-4" />
                                     Chat
                                 </button>
-                                <button className="flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0052FF] text-white text-sm font-bold hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                                <button className="flex items-center justify-center gap-2 py-3 rounded-xl bg-udanix-blue text-white text-sm font-bold hover:shadow-lg hover:shadow-udanix-blue/20 transition-all">
                                     <Video className="w-4 h-4" />
                                     Book Session
                                 </button>
