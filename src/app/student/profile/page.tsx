@@ -97,11 +97,31 @@ export default function StudentProfile() {
           goal: data.bio || '',
           interests: data.interests || [],
         });
+        
+        // Update stats with real data
+        setStudentStats({
+          sessions: data.sessions_count || 0,
+          rating: data.rating || 5.0,
+          goals: '72%' // Placeholder for now
+        });
       }
+
+      // Fetch Recent Sessions
+      const { data: sessionData } = await supabase
+        .from('sessions')
+        .select('*, profiles:counselor_id(full_name)')
+        .eq('student_id', user.id)
+        .order('start_time', { ascending: false })
+        .limit(3);
+      if (sessionData) setRecentSessions(sessionData);
+
       setLoading(false);
     }
     loadProfile();
   }, [supabase]);
+
+  const [studentStats, setStudentStats] = useState({ sessions: 0, rating: 5.0, goals: '0%' });
+  const [recentSessions, setRecentSessions] = useState<any[]>([]);
 
   const handleSave = async () => {
     setSaving(true);
@@ -181,9 +201,13 @@ export default function StudentProfile() {
         </div>
       </motion.div>
 
-      {/* ─── Stats Row ─── */}
       <motion.div initial="hidden" animate="visible" className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {STATS.map((s, i) => (
+        {[
+          { label: 'Sessions Done', value: studentStats.sessions.toString(), icon: Calendar, color: '#EFF6FF', iconColor: '#0056D2' },
+          { label: 'Avg. Rating', value: studentStats.rating.toFixed(1), icon: Star, color: '#FEF9C3', iconColor: '#B45309' },
+          { label: 'Goals Met', value: studentStats.goals, icon: Target, color: '#F0FDF4', iconColor: '#059669' },
+          { label: 'Hours Guided', value: `${studentStats.sessions * 1.5}h`, icon: Clock, color: '#FAF5FF', iconColor: '#7C3AED' },
+        ].map((s, i) => (
           <motion.div key={s.label} variants={fadeUp} custom={i + 1} className="bento-card p-5">
             <div className="flex items-center justify-between mb-3">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: s.color }}>
@@ -299,22 +323,26 @@ export default function StudentProfile() {
                 </button>
               </div>
               <div className="space-y-4">
-                {RECENT_SESSIONS.map(session => (
-                  <div key={session.topic} className="flex items-start justify-between py-3 border-b border-[#F3F4F6] last:border-0">
+                {recentSessions.length === 0 ? (
+                  <p className="text-center py-6 text-sm text-slate-400 italic font-medium">No session history yet.</p>
+                ) : recentSessions.map(session => (
+                  <div key={session.id} className="flex items-start justify-between py-3 border-b border-[#F3F4F6] last:border-0 group">
                     <div className="flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] flex items-center justify-center text-[#0056D2] text-xs font-bold flex-shrink-0">
-                        {session.counselor.split(' ').map(w => w[0]).join('').slice(0, 2)}
+                      <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] flex items-center justify-center text-[#0056D2] text-xs font-bold flex-shrink-0 group-hover:bg-[#0056D2] group-hover:text-white transition-colors">
+                        {session.profiles?.full_name?.charAt(0) || 'C'}
                       </div>
                       <div>
-                        <p className="font-semibold text-sm text-[#111827]">{session.counselor}</p>
+                        <p className="font-semibold text-sm text-[#111827]">{session.profiles?.full_name || 'Counselor'}</p>
                         <p className="text-xs text-[#9CA3AF]">{session.topic}</p>
                       </div>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-xs text-[#9CA3AF]">{session.date}</p>
+                      <p className="text-xs text-[#9CA3AF] font-bold">
+                        {new Date(session.start_time).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      </p>
                       <div className="flex gap-0.5 mt-1 justify-end">
                         {Array.from({ length: 5 }).map((_, i) => (
-                          <Star key={i} className={`w-3 h-3 ${i < session.rating ? 'fill-amber-400 text-amber-400' : 'text-[#E5E7EB]'}`} />
+                          <Star key={i} className={`w-3 h-3 ${i < (session.rating || 5) ? 'fill-amber-400 text-amber-400' : 'text-[#E5E7EB]'}`} />
                         ))}
                       </div>
                     </div>

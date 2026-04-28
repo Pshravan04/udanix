@@ -3,34 +3,40 @@
 import { motion } from 'framer-motion';
 import { Target, Star, Calendar } from 'lucide-react';
 
-const STATS = [
-  { 
-    label: 'Sessions Done', 
-    value: '12', 
-    trend: '+3 this month', 
-    icon: Target, 
-    color: '#F43F5E', // Rose like in image
-    bgColor: '#FFF1F2' 
-  },
-  { 
-    label: 'Avg. Rating', 
-    value: '4.9', 
-    trend: 'Excellent', 
-    icon: Star, 
-    color: '#FBBF24', // Amber
-    bgColor: '#FFFBEB' 
-  },
-  { 
-    label: 'Goals Met', 
-    value: '68%', 
-    trend: 'On track', 
-    icon: Calendar, 
-    color: '#6366F1', // Indigo
-    bgColor: '#EEF2FF' 
-  },
-];
+interface StatsProps {
+  sessionsDone?: number;
+  avgRating?: number;
+  goalsMet?: string;
+}
 
-export function DashboardStats() {
+export function DashboardStats({ sessionsDone = 0, avgRating = 5.0, goalsMet = '0%' }: StatsProps) {
+  const STATS = [
+    { 
+      label: 'Sessions Done', 
+      value: sessionsDone.toString(), 
+      trend: '+0 this month', // Placeholder for now, could be dynamic
+      icon: Target, 
+      color: '#F43F5E', 
+      bgColor: '#FFF1F2' 
+    },
+    { 
+      label: 'Avg. Rating', 
+      value: avgRating.toFixed(1), 
+      trend: avgRating >= 4.5 ? 'Excellent' : 'Good', 
+      icon: Star, 
+      color: '#FBBF24', 
+      bgColor: '#FFFBEB' 
+    },
+    { 
+      label: 'Goals Met', 
+      value: goalsMet, 
+      trend: 'On track', 
+      icon: Calendar, 
+      color: '#6366F1', 
+      bgColor: '#EEF2FF' 
+    },
+  ];
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {STATS.map((stat, i) => (
@@ -41,7 +47,6 @@ export function DashboardStats() {
           transition={{ delay: i * 0.1 }}
           className="bg-white border border-[#E5E7EB] rounded-[24px] p-8 shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden"
         >
-          {/* Label & Icon Row */}
           <div className="flex items-center justify-between mb-2">
             <span className="text-[#9CA3AF] text-sm font-bold uppercase tracking-wider">
               {stat.label}
@@ -54,12 +59,11 @@ export function DashboardStats() {
             </div>
           </div>
 
-          {/* Value */}
           <div className="flex flex-col items-center justify-center py-2">
-            <p className="text-[44px] font-black text-[#111827] leading-none mb-2">
+            <p className="text-[44px] font-black text-[#111827] leading-none mb-2 tracking-tighter">
               {stat.value}
             </p>
-            <p className={stat.label === 'Sessions Done' ? "text-emerald-500 font-bold text-sm" : "text-emerald-500 font-bold text-sm"}>
+            <p className="text-emerald-500 font-bold text-sm">
               {stat.trend}
             </p>
           </div>
