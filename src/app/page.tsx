@@ -11,6 +11,7 @@ import {
 import { StreamExplorer } from '@/components/stream-explorer';
 import { CareerPaths } from '@/components/career-paths';
 import { CounselorSection } from '@/components/counselor-section';
+import { StudentLoginModal } from '@/components/auth/student-login-modal';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -89,11 +90,7 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-4 flex-shrink-0">
-              <Link href="/student/profile">
-                <button className="w-10 h-10 rounded-full flex items-center justify-center text-[#4B5563] hover:bg-[#F9FAFB] transition-colors border border-[#E5E7EB]">
-                  <User className="w-5 h-5" />
-                </button>
-              </Link>
+              <StudentLoginModal />
 
               <Link href="/register">
                 <button className="bg-gradient-to-r from-[#0052FF] to-[#6E00FF] text-white text-sm font-bold py-3 px-6 rounded-xl shadow-lg shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
@@ -401,7 +398,7 @@ export default function Home() {
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3 justify-center">
               <Link href="/register"><button className="btn-primary">Try for Free</button></Link>
-              <Link href="/login"><button className="btn-secondary">Sign in</button></Link>
+              <StudentLoginModal />
             </motion.div>
           </motion.div>
         </div>

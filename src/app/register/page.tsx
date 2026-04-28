@@ -299,7 +299,14 @@ export default function RegisterPage() {
 
                     {/* ─── STEP 2: ACCOUNT DETAILS ─── */}
                     {step === 2 && (
-                        <form onSubmit={(e) => { e.preventDefault(); setStep(3); }} className="space-y-8">
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            if (role === 'student') {
+                                handleSubmit(e);
+                            } else {
+                                setStep(3);
+                            }
+                        }} className="space-y-8">
                             <div className="space-y-3">
                                 <h1 style={{ fontFamily: 'var(--font-space-grotesk)' }} className="text-4xl font-black text-slate-900 tracking-tighter uppercase leading-none">Basic Information</h1>
                                 <p className="text-slate-500 font-medium text-lg leading-snug">Tell us a bit about yourself to create your account.</p>
@@ -339,35 +346,6 @@ export default function RegisterPage() {
                                     </div>
                                 )}
 
-                                {role === 'student' && (
-                                    <div className="space-y-5">
-                                        <SearchableSelect
-                                            label="School / College"
-                                            options={UNIVERSITIES}
-                                            value={form.institution}
-                                            onChange={(val) => update('institution', val)}
-                                            placeholder="Search for your university..."
-                                        />
-
-                                        <div className="grid grid-cols-2 gap-4">
-                                            <SearchableSelect
-                                                label="Field of Study"
-                                                options={COURSES}
-                                                value={form.major}
-                                                onChange={(val) => update('major', val)}
-                                                placeholder="Major/Course"
-                                            />
-                                            <SearchableSelect
-                                                label="Degree"
-                                                options={DEGREES}
-                                                value={form.degree}
-                                                onChange={(val) => update('degree', val)}
-                                                placeholder="e.g. B.Tech"
-                                            />
-                                        </div>
-                                    </div>
-                                )}
-
                                 <div className="space-y-2">
                                     <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Create Password</label>
                                     <div className="relative">
@@ -395,8 +373,18 @@ export default function RegisterPage() {
                                 <Button type="button" variant="outline" onClick={() => setStep(1)} className="flex-1 h-15 rounded-[1.25rem] border-slate-100 bg-slate-50 text-slate-500 font-black text-[10px] uppercase tracking-widest hover:bg-white hover:border-slate-200 transition-all">
                                     Back
                                 </Button>
-                                <Button type="submit" className="flex-[2.5] h-15 bg-slate-900 hover:bg-slate-800 text-white rounded-[1.25rem] font-black text-xs uppercase tracking-[0.2em] shadow-2xl group transition-all">
-                                    Next Step <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                <Button type="submit" disabled={isLoading} className="flex-[2.5] h-15 bg-slate-900 hover:bg-slate-800 text-white rounded-[1.25rem] font-black text-xs uppercase tracking-[0.2em] shadow-2xl group transition-all">
+                                    {isLoading ? (
+                                        <span className="flex items-center gap-3">
+                                            <span className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                                            Processing...
+                                        </span>
+                                    ) : (
+                                        <>
+                                            {role === 'student' ? 'Complete Registration' : 'Next Step'}
+                                            <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                        </>
+                                    )}
                                 </Button>
                             </div>
                         </form>
