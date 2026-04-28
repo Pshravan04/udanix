@@ -218,7 +218,7 @@ export function CareerPaths() {
                                     {/* Header: Title + Badge */}
                                     <div className="flex items-start justify-between mb-4">
                                         <div className="space-y-1">
-                                            <h3 className="font-bold text-[#111827] text-lg leading-tight group-hover:text-[#0056D2] transition-colors">
+                                            <h3 className="font-bold text-[#111827] text-lg leading-tight group-hover:text-udanix-blue transition-colors">
                                                 {career.title}
                                             </h3>
                                             <div className="flex items-center gap-2">
@@ -283,7 +283,7 @@ export function CareerPaths() {
 
                                     {/* Footer Link */}
                                     <div className="mt-6 pt-5 border-t border-[#F3F4F6]">
-                                        <button className="flex items-center justify-center gap-2 w-full text-[13px] font-bold text-[#4B5563] hover:text-[#0056D2] transition-colors">
+                                        <button className="flex items-center justify-center gap-2 w-full text-[13px] font-bold text-[#4B5563] hover:text-udanix-blue transition-colors">
                                             View Details
                                             <ExternalLink className="w-3.5 h-3.5" />
                                         </button>

@@ -42,7 +42,7 @@ const STEPS = [
 ];
 
 const WHY_CARDS = [
-  { icon: TrendingUp, color: '#EFF6FF', iconColor: '#0056D2', title: 'Clarity on Career Paths', desc: 'Thousands of students lack proper guidance. Our platform simplifies your decision, enabling faster, smarter choices.' },
+  { icon: TrendingUp, color: '#EFF6FF', iconColor: 'var(--udanix-blue)', title: 'Clarity on Career Paths', desc: 'Thousands of students lack proper guidance. Our platform simplifies your decision, enabling faster, smarter choices.' },
   { icon: Globe, color: '#ECFDF5', iconColor: '#059669', title: 'Access Expert Network', desc: 'Finding a verified counselor is hard. Our system connects you to trusted experts instantly without the hassle.' },
   { icon: Layers, color: '#F5F3FF', iconColor: '#7C3AED', title: 'Missed Growth Insights', desc: 'Without the right tools, your potential goes untapped. UDANIX surfaces growth data and opportunities you never saw.' },
 ];
@@ -78,11 +78,11 @@ export default function Home() {
           {/* Right: Search + Profile + CTA */}
           <div className="flex items-center gap-5 flex-1 justify-end max-w-2xl">
             <div className="relative group flex-1 hidden md:block">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-[#9CA3AF] group-focus-within:text-[#0056D2] transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-[#9CA3AF] group-focus-within:text-udanix-blue transition-colors" />
               <input
                 type="text"
                 placeholder="Search careers, courses..."
-                className="w-full bg-[#F3F4F6] border-none rounded-xl py-3 pl-11 pr-4 text-sm font-medium focus:ring-2 focus:ring-[#0056D2]/10 transition-all placeholder:text-[#9CA3AF]"
+                className="w-full bg-[#F3F4F6] border-none rounded-xl py-3 pl-11 pr-4 text-sm font-medium focus:ring-2 focus:ring-udanix-blue/10 transition-all placeholder:text-[#9CA3AF]"
               />
             </div>
 
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="max-w-[1280px] mx-auto px-8 text-center">
           {/* Badge */}
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-[#BFDBFE] text-[#0056D2] text-[11px] font-bold uppercase tracking-[0.15em] shadow-float">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-[#BFDBFE] text-udanix-blue text-[11px] font-bold uppercase tracking-[0.15em] shadow-float">
               <Sparkles className="w-3 h-3" />
               Next-Gen Student Counselling
             </span>
@@ -150,7 +150,7 @@ export default function Home() {
             className="mt-8 flex flex-wrap items-center justify-center gap-3"
           >
             <Link href="/register">
-              <button className="bg-white text-[#0056D2] text-sm font-black py-4 px-8 rounded-2xl shadow-xl shadow-blue-500/10 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest border-b-4 border-slate-100">
+              <button className="bg-white text-udanix-blue text-sm font-black py-4 px-8 rounded-2xl shadow-xl shadow-blue-500/10 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest border-b-4 border-slate-100">
                 Take Free Assessment
               </button>
             </Link>
@@ -199,8 +199,8 @@ export default function Home() {
                       <img src="/logo.jpg" alt="Udaanix" className="h-6 w-auto" />
                     </div>
                     {['Dashboard', 'Counselors', 'Sessions', 'Progress', 'Settings'].map((item, i) => (
-                      <div key={item} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold ${i === 0 ? 'bg-[#EFF6FF] text-[#0056D2]' : 'text-[#9CA3AF] hover:text-[#4B5563]'}`}>
-                        <div className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-[#0056D2]' : 'bg-[#E5E7EB]'}`} />
+                        <div key={item} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold ${i === 0 ? 'bg-[#EFF6FF] text-udanix-blue' : 'text-[#9CA3AF] hover:text-[#4B5563]'}`}>
+                          <div className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-udanix-blue' : 'bg-[#E5E7EB]'}`} />
                         {item}
                       </div>
                     ))}
@@ -244,7 +244,7 @@ export default function Home() {
                         ].map(session => (
                           <div key={session.name} className="flex items-center justify-between py-2 border-b border-[#F3F4F6] last:border-0">
                             <div className="flex items-center gap-3">
-                              <div className="w-7 h-7 rounded-lg bg-[#EFF6FF] flex items-center justify-center text-[#0056D2] text-xs font-bold">
+                              <div className="w-7 h-7 rounded-lg bg-[#EFF6FF] flex items-center justify-center text-udanix-blue text-xs font-bold">
                                 {session.name.split(' ').map(w => w[0]).join('').slice(0, 2)}
                               </div>
                               <div>
@@ -278,7 +278,7 @@ export default function Home() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <div className="flex flex-col md:flex-row items-start justify-between gap-6 mb-14">
               <div className="space-y-2">
-                <motion.p variants={fadeUp} className="text-[#0056D2] text-xs font-bold uppercase tracking-[0.2em]">Why Udanix</motion.p>
+                <motion.p variants={fadeUp} className="text-udanix-blue text-xs font-bold uppercase tracking-[0.2em]">Why Udanix</motion.p>
                 <motion.h2 variants={fadeUp} className="text-4xl font-extrabold text-[#111827] tracking-tight max-w-sm leading-tight">
                   The Challenge Every Student Faces
                 </motion.h2>
@@ -287,7 +287,7 @@ export default function Home() {
                 <p className="text-[#4B5563] text-sm leading-relaxed">
                   Turning confusion into clarity is a challenge for every student. Our platform simplifies your journey, enabling faster, smarter decisions.
                 </p>
-                <button className="text-[#0056D2] text-xs font-bold mt-2 self-start md:self-end hover:underline">
+                <button className="text-udanix-blue text-xs font-bold mt-2 self-start md:self-end hover:underline">
                   How It Works →
                 </button>
               </motion.div>

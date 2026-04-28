@@ -46,7 +46,7 @@ export function StreamExplorer() {
 
                 {/* Header */}
                 <div className="text-center mb-16 space-y-4 max-w-3xl mx-auto">
-                    <p className="text-[#0056D2] text-xs font-bold uppercase tracking-[0.2em] mb-1">Career Pathways</p>
+                    <p className="text-udanix-blue text-xs font-bold uppercase tracking-[0.2em] mb-1">Career Pathways</p>
                     <h2 className="text-4xl font-extrabold text-[#111827] tracking-tight">
                         Explore Your Stream
                     </h2>

@@ -87,27 +87,27 @@
   --card-foreground:         #111827;
   --popover:                 #FFFFFF;
   --popover-foreground:      #111827;
-  --primary:                 #0056D2;
+  --primary:                 var(--udanix-blue);
   --primary-foreground:      #FFFFFF;
   --secondary:               #F3F4F6;
   --secondary-foreground:    #111827;
   --muted:                   #F9FAFB;
   --muted-foreground:        #9CA3AF;
   --accent:                  #F0F9FF;
-  --accent-foreground:       #0056D2;
+  --accent-foreground:       var(--udanix-blue);
   --destructive:             oklch(0.577 0.245 27.325);
   --border:                  #E5E7EB;
   --input:                   #F3F4F6;
-  --ring:                    #0056D2;
+  --ring:                    var(--udanix-blue);
   --radius:                  0.875rem; /* 14px base */
   --sidebar:                 #FFFFFF;
   --sidebar-foreground:      #111827;
-  --sidebar-primary:         #0056D2;
+  --sidebar-primary:         var(--udanix-blue);
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent:          #F3F4F6;
   --sidebar-accent-foreground: #111827;
   --sidebar-border:          #E5E7EB;
-  --sidebar-ring:            #0056D2;
+  --sidebar-ring:            var(--udanix-blue);
 }
 
 .dark {
@@ -223,18 +223,18 @@
     align-items: center;
     gap: 8px;
     padding: 14px 32px;
-    background: #0056D2;
+    background: var(--udanix-blue);
     color: #FFFFFF;
     border-radius: 100px;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.01em;
-    box-shadow: 0 4px 16px rgba(0, 86, 210, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 62, 138, 0.25);
     transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
   }
   .btn-primary:hover {
-    background: #1A7AF8;
-    box-shadow: 0 6px 24px rgba(0, 86, 210, 0.35);
+    background: var(--udanix-gradient-start);
+    box-shadow: 0 6px 24px rgba(0, 62, 138, 0.35);
     transform: translateY(-1px);
   }
   .btn-secondary {
@@ -243,15 +243,15 @@
     gap: 8px;
     padding: 13px 32px;
     background: transparent;
-    color: #0056D2;
-    border: 1.5px solid #0056D2;
+    color: var(--udanix-blue);
+    border: 1.5px solid var(--udanix-blue);
     border-radius: 100px;
     font-weight: 700;
     font-size: 14px;
     transition: background 0.2s ease, color 0.2s ease;
   }
   .btn-secondary:hover {
-    background: #EFF6FF;
+    background: var(--udanix-sky);
   }
 
   /* ── Scan line (legacy) ── */
@@ -281,7 +281,7 @@
     animation: neural-flow 30s ease-in-out infinite;
   }
   .bg-neural-gradient {
-    background: radial-gradient(circle at center, #0056D2 0%, transparent 70%);
+    background: radial-gradient(circle at center, var(--udanix-blue) 0%, transparent 70%);
     filter: blur(90px);
     opacity: 0.06;
   }
