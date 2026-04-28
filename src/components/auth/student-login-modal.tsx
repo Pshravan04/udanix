@@ -97,11 +97,13 @@ export function StudentLoginModal() {
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild>
-                <Button variant="ghost" className="text-[11px] font-black text-slate-500 hover:text-udanix-blue uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-50">
-                    Sign In
-                </Button>
-            </DialogTrigger>
+            <DialogTrigger 
+                render={
+                    <Button variant="ghost" className="text-[11px] font-black text-slate-500 hover:text-udanix-blue uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-50">
+                        Sign In
+                    </Button>
+                }
+            />
             <DialogContent className="sm:max-w-[480px] p-0 overflow-hidden border-none shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)] rounded-[2.5rem] bg-white">
                 <div className="relative">
                     {/* Header/Banner Area */}
