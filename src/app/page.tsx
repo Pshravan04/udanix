@@ -16,11 +16,7 @@ import { CounselorSection } from '@/components/counselor-section';
 import { StudentLoginModal } from '@/components/auth/student-login-modal';
 import { CareerAssessment } from '@/components/career-assessment';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as any } },
-};
-const stagger = { visible: { transition: { staggerChildren: 0.09 } } };
+import { fadeUp, staggerContainer as stagger } from '@/lib/animations';
 
 const FEATURES = [
   { icon: Video, title: 'HD Video Sessions', desc: 'Crystal-clear consultations with built-in recording and notes.' },
@@ -161,7 +157,8 @@ export default function Home() {
             <div className="lg:col-span-7 text-left space-y-12">
               <motion.div 
                 initial={{ opacity: 0, x: -20 }} 
-                animate={{ opacity: 1, x: 0 }} 
+                whileInView={{ opacity: 1, x: 0 }} 
+                viewport={{ once: true }}
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[13px] font-black uppercase tracking-[0.25em] shadow-premium shadow-blue-glow"
               >
                 <Sparkles className="w-4 h-4 text-udanix-orange animate-pulse" />
@@ -171,17 +168,19 @@ export default function Home() {
               <div className="space-y-8">
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1, duration: 0.8 }}
                   className="text-[48px] xs:text-[64px] sm:text-[96px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.85] sm:leading-[0.8] filter drop-shadow-sm"
                 >
                   Your Career,<br /> 
                   <span className="text-brand-gradient">Precision</span> Engineered.
                 </motion.h1>
-           </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
                   className="text-slate-500 text-2xl leading-relaxed font-bold italic max-w-2xl border-l-4 border-udanix-orange/30 pl-8"
                 >
                   "The gap between who you are and who you want to be is bridged by the right guidance. Connect with world-class experts today."
@@ -190,8 +189,9 @@ export default function Home() {
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
                 className="flex flex-wrap gap-8 pt-4"
               >
                 <Link href="/register">

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FlaskConical, Calculator, Palette, ArrowRight, Sparkles } from 'lucide-react';
+import { fadeUp } from '@/lib/animations';
 
 const STREAMS = [
     {
@@ -39,10 +40,6 @@ const STREAMS = [
     }
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
-};
 
 export function StreamExplorer() {
     return (

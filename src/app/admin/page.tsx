@@ -9,11 +9,8 @@ import {
   Lock, Activity, Layers, Database
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import { fadeUpStagger as fadeUp } from '@/lib/animations';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.08 } }),
-};
 
 const STATUS_STYLES: Record<string, string> = {
   verified: 'bg-emerald-50 text-emerald-600 border-emerald-100',

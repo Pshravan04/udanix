@@ -8,6 +8,7 @@ import {
   Clock, TrendingUp, CheckCircle2, ArrowRight, Zap, Award, Loader2
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import { fadeUpStagger as fadeUp } from '@/lib/animations';
 
 const UPCOMING = [
   { student: 'Jordan M.', type: 'Video', time: 'Today 4:00 PM', topic: 'Career Path', initials: 'JM' },
@@ -21,10 +22,6 @@ const STUDENTS = [
   { name: 'Alex T.', progress: '92%', lastSeen: '5h ago', goal: 'Academic Goals', initials: 'AT', sessions: 9 },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.08 } }),
-};
 
 export default function CounselorDashboard() {
   const supabase = createClient();

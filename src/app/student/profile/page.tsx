@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/client';
 
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
+import { fadeUpStagger as fadeUp } from '@/lib/animations';
 
 const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -31,10 +32,6 @@ const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.45, delay: i * 0.07 } }),
-};
 
 const STATS = [
   { label: 'Sessions Done', value: '12', icon: Calendar, color: '#EFF6FF', iconColor: '#0056D2' },
