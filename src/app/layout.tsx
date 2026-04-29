@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 };
 
 import { BottomNav } from "@/components/layout/bottom-nav";
+import { Footer } from "@/components/footer";
 
 export default function RootLayout({
   children,
@@ -45,7 +46,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col relative bg-white pb-32 md:pb-0" suppressHydrationWarning>
         <NeuralBackground />
-        {children}
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
         <BottomNav />
       </body>
     </html>

@@ -220,7 +220,7 @@ export function CareerPaths() {
                 </div>
 
                 {/* Grid */}
-                <div className="relative min-h-[500px]">
+                <div className="relative min-h-[600px]">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab}
@@ -228,91 +228,77 @@ export function CareerPaths() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+                            className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-8"
                         >
-                            {(CAREERS as any)[activeTab].map((career: any, i: number) => (
-                                <motion.div
-                                    key={career.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="glass-premium border border-white/50 rounded-[2.5rem] p-8 flex flex-col hover:shadow-premium-xl hover:-translate-y-2 transition-all duration-500 group"
-                                >
-                                    {/* Icon Header */}
-                                    <div className="flex items-start justify-between mb-8">
-                                        <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-slate-50 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-                                            <career.icon className="w-7 h-7 text-udanix-blue" />
-                                        </div>
-                                        <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-sm border border-white ${career.demandColor}`}>
-                                            {career.demand}
-                                        </span>
-                                    </div>
+                            {(CAREERS as any)[activeTab].map((career: any, i: number) => {
+                                // Dynamic grid spans for asymmetrical look
+                                const spans = [
+                                    'md:col-span-3 lg:col-span-4 lg:row-span-2', // Card 1: Large
+                                    'md:col-span-3 lg:col-span-4',               // Card 2: Medium
+                                    'md:col-span-3 lg:col-span-4',               // Card 3: Medium
+                                    'md:col-span-3 lg:col-span-8',               // Card 4: Wide
+                                ];
+                                const spanClass = spans[i % spans.length];
 
-                                    {/* Title */}
-                                    <div className="space-y-2 mb-6">
-                                        <h3 className="font-black text-udanix-navy text-xl leading-tight group-hover:text-udanix-blue transition-colors uppercase tracking-tight">
-                                            {career.title}
-                                        </h3>
-                                        <span className="inline-block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-60">
-                                            {career.stream}
-                                        </span>
-                                    </div>
+                                return (
+                                    <motion.div
+                                        key={career.title}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className={`glass-card-premium rounded-[3rem] p-10 flex flex-col hover:shadow-premium-xl transition-all duration-700 group border-beam ${spanClass}`}
+                                    >
+                                        {/* Background Decoration */}
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gradient/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-gradient/10 transition-colors" />
 
-                                    {/* Description */}
-                                    <p className="text-slate-500 text-[13px] leading-relaxed mb-8 font-semibold line-clamp-2">
-                                        {career.desc}
-                                    </p>
-
-                                    {/* Stats Row */}
-                                    <div className="grid grid-cols-1 gap-5 mb-8 bg-white/40 p-5 rounded-3xl border border-white/40">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2.5 text-slate-400">
-                                                <TrendingUp className="w-4 h-4 text-emerald-500" />
-                                                <span className="text-[11px] font-black uppercase tracking-widest">Growth</span>
+                                        {/* Icon Header */}
+                                        <div className="flex items-start justify-between mb-10 relative z-10">
+                                            <div className="w-16 h-16 rounded-[1.5rem] bg-white flex items-center justify-center shadow-xl border border-slate-50 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                                                <career.icon className="w-8 h-8 text-udanix-blue" />
                                             </div>
-                                            <p className="text-[12px] font-black text-udanix-navy uppercase">{career.growth}</p>
-                                        </div>
-                                        <div className="w-full h-px bg-white/60" />
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2.5 text-slate-400">
-                                                <DollarSign className="w-4 h-4 text-udanix-blue" />
-                                                <span className="text-[11px] font-black uppercase tracking-widest">Salary</span>
-                                            </div>
-                                            <p className="text-[12px] font-black text-udanix-navy uppercase">{career.salary}</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Duration + Skills */}
-                                    <div className="mt-auto space-y-5">
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-xl glass-premium border border-white flex items-center justify-center shadow-sm">
-                                                <Clock className="w-5 h-5 text-slate-400" />
-                                            </div>
-                                            <div>
-                                                <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">Duration</p>
-                                                <p className="text-[12px] font-black text-udanix-navy uppercase tracking-tight">{career.duration}</p>
+                                            <div className={`px-4 py-1.5 rounded-full border border-white shadow-sm text-[10px] font-black uppercase tracking-widest ${career.demandColor}`}>
+                                                {career.demand}
                                             </div>
                                         </div>
-                                        <div className="flex items-start gap-4">
-                                            <div className="w-10 h-10 rounded-xl glass-premium border border-white flex items-center justify-center shadow-sm flex-shrink-0">
-                                                <BookOpen className="w-5 h-5 text-slate-400" />
+
+                                        {/* Content */}
+                                        <div className="space-y-4 mb-8 relative z-10">
+                                            <h3 className="text-2xl font-black text-udanix-navy leading-none tracking-tight group-hover:text-udanix-blue transition-colors uppercase">
+                                                {career.title}
+                                            </h3>
+                                            <p className="text-slate-500 text-[14px] leading-relaxed font-semibold">
+                                                {career.desc}
+                                            </p>
+                                        </div>
+
+                                        {/* Feature Grid */}
+                                        <div className="grid grid-cols-2 gap-4 mb-10 relative z-10">
+                                            <div className="p-5 rounded-[2rem] bg-white/40 border border-white/60">
+                                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Growth</p>
+                                                <p className="text-[14px] font-black text-udanix-navy uppercase">{career.growth}</p>
                                             </div>
-                                            <div>
-                                                <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">Core Skills</p>
-                                                <p className="text-[12px] font-black text-udanix-navy uppercase tracking-tight leading-tight">{career.skills}</p>
+                                            <div className="p-5 rounded-[2rem] bg-white/40 border border-white/60">
+                                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Salary</p>
+                                                <p className="text-[14px] font-black text-udanix-navy uppercase">{career.salary}</p>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Footer Link */}
-                                    <div className="mt-8 pt-6 border-t border-slate-100/50">
-                                        <button className="group/btn flex items-center justify-center gap-3 w-full py-2 text-[12px] font-black text-slate-400 hover:text-udanix-blue uppercase tracking-[0.2em] transition-all">
-                                            View Roadmap
-                                            <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                                        </button>
-                                    </div>
-                                </motion.div>
-                            ))}
+                                        {/* Footer */}
+                                        <div className="mt-auto pt-8 border-t border-slate-100 flex items-center justify-between relative z-10">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center border border-white">
+                                                    <Clock className="w-4 h-4 text-slate-400" />
+                                                </div>
+                                                <span className="text-[11px] font-black text-udanix-navy uppercase tracking-tight">{career.duration}</span>
+                                            </div>
+                                            <button className="flex items-center gap-2 text-[11px] font-black text-udanix-blue uppercase tracking-widest group/btn transition-all">
+                                                Roadmap
+                                                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                            </button>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
                         </motion.div>
                     </AnimatePresence>
                 </div>
