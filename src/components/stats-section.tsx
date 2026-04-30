@@ -19,26 +19,14 @@ const WHY_CARDS = [
 export function StatsSection() {
   return (
     <section className="py-64 relative overflow-hidden bg-[#fafafa]">
-      {/* Animated Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-            opacity: [0.05, 0.1, 0.05]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] bg-udanix-blue rounded-full blur-[160px]" 
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.1, 1],
-            rotate: [0, -45, 0],
-            opacity: [0.03, 0.08, 0.03]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-1/4 -right-1/4 w-[1000px] h-[1000px] bg-udanix-orange rounded-full blur-[200px]" 
-        />
+      {/* Premium Background Architecture */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 mesh-gradient-premium opacity-40" />
+          <div className="absolute inset-0 bg-noise opacity-[0.03]" />
+          
+          {/* Decorative Glows */}
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-udanix-blue/10 rounded-full blur-[140px] animate-mesh-blue" />
+          <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-udanix-orange/5 rounded-full blur-[160px] animate-mesh-orange" />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-8 sm:px-12 relative z-10">
@@ -56,9 +44,9 @@ export function StatsSection() {
                 Impact Report 2024
               </motion.div>
               
-              <h2 className="text-[70px] sm:text-[90px] font-black text-udanix-navy tracking-[-0.05em] uppercase leading-[0.8] mb-8">
+              <h2 className="text-[64px] sm:text-[90px] font-black text-udanix-navy tracking-[-0.05em] uppercase leading-[0.8] mb-8">
                 Data-Driven <br />
-                <span className="text-brand-gradient text-glow-blue">Destiny.</span>
+                <span className="text-brand-gradient drop-shadow-sm">Destiny.</span>
               </h2>
               
               <p className="text-slate-500 text-2xl font-bold italic leading-tight max-w-lg border-l-8 border-udanix-orange/20 pl-8">
@@ -73,12 +61,12 @@ export function StatsSection() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass-premium p-8 rounded-[3rem] border border-white shadow-premium hover:shadow-premium-xl transition-all group"
+                  className="glass-premium p-8 rounded-[3rem] border border-white/60 shadow-premium hover:shadow-premium-xl transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:bg-brand-gradient group-hover:text-white transition-all">
+                  <div className="w-12 h-12 rounded-2xl glass-premium border border-white/60 flex items-center justify-center mb-6 group-hover:bg-brand-gradient group-hover:text-white transition-all">
                     <stat.icon className="w-6 h-6" />
                   </div>
-                  <p className="text-4xl font-black text-udanix-navy mb-1">{stat.value}</p>
+                  <p className="text-4xl font-black text-udanix-navy mb-1 tracking-tighter">{stat.value}</p>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</p>
                 </motion.div>
               ))}

@@ -78,13 +78,15 @@ export function ProcessJourney() {
     const translateY = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"]);
 
     return (
-        <section ref={containerRef} className="relative bg-slate-50">
-            {/* Background Narrative Grid */}
-            <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
-                <div className="sticky top-0 h-screen flex items-center justify-center">
-                    <div className="w-full h-full" style={{ 
-                        backgroundImage: 'radial-gradient(circle, #cbd5e1 1px, transparent 1px)', 
-                        backgroundSize: '80px 80px' 
+        <section ref={containerRef} className="relative bg-white overflow-hidden">
+            {/* Premium Background Architecture */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="sticky top-0 h-screen w-full">
+                    <div className="absolute inset-0 mesh-gradient-premium opacity-60" />
+                    <div className="absolute inset-0 bg-noise opacity-[0.03]" />
+                    <div className="w-full h-full opacity-20" style={{ 
+                        backgroundImage: 'radial-gradient(circle, #003E8A 1px, transparent 1px)', 
+                        backgroundSize: '120px 120px' 
                     }} />
                 </div>
             </div>
@@ -95,10 +97,10 @@ export function ProcessJourney() {
                     <motion.div 
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full glass-premium border border-white shadow-premium mb-8"
+                        className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass-premium border-white/80 shadow-premium mb-10"
                     >
-                        <Zap className="w-4 h-4 text-udanix-orange fill-udanix-orange" />
-                        <span className="text-udanix-blue text-[12px] font-black uppercase tracking-[0.3em]">
+                        <Zap className="w-4 h-4 text-udanix-orange fill-udanix-orange animate-pulse" />
+                        <span className="text-udanix-blue text-[11px] font-black uppercase tracking-[0.4em]">
                             The Methodology
                         </span>
                     </motion.div>
@@ -113,10 +115,10 @@ export function ProcessJourney() {
                     {/* Left Side: Content with Progress Indicator */}
                     <div className="w-full lg:w-1/2 relative">
                         {/* Vertical Progress Line */}
-                        <div className="absolute left-[-40px] top-0 bottom-0 w-[2px] bg-slate-200 hidden lg:block">
+                        <div className="absolute left-[-40px] top-0 bottom-0 w-[2px] bg-slate-100 hidden lg:block">
                             <motion.div 
                                 style={{ scaleY: scaleProgress, transformOrigin: "top" }}
-                                className="w-full h-full bg-brand-gradient"
+                                className="w-full h-full bg-brand-gradient shadow-[0_0_15px_rgba(0,62,138,0.5)]"
                             />
                         </div>
 
@@ -127,9 +129,12 @@ export function ProcessJourney() {
                                     <motion.div 
                                         animate={{ 
                                             scale: activeStep === idx ? 1.2 : 1,
-                                            backgroundColor: activeStep === idx ? '#0ea5e9' : '#e2e8f0'
+                                            backgroundColor: activeStep === idx ? '#003E8A' : '#f1f5f9'
                                         }}
-                                        className="w-12 h-12 rounded-full border-4 border-white shadow-premium flex items-center justify-center text-white font-black text-lg transition-colors"
+                                        className={cn(
+                                            "w-12 h-12 rounded-full border-4 border-white shadow-premium flex items-center justify-center font-black text-lg transition-all duration-500",
+                                            activeStep === idx ? "text-white" : "text-slate-300"
+                                        )}
                                     >
                                         {idx + 1}
                                     </motion.div>
@@ -145,10 +150,10 @@ export function ProcessJourney() {
                                     <div className="space-y-4">
                                         <div className="flex items-center gap-3">
                                             <div className={cn(
-                                                "w-12 h-12 rounded-2xl flex items-center justify-center shadow-premium",
-                                                activeStep === idx ? "bg-udanix-blue text-white" : "bg-white text-slate-400"
+                                                "w-14 h-14 rounded-2xl flex items-center justify-center shadow-premium transition-all duration-500",
+                                                activeStep === idx ? "bg-udanix-blue text-white scale-110" : "bg-white text-slate-300"
                                             )}>
-                                                <step.icon className="w-6 h-6" />
+                                                <step.icon className="w-7 h-7" />
                                             </div>
                                             <p className="text-udanix-orange font-black uppercase tracking-[0.2em] text-xs">
                                                 {step.subtitle}
@@ -170,10 +175,10 @@ export function ProcessJourney() {
                                                 initial={{ opacity: 0, y: 10 }}
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: fIdx * 0.1 }}
-                                                className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-premium group transition-all"
+                                                className="flex items-center gap-3 px-6 py-5 rounded-[1.5rem] glass-premium border-white/60 shadow-sm hover:shadow-premium group transition-all duration-500"
                                             >
-                                                <div className="w-6 h-6 rounded-lg bg-emerald-50 flex items-center justify-center group-hover:bg-emerald-500 transition-colors">
-                                                    <CheckCircle2 className="w-4 h-4 text-emerald-500 group-hover:text-white transition-colors" />
+                                                <div className="w-7 h-7 rounded-lg bg-emerald-50 flex items-center justify-center group-hover:bg-emerald-500 transition-colors duration-500">
+                                                    <CheckCircle2 className="w-4 h-4 text-emerald-500 group-hover:text-white transition-colors duration-500" />
                                                 </div>
                                                 <span className="text-[11px] font-black text-udanix-navy uppercase tracking-widest">{feature}</span>
                                             </motion.div>
@@ -188,7 +193,7 @@ export function ProcessJourney() {
                     <div className="hidden lg:block w-1/2 sticky top-0 h-screen py-24">
                         <motion.div 
                             style={{ rotateX, y: translateY }}
-                            className="relative h-full w-full rounded-[4.5rem] overflow-hidden shadow-premium-2xl border-8 border-white/50 perspective-1000"
+                            className="relative h-full w-full rounded-[4.5rem] overflow-hidden extreme-glass border-8 border-white/40 shadow-premium-2xl perspective-1000"
                         >
                             <AnimatePresence mode="wait">
                                 <motion.div
@@ -211,37 +216,37 @@ export function ProcessJourney() {
                                     <motion.div 
                                         initial={{ x: 50, opacity: 0 }}
                                         animate={{ x: 0, opacity: 1 }}
-                                        className="absolute top-12 right-12 z-20 glass-premium px-6 py-4 rounded-3xl border border-white/40 flex items-center gap-4"
+                                        className="absolute top-12 right-12 z-20 extreme-glass px-6 py-5 rounded-[2rem] border border-white/40 flex items-center gap-5"
                                     >
-                                        <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-                                            <Target className="w-5 h-5 text-white" />
+                                        <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center shadow-inner">
+                                            <Target className="w-6 h-6 text-white" />
                                         </div>
                                         <div>
-                                            <p className="text-[9px] font-black text-white/60 uppercase tracking-widest">Phase Objective</p>
-                                            <p className="text-white font-black uppercase text-sm">{STEPS[activeStep].subtitle.split(' ')[0]} Match</p>
+                                            <p className="text-[9px] font-black text-white/50 uppercase tracking-[0.2em]">Phase Objective</p>
+                                            <p className="text-white font-black uppercase text-sm tracking-tight">{STEPS[activeStep].subtitle.split(' ')[0]} Match</p>
                                         </div>
                                     </motion.div>
 
                                     {/* Status Card */}
                                     <div className="absolute bottom-12 left-12 right-12 z-20">
-                                        <div className="glass-premium p-10 rounded-[2.5rem] border border-white/40 shadow-2xl overflow-hidden relative group/card">
-                                            <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 blur-3xl -mr-20 -mt-20 group-hover/card:bg-white/10 transition-all" />
+                                        <div className="extreme-glass p-12 rounded-[3rem] border border-white/40 shadow-2xl overflow-hidden relative group/card">
+                                            <div className="absolute top-0 right-0 w-60 h-60 bg-white/10 blur-[80px] -mr-32 -mt-32 group-hover/card:bg-white/20 transition-all duration-700" />
                                             
-                                            <div className="flex items-center justify-between relative">
-                                                <div className="space-y-2">
+                                            <div className="flex items-center justify-between relative z-10">
+                                                <div className="space-y-3">
                                                     <div className="flex items-center gap-2">
                                                         <Layers className="w-4 h-4 text-udanix-orange" />
-                                                        <span className="text-[10px] font-black text-white/50 uppercase tracking-widest">Navigation Point</span>
+                                                        <span className="text-[10px] font-black text-white/60 uppercase tracking-[0.2em]">Navigation Point</span>
                                                     </div>
-                                                    <h5 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">
+                                                    <h5 className="text-4xl font-black text-white uppercase tracking-tighter leading-none">
                                                         {STEPS[activeStep].title}
                                                     </h5>
                                                 </div>
                                                 <motion.button 
-                                                    whileHover={{ scale: 1.1, rotate: 45 }}
-                                                    className="w-16 h-16 rounded-3xl bg-white flex items-center justify-center text-udanix-navy shadow-xl"
+                                                    whileHover={{ scale: 1.1, rotate: 5, backgroundColor: '#003E8A', color: '#fff' }}
+                                                    className="w-20 h-20 rounded-[2rem] bg-white flex items-center justify-center text-udanix-navy shadow-2xl transition-colors duration-500"
                                                 >
-                                                    <ArrowRight className="w-7 h-7" />
+                                                    <ArrowRight className="w-9 h-9" />
                                                 </motion.button>
                                             </div>
                                         </div>

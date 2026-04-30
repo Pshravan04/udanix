@@ -15,7 +15,8 @@ export function CtaSection() {
           className="relative glass-extreme rounded-[6rem] border border-white/60 p-20 sm:p-32 overflow-hidden text-center"
         >
           {/* Background Effects */}
-          <div className="absolute inset-0 bg-brand-gradient opacity-[0.05]" />
+          <div className="absolute inset-0 mesh-gradient-premium opacity-40" />
+          <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
           <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-udanix-blue/10 rounded-full blur-[140px]" />
           <div className="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] bg-udanix-orange/10 rounded-full blur-[120px]" />
 
@@ -30,10 +31,10 @@ export function CtaSection() {
                 Limited Availability for 2024
               </span>
             </motion.div>
-
-            <h2 className="text-[70px] sm:text-[100px] lg:text-[130px] font-black text-udanix-navy leading-[0.75] tracking-[-0.05em] uppercase">
+ 
+            <h2 className="text-[64px] sm:text-[100px] lg:text-[130px] font-black text-udanix-navy leading-[0.75] tracking-[-0.05em] uppercase">
               Stop Guessing.<br />
-              <span className="text-brand-gradient text-glow-blue">Start Growing.</span>
+              <span className="text-brand-gradient drop-shadow-sm">Start Growing.</span>
             </h2>
 
             <p className="text-slate-500 text-2xl sm:text-3xl font-bold italic max-w-3xl mx-auto leading-tight">

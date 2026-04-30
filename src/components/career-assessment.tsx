@@ -33,13 +33,11 @@ export function CareerAssessment() {
   }, []);
 
   return (
-    <section id="assessment" ref={containerRef} className="py-40 relative overflow-hidden bg-slate-50">
-      {/* Premium Background architecture */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-udanix-blue/5 blur-[140px] rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-udanix-orange/5 blur-[140px] rounded-full" />
-        <div className="absolute inset-0 opacity-[0.015] pointer-events-none" 
-             style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }} />
+    <section id="assessment" ref={containerRef} className="py-40 relative overflow-hidden bg-white">
+      {/* Premium Background Architecture */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 mesh-gradient-premium opacity-50" />
+          <div className="absolute inset-0 bg-noise opacity-[0.03]" />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-8 relative z-10">
@@ -50,9 +48,9 @@ export function CareerAssessment() {
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white border border-slate-200 text-udanix-blue text-[11px] font-black uppercase tracking-[0.3em] shadow-sm mb-10"
+              className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass-premium border-white/80 text-udanix-blue text-[11px] font-black uppercase tracking-[0.4em] shadow-premium mb-10"
             >
-              <BrainCircuit className="w-4 h-4 text-udanix-orange" />
+              <BrainCircuit className="w-4 h-4 text-udanix-orange animate-pulse" />
               Scientific Precision
             </motion.div>
             
@@ -103,9 +101,10 @@ export function CareerAssessment() {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="mt-16 group relative inline-flex items-center gap-4 px-12 py-6 rounded-full bg-udanix-navy text-white text-[12px] font-black uppercase tracking-[0.2em] shadow-premium-xl overflow-hidden"
+              className="mt-16 group relative inline-flex items-center gap-4 px-12 py-6 rounded-full bg-udanix-navy text-white text-[12px] font-black uppercase tracking-[0.25em] shadow-premium-xl overflow-hidden"
             >
               <div className="absolute inset-0 bg-brand-gradient translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-noise opacity-[0.05] pointer-events-none" />
               <span className="relative z-10">Start Your Analysis</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-2 transition-transform duration-500" />
             </motion.button>
@@ -120,19 +119,20 @@ export function CareerAssessment() {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-10 extreme-glass rounded-[4rem] p-4 border border-white/80 shadow-premium-2xl"
             >
-              <div className="bg-white/90 rounded-[3rem] p-10 overflow-hidden relative shadow-inner">
+              <div className="bg-white/40 rounded-[3rem] p-10 overflow-hidden relative shadow-inner">
+                <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
                 {/* Dashboard Header */}
-                <div className="flex items-center justify-between mb-10 pb-6 border-b border-slate-100">
+                <div className="flex items-center justify-between mb-10 pb-6 border-b border-white/40">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-udanix-navy/5 flex items-center justify-center">
-                      <Target className="w-6 h-6 text-udanix-blue" />
+                    <div className="w-14 h-14 rounded-2xl bg-white/40 flex items-center justify-center shadow-premium">
+                      <Target className="w-7 h-7 text-udanix-blue" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-black text-udanix-navy uppercase tracking-tighter">Analysis Engine</h4>
-                      <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.2em] italic">Real-time Matching</p>
+                      <h4 className="text-xl font-black text-udanix-navy uppercase tracking-tighter">Analysis Engine</h4>
+                      <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em] italic">Real-time Matching</p>
                     </div>
                   </div>
-                  <div className="px-4 py-2 rounded-xl bg-slate-50 border border-slate-100 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  <div className="px-5 py-2.5 rounded-xl glass-premium border-white text-[10px] font-black text-udanix-blue uppercase tracking-widest shadow-sm">
                     v4.2 PRO
                   </div>
                 </div>
@@ -146,17 +146,17 @@ export function CareerAssessment() {
                   ].map((stat, i) => (
                     <div key={i} className="space-y-3">
                       <div className="flex justify-between items-end">
-                        <span className="text-[11px] font-black text-udanix-navy uppercase tracking-widest">{stat.label}</span>
+                        <span className="text-[11px] font-black text-udanix-navy/60 uppercase tracking-[0.2em]">{stat.label}</span>
                         <span className="text-sm font-black text-udanix-navy">{stat.value}%</span>
                       </div>
-                      <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div className="h-3 bg-white/40 rounded-full overflow-hidden border border-white/40">
                         <motion.div 
                           initial={{ width: 0 }}
                           whileInView={{ width: `${stat.value}%` }}
-                          transition={{ duration: 1.5, delay: 0.5 + (i * 0.2), ease: [0.16, 1, 0.3, 1] }}
+                          transition={{ duration: 2, delay: 0.5 + (i * 0.2), ease: [0.16, 1, 0.3, 1] }}
                           className={`h-full ${stat.color} rounded-full relative`}
                         >
-                          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent" />
                         </motion.div>
                       </div>
                     </div>
@@ -165,11 +165,11 @@ export function CareerAssessment() {
 
                 {/* Visual Radar/Circle Mockup */}
                 <div className="relative flex justify-center py-10">
-                    <div className="w-48 h-48 rounded-full border-[10px] border-slate-50 relative flex items-center justify-center">
-                        <div className="absolute inset-0 border-[1px] border-dashed border-slate-200 animate-spin-slow rounded-full" />
-                        <div className="w-32 h-32 rounded-full bg-brand-gradient/10 border border-brand-gradient/20 flex flex-col items-center justify-center p-6 text-center">
-                            <Binary className="w-8 h-8 text-udanix-orange mb-2" />
-                            <span className="text-[9px] font-black text-udanix-navy uppercase tracking-tighter leading-none">Scanning <br/> Behavioral Vibe</span>
+                    <div className="w-56 h-56 rounded-full border-[12px] border-white/40 relative flex items-center justify-center shadow-inner bg-white/20">
+                        <div className="absolute inset-[-20px] border-[1px] border-dashed border-udanix-blue/30 animate-spin-slow rounded-full" />
+                        <div className="w-36 h-36 rounded-full bg-brand-gradient/10 border border-brand-gradient/20 flex flex-col items-center justify-center p-6 text-center shadow-premium">
+                            <Binary className="w-10 h-10 text-udanix-orange mb-3" />
+                            <span className="text-[10px] font-black text-udanix-navy uppercase tracking-tighter leading-none">Scanning <br/> Behavioral Vibe</span>
                         </div>
                     </div>
                 </div>
@@ -200,9 +200,9 @@ export function CareerAssessment() {
               ))}
             </AnimatePresence>
 
-            {/* Decorative Sparkles */}
-            <div className="absolute -top-20 -left-20 w-40 h-40 bg-udanix-blue/10 blur-[80px] animate-pulse" />
-            <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-udanix-orange/10 blur-[80px] animate-pulse" />
+            {/* Decorative Glows */}
+            <div className="absolute -top-20 -left-20 w-80 h-80 bg-udanix-blue/20 blur-[120px] animate-pulse" />
+            <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-udanix-orange/20 blur-[120px] animate-pulse" />
           </div>
 
         </div>
@@ -219,18 +219,19 @@ export function CareerAssessment() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="group glass-premium p-10 rounded-[3rem] border border-white/60 hover:shadow-premium-xl transition-all duration-500 bg-white/40"
+                    transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="group glass-premium p-12 rounded-[3.5rem] border-white/60 hover:shadow-premium-xl transition-all duration-700 bg-white/40 relative overflow-hidden"
                 >
-                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-sm">
-                        <item.icon className="w-7 h-7 text-udanix-blue" />
+                    <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
+                    <div className="w-16 h-16 rounded-2xl bg-white border border-white flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 shadow-premium">
+                        <item.icon className="w-8 h-8 text-udanix-blue" />
                     </div>
-                    <h4 className="text-[11px] font-black text-udanix-orange uppercase tracking-[0.25em] mb-4 flex items-center gap-2">
+                    <h4 className="text-[11px] font-black text-udanix-orange uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
                         <Sparkles className="w-3.5 h-3.5" />
                         {item.title}
                     </h4>
-                    <p className="text-4xl font-black text-udanix-navy uppercase tracking-tighter mb-4">{item.val}</p>
-                    <p className="text-slate-500 font-bold text-sm leading-relaxed uppercase tracking-tight italic">
+                    <p className="text-5xl font-black text-udanix-navy uppercase tracking-tighter mb-4">{item.val}</p>
+                    <p className="text-slate-500 font-bold text-sm leading-relaxed uppercase tracking-tight italic opacity-70">
                         {item.desc}
                     </p>
                 </motion.div>
