@@ -6,7 +6,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Rocket, Zap, ArrowRight, Star } from 'lucide-react';
 import { fadeUp, staggerContainer as stagger } from '@/lib/animations';
 
-import { DashboardPreview } from './dashboard-preview';
 
 export function HeroSection({ user }: { user: any }) {
   return (
@@ -95,13 +94,7 @@ export function HeroSection({ user }: { user: any }) {
             </Link>
           </motion.div>
 
-          {/* Dashboard Preview Component */}
-          <motion.div 
-            variants={fadeUp}
-            className="w-full"
-          >
-            <DashboardPreview />
-          </motion.div>
+
         </motion.div>
       </div>
     </section>

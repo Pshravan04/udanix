@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 
 import { HeroSection } from '@/components/hero-section';
-import { StatsSection } from '@/components/stats-section';
 import { CtaSection } from '@/components/cta-section';
 import { StreamExplorer } from '@/components/stream-explorer';
 import { CareerPaths } from '@/components/career-paths';
@@ -14,8 +13,7 @@ import { CounselorSection } from '@/components/counselor-section';
 import { StudentLoginModal } from '@/components/auth/student-login-modal';
 import { CareerAssessment } from '@/components/career-assessment';
 import { SuccessGallery } from '@/components/success-gallery';
-import { ProcessJourney } from '@/components/process-journey';
-import { DashboardPreview } from '@/components/dashboard-preview';
+import { DoubleDashboardPreview } from '@/components/double-dashboard-preview';
 
 export default function Home() {
   const [user, setUser] = useState<any>(null);
@@ -92,15 +90,7 @@ export default function Home() {
       <HeroSection user={user} />
 
       {/* ─── DASHBOARD PREVIEW ─── */}
-      <div className="py-24 bg-[#FAFAFA] border-y border-slate-100">
-        <DashboardPreview />
-      </div>
-
-      {/* ─── THE JOURNEY (Process) ─── */}
-      <ProcessJourney />
-
-      {/* ─── IMPACT SECTION (Dynamic Dashboard) ─── */}
-      <StatsSection />
+      <DoubleDashboardPreview />
 
       {/* ─── CAREER ASSESSMENT ─── */}
       <div className="overflow-x-auto pb-12 hide-scrollbar lg:overflow-x-hidden">
