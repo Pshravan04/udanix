@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    TrendingUp, Clock,
-    Code, Stethoscope, BarChart,
-    HardHat, Calculator, Landmark, LineChart,
+    TrendingUp, Clock, IndianRupee, Users, ExternalLink,
+    Code, Stethoscope, BarChart, HardHat, Calculator, Landmark, LineChart,
     Megaphone, PenTool, Pen, Scale, Brain, Sparkles, ArrowRight,
     LucideIcon
 } from 'lucide-react';
@@ -183,50 +182,29 @@ export function CareerPaths() {
     const [activeTab, setActiveTab] = useState<Category>('Science');
 
     return (
-        <section className="py-32 relative overflow-hidden bg-slate-50/30">
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-            <div className="max-w-[1280px] mx-auto px-8 relative z-10">
-
+        <section className="py-24 relative bg-white overflow-hidden">
+            <div className="max-w-[1440px] mx-auto px-6 relative z-10">
+                
                 {/* Header */}
-                <div className="text-center mb-16 space-y-6">
-                    <motion.div 
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-premium border border-white/60 text-udanix-blue text-[11px] font-black uppercase tracking-[0.2em] shadow-sm"
-                    >
-                        <TrendingUp className="w-3.5 h-3.5 text-udanix-orange" />
-                        Market Insights
-                    </motion.div>
-                    <motion.h2 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-[48px] sm:text-[56px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.9]"
-                    >
-                        Popular <span className="text-brand-gradient">Career Paths</span>
-                    </motion.h2>
-                    <motion.p 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-slate-500 text-xl leading-relaxed font-semibold italic max-w-2xl mx-auto"
-                    >
-                        &quot;Explore trending careers across different streams with detailed insights on growth, salary, and skills required.&quot;
-                    </motion.p>
+                <div className="text-center mb-16 space-y-4">
+                    <h2 className="text-2xl font-semibold text-slate-800">Popular Career Paths</h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                        Explore trending careers across different streams with detailed insights on growth, salary, and skills required
+                    </p>
                 </div>
 
                 {/* Tabs */}
-                <div className="flex justify-center mb-20">
-                    <div className="inline-flex items-center glass-premium p-2 rounded-[2rem] border border-white/60 shadow-premium">
+                <div className="flex justify-center mb-12">
+                    <div className="inline-flex p-1 bg-slate-100 rounded-full">
                         {CATEGORIES.map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab as Category)}
-                                className={`px-12 py-3.5 rounded-[1.5rem] text-[12px] font-black uppercase tracking-widest transition-all duration-500 ${activeTab === tab
-                                        ? 'bg-brand-gradient text-white shadow-premium'
-                                        : 'text-slate-500 hover:text-udanix-blue hover:bg-white/50'
-                                    }`}
+                                className={`px-10 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                                    activeTab === tab 
+                                    ? 'bg-white text-slate-900 shadow-sm' 
+                                    : 'text-slate-500 hover:text-slate-700'
+                                }`}
                             >
                                 {tab}
                             </button>
@@ -235,104 +213,105 @@ export function CareerPaths() {
                 </div>
 
                 {/* Grid */}
-                <div className="relative min-h-[600px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeTab}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-8"
-                        >
-                            {CAREERS[activeTab].map((career: Career, i: number) => {
-                                // Dynamic grid spans for asymmetrical look
-                                const spans = [
-                                    'md:col-span-3 lg:col-span-4 lg:row-span-2', // Card 1: Large
-                                    'md:col-span-3 lg:col-span-4',               // Card 2: Medium
-                                    'md:col-span-3 lg:col-span-4',               // Card 3: Medium
-                                    'md:col-span-3 lg:col-span-8',               // Card 4: Wide
-                                ];
-                                const spanClass = spans[i % spans.length];
+                        {CAREERS[activeTab].map((career, idx) => (
+                            <motion.div
+                                key={`${activeTab}-${career.title}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                                className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
+                            >
+                                {/* Header: Title & Demand */}
+                                <div className="flex justify-between items-start mb-2">
+                                    <h3 className="text-xl font-semibold text-slate-900">{career.title}</h3>
+                                    <span className={`px-2.5 py-1 rounded-lg text-[11px] font-bold ${
+                                        career.demand.includes('High') ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'
+                                    }`}>
+                                        {career.demand}
+                                    </span>
+                                </div>
 
-                                return (
-                                    <motion.div
-                                        key={career.title}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: i * 0.1 }}
-                                        className={`glass-card-premium rounded-[3rem] p-10 flex flex-col hover:shadow-premium-xl transition-all duration-700 group border-beam ${spanClass}`}
-                                    >
-                                        {/* Background Decoration */}
-                                        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gradient/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-gradient/10 transition-colors" />
+                                {/* Stream Badge */}
+                                <div className="mb-4">
+                                    <span className="px-2.5 py-1 bg-slate-50 text-slate-500 rounded text-[11px] font-semibold border border-slate-100">
+                                        {career.stream}
+                                    </span>
+                                </div>
 
-                                        {/* Icon Header */}
-                                        <div className="flex items-start justify-between mb-10 relative z-10">
-                                            <div className="w-16 h-16 rounded-[1.5rem] bg-white flex items-center justify-center shadow-xl border border-slate-50 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                                                <career.icon className="w-8 h-8 text-udanix-blue" />
-                                            </div>
-                                            <div className={`px-4 py-1.5 rounded-full border border-white shadow-sm text-[10px] font-black uppercase tracking-widest ${career.demandColor}`}>
-                                                {career.demand}
-                                            </div>
+                                {/* Description */}
+                                <p className="text-slate-500 text-sm mb-6 line-clamp-2">
+                                    {career.desc}
+                                </p>
+
+                                {/* Stats Grid */}
+                                <div className="grid grid-cols-2 gap-y-5 gap-x-4 mb-8">
+                                    {/* Growth */}
+                                    <div className="flex gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-emerald-500">
+                                            <TrendingUp className="w-4 h-4" />
                                         </div>
-
-                                        {/* Content */}
-                                        <div className="space-y-4 mb-8 relative z-10">
-                                            <h3 className="text-2xl font-black text-udanix-navy leading-none tracking-tight group-hover:text-udanix-blue transition-colors uppercase">
-                                                {career.title}
-                                            </h3>
-                                            <p className="text-slate-500 text-[14px] leading-relaxed font-semibold">
-                                                {career.desc}
-                                            </p>
+                                        <div>
+                                            <p className="text-[10px] text-slate-400 font-medium">Growth Rate</p>
+                                            <p className="text-[13px] font-semibold text-slate-700">{career.growth}</p>
                                         </div>
+                                    </div>
 
-                                        {/* Feature Grid */}
-                                        <div className="grid grid-cols-2 gap-4 mb-10 relative z-10">
-                                            <div className="p-5 rounded-[2rem] bg-white/40 border border-white/60">
-                                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Growth</p>
-                                                <p className="text-[14px] font-black text-udanix-navy uppercase">{career.growth}</p>
-                                            </div>
-                                            <div className="p-5 rounded-[2rem] bg-white/40 border border-white/60">
-                                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Salary</p>
-                                                <p className="text-[14px] font-black text-udanix-navy uppercase">{career.salary}</p>
-                                            </div>
+                                    {/* Salary */}
+                                    <div className="flex gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-blue-500">
+                                            <IndianRupee className="w-4 h-4" />
                                         </div>
+                                        <div>
+                                            <p className="text-[10px] text-slate-400 font-medium">Salary Range</p>
+                                            <p className="text-[13px] font-semibold text-slate-700">{career.salary}</p>
+                                        </div>
+                                    </div>
 
-                                        {/* Footer */}
-                                        <div className="mt-auto pt-8 border-t border-slate-100 flex items-center justify-between relative z-10">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center border border-white">
-                                                    <Clock className="w-4 h-4 text-slate-400" />
-                                                </div>
-                                                <span className="text-[11px] font-black text-udanix-navy uppercase tracking-tight">{career.duration}</span>
-                                            </div>
-                                            <button className="flex items-center gap-2 text-[11px] font-black text-udanix-blue uppercase tracking-widest group/btn transition-all">
-                                                Roadmap
-                                                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                                            </button>
+                                    {/* Duration */}
+                                    <div className="flex gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-purple-500">
+                                            <Clock className="w-4 h-4" />
                                         </div>
-                                    </motion.div>
-                                );
-                            })}
-                        </motion.div>
+                                        <div>
+                                            <p className="text-[10px] text-slate-400 font-medium">Duration</p>
+                                            <p className="text-[13px] font-semibold text-slate-700">{career.duration}</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Skills */}
+                                    <div className="flex gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-orange-500">
+                                            <Users className="w-4 h-4" />
+                                        </div>
+                                        <div>
+                                            <p className="text-[10px] text-slate-400 font-medium">4 Skills</p>
+                                            <p className="text-[13px] font-semibold text-slate-700 truncate max-w-[100px]">{career.skills}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Action Button */}
+                                <button className="mt-auto w-full py-2.5 px-4 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
+                                    View Details
+                                    <ExternalLink className="w-4 h-4" />
+                                </button>
+                            </motion.div>
+                        ))}
                     </AnimatePresence>
                 </div>
 
-                {/* Footer Button */}
-                <div className="mt-20 text-center">
-                    <motion.button 
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center gap-4 px-10 py-5 glass-premium border border-white text-udanix-navy text-[13px] font-black uppercase tracking-[0.3em] rounded-[2rem] shadow-premium hover:shadow-premium-xl transition-all"
-                    >
-                        Explore 500+ Careers
-                        <div className="w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-white shadow-sm">
-                            <Sparkles className="w-4 h-4" />
-                        </div>
-                    </motion.button>
+                {/* Explore All Careers Button */}
+                <div className="mt-16 text-center">
+                    <Link href="/careers">
+                        <button className="px-8 py-3 border border-slate-200 rounded-xl text-sm font-bold text-slate-800 hover:bg-slate-50 transition-all shadow-sm">
+                            Explore All Careers (500+)
+                        </button>
+                    </Link>
                 </div>
             </div>
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         </section>
     );
 }

@@ -10,6 +10,7 @@ import { HeroSection } from '@/components/hero-section';
 import { CtaSection } from '@/components/cta-section';
 import { DoubleDashboardPreview } from '@/components/double-dashboard-preview';
 import { StreamExplorer } from '@/components/stream-explorer';
+import { CareerPaths } from '@/components/career-paths';
 import { StudentLoginModal } from '@/components/auth/student-login-modal';
 
 export default function Home() {
@@ -80,6 +81,9 @@ export default function Home() {
 
       {/* ─── STREAM EXPLORER ─── */}
       <StreamExplorer />
+
+      {/* ─── CAREER PATHS ─── */}
+      <CareerPaths />
 
       {/* ─── CTA SECTION ─── */}
       <CtaSection />
