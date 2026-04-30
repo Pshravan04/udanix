@@ -9,6 +9,7 @@ import { User } from '@supabase/supabase-js';
 import { HeroSection } from '@/components/hero-section';
 import { CtaSection } from '@/components/cta-section';
 import { DoubleDashboardPreview } from '@/components/double-dashboard-preview';
+import { StreamExplorer } from '@/components/stream-explorer';
 import { StudentLoginModal } from '@/components/auth/student-login-modal';
 
 export default function Home() {
@@ -76,6 +77,9 @@ export default function Home() {
 
       {/* ─── DASHBOARD PREVIEW ─── */}
       <DoubleDashboardPreview />
+
+      {/* ─── STREAM EXPLORER ─── */}
+      <StreamExplorer />
 
       {/* ─── CTA SECTION ─── */}
       <CtaSection />
