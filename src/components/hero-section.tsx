@@ -8,7 +8,7 @@ import { fadeUp, staggerContainer as stagger } from '@/lib/animations';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen pt-32 pb-32 overflow-hidden bg-white">
+    <section className="relative pt-32 pb-0 overflow-hidden bg-white">
       {/* ─── ENHANCED BACKGROUND ─── */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         {/* Animated Mesh Gradients */}
@@ -77,17 +77,9 @@ export function HeroSection() {
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 mb-24">
-            <Link href="/assessment">
-              <button className="group relative bg-slate-900 text-white text-[13px] font-black py-6 px-14 rounded-2xl shadow-2xl shadow-slate-200 hover:scale-[1.05] active:scale-[0.98] transition-all uppercase tracking-widest overflow-hidden">
-                <span className="relative z-10 flex items-center gap-3">
-                  Take Free Assessment <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-udanix-blue to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </button>
-            </Link>
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 mb-20">
             <Link href="/counselors">
-              <button className="bg-white text-slate-900 text-[13px] font-black py-6 px-14 rounded-2xl border-2 border-slate-100 hover:bg-slate-50 hover:border-slate-200 transition-all uppercase tracking-widest">
+              <button className="bg-slate-900 text-white text-[13px] font-black py-6 px-14 rounded-2xl shadow-2xl shadow-slate-200 hover:scale-[1.05] active:scale-[0.98] transition-all uppercase tracking-widest">
                 Talk to Counselor
               </button>
             </Link>

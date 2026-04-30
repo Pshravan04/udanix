@@ -113,13 +113,7 @@ export default function StudentDashboard() {
             
             {/* Quick Action Card */}
             <div className="space-y-6">
-                <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white shadow-2xl shadow-slate-900/10 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16 group-hover:scale-110 transition-transform duration-700" />
-                    <Sparkles className="w-10 h-10 mb-8 text-udanix-blue" />
-                    <h3 className="text-2xl font-black tracking-tight uppercase mb-4 leading-none" style={{ fontFamily: 'var(--font-space-grotesk)' }}>Assessment Center</h3>
-                    <p className="text-slate-400 text-sm font-medium mb-10">Complete your interest pulse to unlock advanced counselor matching.</p>
-                    <button className="w-full py-5 bg-udanix-blue text-white text-[11px] font-black uppercase tracking-widest rounded-2xl shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all">Start Assessment</button>
-                </div>
+                {/* Removed Assessment Center */}
             </div>
         </div>
       </main>
