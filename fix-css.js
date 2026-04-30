@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
 let css = fs.readFileSync('src/app/globals.css', 'utf8');
 

@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
+import { Profile, Session } from '@/types';
 
 const UPCOMING = [
   { student: 'Jordan M.', type: 'Video', time: 'Today 4:00 PM', topic: 'Career Path', initials: 'JM' },
@@ -27,9 +28,9 @@ export default function CounselorDashboard() {
   const supabase = createClient();
   const [loading, setLoading] = useState(true);
   const [isLive, setIsLive] = useState(false);
-  const [sessions, setSessions] = useState([] as any[]);
-  const [students, setStudents] = useState([] as any[]);
-  const [profile, setProfile] = useState<any>(null);
+  const [sessions, setSessions] = useState<Session[]>([]);
+  const [students, setStudents] = useState<Profile[]>([]);
+  const [profile, setProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
     async function loadDashboard() {

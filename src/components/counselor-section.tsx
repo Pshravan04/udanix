@@ -1,13 +1,15 @@
 'use client';
 
+import { useMemo, useId, useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
     Star, MessageSquare, Video, ArrowRight, Sparkles, 
     ShieldCheck, Calendar, Globe, Award, Zap,
     TrendingUp, Users, CheckCircle2, Clock
 } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState, useEffect } from 'react';
+
 
 const COUNSELORS = [
     {
@@ -102,7 +104,18 @@ const COUNSELORS = [
     }
 ];
 
+
 function FloatingBadge({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) {
+    const id = useId();
+    const randomDuration = useMemo(() => {
+        let hash = 0;
+        for (let i = 0; i < id.length; i++) {
+            hash = (hash << 5) - hash + id.charCodeAt(i);
+            hash |= 0;
+        }
+        return 3 + (Math.abs(hash) % 2000 / 1000);
+    }, [id]);
+
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -114,7 +127,7 @@ function FloatingBadge({ children, delay = 0, className = "" }: { children: Reac
             transition={{ 
                 delay,
                 y: {
-                    duration: 3 + Math.random() * 2,
+                    duration: randomDuration,
                     repeat: Infinity,
                     ease: "easeInOut"
                 }
@@ -172,7 +185,7 @@ export function CounselorSection() {
                     </motion.h2>
                     
                     <p className="text-slate-500 font-medium max-w-2xl text-xl leading-relaxed mb-16">
-                        Bypass the trial and error. Get direct access to the consultants who have placed students in the world's top 0.1% institutions and tech firms.
+                        Bypass the trial and error. Get direct access to the consultants who have placed students in the world&apos;s top 0.1% institutions and tech firms.
                     </p>
 
                     {/* Category Filter */}
@@ -209,9 +222,11 @@ export function CounselorSection() {
                                 {/* Visual Section */}
                                 <div className="relative mb-10 group/img">
                                     <div className="relative w-full aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white">
-                                        <img 
+                                        <Image 
                                             src={c.avatar} 
                                             alt={c.name} 
+                                            width={400}
+                                            height={500}
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms] ease-out" 
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-udanix-navy/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

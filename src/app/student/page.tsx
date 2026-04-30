@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { DashboardStats } from '@/components/dashboard/stat-cards';
 import { UpcomingSessions } from '@/components/dashboard/upcoming-sessions';
@@ -8,12 +8,13 @@ import { StudentSidebar } from '@/components/dashboard/student-sidebar';
 import { createClient } from '@/lib/supabase/client';
 import { Loader2, Sparkles, Plus } from 'lucide-react';
 import Link from 'next/link';
+import { Profile, Session } from '@/types';
 
 export default function StudentDashboard() {
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState<any>(null);
-  const [sessions, setSessions] = useState<any[]>([]);
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [sessions, setSessions] = useState<Session[]>([]);
 
   useEffect(() => {
     async function loadStudentData() {

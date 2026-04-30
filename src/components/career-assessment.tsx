@@ -66,7 +66,7 @@ export function CareerAssessment() {
             </motion.h2>
             
             <p className="text-slate-500 font-medium text-xl leading-relaxed mb-16">
-              Our proprietary AI-driven assessments don't just test your knowledge; they map your cognitive potential to the world's most lucrative career paths.
+              Our proprietary AI-driven assessments don&apos;t just test your knowledge; they map your cognitive potential to the world&apos;s most lucrative career paths.
             </p>
 
             <div className="space-y-8">

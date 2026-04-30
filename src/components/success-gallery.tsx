@@ -1,9 +1,10 @@
 'use client';
 
-import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
-import { Trophy, Users, Star, Quote, ArrowUpRight, CheckCircle2, TrendingUp, Award, GraduationCap } from 'lucide-react';
-import { useRef, useEffect, useState } from 'react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { Users, Star, Quote, ArrowUpRight, TrendingUp, GraduationCap } from 'lucide-react';
+import { useRef } from 'react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const SUCCESS_STORIES = [
   {
@@ -11,7 +12,7 @@ const SUCCESS_STORIES = [
     type: 'testimonial',
     name: "Aryan Singh",
     role: "Software Engineer @ Google",
-    content: "Udanix didn't just give me a list of careers; it gave me a roadmap to my dream job in AI.",
+    content: "Udanix didn&apos;t just give me a list of careers; it gave me a roadmap to my dream job in AI.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
     size: 'large',
     color: 'blue'
@@ -126,7 +127,7 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
         
         <div className="flex gap-6 items-center mb-6">
           <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-white shadow-premium shrink-0">
-            <img src={item.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt={item.name} />
+            <Image src={item.image!} width={64} height={64} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt={item.name!} />
           </div>
           <div>
             <p className="text-udanix-navy font-black uppercase tracking-tight">{item.name}</p>
@@ -137,7 +138,7 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
         <div className="relative">
           <Quote className="w-10 h-10 text-udanix-orange/20 absolute -top-4 -left-4 -z-10" />
           <p className="text-slate-500 font-semibold italic leading-relaxed text-lg">
-            "{item.content}"
+            &quot;{item.content}&quot;
           </p>
         </div>
 
@@ -185,7 +186,7 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
           item.size === 'large' ? 'h-[500px]' : 'h-[350px]'
         )}
       >
-        <img src={item.image} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="" />
+        <Image src={item.image!} fill className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="" />
         <div className="absolute inset-0 bg-gradient-to-t from-udanix-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
           <p className="text-white font-black uppercase tracking-widest text-[10px] bg-udanix-blue/80 backdrop-blur-md px-4 py-2 rounded-full inline-block">
@@ -246,14 +247,13 @@ export function SuccessGallery() {
               The Impact Wall
             </span>
           </motion.div>
-          
           <h2 className="text-[56px] sm:text-[80px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.85]">
             Real Results. <br />
             <span className="text-brand-gradient">Unlimited</span> Potential.
           </h2>
           
           <p className="text-slate-500 text-xl font-semibold italic">
-            "Join the global network of high-achievers who transformed their professional trajectory with Udanix precision counseling."
+            &quot;Join the global network of high-achievers who transformed their professional trajectory with Udanix precision counseling.&quot;
           </p>
         </div>
 
@@ -274,7 +274,7 @@ export function SuccessGallery() {
             <div className="flex -space-x-4">
               {[1, 2, 3, 4, 5].map(i => (
                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                  <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="" />
+                  <Image src={`https://i.pravatar.cc/100?img=${i + 10}`} width={40} height={40} alt="" />
                 </div>
               ))}
             </div>

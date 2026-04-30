@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import {
-  Users, TrendingUp, DollarSign, AlertCircle, CheckCircle2,
-  Clock, Shield, Search, ArrowRight, BarChart3, Zap, Loader2,
+  Users, AlertCircle, Clock, Search, ArrowRight, Loader2,
   Lock, Activity, Layers, Database
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
+import { Profile } from '@/types';
 
 
 const STATUS_STYLES: Record<string, string> = {
@@ -29,7 +29,7 @@ export default function AdminDashboard() {
   const supabase = createClient();
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
-  const [counselors, setCounselors] = useState([] as any[]);
+  const [counselors, setCounselors] = useState<Profile[]>([]);
   const [stats, setStats] = useState({
     totalUsers: 0,
     activeCounselors: 0,

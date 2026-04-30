@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
     ArrowRight, 
     Mail, 
@@ -87,7 +88,7 @@ export function Footer() {
                         <div className="space-y-8">
                             <Link href="/" className="inline-block hover:scale-105 transition-transform group">
                                 <div className="flex items-center gap-4">
-                                    <img src="/logo.jpg" alt="Udaanix" className="h-10 w-auto brightness-200 grayscale contrast-125" />
+                                    <Image src="/logo.jpg" alt="Udaanix" width={100} height={40} className="h-10 w-auto brightness-200 grayscale contrast-125" />
                                     <div className="h-8 w-px bg-white/10" />
                                     <span className="text-[10px] font-black text-white uppercase tracking-[0.4em] opacity-40 group-hover:opacity-100 transition-opacity">Intelligence</span>
                                 </div>

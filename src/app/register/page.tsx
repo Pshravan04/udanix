@@ -177,7 +177,7 @@ export default function RegisterPage() {
                     {/* Branding Quote */}
                     <div className="pt-12 border-t border-slate-200/60 max-w-[240px]">
                         <p className="text-slate-400 text-sm leading-relaxed font-medium italic">
-                            "The best way to predict the future is to architect it."
+                            &quot;The best way to predict the future is to architect it.&quot;
                         </p>
                     </div>
                 </div>

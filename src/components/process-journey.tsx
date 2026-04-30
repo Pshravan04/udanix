@@ -7,6 +7,7 @@ import {
     Sparkles, CheckCircle2, ArrowRight, Zap, Target, Layers
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const STEPS = [
     {
@@ -159,7 +160,7 @@ export function ProcessJourney() {
                                     </div>
 
                                     <p className="text-slate-500 text-2xl font-bold italic leading-relaxed max-w-xl">
-                                        "{step.desc}"
+                                        &quot;{step.desc}&quot;
                                     </p>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -199,9 +200,10 @@ export function ProcessJourney() {
                                     className="absolute inset-0"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-t from-udanix-navy/60 via-transparent to-transparent z-10" />
-                                    <img 
+                                    <Image 
                                         src={STEPS[activeStep].image} 
                                         alt={STEPS[activeStep].title}
+                                        fill
                                         className="object-cover w-full h-full"
                                     />
                                     

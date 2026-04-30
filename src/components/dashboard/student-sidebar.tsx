@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { 
   Home,
   LayoutDashboard, 
@@ -30,7 +31,7 @@ export function StudentSidebar() {
       {/* Logo */}
       <div className="mb-10 px-2 mt-2">
         <Link href="/">
-          <img src="/logo.jpg" alt="Udaanix" className="h-9 w-auto" />
+          <Image src="/logo.jpg" alt="Udaanix" width={100} height={36} className="h-9 w-auto" />
         </Link>
       </div>
 

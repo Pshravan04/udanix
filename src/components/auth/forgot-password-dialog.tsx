@@ -79,7 +79,7 @@ export function ForgotPasswordDialog() {
                                 </div>
                                 <DialogTitle className="text-3xl font-black tracking-tighter text-slate-900 leading-tight uppercase">Access Recovery</DialogTitle>
                                 <DialogDescription className="text-slate-500 font-medium text-lg leading-snug pt-1">
-                                    Initialize the reset sequence. We'll transmit a secure sync key to your Gmail.
+                                    Initialize the reset sequence. We&apos;ll transmit a secure sync key to your Gmail.
                                 </DialogDescription>
                             </div>
 

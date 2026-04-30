@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -108,7 +109,7 @@ export default function StudentSessions() {
               <AlertCircle className="w-10 h-10 text-slate-200" />
             </div>
             <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-2">No Active Logs</h3>
-            <p className="text-slate-400 font-medium">You haven't scheduled any sessions yet. Visit the directory node.</p>
+            <p className="text-slate-400 font-medium">You haven&apos;t scheduled any sessions yet. Visit the directory node.</p>
             <Button variant="outline" className="mt-8 rounded-2xl px-10 h-12 text-[10px] font-black uppercase tracking-widest border-2 hover:bg-udanix-blue hover:text-white transition-all">
               Launch Directory
             </Button>
@@ -130,7 +131,7 @@ export default function StudentSessions() {
                   <div className="flex items-center gap-8">
                     <div className="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 overflow-hidden relative">
                       {session.profiles?.avatar_url ? (
-                        <img src={session.profiles.avatar_url} alt="" className="w-full h-full object-cover" />
+                        <Image src={session.profiles.avatar_url} alt="" width={80} height={80} className="w-full h-full object-cover" />
                       ) : (
                         <User className="w-8 h-8 text-slate-300" />
                       )}
@@ -143,7 +144,7 @@ export default function StudentSessions() {
                         )}
                       </div>
                       <p className="text-udanix-blue text-[10px] font-black uppercase tracking-[0.2em]">{session.profiles?.stream || 'EXPERT_NODE'}</p>
-                      <p className="text-slate-400 font-medium text-sm pt-2 italic line-clamp-1">"{session.topic || 'No topic specified'}"</p>
+                      <p className="text-slate-400 font-medium text-sm pt-2 italic line-clamp-1">&quot;{session.topic || 'No topic specified'}&quot;</p>
                     </div>
                   </div>
 

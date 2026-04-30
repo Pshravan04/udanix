@@ -1,0 +1,271 @@
+﻿
+D:\TGM state - Website details\UDANIX\fix-css.js
+  1:12  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\TGM state - Website details\UDANIX\src\app\admin\page.tsx
+   7:10  warning  'TrendingUp' is defined but never used    @typescript-eslint/no-unused-vars
+   7:22  warning  'DollarSign' is defined but never used    @typescript-eslint/no-unused-vars
+   7:47  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+   8:10  warning  'Shield' is defined but never used        @typescript-eslint/no-unused-vars
+   8:38  warning  'BarChart3' is defined but never used     @typescript-eslint/no-unused-vars
+   8:49  warning  'Zap' is defined but never used           @typescript-eslint/no-unused-vars
+  32:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\TGM state - Website details\UDANIX\src\app\counselor\page.tsx
+   7:15  warning  'Calendar' is defined but never used           @typescript-eslint/no-unused-vars
+   8:10  warning  'TrendingUp' is defined but never used         @typescript-eslint/no-unused-vars
+   8:22  warning  'CheckCircle2' is defined but never used       @typescript-eslint/no-unused-vars
+   8:48  warning  'Zap' is defined but never used                @typescript-eslint/no-unused-vars
+  13:7   warning  'UPCOMING' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  19:7   warning  'STUDENTS' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  30:50  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  31:50  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  32:42  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  63:89  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  64:61  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+
+D:\TGM state - Website details\UDANIX\src\app\login\admin\page.tsx
+   9:44  warning  'Eye' is defined but never used                       @typescript-eslint/no-unused-vars
+   9:49  warning  'EyeOff' is defined but never used                    @typescript-eslint/no-unused-vars
+  16:26  warning  'setShowPassword' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\login\counselor\page.tsx
+  9:50  warning  'Briefcase' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\login\page.tsx
+  5:61  warning  'Sparkles' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\login\student\page.tsx
+   8:18  warning  'AnimatePresence' is defined but never used  @typescript-eslint/no-unused-vars
+   9:60  warning  'User' is defined but never used             @typescript-eslint/no-unused-vars
+   9:66  warning  'ShieldCheck' is defined but never used      @typescript-eslint/no-unused-vars
+  27:21  warning  'data' is assigned a value but never used    @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\onboarding\counselor\page.tsx
+  7:10  warning  'Card' is defined but never used             @typescript-eslint/no-unused-vars
+  7:16  warning  'CardContent' is defined but never used      @typescript-eslint/no-unused-vars
+  7:29  warning  'CardHeader' is defined but never used       @typescript-eslint/no-unused-vars
+  7:41  warning  'CardTitle' is defined but never used        @typescript-eslint/no-unused-vars
+  7:52  warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+  9:10  warning  'Badge' is defined but never used            @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\onboarding\student\page.tsx
+  8:10  warning  'Badge' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\page.tsx
+    7:10   warning  'Button' is defined but never used                               @typescript-eslint/no-unused-vars
+   15:5    warning  'Play' is defined but never used                                 @typescript-eslint/no-unused-vars
+   19:5    warning  'CheckCircle2' is defined but never used                         @typescript-eslint/no-unused-vars
+   24:5    warning  'Quote' is defined but never used                                @typescript-eslint/no-unused-vars
+   36:7    warning  'FEATURES' is assigned a value but never used                    @typescript-eslint/no-unused-vars
+   59:36   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  179:21   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  179:96   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  361:19   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  361:121  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  445:111  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  445:123  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  544:17   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  544:125  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  626:21   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  626:34   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  658:21   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  658:34   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+D:\TGM state - Website details\UDANIX\src\app\register\page.tsx
+    3:20  warning  'useCallback' is defined but never used                          @typescript-eslint/no-unused-vars
+   11:23  warning  'Brain' is defined but never used                                @typescript-eslint/no-unused-vars
+   14:10  warning  'UNIVERSITIES' is defined but never used                         @typescript-eslint/no-unused-vars
+   14:24  warning  'DEGREES' is defined but never used                              @typescript-eslint/no-unused-vars
+  180:29  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  180:84  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+D:\TGM state - Website details\UDANIX\src\app\session\[id]\page.tsx
+   5:10  warning  'motion' is defined but never used        @typescript-eslint/no-unused-vars
+  15:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\TGM state - Website details\UDANIX\src\app\student\directory\page.tsx
+   7:18  warning  'Filter' is defined but never used          @typescript-eslint/no-unused-vars
+   8:10  warning  'Badge' is defined but never used           @typescript-eslint/no-unused-vars
+  16:54  error    Unexpected any. Specify a different type    @typescript-eslint/no-explicit-any
+  20:21  warning  'error' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\student\page.tsx
+  15:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  16:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\TGM state - Website details\UDANIX\src\app\student\profile\page.tsx
+    7:18  warning  'CheckCircle2' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+   10:10  warning  'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+   16:7   warning  'Linkedin' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+   36:7   warning  'STATS' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+   50:7   warning  'RECENT_SESSIONS' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+   80:21  warning  'error' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  101:9   error    Error: Cannot access variable before it is declared
+
+`setStudentStats` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\TGM state - Website details\UDANIX\src\app\student\profile\page.tsx:101:9
+   99 |         
+  100 |         // Update stats with real data
+> 101 |         setStudentStats({
+      |         ^^^^^^^^^^^^^^^ `setStudentStats` accessed before it is declared
+  102 |           sessions: data.sessions_count || 0,
+  103 |           rating: data.rating || 5.0,
+  104 |           goals: '72%' // Placeholder for now
+
+D:\TGM state - Website details\UDANIX\src\app\student\profile\page.tsx:122:24
+  120 |   }, [supabase]);
+  121 |
+> 122 |   const [studentStats, setStudentStats] = useState({ sessions: 0, rating: 5.0, goals: '0%' });
+      |                        ^^^^^^^^^^^^^^^ `setStudentStats` is declared here
+  123 |   const [recentSessions, setRecentSessions] = useState<any[]>([]);
+  124 |
+  125 |   const handleSave = async () => {  react-hooks/immutability
+  115:24  error    Error: Cannot access variable before it is declared
+
+`setRecentSessions` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\TGM state - Website details\UDANIX\src\app\student\profile\page.tsx:115:24
+  113 |         .order('start_time', { ascending: false })
+  114 |         .limit(3);
+> 115 |       if (sessionData) setRecentSessions(sessionData);
+      |                        ^^^^^^^^^^^^^^^^^ `setRecentSessions` accessed before it is declared
+  116 |
+  117 |       setLoading(false);
+  118 |     }
+
+D:\TGM state - Website details\UDANIX\src\app\student\profile\page.tsx:123:26
+  121 |
+  122 |   const [studentStats, setStudentStats] = useState({ sessions: 0, rating: 5.0, goals: '0%' });
+> 123 |   const [recentSessions, setRecentSessions] = useState<any[]>([]);
+      |                          ^^^^^^^^^^^^^^^^^ `setRecentSessions` is declared here
+  124 |
+  125 |   const handleSave = async () => {
+  126 |     setSaving(true);                   react-hooks/immutability
+  123:56  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-explicit-any
+  427:28  warning  'i' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\student\progress\page.tsx
+   6:3   warning  'Trophy' is defined but never used             @typescript-eslint/no-unused-vars
+   6:19  warning  'Star' is defined but never used               @typescript-eslint/no-unused-vars
+  15:9   warning  'supabase' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  17:17  warning  'setStats' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\app\student\sessions\page.tsx
+    8:3    warning  'Search' is defined but never used                               @typescript-eslint/no-unused-vars
+    8:11   warning  'Filter' is defined but never used                               @typescript-eslint/no-unused-vars
+    8:19   warning  'Sparkles' is defined but never used                             @typescript-eslint/no-unused-vars
+   19:44   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   27:21   warning  'error' is assigned a value but never used                       @typescript-eslint/no-unused-vars
+  147:98   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  147:138  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+D:\TGM state - Website details\UDANIX\src\components\auth\forgot-password-dialog.tsx
+   8:5   warning  'DialogHeader' is defined but never used                         @typescript-eslint/no-unused-vars
+  82:70  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\TGM state - Website details\UDANIX\src\components\auth\google-login-button.tsx
+  12:11  warning  'router' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\auth\student-login-modal.tsx
+  9:5  warning  'DialogHeader' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\booking-dialog.tsx
+   8:3   warning  'DialogFooter' is defined but never used              @typescript-eslint/no-unused-vars
+   9:3   warning  'DialogHeader' is defined but never used              @typescript-eslint/no-unused-vars
+  29:24  warning  'setSelectedDate' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\career-assessment.tsx
+  3:18  warning  'useScroll' is defined but never used       @typescript-eslint/no-unused-vars
+  3:29  warning  'useTransform' is defined but never used    @typescript-eslint/no-unused-vars
+  5:3   warning  'ClipboardCheck' is defined but never used  @typescript-eslint/no-unused-vars
+  5:19  warning  'Clock' is defined but never used           @typescript-eslint/no-unused-vars
+  5:26  warning  'BookOpen' is defined but never used        @typescript-eslint/no-unused-vars
+  5:36  warning  'UserCircle' is defined but never used      @typescript-eslint/no-unused-vars
+  6:37  warning  'Layers' is defined but never used          @typescript-eslint/no-unused-vars
+  7:3   warning  'BarChart3' is defined but never used       @typescript-eslint/no-unused-vars
+  7:14  warning  'ShieldCheck' is defined but never used     @typescript-eslint/no-unused-vars
+  7:27  warning  'Globe2' is defined but never used          @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\career-paths.tsx
+    6:17   warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+    6:36   warning  'BookOpen' is defined but never used                             @typescript-eslint/no-unused-vars
+    7:5    warning  'ExternalLink' is defined but never used                         @typescript-eslint/no-unused-vars
+  200:25   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  200:138  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  233:42   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  233:71   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+D:\TGM state - Website details\UDANIX\src\components\chat-box.tsx
+  4:16  warning  'User' is defined but never used        @typescript-eslint/no-unused-vars
+  4:22  warning  'Bot' is defined but never used         @typescript-eslint/no-unused-vars
+  7:10  warning  'ScrollArea' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\counselor-card.tsx
+   5:10  warning  'Badge' is defined but never used          @typescript-eslint/no-unused-vars
+   7:16  warning  'MessageSquare' is defined but never used  @typescript-eslint/no-unused-vars
+   7:31  warning  'Calendar' is defined but never used       @typescript-eslint/no-unused-vars
+   7:41  warning  'GraduationCap' is defined but never used  @typescript-eslint/no-unused-vars
+   7:56  warning  'Clock' is defined but never used          @typescript-eslint/no-unused-vars
+  27:3   warning  'reviews' is defined but never used        @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\counselor-section.tsx
+    3:29  warning  'useTransform' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+    3:43  warning  'AnimatePresence' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+    5:26  warning  'Video' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+    6:18  warning  'Calendar' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+   10:8   warning  'Link' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+   11:28  warning  'useEffect' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  118:35  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\TGM state - Website details\UDANIX\src\components\counselor-section.tsx:118:35
+  116 |                 delay,
+  117 |                 y: {
+> 118 |                     duration: 3 + Math.random() * 2,
+      |                                   ^^^^^^^^^^^^^ Cannot call impure function
+  119 |                     repeat: Infinity,
+  120 |                     ease: "easeInOut"
+  121 |                 }  react-hooks/purity
+  132:13  warning  'scrollYProgress' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\dashboard\student-sidebar.tsx
+  13:3  warning  'ChevronRight' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\dashboard\upcoming-sessions.tsx
+  4:20  warning  'Video' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\footer.tsx
+  7:5  warning  'ArrowRight' is defined but never used  @typescript-eslint/no-unused-vars
+  8:5  warning  'Mail' is defined but never used        @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\process-journey.tsx
+  7:5  warning  'Sparkles' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\stream-explorer.tsx
+  6:17  warning  'Rocket' is defined but never used    @typescript-eslint/no-unused-vars
+  6:25  warning  'Database' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\success-gallery.tsx
+    3:43  warning  'useSpring' is defined but never used          @typescript-eslint/no-unused-vars
+    4:10  warning  'Trophy' is defined but never used             @typescript-eslint/no-unused-vars
+    4:52  warning  'CheckCircle2' is defined but never used       @typescript-eslint/no-unused-vars
+    4:78  warning  'Award' is defined but never used              @typescript-eslint/no-unused-vars
+    5:18  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+    5:29  warning  'useState' is defined but never used           @typescript-eslint/no-unused-vars
+  227:9   warning  'isInView' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\components\ui\searchable-select.tsx
+  5:38  warning  'X' is defined but never used      @typescript-eslint/no-unused-vars
+  6:10  warning  'Input' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\lib\calendar\google.ts
+  33:35  warning  'date' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\TGM state - Website details\UDANIX\src\proxy.ts
+  37:48  warning  'options' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 147 problems (38 errors, 109 warnings)
+

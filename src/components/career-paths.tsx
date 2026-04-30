@@ -6,7 +6,7 @@ import {
     TrendingUp, DollarSign, Clock, BookOpen,
     ExternalLink, Code, Stethoscope, BarChart,
     HardHat, Calculator, Landmark, LineChart,
-    Megaphone, PenTool, Pen, Scale, Brain, Sparkles
+    Megaphone, PenTool, Pen, Scale, Brain, Sparkles, ArrowRight
 } from 'lucide-react';
 
 const CATEGORIES = ['Science', 'Commerce', 'Arts'];
@@ -164,8 +164,21 @@ const CAREERS = {
     ]
 };
 
+interface Career {
+    title: string;
+    demand: string;
+    demandColor: string;
+    stream: string;
+    desc: string;
+    growth: string;
+    salary: string;
+    duration: string;
+    skills: string;
+    icon: any; // Lucide icon
+}
+
 export function CareerPaths() {
-    const [activeTab, setActiveTab] = useState('Science');
+    const [activeTab, setActiveTab] = useState<keyof typeof CAREERS>('Science');
 
     return (
         <section className="py-32 relative overflow-hidden bg-slate-50/30">
@@ -197,7 +210,7 @@ export function CareerPaths() {
                         viewport={{ once: true }}
                         className="text-slate-500 text-xl leading-relaxed font-semibold italic max-w-2xl mx-auto"
                     >
-                        "Explore trending careers across different streams with detailed insights on growth, salary, and skills required."
+                        &quot;Explore trending careers across different streams with detailed insights on growth, salary, and skills required.&quot;
                     </motion.p>
                 </div>
 
@@ -207,7 +220,7 @@ export function CareerPaths() {
                         {CATEGORIES.map((tab) => (
                             <button
                                 key={tab}
-                                onClick={() => setActiveTab(tab)}
+                                onClick={() => setActiveTab(tab as any)}
                                 className={`px-12 py-3.5 rounded-[1.5rem] text-[12px] font-black uppercase tracking-widest transition-all duration-500 ${activeTab === tab
                                         ? 'bg-brand-gradient text-white shadow-premium'
                                         : 'text-slate-500 hover:text-udanix-blue hover:bg-white/50'
@@ -230,7 +243,7 @@ export function CareerPaths() {
                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                             className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-8"
                         >
-                            {(CAREERS as any)[activeTab].map((career: any, i: number) => {
+                            {CAREERS[activeTab].map((career: Career, i: number) => {
                                 // Dynamic grid spans for asymmetrical look
                                 const spans = [
                                     'md:col-span-3 lg:col-span-4 lg:row-span-2', // Card 1: Large

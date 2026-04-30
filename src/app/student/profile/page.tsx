@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   User, Mail, Phone, MapPin, GraduationCap, BookOpen, Star, Calendar,
@@ -12,6 +12,7 @@ import { createClient } from '@/lib/supabase/client';
 
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
+import { Profile, Session } from '@/types';
 
 const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -54,7 +55,9 @@ const RECENT_SESSIONS = [
 ];
 
 export default function StudentProfile() {
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
+  const [studentStats, setStudentStats] = useState({ sessions: 0, rating: 5.0, goals: '0%' });
+  const [recentSessions, setRecentSessions] = useState<Session[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -119,8 +122,6 @@ export default function StudentProfile() {
     loadProfile();
   }, [supabase]);
 
-  const [studentStats, setStudentStats] = useState({ sessions: 0, rating: 5.0, goals: '0%' });
-  const [recentSessions, setRecentSessions] = useState<any[]>([]);
 
   const handleSave = async () => {
     setSaving(true);
