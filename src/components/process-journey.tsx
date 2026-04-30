@@ -94,16 +94,7 @@ export function ProcessJourney() {
             <div className="max-w-[1400px] mx-auto px-8 relative z-10">
                 {/* Section Header */}
                 <div className="h-[50vh] flex flex-col items-center justify-center text-center">
-                    <motion.div 
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass-premium border-white/80 shadow-premium mb-10"
-                    >
-                        <Zap className="w-4 h-4 text-udanix-orange fill-udanix-orange animate-pulse" />
-                        <span className="text-udanix-blue text-[11px] font-black uppercase tracking-[0.4em]">
-                            The Methodology
-                        </span>
-                    </motion.div>
+
                     
                     <h2 className="text-[64px] sm:text-[90px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.85]">
                         Your <span className="text-brand-gradient">Precision</span> <br />

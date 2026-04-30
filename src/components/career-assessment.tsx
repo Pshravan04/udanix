@@ -45,14 +45,7 @@ export function CareerAssessment() {
           
           {/* Left Side: Content & Interactive Steps */}
           <div className="max-w-xl">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass-premium border-white/80 text-udanix-blue text-[11px] font-black uppercase tracking-[0.4em] shadow-premium mb-10"
-            >
-              <BrainCircuit className="w-4 h-4 text-udanix-orange animate-pulse" />
-              Scientific Precision
-            </motion.div>
+
             
             <motion.h2 
               initial={{ opacity: 0, y: 30 }}

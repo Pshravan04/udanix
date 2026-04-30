@@ -35,14 +35,7 @@ export function StatsSection() {
           {/* Left Column: Narrative & Primary Metrics */}
           <div className="lg:col-span-5 space-y-16 lg:sticky lg:top-40">
             <div className="space-y-8">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-4 text-udanix-blue font-black uppercase tracking-[0.6em] text-[10px]"
-              >
-                <div className="w-12 h-[2px] bg-udanix-blue/30" />
-                Impact Report 2024
-              </motion.div>
+
               
               <h2 className="text-[64px] sm:text-[90px] font-black text-udanix-navy tracking-[-0.05em] uppercase leading-[0.8] mb-8">
                 Data-Driven <br />

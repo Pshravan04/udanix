@@ -21,16 +21,7 @@ export function CtaSection() {
           <div className="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] bg-udanix-orange/10 rounded-full blur-[120px]" />
 
           <div className="relative z-10 max-w-5xl mx-auto space-y-16">
-            <motion.div 
-              initial={{ scale: 0.9 }}
-              whileInView={{ scale: 1 }}
-              className="inline-flex items-center gap-4 px-8 py-3 rounded-full glass-premium border border-white shadow-premium"
-            >
-              <Sparkles className="w-5 h-5 text-udanix-orange animate-pulse" />
-              <span className="text-udanix-blue text-[13px] font-black uppercase tracking-[0.4em]">
-                Limited Availability for 2024
-              </span>
-            </motion.div>
+
  
             <h2 className="text-[64px] sm:text-[100px] lg:text-[130px] font-black text-udanix-navy leading-[0.75] tracking-[-0.05em] uppercase">
               Stop Guessing.<br />
