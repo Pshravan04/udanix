@@ -111,7 +111,6 @@ export default function CounselorDirectory() {
                 name={c.full_name || 'Expert Counselor'}
                 specialty={c.stream || 'Expert Consultant'}
                 rating={c.rating || 5.0}
-                reviews={c.sessions_count || 0}
                 languages={['English']}
                 isOnline={true}
                 price={`$${c.price_per_hour || 50}`}
