@@ -224,7 +224,7 @@ function MarqueeColumn({ items, direction = 'up', speed = 20 }: { items: typeof 
 
 export function SuccessGallery() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-10%" });
+  useInView(containerRef, { once: true, margin: "-10%" });
 
   // Divide items into 3 columns for the marquee
   const col1 = [SUCCESS_STORIES[0], SUCCESS_STORIES[1], SUCCESS_STORIES[2], SUCCESS_STORIES[9]];

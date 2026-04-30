@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    TrendingUp, DollarSign, Clock, BookOpen,
-    ExternalLink, Code, Stethoscope, BarChart,
+    TrendingUp, Clock,
+    Code, Stethoscope, BarChart,
     HardHat, Calculator, Landmark, LineChart,
-    Megaphone, PenTool, Pen, Scale, Brain, Sparkles, ArrowRight
+    Megaphone, PenTool, Pen, Scale, Brain, Sparkles, ArrowRight,
+    LucideIcon
 } from 'lucide-react';
 
 const CATEGORIES = ['Science', 'Commerce', 'Arts'];
@@ -174,11 +175,12 @@ interface Career {
     salary: string;
     duration: string;
     skills: string;
-    icon: any; // Lucide icon
+    icon: LucideIcon;
 }
 
 export function CareerPaths() {
-    const [activeTab, setActiveTab] = useState<keyof typeof CAREERS>('Science');
+    type Category = keyof typeof CAREERS;
+    const [activeTab, setActiveTab] = useState<Category>('Science');
 
     return (
         <section className="py-32 relative overflow-hidden bg-slate-50/30">
@@ -220,7 +222,7 @@ export function CareerPaths() {
                         {CATEGORIES.map((tab) => (
                             <button
                                 key={tab}
-                                onClick={() => setActiveTab(tab as any)}
+                                onClick={() => setActiveTab(tab as Category)}
                                 className={`px-12 py-3.5 rounded-[1.5rem] text-[12px] font-black uppercase tracking-widest transition-all duration-500 ${activeTab === tab
                                         ? 'bg-brand-gradient text-white shadow-premium'
                                         : 'text-slate-500 hover:text-udanix-blue hover:bg-white/50'

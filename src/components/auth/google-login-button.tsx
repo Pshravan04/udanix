@@ -4,12 +4,10 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
 import { getURL } from '@/lib/utils';
 
 export function GoogleLoginButton({ role = 'student' }: { role?: 'student' | 'counselor' }) {
     const [isConnecting, setIsConnecting] = useState(false);
-    const router = useRouter();
 
     const handleGoogleLogin = async () => {
         setIsConnecting(true);

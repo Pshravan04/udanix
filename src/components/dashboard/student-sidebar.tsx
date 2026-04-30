@@ -9,8 +9,7 @@ import {
   Users, 
   Calendar, 
   TrendingUp, 
-  Settings,
-  ChevronRight
+  Settings
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

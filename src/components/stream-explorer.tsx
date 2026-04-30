@@ -3,9 +3,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Cpu, Beaker, Landmark, Palette, GraduationCap, 
-    ArrowRight, Rocket, Database, Sparkles, TrendingUp
+    ArrowRight, Sparkles, TrendingUp
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const STREAMS = [
@@ -119,10 +120,11 @@ export function StreamExplorer() {
                             <Link href={`/streams/${stream.id}`} className="absolute inset-0 z-20" />
                             
                             {/* Background Image */}
-                            <motion.img 
+                            <Image 
                                 src={stream.image}
                                 alt={stream.title}
-                                className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100"
+                                fill
+                                className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100"
                             />
 
                             {/* Overlays */}

@@ -1,14 +1,13 @@
 'use client';
 
-import { useMemo, useId, useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useMemo, useId, useRef, useState } from 'react';
+import { motion, useScroll } from 'framer-motion';
 import { 
-    Star, MessageSquare, Video, ArrowRight, Sparkles, 
-    ShieldCheck, Calendar, Globe, Award, Zap,
+    Star, MessageSquare, ArrowRight, Sparkles, 
+    ShieldCheck, Globe, Award, Zap,
     TrendingUp, Users, CheckCircle2, Clock
 } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 
 const COUNSELORS = [
@@ -36,7 +35,7 @@ const COUNSELORS = [
         sessions: 4200,
         exp: 15,
         specialties: ['Stanford Admissions', 'Leadership'],
-        avatar: '/brain/37542fd7-f24b-4039-829c-8bda9706918e/counselor_professional_portrait_1777384624544.png',
+        avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&h=400&auto=format&fit=crop',
         online: true,
         size: 'medium',
         badge: 'Ex-Admissions Dean',
@@ -141,7 +140,7 @@ function FloatingBadge({ children, delay = 0, className = "" }: { children: Reac
 
 export function CounselorSection() {
     const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({
+    useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
     });
