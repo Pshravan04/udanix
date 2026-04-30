@@ -108,7 +108,7 @@ export default function CounselorDirectory() {
               <CounselorCard
                 key={c.id}
                 id={c.id}
-                name={c.full_name}
+                name={c.full_name || 'Expert Counselor'}
                 specialty={c.stream || 'Expert Consultant'}
                 rating={c.rating || 5.0}
                 reviews={c.sessions_count || 0}

@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Rocket, Zap, ArrowRight, Star } from 'lucide-react';
 import { fadeUp, staggerContainer as stagger } from '@/lib/animations';
 
-export function HeroSection() {
+export function HeroSection({ user }: { user: any }) {
   return (
     <section className="relative min-h-[110vh] flex items-center justify-center overflow-hidden py-20">
       {/* Background Layer: Mesh & Noise */}

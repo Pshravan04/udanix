@@ -16,6 +16,7 @@ export interface Profile {
   avatar_url?: string | null;
   updated_at?: string | null;
   progress?: string | null;
+  experience?: string | null;
 }
 
 export interface Session {

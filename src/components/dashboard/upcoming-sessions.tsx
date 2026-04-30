@@ -3,16 +3,7 @@
 import { motion } from 'framer-motion';
 import { Calendar, Video, Clock } from 'lucide-react';
 
-interface Session {
-  id: string;
-  topic: string;
-  start_time: string;
-  status: string;
-  type?: string;
-  profiles: {
-    full_name: string;
-  } | null;
-}
+import { Session } from '@/types';
 
 interface UpcomingSessionsProps {
   sessions: Session[];
