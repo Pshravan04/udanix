@@ -6,14 +6,14 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { motion } from 'framer-motion';
-import { GraduationCap, ShieldAlert, Lock, Eye, EyeOff, Terminal } from 'lucide-react';
+import { GraduationCap, ShieldAlert, Lock, Terminal } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 export default function AdminLoginPage() {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+
     const [isLoading, setIsLoading] = useState(false);
 
     const handleLogin = async (e: React.FormEvent) => {
@@ -111,7 +111,7 @@ export default function AdminLoginPage() {
 
                         <div className="relative">
                             <Input
-                                type={showPassword ? 'text' : 'password'}
+                                type="password"
                                 placeholder="ACCESS KEY"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}

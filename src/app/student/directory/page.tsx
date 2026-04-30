@@ -4,20 +4,21 @@ import { useState, useEffect } from 'react';
 import { CounselorCard } from '@/components/counselor-card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, Filter, SlidersHorizontal, Sparkles, Loader2 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { Search, SlidersHorizontal, Sparkles, Loader2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
+
+import { Profile } from '@/types';
 
 export default function CounselorDirectory() {
   const supabase = createClient();
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
-  const [counselors, setCounselors] = useState([] as any[]);
+  const [counselors, setCounselors] = useState<Profile[]>([]);
 
   useEffect(() => {
     async function loadCounselors() {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('profiles')
         .select('*')
         .eq('role', 'counselor');

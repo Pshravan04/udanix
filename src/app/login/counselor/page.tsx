@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { motion } from 'framer-motion';
-import { GraduationCap, ArrowRight, Eye, EyeOff, Briefcase, UserCheck } from 'lucide-react';
+import { GraduationCap, ArrowRight, Eye, EyeOff, UserCheck } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { ForgotPasswordDialog } from '@/components/auth/forgot-password-dialog';
 

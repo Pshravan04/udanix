@@ -4,24 +4,13 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import {
-  DollarSign, Calendar, Users, Star, Video, MessageSquare,
-  Clock, TrendingUp, CheckCircle2, ArrowRight, Zap, Award, Loader2
+  DollarSign, Users, Star, Video, MessageSquare,
+  Clock, ArrowRight, Award, Loader2
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
 import { Profile, Session } from '@/types';
 
-const UPCOMING = [
-  { student: 'Jordan M.', type: 'Video', time: 'Today 4:00 PM', topic: 'Career Path', initials: 'JM' },
-  { student: 'Priya K.', type: 'Audio', time: 'Today 6:00 PM', topic: 'Anxiety Management', initials: 'PK' },
-  { student: 'Alex T.', type: 'Chat', time: 'Tomorrow 10 AM', topic: 'Academic Planning', initials: 'AT' },
-];
-
-const STUDENTS = [
-  { name: 'Jordan M.', progress: '78%', lastSeen: '2h ago', goal: 'Career Clarity', initials: 'JM', sessions: 4 },
-  { name: 'Priya K.', progress: '65%', lastSeen: '1d ago', goal: 'Mental Wellness', initials: 'PK', sessions: 6 },
-  { name: 'Alex T.', progress: '92%', lastSeen: '5h ago', goal: 'Academic Goals', initials: 'AT', sessions: 9 },
-];
 
 
 export default function CounselorDashboard() {
@@ -61,9 +50,9 @@ export default function CounselorDashboard() {
         .eq('counselor_id', user.id);
 
       // Deduplicate students
-      const uniqueStudents = Array.from(new Set(studentRecords?.map(s => (s.profiles as any)?.id)))
-        .map(id => studentRecords?.find(s => (s.profiles as any)?.id === id)?.profiles)
-        .filter(Boolean);
+      const uniqueStudents = Array.from(new Set(studentRecords?.map(s => s.profiles?.id)))
+        .map(id => studentRecords?.find(s => s.profiles?.id === id)?.profiles)
+        .filter((p): p is Profile => !!p);
       setStudents(uniqueStudents || []);
 
       setLoading(false);

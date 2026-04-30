@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { GraduationCap, ArrowRight, UserCheck, ShieldCheck, Sparkles } from 'lucide-react';
+import { GraduationCap, ArrowRight, UserCheck, ShieldCheck } from 'lucide-react';
 
 const PORTALS = [
   {

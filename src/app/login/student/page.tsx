@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { motion, AnimatePresence } from 'framer-motion';
-import { GraduationCap, ArrowRight, Eye, EyeOff, Sparkles, User, ShieldCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { GraduationCap, ArrowRight, Eye, EyeOff, Sparkles } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { GoogleLoginButton } from '@/components/auth/google-login-button';
 import { ForgotPasswordDialog } from '@/components/auth/forgot-password-dialog';
@@ -24,7 +24,7 @@ export default function StudentLoginPage() {
 
         try {
             const supabase = createClient();
-            const { data, error } = await supabase.auth.signInWithPassword({
+            const { error } = await supabase.auth.signInWithPassword({
                 email,
                 password,
             });
