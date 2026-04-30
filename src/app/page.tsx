@@ -35,14 +35,7 @@ export default function Home() {
             </Link>
 
             <nav className="hidden xl:flex items-center gap-2">
-              {[
-              ].map((link) => (
-                <Link key={link.label} href={link.href}>
-                  <button className="text-[13px] font-bold text-slate-500 hover:text-udanix-blue transition-all px-4 py-2 rounded-xl hover:bg-udanix-blue/5 whitespace-nowrap uppercase tracking-wider">
-                    {link.label}
-                  </button>
-                </Link>
-              ))}
+              {/* Navigation links can be added here */}
             </nav>
           </div>
 
