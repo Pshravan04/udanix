@@ -1,36 +1,38 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
     Cpu, Beaker, Landmark, Palette, GraduationCap, 
-    ArrowRight, Sparkles, TrendingUp, ChevronRight
+    ArrowRight, Sparkles, TrendingUp, ChevronRight,
+    Target, Activity, Globe
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
 
 const STREAMS = [
     {
         id: 'engineering',
         title: 'Engineering & Tech',
-        desc: 'Pioneering the next era of AI and automation.',
+        desc: 'Pioneering the next era of AI, automation, and digital infrastructure.',
         icon: Cpu,
         color: 'from-blue-600 to-indigo-500',
         stats: '4.2M Roles',
         growth: '+18%',
         tags: ['AI/ML', 'Web3', 'Robotics'],
-        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop',
+        gridClass: 'lg:col-span-8 lg:row-span-1'
     },
     {
         id: 'medical',
         title: 'Medical Sciences',
-        desc: 'Advancing human longevity through biotech.',
+        desc: 'Advancing human longevity through biotech and clinical excellence.',
         icon: Beaker,
         color: 'from-emerald-600 to-teal-500',
         stats: '1.8M Roles',
         growth: '+12%',
-        tags: ['BioTech', 'Neuro', 'Genetics'],
-        image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1200&auto=format&fit=crop'
+        tags: ['BioTech', 'Neuro'],
+        image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1200&auto=format&fit=crop',
+        gridClass: 'lg:col-span-4 lg:row-span-1'
     },
     {
         id: 'commerce',
@@ -40,8 +42,9 @@ const STREAMS = [
         color: 'from-amber-600 to-orange-500',
         stats: '3.5M Roles',
         growth: '+15%',
-        tags: ['FinTech', 'Analysis', 'E-com'],
-        image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1200&auto=format&fit=crop'
+        tags: ['FinTech', 'Analysis'],
+        image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1200&auto=format&fit=crop',
+        gridClass: 'lg:col-span-4 lg:row-span-1'
     },
     {
         id: 'design',
@@ -51,25 +54,25 @@ const STREAMS = [
         color: 'from-purple-600 to-pink-500',
         stats: '800K Roles',
         growth: '+22%',
-        tags: ['UI/UX', '3D Art', 'Motion'],
-        image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop'
+        tags: ['UI/UX', '3D Art'],
+        image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop',
+        gridClass: 'lg:col-span-4 lg:row-span-1'
     },
     {
         id: 'humanities',
         title: 'Humanities',
-        desc: 'Decoding the patterns of society and mind.',
+        desc: 'Decoding patterns of society and mind.',
         icon: GraduationCap,
         color: 'from-indigo-600 to-blue-500',
         stats: '1.2M Roles',
         growth: '+8%',
-        tags: ['Psych', 'Media', 'Soc Sci'],
-        image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop'
+        tags: ['Psych', 'Media'],
+        image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop',
+        gridClass: 'lg:col-span-4 lg:row-span-1'
     }
 ];
 
 export function StreamExplorer() {
-    const [hoveredId, setHoveredId] = useState<string | null>(STREAMS[0].id);
-
     return (
         <section className="py-32 relative overflow-hidden bg-white selection:bg-udanix-blue/10">
             {/* Premium Background Architecture */}
@@ -83,7 +86,7 @@ export function StreamExplorer() {
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10 text-left">
-                {/* Header Section - Bento Style */}
+                {/* Header Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 items-end">
                     <div className="lg:col-span-8">
                         <motion.div 
@@ -115,117 +118,103 @@ export function StreamExplorer() {
                             Strategic navigation through high-growth pathways designed for the next generation of global leaders.
                         </motion.p>
                     </div>
-                    <div className="lg:col-span-4 flex justify-end">
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            className="glass-premium rounded-[2.5rem] p-8 border border-white/50 text-left w-full max-w-xs hidden lg:block"
-                        >
-                            <div className="w-12 h-12 rounded-2xl bg-brand-gradient flex items-center justify-center text-white mb-4 shadow-lg">
-                                <TrendingUp className="w-6 h-6" />
-                            </div>
-                            <p className="text-3xl font-black text-udanix-navy tracking-tighter leading-none">24% YoY</p>
-                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Market Growth Average</p>
-                        </motion.div>
-                    </div>
                 </div>
 
-                {/* Fluid Accordion Container */}
-                <div className="flex flex-col lg:flex-row gap-4 h-[650px] w-full">
-                    {STREAMS.map((stream) => (
+                {/* Bento Grid Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    {STREAMS.map((stream, idx) => (
                         <motion.div
                             key={stream.id}
-                            onMouseEnter={() => setHoveredId(stream.id)}
-                            animate={{
-                                flex: hoveredId === stream.id ? 3.5 : 1,
-                                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-                            }}
-                            className={`relative rounded-[3rem] overflow-hidden cursor-pointer group border transition-all duration-700 shadow-premium ${hoveredId === stream.id ? 'glass-extreme border-white/80' : 'glass-premium border-white/40'}`}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            className={`${stream.gridClass} group relative rounded-[3rem] overflow-hidden border border-white/60 bg-white shadow-premium hover:shadow-premium-xl transition-all duration-700 hover:-translate-y-1`}
                         >
                             <Link href={`/streams/${stream.id}`} className="absolute inset-0 z-30" />
                             
-                            {/* Background Image */}
-                            <Image 
-                                src={stream.image}
-                                alt={stream.title}
-                                fill
-                                className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 grayscale group-hover:grayscale-0 opacity-20 group-hover:opacity-100"
-                            />
-
-                            {/* Overlays */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-udanix-navy via-udanix-navy/60 to-transparent z-10 opacity-80 group-hover:opacity-60 transition-opacity" />
-                            <div className={`absolute inset-0 bg-gradient-to-br ${stream.color} opacity-0 group-hover:opacity-30 transition-opacity duration-700 z-10`} />
-
-                            {/* Content */}
-                            <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end h-full">
-                                <div className="flex items-start justify-between mb-auto">
-                                    <div className={`w-14 h-14 rounded-2xl glass-premium flex items-center justify-center text-udanix-navy shadow-premium group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 border border-white/60 relative z-20`}>
+                            {/* Visual Header / Image Area */}
+                            <div className="relative h-48 lg:h-64 overflow-hidden">
+                                <Image 
+                                    src={stream.image}
+                                    alt={stream.title}
+                                    fill
+                                    className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent z-10" />
+                                
+                                {/* Icon Overlay */}
+                                <div className="absolute bottom-6 left-8 z-20">
+                                    <div className="w-14 h-14 rounded-2xl extreme-glass border border-white/60 flex items-center justify-center text-udanix-blue shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
                                         <stream.icon className="w-7 h-7 stroke-[2.5]" />
                                     </div>
-                                    <div className="flex flex-col items-end opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100 relative z-20">
-                                        <div className="flex items-center gap-2 glass-dark px-4 py-2 rounded-xl border border-white/20 shadow-2xl">
-                                            <TrendingUp className="w-3.5 h-3.5 text-udanix-orange" />
-                                            <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">{stream.growth}</span>
+                                </div>
+
+                                {/* Floating Stat Badge */}
+                                <div className="absolute top-6 right-8 z-20">
+                                    <div className="flex items-center gap-2 glass-premium px-4 py-2 rounded-xl border border-white shadow-sm">
+                                        <TrendingUp className="w-3.5 h-3.5 text-udanix-orange" />
+                                        <span className="text-[10px] font-black text-udanix-navy uppercase tracking-[0.2em]">{stream.growth}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Content Area */}
+                            <div className="p-8 space-y-6">
+                                <div className="space-y-2">
+                                    <h3 className="text-2xl font-black text-udanix-navy uppercase tracking-tight group-hover:text-udanix-blue transition-colors">
+                                        {stream.title}
+                                    </h3>
+                                    <p className="text-slate-500 font-bold text-[13px] uppercase tracking-widest leading-relaxed opacity-70 line-clamp-2">
+                                        {stream.desc}
+                                    </p>
+                                </div>
+
+                                {/* Dynamic Stats Grid */}
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:border-white transition-all">
+                                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Saturation</p>
+                                        <p className="text-lg font-black text-udanix-navy tracking-tight">{stream.stats}</p>
+                                    </div>
+                                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:border-white transition-all">
+                                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Growth Index</p>
+                                        <div className="flex items-center gap-1">
+                                            <Activity className="w-3.5 h-3.5 text-emerald-500" />
+                                            <p className="text-lg font-black text-udanix-navy tracking-tight">Tier 1</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="space-y-3 relative z-20">
-                                    <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none group-hover:text-udanix-orange transition-colors">
-                                        {stream.title}
-                                    </h3>
-                                    
-                                    <AnimatePresence>
-                                        {hoveredId === stream.id && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: 10 }}
-                                                transition={{ duration: 0.3 }}
-                                                className="space-y-6 pt-2"
-                                            >
-                                                <p className="text-white/80 font-bold text-sm uppercase tracking-widest leading-relaxed line-clamp-2">
-                                                    {stream.desc}
-                                                </p>
-                                                
-                                                <div className="flex flex-wrap gap-2">
-                                                    {stream.tags.map(tag => (
-                                                        <span key={tag} className="px-3 py-1.5 rounded-xl glass-dark border border-white/10 text-[9px] font-black text-white/90 uppercase tracking-widest">
-                                                            {tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-
-                                                <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                                                    <div className="flex flex-col">
-                                                        <span className="text-2xl font-black text-white leading-none mb-1 tracking-tight">{stream.stats}</span>
-                                                        <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.25em]">Global Opportunity</span>
-                                                    </div>
-                                                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-udanix-navy shadow-premium group-hover:rotate-12 transition-transform duration-500">
-                                                        <ChevronRight className="w-6 h-6 stroke-[3]" />
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                {/* Tags & Footer */}
+                                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                                    <div className="flex gap-2">
+                                        {stream.tags.slice(0, 2).map(tag => (
+                                            <span key={tag} className="px-3 py-1.5 rounded-lg bg-udanix-blue/5 text-[9px] font-black text-udanix-blue uppercase tracking-widest border border-udanix-blue/10">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white group-hover:bg-brand-gradient transition-all group-hover:rotate-12">
+                                        <ChevronRight className="w-5 h-5 stroke-[3]" />
+                                    </div>
                                 </div>
                             </div>
-
-                            {/* Vertical Title (when collapsed) */}
-                            {hoveredId !== stream.id && (
-                                <motion.div 
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
-                                >
-                                    <span className="text-2xl font-black text-white/10 uppercase tracking-[0.5em] rotate-[-90deg] whitespace-nowrap drop-shadow-2xl">
-                                        {stream.title}
-                                    </span>
-                                </motion.div>
-                            )}
                         </motion.div>
                     ))}
+
+                    {/* Placeholder for "Explore All" card to complete bento grid if needed */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="lg:col-span-12 group relative rounded-[3rem] overflow-hidden border border-dashed border-slate-200 p-12 flex flex-col items-center justify-center text-center hover:border-udanix-blue/50 transition-all cursor-pointer"
+                    >
+                        <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-udanix-blue/10 group-hover:text-udanix-blue transition-all mb-6">
+                            <Globe className="w-8 h-8" />
+                        </div>
+                        <h4 className="text-xl font-black text-slate-900 uppercase tracking-widest mb-2">Explore 500+ Career Verticals</h4>
+                        <p className="text-slate-400 font-bold text-xs uppercase tracking-[0.2em]">Unlock the full database of institutional knowledge</p>
+                    </motion.div>
                 </div>
             </div>
         </section>
