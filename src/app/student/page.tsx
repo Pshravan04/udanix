@@ -36,7 +36,12 @@ export default function StudentDashboard() {
         .eq('student_id', user.id)
         .eq('status', 'scheduled')
         .order('start_time', { ascending: true });
-      setSessions(sessionData || []);
+      
+      const formattedSessions = (sessionData || []).map((s: any) => ({
+        ...s,
+        profiles: Array.isArray(s.profiles) ? s.profiles[0] : s.profiles
+      }));
+      setSessions(formattedSessions);
 
       setLoading(false);
     }

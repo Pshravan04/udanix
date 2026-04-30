@@ -41,7 +41,12 @@ export default function CounselorDashboard() {
         .eq('counselor_id', user.id)
         .eq('status', 'scheduled')
         .order('start_time', { ascending: true });
-      setSessions(sessionData || []);
+      
+      const formattedSessions = (sessionData || []).map((s: any) => ({
+        ...s,
+        profiles: Array.isArray(s.profiles) ? s.profiles[0] : s.profiles
+      }));
+      setSessions(formattedSessions);
 
       // Fetch Students (unique students from all my sessions)
       const { data: studentRecords } = await supabase
@@ -50,10 +55,14 @@ export default function CounselorDashboard() {
         .eq('counselor_id', user.id);
 
       // Deduplicate students
-      const uniqueStudents = Array.from(new Set(studentRecords?.map(s => s.profiles?.id)))
-        .map(id => studentRecords?.find(s => s.profiles?.id === id)?.profiles)
-        .filter((p): p is Profile => !!p);
-      setStudents(uniqueStudents || []);
+      const profileMap = new Map();
+      (studentRecords || []).forEach((record: any) => {
+        const p = Array.isArray(record.profiles) ? record.profiles[0] : record.profiles;
+        if (p && p.id) {
+          profileMap.set(p.id, p);
+        }
+      });
+      setStudents(Array.from(profileMap.values()));
 
       setLoading(false);
     }
