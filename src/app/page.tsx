@@ -15,6 +15,7 @@ import { StudentLoginModal } from '@/components/auth/student-login-modal';
 import { CareerAssessment } from '@/components/career-assessment';
 import { SuccessGallery } from '@/components/success-gallery';
 import { ProcessJourney } from '@/components/process-journey';
+import { DashboardPreview } from '@/components/dashboard-preview';
 
 export default function Home() {
   const [user, setUser] = useState<any>(null);
@@ -89,6 +90,11 @@ export default function Home() {
 
       {/* ─── HERO ─── */}
       <HeroSection user={user} />
+
+      {/* ─── DASHBOARD PREVIEW ─── */}
+      <div className="py-24 bg-[#FAFAFA] border-y border-slate-100">
+        <DashboardPreview />
+      </div>
 
       {/* ─── THE JOURNEY (Process) ─── */}
       <ProcessJourney />
