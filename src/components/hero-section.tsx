@@ -5,9 +5,10 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Rocket, Zap, ArrowRight, Star } from 'lucide-react';
 import { fadeUp, staggerContainer as stagger } from '@/lib/animations';
+import { User } from '@supabase/supabase-js';
 
 
-export function HeroSection({ user }: { user: any }) {
+export function HeroSection({ user }: { user: User | null }) {
   return (
     <section className="relative min-h-screen pt-32 pb-32 overflow-hidden bg-white">
       {/* ─── ENHANCED BACKGROUND ─── */}

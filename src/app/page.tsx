@@ -4,8 +4,10 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
+import { User } from '@supabase/supabase-js';
 
 import { HeroSection } from '@/components/hero-section';
+import { DashboardImageSection } from '@/components/dashboard-image-section';
 import { CtaSection } from '@/components/cta-section';
 import { StreamExplorer } from '@/components/stream-explorer';
 import { CareerPaths } from '@/components/career-paths';
@@ -16,7 +18,7 @@ import { SuccessGallery } from '@/components/success-gallery';
 import { DoubleDashboardPreview } from '@/components/double-dashboard-preview';
 
 export default function Home() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const supabase = createClient();
 
   useEffect(() => {
@@ -88,6 +90,9 @@ export default function Home() {
 
       {/* ─── HERO ─── */}
       <HeroSection user={user} />
+
+      {/* ─── STUDENT DASHBOARD IMAGE ─── */}
+      <DashboardImageSection />
 
       {/* ─── DASHBOARD PREVIEW ─── */}
       <DoubleDashboardPreview />
