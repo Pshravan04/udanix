@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, Video, Clock } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 
 import { Session } from '@/types';
 

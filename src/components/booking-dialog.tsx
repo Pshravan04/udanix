@@ -5,8 +5,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
   DialogTrigger
 } from "@/components/ui/dialog";
@@ -26,11 +24,11 @@ interface BookingDialogProps {
 
 export function BookingDialog({ counselorId, counselorName, trigger }: BookingDialogProps) {
   const [step, setStep] = useState<'pick' | 'confirm' | 'success'>('pick');
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [selectedDate] = useState<Date>(new Date());
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [isBooking, setIsBooking] = useState(false);
 
-  const slots = getAvailableSlots(selectedDate);
+  const slots = getAvailableSlots();
 
   const handleBook = async () => {
     if (!selectedSlot) return;

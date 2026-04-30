@@ -2,16 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Star, MessageSquare, Calendar, GraduationCap, Clock } from "lucide-react";
+import { Star } from "lucide-react";
 import { BookingDialog } from "./booking-dialog";
 
 interface CounselorProps {
   name: string;
   specialty: string;
   rating: number;
-  reviews: number;
   languages: string[];
   isOnline: boolean;
   imageUrl?: string;
@@ -24,7 +22,6 @@ export function CounselorCard({
   name,
   specialty,
   rating,
-  reviews,
   languages,
   isOnline: initialIsOnline,
   price,

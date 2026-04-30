@@ -14,9 +14,7 @@ import {
   Clock,
   DollarSign,
   Award,
-  ChevronRight,
-  Sparkles,
-  ArrowRight
+  ChevronRight
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -28,7 +26,7 @@ const STUDENT_NAV = [
 ];
 
 const COUNSELOR_NAV = [
-  { icon: LayoutDashboard, label: 'Node Center', active: true },
+  { icon: LayoutDashboard, label: 'Overview', active: true },
   { icon: Users, label: 'Personnel' },
   { icon: DollarSign, label: 'Earnings' },
   { icon: Calendar, label: 'Schedule' },
@@ -38,7 +36,7 @@ export function DoubleDashboardPreview() {
   const [view, setView] = useState<'student' | 'counselor'>('student');
 
   return (
-    <section className="py-32 relative overflow-hidden bg-white">
+    <section className="pb-32 relative overflow-hidden bg-white">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,62,138,0.03)_0%,transparent_70%)]" />
@@ -47,36 +45,14 @@ export function DoubleDashboardPreview() {
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-20 space-y-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-100 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
-          >
-            <Sparkles className="w-3 h-3 text-udanix-blue" />
-            Experience the Platform
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            style={{ fontFamily: 'var(--font-space-grotesk)' }}
-            className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tighter uppercase leading-[0.9]"
-          >
-            Dual-Sided <br />
-            <span className="text-brand-gradient">Expertise Node.</span>
-          </motion.h2>
-          
+        {/* Section Header - Toggle Only */}
+        <div className="text-center mb-16">
           {/* Toggle Switch */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex items-center justify-center pt-8"
+            className="flex items-center justify-center"
           >
             <div className="p-1.5 bg-slate-100 rounded-3xl flex items-center gap-1 shadow-inner relative">
               <motion.div 
@@ -308,7 +284,7 @@ export function DoubleDashboardPreview() {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 text-left">
                     <div>
                       <h3 style={{ fontFamily: 'var(--font-space-grotesk)' }} className="text-4xl font-black text-slate-900 tracking-tighter uppercase leading-none">
-                        Counselor <span className="text-udanix-orange">Node.</span>
+                        Counselor <span className="text-udanix-orange">Dashboard</span>
                       </h3>
                       <p className="text-slate-400 text-sm font-bold mt-2 uppercase tracking-widest">System identifies <span className="text-emerald-600 font-black">12 active syncs</span> pending approval.</p>
                     </div>
@@ -431,28 +407,6 @@ export function DoubleDashboardPreview() {
             )}
           </AnimatePresence>
 
-          {/* Premium Bottom Bar (Call to Action) */}
-          <div className="mt-12 pt-12 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8 relative z-20">
-            <div className="flex items-center gap-6">
-               <div className="flex -space-x-4">
-                  {[1,2,3,4].map(i => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                       <Image src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" width={40} height={40} />
-                    </div>
-                  ))}
-                  <div className="w-10 h-10 rounded-full border-2 border-white bg-udanix-blue flex items-center justify-center text-[10px] font-black text-white">
-                    +2k
-                  </div>
-               </div>
-               <div className="text-left">
-                  <p className="text-xs font-black text-slate-900 uppercase tracking-tight leading-none">Join the Global Network</p>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">2,412 Nodes currently active</p>
-               </div>
-            </div>
-            <button className="group bg-slate-900 text-white px-10 py-5 rounded-2xl text-[11px] font-black uppercase tracking-[0.25em] shadow-2xl hover:scale-[1.05] active:scale-[0.98] transition-all flex items-center gap-4">
-              Enter the Command Center <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
         </motion.div>
       </div>
     </section>

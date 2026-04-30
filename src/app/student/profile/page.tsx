@@ -4,42 +4,17 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   User, Mail, Phone, MapPin, GraduationCap, BookOpen, Star, Calendar,
-  Edit3, Camera, CheckCircle2, Award, Target, Clock, Upload, Save, ArrowRight,
+  Edit3, Camera, Award, Target, Clock, Upload, Save, ArrowRight,
   Globe, Bell, Shield, Loader2
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/client';
 
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
-import { Profile, Session } from '@/types';
-
-const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"                                                                                                                                                                              
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
+import { Session } from '@/types';
 
 
-const STATS = [
-  { label: 'Sessions Done', value: '12', icon: Calendar, color: '#EFF6FF', iconColor: '#0056D2' },
-  { label: 'Avg. Rating', value: '4.9', icon: Star, color: '#FEF9C3', iconColor: '#B45309' },
-  { label: 'Goals Met', value: '68%', icon: Target, color: '#F0FDF4', iconColor: '#059669' },
-  { label: 'Hours Guided', value: '18h', icon: Clock, color: '#FAF5FF', iconColor: '#7C3AED' },
-];
+
 
 const ACHIEVEMENTS = [
   { title: 'First Session', desc: 'Completed your first counseling session', earned: true },
@@ -48,11 +23,6 @@ const ACHIEVEMENTS = [
   { title: 'Top Rated', desc: 'Maintained a 5-star session average', earned: false },
 ];
 
-const RECENT_SESSIONS = [
-  { counselor: 'Dr. Sarah Jenkins', topic: 'Career Roadmap Planning', date: 'Apr 22, 2026', rating: 5 },
-  { counselor: 'Michael Chen', topic: 'Resume & LinkedIn Review', date: 'Apr 18, 2026', rating: 5 },
-  { counselor: 'Aisha Khan', topic: 'College Application Strategy', date: 'Apr 10, 2026', rating: 4 },
-];
 
 export default function StudentProfile() {
   const supabase = useMemo(() => createClient(), []);
@@ -80,7 +50,7 @@ export default function StudentProfile() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;              
 
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user.id)
@@ -425,7 +395,7 @@ export default function StudentProfile() {
                 { label: 'New Messages', sub: 'When a counselor sends a message', on: true },
                 { label: 'Weekly Report', sub: 'Your weekly progress digest', on: false },
                 { label: 'Platform Updates', sub: 'New features and announcements', on: false },
-              ].map((item, i) => (
+              ].map((item) => (
                 <div key={item.label} className="flex items-center justify-between py-3 border-b border-[#F3F4F6] last:border-0">
                   <div>
                     <p className="text-sm font-semibold text-[#111827]">{item.label}</p>

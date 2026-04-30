@@ -1,14 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Rocket, Zap, ArrowRight, Star } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { fadeUp, staggerContainer as stagger } from '@/lib/animations';
-import { User } from '@supabase/supabase-js';
 
 
-export function HeroSection({ user }: { user: User | null }) {
+export function HeroSection() {
   return (
     <section className="relative min-h-screen pt-32 pb-32 overflow-hidden bg-white">
       {/* ─── ENHANCED BACKGROUND ─── */}

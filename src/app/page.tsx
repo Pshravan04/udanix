@@ -7,15 +7,9 @@ import { createClient } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
 
 import { HeroSection } from '@/components/hero-section';
-import { DashboardImageSection } from '@/components/dashboard-image-section';
 import { CtaSection } from '@/components/cta-section';
-import { StreamExplorer } from '@/components/stream-explorer';
-import { CareerPaths } from '@/components/career-paths';
-import { CounselorSection } from '@/components/counselor-section';
-import { StudentLoginModal } from '@/components/auth/student-login-modal';
-import { CareerAssessment } from '@/components/career-assessment';
-import { SuccessGallery } from '@/components/success-gallery';
 import { DoubleDashboardPreview } from '@/components/double-dashboard-preview';
+import { StudentLoginModal } from '@/components/auth/student-login-modal';
 
 export default function Home() {
   const [user, setUser] = useState<User | null>(null);
@@ -42,9 +36,6 @@ export default function Home() {
 
             <nav className="hidden xl:flex items-center gap-2">
               {[
-                { label: 'Explore Streams', href: '#streams' },
-                { label: 'Counselors', href: '#counselors' },
-                { label: 'Career Paths', href: '#paths' },
                 { label: 'Assessment', href: '/register' }
               ].map((link) => (
                 <Link key={link.label} href={link.href}>
@@ -89,40 +80,12 @@ export default function Home() {
       </header>
 
       {/* ─── HERO ─── */}
-      <HeroSection user={user} />
-
-      {/* ─── STUDENT DASHBOARD IMAGE ─── */}
-      <DashboardImageSection />
+      <HeroSection />
 
       {/* ─── DASHBOARD PREVIEW ─── */}
       <DoubleDashboardPreview />
 
-      {/* ─── CAREER ASSESSMENT ─── */}
-      <div className="overflow-x-auto pb-12 hide-scrollbar lg:overflow-x-hidden">
-        <CareerAssessment />
-      </div>
-
-      {/* ─── STREAM EXPLORER ─── */}
-      <div id="streams" className="relative py-12 overflow-x-auto pb-20 hide-scrollbar lg:overflow-x-hidden">
-         <div className="absolute top-1/2 left-0 w-64 h-64 bg-udanix-blue/5 blur-[120px] rounded-full" />
-         <StreamExplorer />
-      </div>
-
-      {/* ─── CAREER PATHS ─── */}
-      <div id="paths" className="py-12">
-         <CareerPaths />
-      </div>
-
-      {/* ─── COUNSELORS ─── */}
-      <div id="counselors" className="relative py-12 overflow-x-auto pb-20 hide-scrollbar lg:overflow-x-hidden">
-         <div className="absolute bottom-0 right-0 w-80 h-80 bg-udanix-orange/5 blur-[150px] rounded-full" />
-         <CounselorSection />
-      </div>
-
-      {/* ─── STUDENT COMMUNITY GALLERY ─── */}
-      <SuccessGallery />
-
-      {/* ─── CTA SECTION (Glass Command Center) ─── */}
+      {/* ─── CTA SECTION ─── */}
       <CtaSection />
 
     </div>

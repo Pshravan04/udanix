@@ -5,18 +5,19 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Calendar, Clock, Video, User, ChevronRight, 
-  Search, Filter, Sparkles, Loader2, AlertCircle 
+  Loader2, AlertCircle 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/client';
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
+import { Session } from '@/types';
 
 
 export default function StudentSessions() {
   const supabase = createClient();
   const [loading, setLoading] = useState(true);
-  const [sessions, setSessions] = useState<any[]>([]);
+  const [sessions, setSessions] = useState<Session[]>([]);
   const [filter, setFilter] = useState<'all' | 'upcoming' | 'completed'>('all');
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function StudentSessions() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('sessions')
         .select('*, profiles:counselor_id(full_name, stream, avatar_url)')
         .eq('student_id', user.id)

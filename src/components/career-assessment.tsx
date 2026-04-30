@@ -1,10 +1,8 @@
 'use client';
 
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ClipboardCheck, Clock, BookOpen, UserCircle, 
-  ArrowRight, Sparkles, TrendingUp, Layers, Zap,
-  BarChart3, ShieldCheck, Globe2, BrainCircuit,
+  ArrowRight, Sparkles, TrendingUp, Zap,
   Trophy, Target, Binary
 } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';

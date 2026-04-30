@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, User, Bot, Paperclip } from "lucide-react";
+import { Send, Paperclip } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 interface Message {
   id: string;

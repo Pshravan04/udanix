@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -8,10 +8,10 @@ import { Input } from '@/components/ui/input';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     GraduationCap, ArrowRight, Eye, EyeOff, Check,
-    Upload, FileText, Brain, ChevronRight,
+    Upload, FileText, ChevronRight,
 } from 'lucide-react';
 import { SearchableSelect } from '@/components/ui/searchable-select';
-import { UNIVERSITIES, DEGREES, COURSES } from '@/lib/edu-data';
+import { COURSES } from '@/lib/edu-data';
 import { createClient } from '@/lib/supabase/client';
 import { GoogleLoginButton } from '@/components/auth/google-login-button';
 

@@ -2,8 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown, Check, X } from 'lucide-react';
-import { Input } from './input';
+import { Search, ChevronDown, Check } from 'lucide-react';
 
 interface SearchableSelectProps {
     options: string[];

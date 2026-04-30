@@ -4,9 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import { ShieldCheck, Upload, ChevronRight, ChevronLeft, Award, Globe, IndianRupee } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 

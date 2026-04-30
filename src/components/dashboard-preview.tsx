@@ -9,11 +9,9 @@ import {
   Settings,
   Target,
   Star,
-  Clock,
   Sparkles,
   Plus
 } from 'lucide-react';
-import Image from 'next/image';
 
 const NAV_ITEMS = [
   { icon: LayoutDashboard, active: true },

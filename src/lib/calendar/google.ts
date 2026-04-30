@@ -30,7 +30,7 @@ export async function createCalendarEvent(booking: BookingEvent) {
   });
 }
 
-export function getAvailableSlots(date: Date) {
+export function getAvailableSlots() {
   // Mock function to return available slots for a given day
   return [
     "09:00 AM", "10:00 AM", "11:30 AM", 

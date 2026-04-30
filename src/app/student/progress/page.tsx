@@ -3,18 +3,16 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Trophy, Target, Star, TrendingUp, CheckCircle2, 
+  Target, TrendingUp, CheckCircle2, 
   Circle, Lock, ArrowUpRight, BarChart3, Loader2 
 } from 'lucide-react';
-import { createClient } from '@/lib/supabase/client';
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
 
 
 export default function StudentProgress() {
-  const supabase = createClient();
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     completed: 12,
     ongoing: 4,
     total: 20

@@ -42,10 +42,13 @@ export default function CounselorDashboard() {
         .eq('status', 'scheduled')
         .order('start_time', { ascending: true });
       
-      const formattedSessions = (sessionData || []).map((s: any) => ({
-        ...s,
-        profiles: Array.isArray(s.profiles) ? s.profiles[0] : s.profiles
-      }));
+      const formattedSessions = (sessionData || []).map((s: unknown) => {
+        const session = s as Session & { profiles: Profile | Profile[] };
+        return {
+          ...session,
+          profiles: Array.isArray(session.profiles) ? session.profiles[0] : (session.profiles as Profile)
+        };
+      });
       setSessions(formattedSessions);
 
       // Fetch Students (unique students from all my sessions)
@@ -56,8 +59,9 @@ export default function CounselorDashboard() {
 
       // Deduplicate students
       const profileMap = new Map();
-      (studentRecords || []).forEach((record: any) => {
-        const p = Array.isArray(record.profiles) ? record.profiles[0] : record.profiles;
+      (studentRecords || []).forEach((record: unknown) => {
+        const r = record as { student_id: string, profiles: Profile | Profile[] };
+        const p = Array.isArray(r.profiles) ? r.profiles[0] : r.profiles;
         if (p && p.id) {
           profileMap.set(p.id, p);
         }

@@ -315,37 +315,7 @@ export function CounselorSection() {
                         </motion.div>
                     ))}
 
-                    {/* Join Network CTA Card */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="break-inside-avoid relative group"
-                    >
-                        <div className="relative bg-udanix-navy rounded-[4rem] p-14 text-white text-center flex flex-col items-center justify-center min-h-[550px] shadow-premium-xl overflow-hidden">
-                            {/* Animated Background Mesh */}
-                            <div className="absolute inset-0 z-0">
-                                <div className="absolute top-0 right-0 w-96 h-96 bg-udanix-blue blur-[120px] opacity-30 animate-pulse" />
-                                <div className="absolute bottom-0 left-0 w-96 h-96 bg-udanix-orange blur-[120px] opacity-20 animate-pulse" />
-                            </div>
 
-                            <div className="relative z-10">
-                                <div className="w-24 h-24 rounded-3xl bg-white/10 backdrop-blur-xl flex items-center justify-center mb-10 mx-auto border border-white/20">
-                                    <Zap className="w-12 h-12 text-white fill-white" />
-                                </div>
-                                <h3 className="text-4xl font-black uppercase tracking-tighter leading-none mb-6">
-                                    Master the <br />
-                                    Network
-                                </h3>
-                                <p className="text-white/60 font-bold uppercase tracking-[0.2em] text-[10px] mb-12 leading-relaxed max-w-[200px] mx-auto">
-                                    Apply to join our elite circle of verified global counselors.
-                                </p>
-                                <button className="w-full px-10 py-6 bg-white text-udanix-navy rounded-[1.5rem] text-[11px] font-black uppercase tracking-[0.3em] shadow-2xl hover:bg-udanix-orange hover:text-white transition-all duration-500">
-                                    Join the Elite
-                                </button>
-                            </div>
-                        </div>
-                    </motion.div>
                 </div>
 
                 {/* Performance Stats */}

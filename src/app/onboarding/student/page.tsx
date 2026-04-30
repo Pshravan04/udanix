@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { GraduationCap, Brain, Briefcase, ChevronRight, ChevronLeft, Sparkles, CheckCircle2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
