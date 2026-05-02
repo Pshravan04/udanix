@@ -183,7 +183,7 @@ export function CareerPaths() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-black text-slate-950 tracking-tight uppercase"
+                        className="text-3xl md:text-4xl font-black text-slate-950 tracking-tight uppercase"
                     >
                         Popular <span className="text-brand-gradient">Career</span> Paths
                     </motion.h2>
@@ -192,7 +192,7 @@ export function CareerPaths() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed font-bold uppercase tracking-wide"
+                        className="text-slate-600 max-w-2xl mx-auto text-base leading-relaxed font-bold uppercase tracking-wide"
                     >
                         Explore trending careers across different streams with detailed insights on growth, salary, and skills required.
                     </motion.p>

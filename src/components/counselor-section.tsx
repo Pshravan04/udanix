@@ -100,14 +100,14 @@ export function CounselorSection() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950"
+                            className="text-3xl md:text-4xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950"
                             style={{ fontFamily: 'var(--font-plus-jakarta)' }}
                         >
                             Expert Career <br />
                             <span className="text-brand-gradient drop-shadow-sm">Counselors.</span>
                         </motion.h2>
                         
-                        <p className="text-lg md:text-xl text-slate-600 font-bold max-w-xl leading-relaxed uppercase tracking-wide">
+                        <p className="text-base md:text-lg text-slate-600 font-bold max-w-xl leading-relaxed uppercase tracking-wide">
                             Direct access to <span className="text-slate-950">Certified Professionals</span>. Bypass the guesswork with mentors who have shaped 1M+ successful careers.
                         </p>
                     </div>

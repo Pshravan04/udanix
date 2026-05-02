@@ -73,7 +73,7 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter"
+                        className="text-3xl md:text-4xl font-black text-slate-950 uppercase tracking-tighter"
                     >
                         Explore Your <span className="text-brand-gradient">Stream</span>
                     </motion.h2>
@@ -82,7 +82,7 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-slate-600 max-w-2xl mx-auto text-lg md:text-xl font-bold uppercase tracking-wide leading-relaxed"
+                        className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg font-bold uppercase tracking-wide leading-relaxed"
                     >
                         Choose your path based on your interests, skills, and career goals. Each stream opens doors to unique opportunities.
                     </motion.p>

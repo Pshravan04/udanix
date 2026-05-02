@@ -8,7 +8,6 @@ import { User } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';
 
 import { HeroSection } from '@/components/hero-section';
-import { CtaSection } from '@/components/cta-section';
 import { StreamExplorer } from '@/components/stream-explorer';
 import { CareerPaths } from '@/components/career-paths';
 import { AssessmentSection } from '@/components/assessment-section';
@@ -116,9 +115,6 @@ export default function Home() {
 
       {/* ─── COUNSELOR SECTION ─── */}
       <CounselorSection />
-
-      {/* ─── CTA SECTION ─── */}
-      <CtaSection />
 
     </div>
   );

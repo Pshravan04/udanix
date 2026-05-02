@@ -93,10 +93,10 @@ export function AssessmentSection() {
               <Sparkles className="w-3.5 h-3.5" />
               Scientific Methods
             </motion.div>
-            <h2 className="text-4xl md:text-5xl font-black mb-10 text-slate-950 tracking-tighter leading-[0.85] uppercase">
+            <h2 className="text-3xl md:text-4xl font-black mb-10 text-slate-950 tracking-tighter leading-[0.85] uppercase">
               Career <span className="text-brand-gradient">Assessment</span> <br />Tests
             </h2>
-            <p className="text-lg md:text-2xl text-slate-500 leading-relaxed max-w-2xl font-black uppercase tracking-widest">
+            <p className="text-base md:text-xl text-slate-500 leading-relaxed max-w-2xl font-black uppercase tracking-widest">
               Discover your <span className="text-slate-950">True Potential</span> with scientifically designed tests backed by psychological research.
             </p>
           </motion.div>

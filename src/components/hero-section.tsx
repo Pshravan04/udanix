@@ -70,7 +70,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
               style={{ fontFamily: 'var(--font-plus-jakarta)' }}
             >
               Your Career Journey <br />
@@ -81,7 +81,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="max-w-4xl mx-auto text-lg sm:text-2xl text-slate-400 font-bold leading-relaxed uppercase tracking-wide"
+              className="max-w-4xl mx-auto text-base sm:text-xl text-slate-400 font-bold leading-relaxed uppercase tracking-wide"
             >
              Get expert guidance on stream selection, career paths, entrance exams, and future opportunities. Make informed decisions with personalized counseling.
             </motion.p>

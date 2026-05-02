@@ -258,12 +258,12 @@ export function SuccessGallery() {
             </span>
           </motion.div>
           
-          <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
+          <h2 className="text-3xl md:text-4xl font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
             Real Results. <br />
             <span className="text-brand-gradient drop-shadow-sm">Unlimited</span> Potential.
           </h2>
           
-          <p className="text-slate-600 text-xl md:text-2xl font-black uppercase tracking-[0.2em] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-600 text-lg md:text-xl font-black uppercase tracking-[0.2em] max-w-3xl mx-auto leading-relaxed">
             &quot;Join the <span className="text-slate-950">Elite Network</span> of high-achievers who transformed their professional trajectory.&quot;
           </p>
         </div>
