@@ -48,7 +48,7 @@ export function HomeStats() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group"
             >
-              <div className="p-8 h-full glass-card-premium rounded-3xl border-white/40 shadow-premium group-hover:shadow-premium-xl transition-all duration-500 flex flex-col items-center text-center">
+              <div className="p-8 h-full bg-white rounded-3xl border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-500 flex flex-col items-center text-center">
                 <div className={`w-14 h-14 rounded-2xl ${stat.bg} ${stat.color} flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500`}>
                   {stat.icon}
                 </div>

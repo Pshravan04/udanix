@@ -29,10 +29,10 @@ export default function Home() {
   }, [supabase]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden selection:bg-udanix-blue/20 selection:text-white">
+    <div className="min-h-screen bg-white text-slate-950 overflow-x-hidden selection:bg-udanix-blue/10 selection:text-udanix-blue">
 
       {/* ─── NAV ─── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-slate-950/50 backdrop-blur-3xl border-b border-white/5 px-6 sm:px-12">
+      <header className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur-3xl border-b border-slate-200/50 px-6 sm:px-12">
         <div className="max-w-[1440px] mx-auto h-[80px] flex items-center justify-between gap-8">
           <div className="flex items-center gap-12">
             <Link href="/" className="flex items-center gap-3 flex-shrink-0 hover:scale-105 transition-transform">
@@ -49,7 +49,7 @@ export default function Home() {
               {user ? (
                 <div className="flex items-center gap-4">
                   <Link href="/student/profile">
-                    <button className="text-[12px] font-black text-slate-400 hover:text-white uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-white/5">
+                    <button className="text-[12px] font-black text-slate-500 hover:text-slate-950 uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-100">
                       Profile
                     </button>
                   </Link>
@@ -87,7 +87,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="p-3 sm:p-4 bg-white/10 backdrop-blur-3xl rounded-[2.5rem] border border-white/20 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)]"
+            className="p-3 sm:p-4 bg-white/40 backdrop-blur-3xl rounded-[2.5rem] border border-slate-200 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.08)]"
           >
             <div className="relative aspect-[16/9] w-full rounded-[1.8rem] overflow-hidden border border-white/20 shadow-2xl">
               <Image 

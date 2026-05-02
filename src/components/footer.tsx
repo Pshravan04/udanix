@@ -24,54 +24,54 @@ const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
 
 export function Footer() {
     return (
-        <footer className="relative bg-slate-950 pt-32 pb-16 overflow-hidden border-t border-white/5">
+        <footer className="relative bg-white pt-32 pb-16 overflow-hidden border-t border-slate-100">
             {/* Background Aesthetics */}
             <div className="absolute inset-0 -z-10 overflow-hidden">
-                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-udanix-blue/10 rounded-full blur-[150px] opacity-20 animate-pulse" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-udanix-orange/5 rounded-full blur-[130px] opacity-20 animate-pulse" />
-                <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
+                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[150px] opacity-20 animate-pulse" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[130px] opacity-20 animate-pulse" />
+                <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.015] mix-blend-overlay pointer-events-none" />
             </div>
 
             <div className="max-w-[1440px] mx-auto px-8 sm:px-12 relative z-10">
                 
                 {/* Newsletter Section - Ultra Premium */}
                 <div className="relative mb-32">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-udanix-blue to-udanix-orange rounded-[4rem] blur-2xl opacity-10" />
-                    <div className="relative bg-[#0a1120]/60 backdrop-blur-3xl rounded-[4rem] p-12 lg:p-24 flex flex-col lg:flex-row items-center gap-16 border border-white/10 overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-udanix-blue/10 rounded-full blur-[100px] -mr-64 -mt-64" />
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-orange-600 rounded-[4rem] blur-2xl opacity-[0.05]" />
+                    <div className="relative bg-white/80 backdrop-blur-3xl rounded-[4rem] p-12 lg:p-24 flex flex-col lg:flex-row items-center gap-16 border border-slate-200 overflow-hidden shadow-2xl shadow-slate-200/50">
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] -mr-64 -mt-64" />
                         
                         <div className="flex-1 space-y-10 relative z-10 text-center lg:text-left">
-                            <h3 className="text-[40px] sm:text-[64px] font-black text-white leading-[1.1] tracking-tighter uppercase">
+                            <h3 className="text-[40px] sm:text-[64px] font-black text-slate-900 leading-[1.1] tracking-tighter uppercase">
                                 Decode the <br />
                                 <span className="text-brand-gradient">Next Frontier</span>
                             </h3>
-                            <p className="text-slate-400 text-xl font-medium max-w-lg leading-relaxed text-balance">
+                            <p className="text-slate-600 text-xl font-medium max-w-lg leading-relaxed text-balance">
                                 Join our elite network of future-ready students and professionals. Get intelligence on emerging industries delivered to your inbox.
                             </p>
                         </div>
 
                         <div className="w-full lg:w-[480px] space-y-8 relative z-10">
                             <div className="relative group">
-                                <div className="absolute -inset-1 bg-brand-gradient rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500" />
-                                <div className="relative flex items-center bg-[#001122]/90 backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden p-2 shadow-inner">
+                                <div className="absolute -inset-1 bg-brand-gradient rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-500" />
+                                <div className="relative flex items-center bg-slate-50/80 backdrop-blur-2xl rounded-3xl border border-slate-200 overflow-hidden p-2 shadow-inner">
                                     <input 
                                         type="email" 
                                         placeholder="ENTER YOUR EMAIL" 
-                                        className="flex-1 bg-transparent border-none outline-none text-white px-8 py-6 text-[10px] font-black tracking-[0.4em] placeholder:text-slate-600 uppercase"
+                                        className="flex-1 bg-transparent border-none outline-none text-slate-900 px-8 py-6 text-[10px] font-black tracking-[0.4em] placeholder:text-slate-400 uppercase"
                                     />
-                                    <button className="px-10 py-5 rounded-2xl bg-brand-gradient text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl hover:shadow-orange-glow transition-all active:scale-95">
+                                    <button className="px-10 py-5 rounded-2xl bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all active:scale-95">
                                         JOIN NOW
                                     </button>
                                 </div>
                             </div>
-                            <div className="flex items-center justify-center lg:justify-start gap-6 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                            <div className="flex items-center justify-center lg:justify-start gap-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
                                 <span className="flex items-center gap-2.5">
-                                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                                     No Spam. Ever.
                                 </span>
-                                <span className="w-1.5 h-1.5 rounded-full bg-slate-800" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-200" />
                                 <span className="flex items-center gap-2.5">
-                                    <Globe className="w-3.5 h-3.5 text-udanix-blue" />
+                                    <Globe className="w-3.5 h-3.5 text-blue-600" />
                                     Global Network
                                 </span>
                             </div>
@@ -86,12 +86,12 @@ export function Footer() {
                         <div className="space-y-10">
                             <Link href="/" className="inline-block hover:scale-105 transition-transform group">
                                 <div className="flex items-center gap-4">
-                                    <Image src="/logo.jpg" alt="Udaanix" width={120} height={50} className="h-10 w-auto brightness-200 grayscale contrast-150" />
-                                    <div className="h-10 w-[1px] bg-white/10" />
-                                    <span className="text-[10px] font-black text-white uppercase tracking-[0.5em] opacity-40 group-hover:opacity-100 transition-opacity">Intelligence</span>
+                                    <Image src="/logo.jpg" alt="Udaanix" width={120} height={50} className="h-10 w-auto brightness-0 contrast-200" />
+                                    <div className="h-10 w-[1px] bg-slate-200" />
+                                    <span className="text-[10px] font-black text-slate-900 uppercase tracking-[0.5em] opacity-40 group-hover:opacity-100 transition-opacity">Intelligence</span>
                                 </div>
                             </Link>
-                            <p className="text-slate-400 text-xl font-medium leading-relaxed max-w-sm text-balance">
+                            <p className="text-slate-600 text-xl font-medium leading-relaxed max-w-sm text-balance">
                                 Architecting the future of career intelligence through neural-mapping and verified professional mentorship.
                             </p>
                         </div>
@@ -100,14 +100,14 @@ export function Footer() {
                             {[
                                 { icon: <Twitter className="w-5 h-5" />, href: "#", color: "hover:text-[#1DA1F2]" },
                                 { icon: <Linkedin className="w-5 h-5" />, href: "#", color: "hover:text-[#0A66C2]" },
-                                { icon: <Github className="w-5 h-5" />, href: "#", color: "hover:text-white" },
+                                { icon: <Github className="w-5 h-5" />, href: "#", color: "hover:text-slate-950" },
                                 { icon: <Instagram className="w-5 h-5" />, href: "#", color: "hover:text-[#E4405F]" }
                             ].map((social, i) => (
                                 <motion.a
                                     key={i}
                                     href={social.href}
                                     whileHover={{ scale: 1.15, y: -8 }}
-                                    className={`w-16 h-16 rounded-[1.5rem] bg-white/5 border border-white/10 flex items-center justify-center transition-all ${social.color} group shadow-inner`}
+                                    className={`w-16 h-16 rounded-[1.5rem] bg-slate-50 border border-slate-200 flex items-center justify-center transition-all ${social.color} group shadow-sm`}
                                 >
                                     <div className="text-slate-400 group-hover:scale-110 transition-transform">
                                         {social.icon}
@@ -149,13 +149,13 @@ export function Footer() {
                             },
                         ].map(col => (
                             <div key={col.title} className="space-y-12">
-                                <p className="text-white font-black text-[11px] uppercase tracking-[0.5em] opacity-30">{col.title}</p>
+                                <p className="text-slate-900 font-black text-[11px] uppercase tracking-[0.5em] opacity-50">{col.title}</p>
                                 <ul className="space-y-8">
                                     {col.links.map(l => (
                                         <li key={l.name}>
                                             <Link 
                                                 href={l.href} 
-                                                className="text-slate-400 hover:text-white text-sm transition-all font-bold uppercase tracking-widest block hover:translate-x-3 duration-300 relative group"
+                                                className="text-slate-500 hover:text-slate-900 text-sm transition-all font-bold uppercase tracking-widest block hover:translate-x-3 duration-300 relative group"
                                             >
                                                 <span className="relative z-10">{l.name}</span>
                                                 <div className="absolute left-0 -bottom-2 w-0 h-[2px] bg-brand-gradient transition-all duration-300 group-hover:w-full" />
@@ -169,22 +169,22 @@ export function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-16 border-t border-white/5 flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div className="pt-16 border-t border-slate-100 flex flex-col lg:flex-row items-center justify-between gap-12">
                     <div className="flex flex-col sm:flex-row items-center gap-10 text-center sm:text-left">
-                        <p className="text-slate-600 text-[11px] font-black uppercase tracking-[0.4em]">
+                        <p className="text-slate-500 text-[11px] font-black uppercase tracking-[0.4em]">
                             © 2026 UDANIX GLOBAL LABS
                         </p>
-                        <div className="h-1.5 w-1.5 rounded-full bg-slate-800 hidden sm:block" />
-                        <div className="flex items-center gap-4 px-6 py-3 bg-white/5 rounded-full border border-white/5 shadow-inner">
-                            <Cpu className="w-4 h-4 text-udanix-blue animate-pulse" />
-                            <p className="text-slate-500 text-[10px] font-black tracking-[0.2em] uppercase">
-                                Status: <span className="text-emerald-500/80">Neural Grid Active</span>
+                        <div className="h-1.5 w-1.5 rounded-full bg-slate-200 hidden sm:block" />
+                        <div className="flex items-center gap-4 px-6 py-3 bg-slate-50 rounded-full border border-slate-100 shadow-sm">
+                            <Cpu className="w-4 h-4 text-blue-600 animate-pulse" />
+                            <p className="text-slate-600 text-[10px] font-black tracking-[0.2em] uppercase">
+                                Status: <span className="text-emerald-600/80">Neural Grid Active</span>
                             </p>
                         </div>
                     </div>
 
                     <div className="flex items-center gap-16">
-                        <p className="text-slate-700 text-[11px] font-black tracking-[0.5em] uppercase italic opacity-60">
+                        <p className="text-slate-400 text-[11px] font-black tracking-[0.5em] uppercase italic opacity-60">
                             Forging the infinite future
                         </p>
                     </div>
@@ -192,7 +192,7 @@ export function Footer() {
             </div>
 
             {/* Decorative Edge */}
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-udanix-blue/40 to-transparent opacity-40" />
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-40" />
         </footer>
     );
 }

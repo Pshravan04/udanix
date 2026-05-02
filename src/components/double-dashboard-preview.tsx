@@ -30,7 +30,7 @@ export function DoubleDashboardPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative bg-[#0a1120]/80 backdrop-blur-3xl rounded-[3.5rem] p-3 lg:p-6 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-white/5"
+          className="relative bg-white rounded-[3.5rem] p-3 lg:p-6 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.08)] overflow-hidden border border-slate-100"
         >
           <motion.div 
             initial={{ opacity: 0, scale: 0.98, filter: 'blur(10px)' }}
@@ -39,27 +39,27 @@ export function DoubleDashboardPreview() {
             className="flex flex-col lg:flex-row gap-8 min-h-[700px]"
           >
             {/* Sidebar Mock */}
-            <div className="w-full lg:w-72 bg-[#020617]/50 rounded-[2.5rem] p-8 flex flex-col gap-10 border border-white/5">
+            <div className="w-full lg:w-72 bg-slate-50 rounded-[2.5rem] p-8 flex flex-col gap-10 border border-slate-100">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-brand-gradient flex items-center justify-center text-white font-black text-xl shadow-lg">U</div>
-                  <div style={{ fontFamily: 'var(--font-space-grotesk)' }} className="font-black text-white tracking-tighter text-xl">UDANIX</div>
+                  <div style={{ fontFamily: 'var(--font-space-grotesk)' }} className="font-black text-slate-900 tracking-tighter text-xl">UDANIX</div>
                 </div>
                 <div className="space-y-2 text-left">
                   {STUDENT_NAV.map((item, i) => (
-                    <div key={i} className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${item.active ? 'bg-udanix-blue text-white shadow-xl shadow-blue-500/20' : 'text-slate-500 hover:bg-white/5 hover:text-white'}`}>
+                    <div key={i} className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${item.active ? 'bg-udanix-blue text-white shadow-xl shadow-blue-500/20' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'}`}>
                         <item.icon size={20} />
                         <span className="text-xs font-black uppercase tracking-widest">{item.label}</span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-auto pt-8 border-t border-white/5">
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="w-10 h-10 rounded-full bg-slate-800 shrink-0 overflow-hidden">
+                <div className="mt-auto pt-8 border-t border-slate-100">
+                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 shrink-0 overflow-hidden border border-slate-200">
                         <Image src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop" alt="Profile" width={40} height={40} className="w-full h-full object-cover grayscale" />
                     </div>
                     <div className="min-w-0 text-left">
-                      <p className="text-[11px] font-black text-white uppercase truncate">Alex Johnson</p>
-                      <p className="text-[9px] font-bold text-slate-500 uppercase">Premium Member</p>
+                      <p className="text-[11px] font-black text-slate-900 uppercase truncate">Alex Johnson</p>
+                      <p className="text-[9px] font-bold text-slate-400 uppercase">Premium Member</p>
                     </div>
                   </div>
                 </div>
@@ -70,7 +70,7 @@ export function DoubleDashboardPreview() {
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 text-left">
                 <div>
-                  <h3 style={{ fontFamily: 'var(--font-space-grotesk)' }} className="text-4xl font-black text-white tracking-tighter uppercase leading-none">
+                  <h3 style={{ fontFamily: 'var(--font-space-grotesk)' }} className="text-4xl font-black text-slate-950 tracking-tighter uppercase leading-none">
                     Good Morning, <span className="text-udanix-blue">Alex!</span>
                   </h3>
                   <p className="text-slate-500 text-sm font-bold mt-2 uppercase tracking-widest">System identifies 3 high-impact paths for you today.</p>
@@ -83,32 +83,32 @@ export function DoubleDashboardPreview() {
               {/* Bento Grid Content */}
               <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
                 {/* Main Card */}
-                <div className="md:col-span-4 bg-white/[0.03] backdrop-blur-3xl rounded-[2.5rem] p-10 border border-white/5 space-y-8 relative overflow-hidden group text-left">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-udanix-blue/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-udanix-blue/20 transition-all" />
+                <div className="md:col-span-4 bg-slate-50 rounded-[2.5rem] p-10 border border-slate-100 space-y-8 relative overflow-hidden group text-left shadow-sm">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-udanix-blue/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-udanix-blue/10 transition-all" />
                   <div className="flex items-center justify-between relative z-10">
                     <div className="space-y-1">
-                      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Active Profile Match</p>
-                      <h4 className="text-2xl font-black text-white uppercase tracking-tight">Full-Stack Architect</h4>
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Active Profile Match</p>
+                      <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Full-Stack Architect</h4>
                     </div>
-                    <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shadow-sm">
+                    <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center shadow-sm">
                         <TrendingUp size={28} />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 relative z-10">
                     {[
-                      { label: 'Demand', value: 'High', color: 'text-emerald-400' },
-                      { label: 'Complexity', value: 'Level 8', color: 'text-blue-400' },
-                      { label: 'Match Index', value: '98%', color: 'text-indigo-400' },
+                      { label: 'Demand', value: 'High', color: 'text-emerald-600' },
+                      { label: 'Complexity', value: 'Level 8', color: 'text-blue-600' },
+                      { label: 'Match Index', value: '98%', color: 'text-indigo-600' },
                     ].map((s, i) => (
-                      <div key={i} className="p-5 rounded-3xl bg-white/5 border border-white/5 shadow-sm">
-                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">{s.label}</p>
+                      <div key={i} className="p-5 rounded-3xl bg-white border border-slate-100 shadow-sm">
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{s.label}</p>
                         <p className={`text-2xl font-black tracking-tighter ${s.color}`}>{s.value}</p>
                       </div>
                     ))}
                   </div>
 
-                  <div className="p-6 rounded-[2rem] bg-white text-slate-900 flex items-center justify-between group-hover:translate-x-2 transition-transform cursor-pointer relative z-10">
+                  <div className="p-6 rounded-[2rem] bg-white text-slate-900 border border-slate-100 shadow-sm flex items-center justify-between group-hover:translate-x-2 transition-transform cursor-pointer relative z-10">
                     <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-xl bg-udanix-blue flex items-center justify-center">
                           <Target className="w-5 h-5 text-white" />
@@ -118,18 +118,18 @@ export function DoubleDashboardPreview() {
                           <p className="text-xs font-black uppercase tracking-tight">Explore Backend Technologies</p>
                         </div>
                     </div>
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-5 h-5 text-slate-300" />
                   </div>
                 </div>
 
                 {/* Side Stat Cards */}
                 <div className="md:col-span-2 space-y-6 text-left">
-                    <div className="bg-white/[0.03] rounded-[2.5rem] p-8 border border-white/5 shadow-premium flex flex-col justify-between h-[220px]">
-                      <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 mb-4">
+                    <div className="bg-slate-50 rounded-[2.5rem] p-8 border border-slate-100 shadow-premium flex flex-col justify-between h-[220px]">
+                      <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 mb-4">
                           <Star size={24} />
                       </div>
                       <div>
-                        <p className="text-4xl font-black text-white tracking-tighter leading-none">4.9</p>
+                        <p className="text-4xl font-black text-slate-950 tracking-tighter leading-none">4.9</p>
                         <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-2">Counselor Rating</p>
                       </div>
                     </div>
@@ -146,9 +146,9 @@ export function DoubleDashboardPreview() {
               </div>
 
               {/* Upcoming Syncs Row */}
-              <div className="bg-white/[0.03] rounded-[2.5rem] p-8 border border-white/5 shadow-premium">
+              <div className="bg-slate-50 rounded-[2.5rem] p-8 border border-slate-100 shadow-sm">
                   <div className="flex items-center justify-between mb-8 px-2">
-                    <h4 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-3">
+                    <h4 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-3">
                         <div className="w-1 h-4 bg-udanix-blue rounded-full" />
                         Upcoming Session Registry
                     </h4>
@@ -159,22 +159,22 @@ export function DoubleDashboardPreview() {
                       { name: 'Dr. Sarah Wilson', topic: 'Medical Career Path', time: 'Today, 4:00 PM', status: 'Join Now' },
                       { name: 'Prof. Michael Chen', topic: 'Engineering Entrance', time: 'Tomorrow, 11:30 AM', status: 'Scheduled' }
                     ].map((s, i) => (
-                      <div key={i} className="flex items-center justify-between p-5 rounded-[2rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-all group/item text-left">
+                      <div key={i} className="flex items-center justify-between p-5 rounded-[2rem] bg-white border border-slate-100 hover:shadow-md transition-all group/item text-left">
                           <div className="flex items-center gap-5">
-                            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 font-black text-lg group-hover/item:bg-udanix-blue group-hover/item:text-white transition-colors">
+                            <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-blue-600 font-black text-lg group-hover/item:bg-udanix-blue group-hover/item:text-white transition-colors">
                                 {s.name.charAt(4)}
                             </div>
                             <div className="text-left">
-                                <p className="text-[13px] font-black text-white uppercase tracking-tight">{s.name}</p>
-                                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{s.topic}</p>
+                                <p className="text-[13px] font-black text-slate-900 uppercase tracking-tight">{s.name}</p>
+                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{s.topic}</p>
                             </div>
                           </div>
                           <div className="flex items-center gap-8">
                             <div className="hidden sm:block text-right">
-                                <p className="text-[11px] font-black text-white uppercase">{s.time}</p>
-                                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Time Sync</p>
+                                <p className="text-[11px] font-black text-slate-900 uppercase">{s.time}</p>
+                                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Time Sync</p>
                             </div>
-                            <div className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all ${s.status === 'Join Now' ? 'bg-udanix-blue text-white shadow-lg border-udanix-blue' : 'bg-white/5 text-slate-500 border-white/5'}`}>
+                            <div className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all ${s.status === 'Join Now' ? 'bg-udanix-blue text-white shadow-lg border-udanix-blue' : 'bg-slate-50 text-slate-400 border-slate-100'}`}>
                                 {s.status}
                             </div>
                           </div>

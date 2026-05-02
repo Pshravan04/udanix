@@ -67,12 +67,12 @@ const assessments = [
 
 export function AssessmentSection() {
   return (
-    <section className="relative py-32 overflow-hidden bg-slate-950">
+    <section className="relative py-32 overflow-hidden bg-white">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-udanix-blue/10 rounded-full blur-[140px] animate-pulse" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-udanix-orange/5 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '3s' }} />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-udanix-blue/5 rounded-full blur-[140px] animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-udanix-orange/2 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '3s' }} />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] mix-blend-overlay" />
       </div>
 
       <div className="max-w-[1440px] relative z-10 px-6 mx-auto">
@@ -88,16 +88,16 @@ export function AssessmentSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-udanix-orange text-[10px] font-black uppercase tracking-[0.3em]"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-udanix-orange text-[10px] font-black uppercase tracking-[0.3em]"
             >
               <Sparkles className="w-3.5 h-3.5" />
               Scientific Methods
             </motion.div>
-            <h2 className="text-6xl md:text-[100px] font-black mb-10 text-white tracking-tighter leading-[0.85] uppercase">
+            <h2 className="text-6xl md:text-[100px] font-black mb-10 text-slate-950 tracking-tighter leading-[0.85] uppercase">
               Career <span className="text-brand-gradient">Assessment</span> <br />Tests
             </h2>
-            <p className="text-lg md:text-2xl text-slate-400 leading-relaxed max-w-2xl font-black uppercase tracking-widest">
-              Discover your <span className="text-white">True Potential</span> with scientifically designed tests backed by psychological research.
+            <p className="text-lg md:text-2xl text-slate-500 leading-relaxed max-w-2xl font-black uppercase tracking-widest">
+              Discover your <span className="text-slate-950">True Potential</span> with scientifically designed tests backed by psychological research.
             </p>
           </motion.div>
         </div>
@@ -112,22 +112,22 @@ export function AssessmentSection() {
               transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="group"
             >
-              <div className="relative h-full bg-white/5 backdrop-blur-3xl rounded-[2.5rem] p-10 overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-700 hover:shadow-blue-500/10 flex flex-col group-hover:-translate-y-2">
+              <div className="relative h-full bg-white backdrop-blur-3xl rounded-[2.5rem] p-10 overflow-hidden border border-slate-200 hover:border-udanix-blue/30 transition-all duration-700 hover:shadow-blue-500/10 flex flex-col group-hover:-translate-y-2">
                 {/* Accent Glow */}
                 <div 
-                  className="absolute -top-12 -right-12 w-32 h-32 blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700"
+                  className="absolute -top-12 -right-12 w-32 h-32 blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-700"
                   style={{ backgroundColor: test.glow }}
                 />
 
                 {/* Animated Corner Beam */}
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-slate-100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Icon Header */}
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${test.color} flex items-center justify-center text-white mb-8 shadow-2xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                   {test.icon}
                 </div>
 
-                <h3 className="text-2xl font-black mb-4 text-white uppercase tracking-tight leading-none group-hover:text-udanix-blue transition-colors duration-500">
+                <h3 className="text-2xl font-black mb-4 text-slate-950 uppercase tracking-tight leading-none group-hover:text-udanix-blue transition-colors duration-500">
                   {test.title}
                 </h3>
                 
@@ -136,40 +136,40 @@ export function AssessmentSection() {
                 </p>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-2 gap-y-6 mb-10 border-t border-white/5 pt-8">
+                <div className="grid grid-cols-2 gap-y-6 mb-10 border-t border-slate-100 pt-8">
                   <div className="flex flex-col gap-1.5">
-                    <span className="text-[9px] text-white/20 uppercase font-black tracking-widest">Duration</span>
+                    <span className="text-[9px] text-slate-400 uppercase font-black tracking-widest">Duration</span>
                     <div className="flex items-center gap-2">
                       <Clock className="w-3.5 h-3.5 text-udanix-blue" />
-                      <span className="text-xs font-black text-white uppercase">{test.duration}</span>
+                      <span className="text-xs font-black text-slate-950 uppercase">{test.duration}</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <span className="text-[9px] text-white/20 uppercase font-black tracking-widest">Format</span>
+                    <span className="text-[9px] text-slate-400 uppercase font-black tracking-widest">Format</span>
                     <div className="flex items-center gap-2">
                       <ClipboardList className="w-3.5 h-3.5 text-udanix-blue" />
-                      <span className="text-xs font-black text-white uppercase">{test.questions.split(' ')[0]} Qs</span>
+                      <span className="text-xs font-black text-slate-950 uppercase">{test.questions.split(' ')[0]} Qs</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <span className="text-[9px] text-white/20 uppercase font-black tracking-widest">Students</span>
+                    <span className="text-[9px] text-slate-400 uppercase font-black tracking-widest">Students</span>
                     <div className="flex items-center gap-2">
                       <Users className="w-3.5 h-3.5 text-udanix-blue" />
-                      <span className="text-xs font-black text-white uppercase">{test.completed.split(' ')[0]}</span>
+                      <span className="text-xs font-black text-slate-950 uppercase">{test.completed.split(' ')[0]}</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <span className="text-[9px] text-white/20 uppercase font-black tracking-widest">Level</span>
+                    <span className="text-[9px] text-slate-400 uppercase font-black tracking-widest">Level</span>
                     <div className="flex items-center gap-2">
                       <BarChart className="w-3.5 h-3.5 text-udanix-blue" />
-                      <span className="text-xs font-black text-white uppercase">{test.level}</span>
+                      <span className="text-xs font-black text-slate-950 uppercase">{test.level}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-auto pt-6">
                   <Button 
-                    className="group/btn w-full h-14 bg-white/5 hover:bg-white text-white hover:text-slate-950 border border-white/10 rounded-2xl transition-all duration-500 font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 shadow-inner"
+                    className="group/btn w-full h-14 bg-slate-50 hover:bg-slate-950 text-slate-950 hover:text-white border border-slate-200 rounded-2xl transition-all duration-500 font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 shadow-inner"
                   >
                     Start Assessment <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                   </Button>

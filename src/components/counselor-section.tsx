@@ -74,12 +74,12 @@ export function CounselorSection() {
     const containerRef = useRef(null);
 
     return (
-        <section id="counselors" ref={containerRef} className="py-32 relative overflow-hidden bg-slate-950">
+        <section id="counselors" ref={containerRef} className="py-32 relative overflow-hidden bg-white">
             {/* Background elements */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-udanix-blue/10 blur-[140px] rounded-full -mr-96 -mt-96 animate-pulse" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-500/10 blur-[120px] rounded-full -ml-64 -mb-64 animate-float" />
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/5 blur-[140px] rounded-full -mr-96 -mt-96 animate-pulse" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-500/5 blur-[120px] rounded-full -ml-64 -mb-64 animate-float" />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] mix-blend-overlay" />
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10">
@@ -90,9 +90,9 @@ export function CounselorSection() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-2xl backdrop-blur-md"
+                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-950 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm backdrop-blur-md"
                         >
-                            <Sparkles className="w-4 h-4 text-blue-400 animate-pulse" />
+                            <Sparkles className="w-4 h-4 text-blue-600 animate-pulse" />
                             Elite Career Mentorship
                         </motion.div>
                         
@@ -100,15 +100,15 @@ export function CounselorSection() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-5xl md:text-8xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-white"
+                            className="text-5xl md:text-8xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950"
                             style={{ fontFamily: 'var(--font-plus-jakarta)' }}
                         >
                             Expert Career <br />
-                            <span className="text-brand-gradient drop-shadow-[0_0_30px_rgba(14,57,154,0.3)]">Counselors.</span>
+                            <span className="text-brand-gradient drop-shadow-sm">Counselors.</span>
                         </motion.h2>
                         
-                        <p className="text-lg md:text-xl text-slate-400 font-bold max-w-xl leading-relaxed uppercase tracking-wide">
-                            Direct access to <span className="text-white">Certified Professionals</span>. Bypass the guesswork with mentors who have shaped 1M+ successful careers.
+                        <p className="text-lg md:text-xl text-slate-600 font-bold max-w-xl leading-relaxed uppercase tracking-wide">
+                            Direct access to <span className="text-slate-950">Certified Professionals</span>. Bypass the guesswork with mentors who have shaped 1M+ successful careers.
                         </p>
                     </div>
                     
@@ -117,7 +117,7 @@ export function CounselorSection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                     >
-                        <button className="group relative bg-white text-slate-900 px-10 py-6 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3 overflow-hidden">
+                        <button className="group relative bg-slate-950 text-white px-10 py-6 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3 overflow-hidden">
                             Explore All Experts <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </motion.div>
@@ -134,27 +134,27 @@ export function CounselorSection() {
                             transition={{ delay: i * 0.1, duration: 0.8, ease: "circOut" }}
                             className="group"
                         >
-                            <div className="relative flex flex-col h-full bg-[#0a1120]/80 backdrop-blur-3xl rounded-[3rem] p-4 border border-white/5 hover:border-white/10 hover:shadow-blue-500/10 transition-all duration-700 group-hover:-translate-y-2">
+                            <div className="relative flex flex-col h-full bg-white backdrop-blur-3xl rounded-[3rem] p-4 border border-slate-200/60 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-700 group-hover:-translate-y-2">
                                 {/* Visual Image Container */}
-                                <div className="relative mb-8 rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl">
+                                <div className="relative mb-8 rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-lg">
                                     <Image 
                                         src={c.avatar} 
                                         alt={c.name} 
                                         width={400}
                                         height={500}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out brightness-90 group-hover:brightness-100" 
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out brightness-100 group-hover:contrast-110" 
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                                     
                                     {/* Badges */}
-                                    <div className="absolute top-5 right-5 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full shadow-xl flex items-center gap-2 border border-white/20">
-                                        <Award className="w-3.5 h-3.5 text-blue-400" />
-                                        <span className="text-[9px] font-black text-white uppercase tracking-widest">{c.badge}</span>
+                                    <div className="absolute top-5 right-5 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-lg flex items-center gap-2 border border-white">
+                                        <Award className="w-3.5 h-3.5 text-blue-600" />
+                                        <span className="text-[9px] font-black text-slate-950 uppercase tracking-widest">{c.badge}</span>
                                     </div>
 
                                     <div className="absolute bottom-5 left-5 flex items-center gap-3">
-                                        <div className={`w-2.5 h-2.5 rounded-full ${c.online ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,1)]' : 'bg-slate-600'}`} />
-                                        <span className="text-[9px] font-black text-white/80 uppercase tracking-widest">{c.status}</span>
+                                        <div className={`w-2.5 h-2.5 rounded-full ${c.online ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]' : 'bg-slate-300'}`} />
+                                        <span className="text-[9px] font-black text-white drop-shadow-md uppercase tracking-widest">{c.status}</span>
                                     </div>
                                 </div>
 
@@ -162,43 +162,43 @@ export function CounselorSection() {
                                 <div className="px-4 pb-4 space-y-6 flex-grow flex flex-col text-left">
                                     <div className="flex items-start justify-between gap-4">
                                         <div>
-                                            <h3 className="text-xl font-black text-white group-hover:text-udanix-blue transition-colors uppercase tracking-tight leading-none">
+                                            <h3 className="text-xl font-black text-slate-950 group-hover:text-udanix-blue transition-colors uppercase tracking-tight leading-none">
                                                 {c.name}
                                             </h3>
                                             <p className="text-[10px] font-black text-brand-gradient uppercase tracking-[0.1em] mt-2">
                                                 {c.role}
                                             </p>
                                         </div>
-                                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-100">
                                             <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                                            <span className="text-xs font-black text-white leading-none">{c.rating}</span>
+                                            <span className="text-xs font-black text-slate-950 leading-none">{c.rating}</span>
                                         </div>
                                     </div>
 
                                     <div className="flex flex-wrap gap-1.5">
                                         {c.specialties.map(s => (
-                                            <span key={s} className="px-3 py-1.5 rounded-lg bg-white/5 text-slate-400 text-[8px] font-black uppercase tracking-wider border border-white/5 group-hover:border-white/10 group-hover:text-white transition-colors">
+                                            <span key={s} className="px-3 py-1.5 rounded-lg bg-slate-50 text-slate-500 text-[8px] font-black uppercase tracking-wider border border-slate-100 group-hover:border-slate-200 group-hover:text-slate-700 transition-colors">
                                                 {s}
                                             </span>
                                         ))}
                                     </div>
 
-                                    <div className="pt-6 border-t border-white/5 grid grid-cols-2 gap-6 mt-auto">
+                                    <div className="pt-6 border-t border-slate-100 grid grid-cols-2 gap-6 mt-auto">
                                         <div>
-                                            <p className="text-[9px] font-black text-white/20 uppercase tracking-widest mb-1">Total Sessions</p>
-                                            <p className="text-sm font-black text-white">{c.sessions}+</p>
+                                            <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Sessions</p>
+                                            <p className="text-sm font-black text-slate-950">{c.sessions}+</p>
                                         </div>
                                         <div>
-                                            <p className="text-[9px] font-black text-white/20 uppercase tracking-widest mb-1">Industry Exp</p>
-                                            <p className="text-sm font-black text-white">{c.exp} Years</p>
+                                            <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Industry Exp</p>
+                                            <p className="text-sm font-black text-slate-950">{c.exp} Years</p>
                                         </div>
                                     </div>
 
                                     <div className="flex gap-3 pt-2">
-                                        <button className="flex-1 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl font-black text-[10px] uppercase tracking-widest py-5 transition-all active:scale-95">
+                                        <button className="flex-1 bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200 rounded-2xl font-black text-[10px] uppercase tracking-widest py-5 transition-all active:scale-95">
                                             Message
                                         </button>
-                                        <button className="flex-[2] bg-brand-gradient text-white rounded-2xl font-black text-[10px] uppercase tracking-widest py-5 transition-all shadow-lg shadow-blue-500/20 active:scale-95">
+                                        <button className="flex-[2] bg-slate-950 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest py-5 transition-all shadow-lg shadow-slate-200 active:scale-95">
                                             Book Now
                                         </button>
                                     </div>
@@ -211,10 +211,10 @@ export function CounselorSection() {
                 {/* Stats Summary Bento Row */}
                 <div className="mt-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {[
-                        { label: 'Verified Mentors', value: '500+', icon: UserCheck, color: 'text-blue-400', bg: 'bg-blue-400/10', border: 'border-blue-400/20' },
-                        { label: 'Success Velocity', value: '99.4%', icon: TrendingUp, color: 'text-emerald-400', bg: 'bg-emerald-400/10', border: 'border-emerald-400/20' },
-                        { label: 'Available Paths', value: '1,200+', icon: Sparkles, color: 'text-amber-400', bg: 'bg-amber-400/10', border: 'border-amber-400/20' },
-                        { label: 'Student Network', value: '1M+', icon: Users, color: 'text-indigo-400', bg: 'bg-indigo-400/10', border: 'border-indigo-400/20' }
+                        { label: 'Verified Mentors', value: '500+', icon: UserCheck, color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-100' },
+                        { label: 'Success Velocity', value: '99.4%', icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50', border: 'border-emerald-100' },
+                        { label: 'Available Paths', value: '1,200+', icon: Sparkles, color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-100' },
+                        { label: 'Student Network', value: '1M+', icon: Users, color: 'text-indigo-600', bg: 'bg-indigo-50', border: 'border-indigo-100' }
                     ].map((stat, i) => (
                         <motion.div 
                             key={i}
@@ -222,13 +222,13 @@ export function CounselorSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="bg-[#0a1120]/80 backdrop-blur-3xl p-8 rounded-[2.5rem] border border-white/5 hover:border-white/10 hover:shadow-premium group transition-all text-left"
+                            className="bg-white p-8 rounded-[2.5rem] border border-slate-200/60 shadow-xl shadow-slate-200/40 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/5 group transition-all text-left"
                         >
                             <div className={`w-14 h-14 rounded-2xl ${stat.bg} ${stat.border} border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                                 <stat.icon className={`w-7 h-7 ${stat.color}`} />
                             </div>
-                            <p className="text-4xl font-black text-white tracking-tighter leading-none mb-3">{stat.value}</p>
-                            <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">{stat.label}</p>
+                            <p className="text-4xl font-black text-slate-950 tracking-tighter leading-none mb-3">{stat.value}</p>
+                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</p>
                         </motion.div>
                     ))}
                 </div>

@@ -119,30 +119,30 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
         style={{ y }}
         whileHover={{ y: -5, scale: 1.02 }}
         className={cn(
-          "relative bg-white/5 backdrop-blur-3xl rounded-[2.5rem] p-8 border border-white/5 shadow-2xl group cursor-pointer overflow-hidden mb-10 transition-all duration-700 hover:border-white/20 hover:shadow-blue-500/10",
+          "relative bg-white rounded-[2.5rem] p-8 border border-slate-200 shadow-2xl group cursor-pointer overflow-hidden mb-10 transition-all duration-700 hover:border-udanix-blue/30 hover:shadow-blue-500/10",
           item.size === 'large' ? 'min-h-[400px]' : item.size === 'medium' ? 'min-h-[300px]' : 'min-h-[220px]'
         )}
       >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-udanix-blue/20 to-transparent blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-udanix-blue/10 to-transparent blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         
         <div className="flex gap-6 items-center mb-8">
-          <div className="w-16 h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shrink-0">
+          <div className="w-16 h-16 rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shrink-0">
             <Image src={item.image!} width={64} height={64} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" alt={item.name!} />
           </div>
           <div>
-            <p className="text-white font-black uppercase tracking-tight text-base">{item.name}</p>
+            <p className="text-slate-950 font-black uppercase tracking-tight text-base">{item.name}</p>
             <p className="text-brand-gradient font-black uppercase tracking-widest text-[9px] mt-1">{item.role}</p>
           </div>
         </div>
 
         <div className="relative">
-          <Quote className="w-12 h-12 text-white/5 absolute -top-6 -left-6 -z-10" />
-          <p className="text-slate-400 font-black italic leading-relaxed text-lg group-hover:text-white transition-colors duration-500 uppercase tracking-tight">
+          <Quote className="w-12 h-12 text-slate-100 absolute -top-6 -left-6 -z-10" />
+          <p className="text-slate-600 font-black italic leading-relaxed text-lg group-hover:text-slate-950 transition-colors duration-500 uppercase tracking-tight">
             &quot;{item.content}&quot;
           </p>
         </div>
 
-        <div className="mt-10 flex items-center justify-between border-t border-white/5 pt-6">
+        <div className="mt-10 flex items-center justify-between border-t border-slate-100 pt-6">
           <div className="flex gap-1.5">
             {[1,2,3,4,5].map(s => <Star key={s} className="w-3.5 h-3.5 text-udanix-orange fill-udanix-orange" />)}
           </div>
@@ -158,7 +158,7 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
       <motion.div 
         ref={cardRef}
         style={{ y }}
-        className="bg-white/5 backdrop-blur-3xl rounded-[2.5rem] p-10 border border-white/5 shadow-2xl flex flex-col items-center justify-center text-center gap-4 mb-10 group hover:border-white/20 hover:shadow-orange-500/10 transition-all duration-700"
+        className="bg-white rounded-[2.5rem] p-10 border border-slate-200 shadow-2xl flex flex-col items-center justify-center text-center gap-4 mb-10 group hover:border-udanix-orange/30 hover:shadow-orange-500/10 transition-all duration-700"
       >
         <div className={cn(
           "w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500",
@@ -167,9 +167,9 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
           <Icon className="w-8 h-8" />
         </div>
         <div className="space-y-2">
-          <p className="text-5xl font-black text-white tracking-tighter leading-none">{item.value}</p>
+          <p className="text-5xl font-black text-slate-950 tracking-tighter leading-none">{item.value}</p>
           <p className="text-brand-gradient font-black uppercase tracking-widest text-[10px]">{item.label}</p>
-          <p className="text-white/20 font-black text-[9px] uppercase tracking-[0.2em]">{item.desc}</p>
+          <p className="text-slate-400 font-black text-[9px] uppercase tracking-[0.2em]">{item.desc}</p>
         </div>
       </motion.div>
     );
@@ -182,14 +182,14 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
         style={{ y }}
         whileHover={{ scale: 1.02 }}
         className={cn(
-          "relative rounded-[2.5rem] overflow-hidden shadow-2xl group mb-10 border border-white/5 hover:border-white/20 transition-all duration-700",
+          "relative rounded-[2.5rem] overflow-hidden shadow-2xl group mb-10 border border-slate-200 hover:border-udanix-blue/30 transition-all duration-700",
           item.size === 'large' ? 'h-[500px]' : 'h-[350px]'
         )}
       >
-        <Image src={item.image!} fill className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-75 group-hover:brightness-100" alt="" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+        <Image src={item.image!} fill className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-90 group-hover:brightness-100" alt="" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
         <div className="absolute bottom-8 left-8 right-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
-          <p className="text-white font-black uppercase tracking-[0.2em] text-[10px] bg-white/10 backdrop-blur-xl px-6 py-3 rounded-full inline-block border border-white/10">
+          <p className="text-slate-950 font-black uppercase tracking-[0.2em] text-[10px] bg-white/90 backdrop-blur-xl px-6 py-3 rounded-full inline-block border border-slate-200">
             {item.label}
           </p>
         </div>
@@ -220,8 +220,8 @@ function MarqueeColumn({ items, direction = 'up', speed = 20 }: { items: typeof 
       </motion.div>
       
       {/* Gradient Fades */}
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-slate-950 to-transparent z-10" />
-      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-slate-950 to-transparent z-10" />
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent z-10" />
+      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-white to-transparent z-10" />
     </div>
   );
 }
@@ -236,11 +236,11 @@ export function SuccessGallery() {
   const col3 = [SUCCESS_STORIES[6], SUCCESS_STORIES[7], SUCCESS_STORIES[8]];
 
   return (
-    <section ref={containerRef} className="py-32 relative overflow-hidden bg-slate-950">
+    <section ref={containerRef} className="py-32 relative overflow-hidden bg-white">
       <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-[#020617]" />
+          <div className="absolute top-0 left-0 w-full h-full bg-white" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-udanix-blue/5 blur-[160px] rounded-full" />
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.01] mix-blend-overlay" />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-8 relative z-10">
@@ -250,21 +250,21 @@ export function SuccessGallery() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 shadow-2xl backdrop-blur-xl"
+            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-slate-50 border border-slate-200 shadow-sm backdrop-blur-xl"
           >
             <div className="w-2 h-2 rounded-full bg-udanix-orange animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
-            <span className="text-white text-[10px] font-black uppercase tracking-[0.4em]">
+            <span className="text-slate-950 text-[10px] font-black uppercase tracking-[0.4em]">
               The Impact Wall
             </span>
           </motion.div>
           
-          <h2 className="text-6xl md:text-[100px] font-black text-white tracking-tighter uppercase leading-[0.85]">
+          <h2 className="text-6xl md:text-[100px] font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
             Real Results. <br />
-            <span className="text-brand-gradient drop-shadow-[0_0_30px_rgba(14,57,154,0.3)]">Unlimited</span> Potential.
+            <span className="text-brand-gradient drop-shadow-sm">Unlimited</span> Potential.
           </h2>
           
-          <p className="text-slate-400 text-xl md:text-2xl font-black uppercase tracking-[0.2em] max-w-3xl mx-auto leading-relaxed">
-            &quot;Join the <span className="text-white">Elite Network</span> of high-achievers who transformed their professional trajectory.&quot;
+          <p className="text-slate-600 text-xl md:text-2xl font-black uppercase tracking-[0.2em] max-w-3xl mx-auto leading-relaxed">
+            &quot;Join the <span className="text-slate-950">Elite Network</span> of high-achievers who transformed their professional trajectory.&quot;
           </p>
         </div>
 
@@ -284,17 +284,17 @@ export function SuccessGallery() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="bg-white/5 backdrop-blur-2xl px-10 py-8 rounded-[2.5rem] border border-white/10 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] flex items-center gap-8"
+            className="bg-white backdrop-blur-2xl px-10 py-8 rounded-[2.5rem] border border-slate-200 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.08)] flex items-center gap-8"
           >
             <div className="flex -space-x-4">
               {[1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="w-12 h-12 rounded-full border-4 border-[#0a1120] bg-slate-800 overflow-hidden shadow-xl">
+                <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-100 overflow-hidden shadow-xl">
                   <Image src={`https://i.pravatar.cc/100?img=${i + 20}`} width={48} height={48} alt="" />
                 </div>
               ))}
             </div>
-            <div className="h-10 w-[1px] bg-white/10" />
-            <p className="text-white font-black uppercase tracking-[0.1em] text-sm">
+            <div className="h-10 w-[1px] bg-slate-200" />
+            <p className="text-slate-950 font-black uppercase tracking-[0.1em] text-sm">
               <span className="text-udanix-blue">+15,000</span> Successful Career Shifts
             </p>
           </motion.div>
