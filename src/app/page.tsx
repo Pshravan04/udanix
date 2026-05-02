@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
+import { motion } from 'framer-motion';
 
 import { HeroSection } from '@/components/hero-section';
 import { CtaSection } from '@/components/cta-section';
@@ -76,8 +77,28 @@ export default function Home() {
       {/* ─── HERO ─── */}
       <HeroSection />
 
-      {/* ─── DASHBOARD PREVIEW ─── */}
-      <DoubleDashboardPreview />
+      {/* ─── ACTUAL DASHBOARD PREVIEW ─── */}
+      <section className="relative px-6 sm:px-12 -mt-40 mb-20 z-20">
+        <div className="max-w-[1400px] mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="p-3 sm:p-4 bg-white/10 backdrop-blur-3xl rounded-[2.5rem] border border-white/20 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)]"
+          >
+            <div className="relative aspect-[16/9] w-full rounded-[1.8rem] overflow-hidden border border-white/20 shadow-2xl">
+              <Image 
+                src="/actual-dashboard.png" 
+                alt="Udanix Dashboard" 
+                fill 
+                className="object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ─── STREAM EXPLORER ─── */}
       <StreamExplorer />

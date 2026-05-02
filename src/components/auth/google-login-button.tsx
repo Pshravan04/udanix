@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
-import { getURL } from '@/lib/utils';
 
 export function GoogleLoginButton({ role = 'student' }: { role?: 'student' | 'counselor' }) {
     const [isConnecting, setIsConnecting] = useState(false);
@@ -16,7 +15,7 @@ export function GoogleLoginButton({ role = 'student' }: { role?: 'student' | 'co
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    redirectTo: `${getURL()}${role}?next_role=${role}`,
+                    redirectTo: `${window.location.origin}/auth/callback?next=/${role}`,
                     queryParams: {
                         access_type: 'offline',
                         prompt: 'consent',

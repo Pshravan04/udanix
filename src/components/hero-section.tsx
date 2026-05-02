@@ -1,94 +1,64 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { fadeUp, staggerContainer as stagger } from '@/lib/animations';
-
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="relative pt-32 pb-0 overflow-hidden bg-white">
-      {/* ─── ENHANCED BACKGROUND ─── */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        {/* Animated Mesh Gradients */}
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-            x: [0, 100, 0],
-            y: [0, -50, 0]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-blue-100/40 rounded-full blur-[140px]" 
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            rotate: [0, -90, 0],
-            x: [0, -100, 0],
-            y: [0, 100, 0]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-purple-100/30 rounded-full blur-[120px]" 
-        />
-        
-        {/* Grid & Texture */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.04]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:44px_44px]" />
+    <section className="relative min-h-[85vh] flex flex-col items-center justify-center pt-32 pb-10 overflow-hidden">
+      {/* ─── BACKGROUND EFFECTS ─── */}
+      <div className="absolute inset-0 bg-[#3B30E1] pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#3B30E1] via-[#6366F1] to-[#9333EA] opacity-90" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-white/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-400/20 rounded-full blur-[100px]" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        <motion.div 
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="flex flex-col items-center text-center"
+      <div className="container relative z-10 px-6 mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto space-y-8"
         >
-          {/* Tagline */}
-          <motion.div 
-            variants={fadeUp} 
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] mb-10 shadow-2xl shadow-slate-200"
-          >
-            <span className="flex h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
-            Empowering Your Future
-          </motion.div>
+          {/* Badge */}
+          <div className="text-white/90 text-sm font-medium tracking-wide mb-2">
+            Your Career Journey Starts Here
+          </div>
 
-          {/* Heading */}
-          <motion.h1 
-            variants={fadeUp}
-            className="text-6xl sm:text-8xl lg:text-[110px] font-black text-slate-900 leading-[0.82] tracking-[-0.04em] max-w-[1000px] mb-10"
-            style={{ fontFamily: 'var(--font-space-grotesk)' }}
-          >
-            Your Career Journey <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-udanix-blue via-blue-600 to-indigo-600">
-              Starts Here.
-            </span>
-          </motion.h1>
+          {/* Subtitle / Main Text */}
+          <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-white font-medium leading-relaxed">
+            Get expert guidance on stream selection, career paths, entrance exams, and future opportunities. 
+            Make informed decisions with personalized counseling.
+          </p>
 
-          {/* Subheading */}
-          <motion.p 
-            variants={fadeUp}
-            className="text-slate-500 text-lg sm:text-xl max-w-2xl leading-relaxed font-medium mb-14"
-          >
-            Expert guidance on stream selection, career paths, and entrance exams. 
-            Join 50,000+ students bridging the gap between potential and success.
-          </motion.p>
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-6">
+            <button className="w-full sm:w-auto px-8 py-4 bg-white text-[#3B30E1] rounded-2xl font-bold text-base shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all">
+              Take Free Assessment
+            </button>
+            <button className="flex items-center gap-2 text-white font-bold text-base group hover:text-blue-100 transition-colors">
+              Talk to Counselor
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
 
-          {/* CTAs */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 mb-20">
-            <Link href="/counselors">
-              <button className="bg-slate-900 text-white text-[13px] font-black py-6 px-14 rounded-2xl shadow-2xl shadow-slate-200 hover:scale-[1.05] active:scale-[0.98] transition-all uppercase tracking-widest">
-                Talk to Counselor
-              </button>
-            </Link>
-          </motion.div>
-
-
+          {/* Stats Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-20 border-t border-white/10 mt-10">
+            <div className="flex flex-col items-center">
+              <span className="text-3xl font-bold text-white mb-1">50,000+</span>
+              <span className="text-white/60 text-sm uppercase tracking-wider font-semibold">Students Guided</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-3xl font-bold text-white mb-1">200+</span>
+              <span className="text-white/60 text-sm uppercase tracking-wider font-semibold">Expert Counselors</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-3xl font-bold text-white mb-1">95%</span>
+              <span className="text-white/60 text-sm uppercase tracking-wider font-semibold">Success Rate</span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
-

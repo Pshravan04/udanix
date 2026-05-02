@@ -6,7 +6,14 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const getURL = () => {
-  // Use current production URL directly to ensure reliable redirects
-  const url = 'https://udanix.vercel.app/';
+  let url =
+    (typeof window !== 'undefined' && window.location.origin) ? 
+    window.location.origin :
+    process?.env?.NEXT_PUBLIC_SITE_URL ?? 
+    process?.env?.NEXT_PUBLIC_VERCEL_URL ?? 
+    'http://localhost:3000';
+    
+  // Make sure to include a trailing `/`.
+  url = url.endsWith('/') ? url : `${url}/`;
   return url;
 };
