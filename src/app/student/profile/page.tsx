@@ -1,13 +1,15 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import {
   User, Mail, Phone, MapPin, GraduationCap, BookOpen, Star, Calendar,
   Edit3, Camera, Award, Target, Clock, Upload, Save, ArrowRight,
   Globe, Bell, Shield, Loader2
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import { toast } from 'sonner';
 
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
@@ -31,7 +33,10 @@ export default function StudentProfile() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [editing, setEditing] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'overview' | 'settings'>('overview');
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -57,6 +62,7 @@ export default function StudentProfile() {
         .single();
 
       if (data) {
+        setAvatarUrl(data.avatar_url || null);
         setForm({
           name: data.full_name || '',
           email: data.email || '',
@@ -69,12 +75,10 @@ export default function StudentProfile() {
           goal: data.bio || '',
           interests: data.interests || [],
         });
-        
-        // Update stats with real data
         setStudentStats({
           sessions: data.sessions_count || 0,
           rating: data.rating || 5.0,
-          goals: '72%' // Placeholder for now
+          goals: '72%',
         });
       }
 
@@ -92,6 +96,35 @@ export default function StudentProfile() {
     loadProfile();
   }, [supabase]);
 
+
+  const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) { setUploading(false); return; }
+
+    const ext = file.name.split('.').pop();
+    const path = `${user.id}/avatar.${ext}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('avatars')
+      .upload(path, file, { upsert: true, contentType: file.type });
+
+    if (uploadError) {
+      toast.error('Upload failed: ' + uploadError.message);
+      setUploading(false);
+      return;
+    }
+
+    const { data: urlData } = supabase.storage.from('avatars').getPublicUrl(path);
+    const publicUrl = urlData.publicUrl + '?t=' + Date.now(); // bust cache
+
+    await supabase.from('profiles').update({ avatar_url: publicUrl }).eq('id', user.id);
+    setAvatarUrl(publicUrl);
+    toast.success('Avatar updated!');
+    setUploading(false);
+  };
 
   const handleSave = async () => {
     setSaving(true);
@@ -115,7 +148,10 @@ export default function StudentProfile() {
       });
 
     if (!error) {
+      toast.success('Profile saved!');
       setEditing(false);
+    } else {
+      toast.error('Save failed: ' + error.message);
     }
     setSaving(false);
   };
@@ -141,12 +177,28 @@ export default function StudentProfile() {
             <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-8">
               {/* Avatar */}
               <div className="relative group">
-                <div className="w-28 h-28 rounded-[2rem] bg-white/20 border-4 border-white/40 flex items-center justify-center text-4xl font-black text-white backdrop-blur-md shadow-2xl">
-                  {form.name?.charAt(0) || 'S'}
+                <div className="w-28 h-28 rounded-[2rem] bg-white/20 border-4 border-white/40 overflow-hidden flex items-center justify-center text-4xl font-black text-white backdrop-blur-md shadow-2xl">
+                  {avatarUrl ? (
+                    <Image src={avatarUrl} alt={form.name} width={112} height={112} className="w-full h-full object-cover" />
+                  ) : (
+                    form.name?.charAt(0) || 'S'
+                  )}
                 </div>
-                <button className="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-2xl flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
-                  <Camera className="w-5 h-5 text-udanix-blue" />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploading}
+                  className="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-2xl flex items-center justify-center shadow-2xl hover:scale-110 transition-transform disabled:opacity-60"
+                >
+                  {uploading ? <Loader2 className="w-5 h-5 text-udanix-blue animate-spin" /> : <Camera className="w-5 h-5 text-udanix-blue" />}
                 </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleAvatarUpload}
+                />
               </div>
 
               <div className="flex-1 space-y-3">

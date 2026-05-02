@@ -3,11 +3,10 @@
 import { useState, useEffect } from 'react';
 import { CounselorCard } from '@/components/counselor-card';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { Search, SlidersHorizontal, Sparkles, Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/client';
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
-
 import { Profile } from '@/types';
 
 export default function CounselorDirectory() {
@@ -21,11 +20,10 @@ export default function CounselorDirectory() {
       const { data } = await supabase
         .from('profiles')
         .select('*')
-        .eq('role', 'counselor');
+        .eq('role', 'counselor')
+        .order('rating', { ascending: false });
 
-      if (data) {
-        setCounselors(data);
-      }
+      if (data) setCounselors(data);
       setLoading(false);
     }
     loadCounselors();
@@ -41,16 +39,13 @@ export default function CounselorDirectory() {
       <StudentSidebar />
 
       <main className="flex-1 space-y-12 pr-4 overflow-x-hidden">
-        {/* Header Area */}
+        {/* Header */}
         <div className="relative overflow-hidden bg-white rounded-[2.5rem] border border-slate-100 p-12 shadow-2xl shadow-slate-200/50 group">
-          {/* Background Glitch/Glow */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-udanix-blue/[0.03] to-transparent pointer-events-none" />
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-udanix-blue/10 blur-[120px] rounded-full opacity-50 group-hover:opacity-70 transition-opacity duration-1000" />
-
           <div className="absolute top-10 right-10 p-4 opacity-[0.03] rotate-12 group-hover:rotate-0 transition-transform duration-1000">
             <Sparkles className="w-48 h-48 text-slate-900" />
           </div>
-
           <div className="relative z-10 max-w-2xl space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-6 bg-udanix-blue rounded-full" />
@@ -63,7 +58,7 @@ export default function CounselorDirectory() {
               <span className="text-udanix-blue/30">Vector Mentor</span>
             </h1>
             <p className="text-slate-500 text-xl font-medium leading-relaxed max-w-lg">
-              Connect with 200+ certified professional nodes dedicated to your personalized career journey.
+              Connect with certified professional counselors dedicated to your personalized career journey.
             </p>
           </div>
         </div>
@@ -75,19 +70,17 @@ export default function CounselorDirectory() {
               <Search className="w-4 h-4 text-slate-400 group-focus-within:text-udanix-blue transition-colors" />
             </div>
             <Input
-              placeholder="SEARCH_BY_SPECIALTY_OR_NAME..."
-              className="pl-14 h-14 border-2 border-slate-50 bg-slate-50/50 rounded-2xl focus-visible:ring-0 focus-visible:border-udanix-blue/30 focus-visible:bg-white transition-all font-black text-[10px] uppercase tracking-widest"
+              placeholder="Search by name or specialty..."
+              className="pl-14 h-14 border-2 border-slate-50 bg-slate-50/50 rounded-2xl focus-visible:ring-0 focus-visible:border-udanix-blue/30 focus-visible:bg-white transition-all font-bold text-sm"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-
           <div className="flex items-center gap-4">
             <Button variant="outline" className="h-14 px-8 border-2 border-slate-50 bg-white rounded-2xl text-slate-900 font-black text-[10px] uppercase tracking-[0.2em] hover:bg-slate-50 hover:border-slate-200 gap-3 transition-all active:scale-95 shadow-sm">
               <SlidersHorizontal className="w-4 h-4" />
-              Adaptive Filters
+              Filters
             </Button>
-            <div className="w-px h-8 bg-slate-100 hidden md:block" />
             <div className="hidden lg:flex flex-col items-end px-2">
               <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest leading-none mb-1">Active Nodes</p>
               <p className="text-[10px] font-bold text-udanix-blue uppercase tracking-widest leading-none">
@@ -102,6 +95,10 @@ export default function CounselorDirectory() {
           <div className="flex items-center justify-center p-24">
             <Loader2 className="w-12 h-12 text-udanix-blue animate-spin" />
           </div>
+        ) : filteredCounselors.length === 0 ? (
+          <div className="text-center py-24 text-slate-400 font-bold uppercase tracking-widest italic">
+            No counselors found matching &quot;{search}&quot;
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 px-2">
             {filteredCounselors.map((c) => (
@@ -111,10 +108,12 @@ export default function CounselorDirectory() {
                 name={c.full_name || 'Expert Counselor'}
                 specialty={c.stream || 'Expert Consultant'}
                 rating={c.rating || 5.0}
-                languages={['English']}
+                languages={['English', 'Hindi']}
                 isOnline={true}
-                price={`$${c.price_per_hour || 50}`}
-                experience={c.experience || '10'}
+                avatarUrl={c.avatar_url}
+                isVerified={c.is_verified ?? false}
+                price={`₹${c.price_per_hour || 500}`}
+                experience={c.experience || '5+'}
               />
             ))}
           </div>

@@ -8,6 +8,7 @@ import {
   Loader2, AlertCircle 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { StudentSidebar } from '@/components/dashboard/student-sidebar';
 import { fadeUpStagger as fadeUp } from '@/lib/animations';
@@ -111,9 +112,11 @@ export default function StudentSessions() {
             </div>
             <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-2">No Active Logs</h3>
             <p className="text-slate-400 font-medium">You haven&apos;t scheduled any sessions yet. Visit the directory node.</p>
-            <Button variant="outline" className="mt-8 rounded-2xl px-10 h-12 text-[10px] font-black uppercase tracking-widest border-2 hover:bg-udanix-blue hover:text-white transition-all">
-              Launch Directory
-            </Button>
+            <Link href="/student/directory">
+              <Button variant="outline" className="mt-8 rounded-2xl px-10 h-12 text-[10px] font-black uppercase tracking-widest border-2 hover:bg-udanix-blue hover:text-white transition-all">
+                Launch Directory
+              </Button>
+            </Link>
           </div>
         ) : (
           <div className="space-y-6 px-2">
@@ -169,10 +172,12 @@ export default function StudentSessions() {
 
                     <div className="flex items-center gap-3">
                       {isUpcoming ? (
-                        <Button className="bg-udanix-blue text-white rounded-2xl h-14 px-8 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl shadow-blue-900/20 gap-3 group-hover:scale-105 transition-all">
-                          <Video className="w-4 h-4" />
-                          Initialize Link
-                        </Button>
+                        <Link href={`/session/${session.id}`}>
+                          <Button className="bg-udanix-blue text-white rounded-2xl h-14 px-8 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl shadow-blue-900/20 gap-3 group-hover:scale-105 transition-all">
+                            <Video className="w-4 h-4" />
+                            Initialize Link
+                          </Button>
+                        </Link>
                       ) : (
                         <Button variant="outline" className="rounded-2xl h-14 px-8 text-[10px] font-black uppercase tracking-[0.2em] border-2 border-slate-100 text-slate-400">
                           Archive Log

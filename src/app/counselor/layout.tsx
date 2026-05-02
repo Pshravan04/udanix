@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GraduationCap, Bell, Settings } from "lucide-react";
+import { GraduationCap, Bell, Settings, LayoutDashboard, Calendar, MessageSquare, BookOpen } from "lucide-react";
 
 // Mobile nav is toggled client-side — need a small wrapper
 import { CounselorMobileNav } from "./mobile-nav";
