@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { GraduationCap, Bell, Settings, LogOut, LayoutDashboard, Calendar, MessageSquare, BookOpen } from "lucide-react";
+import { GraduationCap, Bell, Settings } from "lucide-react";
 
 // Mobile nav is toggled client-side — need a small wrapper
 import { CounselorMobileNav } from "./mobile-nav";
+import { LogoutButton } from "./logout-button";
 
 export default function CounselorLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -50,9 +51,7 @@ export default function CounselorLayout({ children }: { children: React.ReactNod
                         <button className="hidden sm:flex w-11 h-11 rounded-2xl text-slate-500 hover:text-udanix-blue hover:bg-udanix-blue/5 items-center justify-center transition-all border border-slate-100">
                             <Settings className="w-5 h-5" />
                         </button>
-                        <Link href="/login" className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl text-slate-400 hover:text-red-500 hover:bg-red-50 flex items-center justify-center transition-all border border-slate-100 sm:ml-2">
-                            <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </Link>
+                        <LogoutButton />
                         {/* Mobile menu button */}
                         <CounselorMobileNav />
                     </div>

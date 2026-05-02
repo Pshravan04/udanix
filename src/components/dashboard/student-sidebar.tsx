@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { 
   Home,
@@ -12,7 +12,8 @@ import {
   Settings,
   Menu,
   X,
-  ShieldCheck
+  ShieldCheck,
+  LogOut,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
@@ -30,7 +31,9 @@ const NAV_ITEMS = [
 
 export function StudentSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
   const supabase = createClient();
 
   useEffect(() => {
@@ -47,6 +50,12 @@ export function StudentSidebar() {
     };
     checkAdmin();
   }, [supabase]);
+
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    await supabase.auth.signOut();
+    router.push('/');
+  };
 
   return (
     <div className="hidden lg:flex w-[260px] xl:w-[280px] h-[calc(100vh-40px)] bg-white rounded-[32px] border border-[#E5E7EB] flex-col p-6 sticky top-5 shadow-sm shrink-0">
@@ -111,10 +120,19 @@ export function StudentSidebar() {
         )}
       </nav>
 
-
-      {/* Version */}
-      <div className="mt-auto pt-6 border-t border-gray-100 italic text-[11px] text-[#9CA3AF] text-center">
-        v2.0.4 Unified Branding
+      {/* Logout */}
+      <div className="mt-auto pt-4 border-t border-gray-100 space-y-3">
+        <button
+          onClick={handleLogout}
+          disabled={loggingOut}
+          className="group flex items-center gap-3 w-full px-4 py-3.5 rounded-2xl transition-all duration-200 text-[#9CA3AF] hover:bg-red-50 hover:text-red-500 disabled:opacity-60"
+        >
+          <LogOut className="w-5 h-5 group-hover:text-red-500 transition-colors" />
+          <span className="text-[15px] font-bold tracking-tight">
+            {loggingOut ? 'Signing out…' : 'Log Out'}
+          </span>
+        </button>
+        <p className="italic text-[11px] text-[#9CA3AF] text-center">v2.0.4 Unified Branding</p>
       </div>
     </div>
   );
@@ -123,7 +141,17 @@ export function StudentSidebar() {
 /** Mobile top navigation bar for the student dashboard */
 export function MobileStudentNav() {
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const supabase = createClient();
+
+  const handleLogout = async () => {
+    setMenuOpen(false);
+    setLoggingOut(true);
+    await supabase.auth.signOut();
+    router.push('/');
+  };
 
   return (
     <>
@@ -163,6 +191,16 @@ export function MobileStudentNav() {
               </Link>
             );
           })}
+          <div className="border-t border-gray-100 pt-1 mt-1">
+            <button
+              onClick={handleLogout}
+              disabled={loggingOut}
+              className="flex items-center gap-3 w-full px-4 py-3 rounded-2xl transition-all duration-200 text-red-500 hover:bg-red-50 disabled:opacity-60"
+            >
+              <LogOut className="w-5 h-5" />
+              <span className="text-[15px] font-semibold">{loggingOut ? 'Signing out…' : 'Log Out'}</span>
+            </button>
+          </div>
         </div>
       )}
     </>

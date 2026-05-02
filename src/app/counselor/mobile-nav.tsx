@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, LayoutDashboard, Calendar, MessageSquare, BookOpen } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Menu, X, LayoutDashboard, Calendar, MessageSquare, BookOpen, LogOut, Loader2 } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 const NAV_LINKS = [
   { href: '/counselor', label: 'Dashboard', icon: LayoutDashboard },
@@ -13,6 +15,16 @@ const NAV_LINKS = [
 
 export function CounselorMobileNav() {
   const [open, setOpen] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const router = useRouter();
+  const supabase = createClient();
+
+  const handleLogout = async () => {
+    setOpen(false);
+    setLoggingOut(true);
+    await supabase.auth.signOut();
+    router.push('/');
+  };
 
   return (
     <>
@@ -37,8 +49,19 @@ export function CounselorMobileNav() {
               {label}
             </Link>
           ))}
+          <div className="border-t border-slate-100 pt-1 mt-1">
+            <button
+              onClick={handleLogout}
+              disabled={loggingOut}
+              className="flex items-center gap-3 w-full px-4 py-3 rounded-2xl text-sm font-semibold text-red-500 hover:bg-red-50 transition-all disabled:opacity-60"
+            >
+              {loggingOut ? <Loader2 className="w-4 h-4 animate-spin" /> : <LogOut className="w-4 h-4" />}
+              {loggingOut ? 'Signing out…' : 'Log Out'}
+            </button>
+          </div>
         </div>
       )}
     </>
   );
 }
+
