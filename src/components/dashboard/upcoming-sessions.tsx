@@ -11,7 +11,7 @@ interface UpcomingSessionsProps {
 
 export function UpcomingSessions({ sessions }: UpcomingSessionsProps) {
   return (
-    <div className="bg-white border border-[#E5E7EB] rounded-[32px] p-8 shadow-sm">
+    <div className="bg-white border border-[#E5E7EB] rounded-[32px] p-6 sm:p-8 shadow-sm">
       <div className="flex items-center justify-between mb-8">
         <h3 className="text-[#111827] text-sm font-black uppercase tracking-[0.2em] flex items-center gap-2">
           <Calendar className="w-4 h-4 text-udanix-blue" />

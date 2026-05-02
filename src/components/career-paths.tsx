@@ -157,12 +157,12 @@ export function CareerPaths() {
     const [activeTab, setActiveTab] = useState<Category>('Science');
 
     return (
-        <section className="py-24 relative overflow-hidden bg-transparent">
+        <section className="py-24 relative overflow-hidden">
             {/* Background Decorative Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-udanix-blue/5 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-udanix-orange/5 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
-                <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.02] mix-blend-overlay pointer-events-none" />
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-udanix-blue/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-udanix-orange/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+                <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
             </div>
 
             <div className="max-w-[1400px] mx-auto px-6 relative z-10">
@@ -245,7 +245,7 @@ export function CareerPaths() {
                                     transition={{ duration: 0.6, delay: idx * 0.1 }}
                                     className="group relative h-full"
                                 >
-                                    <div className="relative h-full bg-white/70 backdrop-blur-xl rounded-[1.8rem] sm:rounded-[2.5rem] p-6 sm:p-8 border border-slate-200 hover:border-udanix-blue/30 shadow-xl transition-all duration-500 flex flex-col hover:-translate-y-2 overflow-hidden">
+                                    <div className="relative h-full bg-white rounded-[2.5rem] p-6 sm:p-8 border border-slate-200/60 hover:border-udanix-blue/30 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] transition-all duration-500 flex flex-col hover:-translate-y-2 hover:shadow-[0_40px_80px_-15px_rgba(14,57,154,0.1)] overflow-hidden">
                                         {/* Hover Glow Effect */}
                                         <div className="absolute top-0 left-0 w-full h-1 bg-brand-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                         

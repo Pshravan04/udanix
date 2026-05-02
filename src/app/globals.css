@@ -119,7 +119,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-nunito), var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -130,7 +130,7 @@
     @apply font-bold tracking-tight text-udanix-heading;
   }
   p, span, li, a, label {
-    font-family: var(--font-nunito), var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
   }
 }
 
@@ -370,29 +370,33 @@
 
   /* Stream Explorer: warm orange accent on top-left, blue on bottom-right */
   @utility bg-section-stream {
-    background-color: #fff8f5;
+    background-color: #fdf2f0; /* More solid light orange */
     background-image:
-      radial-gradient(ellipse at 0% 0%, rgba(223, 89, 14, 0.14) 0px, transparent 55%),
-      radial-gradient(ellipse at 100% 100%, rgba(2, 116, 193, 0.10) 0px, transparent 55%),
-      radial-gradient(ellipse at 50% 100%, rgba(14, 57, 154, 0.05) 0px, transparent 45%);
+      radial-gradient(ellipse at 0% 0%, rgba(223, 89, 14, 0.12) 0px, transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(2, 116, 193, 0.08) 0px, transparent 55%);
   }
 
-  /* Career Paths: rich navy blue accent — feels authoritative */
+  /* Career Paths: light blue background — feels authoritative */
   @utility bg-section-careers {
-    background-color: #f5f7ff;
+    background-color: #f0f7ff; /* More solid sky blue */
     background-image:
-      radial-gradient(ellipse at 100% 0%, rgba(14, 57, 154, 0.13) 0px, transparent 55%),
-      radial-gradient(ellipse at 0% 100%, rgba(2, 116, 193, 0.10) 0px, transparent 55%),
-      radial-gradient(ellipse at 50% 50%, rgba(223, 89, 14, 0.04) 0px, transparent 50%);
+      radial-gradient(ellipse at 100% 0%, rgba(14, 57, 154, 0.1) 0px, transparent 55%),
+      radial-gradient(ellipse at 0% 100%, rgba(2, 116, 193, 0.08) 0px, transparent 55%);
   }
 
-  /* Success Gallery: warm orange + blue mixed — celebratory feel */
+  /* Success Gallery: Very light slate/blue — high contrast for images */
   @utility bg-section-gallery {
-    background-color: #fffbf8;
+    background-color: #f8fafc; /* Solid slate-50 feel */
     background-image:
-      radial-gradient(ellipse at 100% 0%, rgba(223, 89, 14, 0.11) 0px, transparent 50%),
-      radial-gradient(ellipse at 0% 100%, rgba(14, 57, 154, 0.09) 0px, transparent 50%),
-      radial-gradient(ellipse at 50% 0%, rgba(2, 116, 193, 0.07) 0px, transparent 40%);
+      radial-gradient(ellipse at 50% 0%, rgba(14, 57, 154, 0.05) 0px, transparent 50%);
+  }
+
+  /* Assessment Section: clean background with subtle brand glow */
+  @utility bg-section-assessment {
+    background-color: #f9fafb;
+    background-image:
+      radial-gradient(ellipse at 100% 0%, rgba(223, 89, 14, 0.08) 0px, transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(14, 57, 154, 0.08) 0px, transparent 50%);
   }
 
   /* ── Animations ── */

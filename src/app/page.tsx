@@ -28,10 +28,10 @@ export default function Home() {
   }, [supabase]);
 
   return (
-    <div className="min-h-screen bg-white text-slate-950 overflow-x-hidden selection:bg-udanix-blue/10 selection:text-udanix-blue">
+    <div className="min-h-screen bg-slate-50 text-slate-950 overflow-x-hidden selection:bg-udanix-blue/10 selection:text-udanix-blue">
 
       {/* ─── NAV ─── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur-3xl border-b border-slate-200/50 px-4 sm:px-12">
+      <header className="fixed top-0 inset-x-0 z-50 bg-slate-50/80 backdrop-blur-3xl border-b border-slate-200/50 px-4 sm:px-12">
         <div className="max-w-[1440px] mx-auto h-[70px] sm:h-[80px] flex items-center justify-between gap-4 sm:gap-8">
           <div className="flex items-center gap-12">
             <Link href="/" className="flex items-center gap-3 flex-shrink-0 hover:scale-105 transition-transform">

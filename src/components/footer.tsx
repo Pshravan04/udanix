@@ -36,17 +36,17 @@ export function Footer() {
                 
                 {/* Newsletter Section - Ultra Premium */}
                 <div className="relative mb-32">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-orange-600 rounded-[4rem] blur-2xl opacity-[0.05]" />
-                    <div className="relative bg-white/80 backdrop-blur-3xl rounded-[4rem] p-12 lg:p-24 flex flex-col lg:flex-row items-center gap-16 border border-slate-200 overflow-hidden shadow-2xl shadow-slate-200/50">
-                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] -mr-64 -mt-64" />
+                    <div className="absolute -inset-1 bg-gradient-to-r from-udanix-blue to-udanix-orange rounded-[4rem] blur-2xl opacity-[0.1]" />
+                    <div className="relative bg-white/90 backdrop-blur-3xl rounded-[4rem] p-12 lg:p-24 flex flex-col lg:flex-row items-center gap-16 border border-slate-200 overflow-hidden shadow-2xl shadow-slate-200/50">
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-udanix-blue/5 rounded-full blur-[100px] -mr-64 -mt-64" />
                         
                         <div className="flex-1 space-y-10 relative z-10 text-center lg:text-left">
                             <h3 className="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1] tracking-tighter uppercase">
-                                Decode the <br />
-                                <span className="text-brand-gradient">Next Frontier</span>
+                                Access Your <br />
+                                <span className="text-brand-gradient">Next Level</span>
                             </h3>
                             <p className="text-slate-600 text-xl font-medium max-w-lg leading-relaxed text-balance">
-                                Join our elite network of future-ready students and professionals. Get intelligence on emerging industries delivered to your inbox.
+                                Join the UDANIX elite network. Get precision insights into emerging career frontiers delivered to your inbox.
                             </p>
                         </div>
 
@@ -59,7 +59,7 @@ export function Footer() {
                                         placeholder="ENTER YOUR EMAIL" 
                                         className="flex-1 bg-transparent border-none outline-none text-slate-900 px-6 sm:px-8 py-5 sm:py-6 text-[10px] font-black tracking-[0.4em] placeholder:text-slate-400 uppercase min-w-0"
                                     />
-                                    <button className="px-10 py-5 rounded-2xl bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all active:scale-95 whitespace-nowrap">
+                                    <button className="px-10 py-5 rounded-2xl bg-udanix-blue text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all active:scale-95 whitespace-nowrap">
                                         JOIN NOW
                                     </button>
                                 </div>
@@ -67,12 +67,12 @@ export function Footer() {
                             <div className="flex items-center justify-center lg:justify-start gap-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
                                 <span className="flex items-center gap-2.5">
                                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                                    No Spam. Ever.
+                                    Protected Grid
                                 </span>
                                 <span className="w-1.5 h-1.5 rounded-full bg-slate-200" />
                                 <span className="flex items-center gap-2.5">
-                                    <Globe className="w-3.5 h-3.5 text-blue-600" />
-                                    Global Network
+                                    <Globe className="w-3.5 h-3.5 text-udanix-blue" />
+                                    Global Intelligence
                                 </span>
                             </div>
                         </div>
@@ -85,29 +85,29 @@ export function Footer() {
                     <div className="lg:col-span-5 space-y-16">
                         <div className="space-y-10">
                             <Link href="/" className="inline-block hover:scale-105 transition-transform group">
-                                <div className="flex items-center gap-4">
-                                    <Image src="/logo.jpg" alt="Udaanix" width={120} height={50} className="h-10 w-auto" />
+                                <div className="flex items-center gap-4 bg-white p-4 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50">
+                                    <Image src="/logo.jpg" alt="Udaanix" width={160} height={80} className="h-12 w-auto object-contain" />
                                     <div className="h-10 w-[1px] bg-slate-200" />
-                                    <span className="text-[10px] font-black text-slate-900 uppercase tracking-[0.5em] opacity-40 group-hover:opacity-100 transition-opacity">Intelligence</span>
+                                    <span className="text-[10px] font-black text-udanix-blue uppercase tracking-[0.5em] opacity-80 group-hover:opacity-100 transition-opacity">GLOBAL</span>
                                 </div>
                             </Link>
                             <p className="text-slate-600 text-xl font-medium leading-relaxed max-w-sm text-balance">
-                                Architecting the future of career intelligence through neural-mapping and verified professional mentorship.
+                                Forging the future of career intelligence through neural-mapping and verified global mentorship.
                             </p>
                         </div>
 
                         <div className="flex gap-5">
                             {[
-                                { icon: <Twitter className="w-5 h-5" />, href: "#", color: "hover:text-[#1DA1F2]" },
-                                { icon: <Linkedin className="w-5 h-5" />, href: "#", color: "hover:text-[#0A66C2]" },
-                                { icon: <Github className="w-5 h-5" />, href: "#", color: "hover:text-slate-950" },
-                                { icon: <Instagram className="w-5 h-5" />, href: "#", color: "hover:text-[#E4405F]" }
+                                { icon: <Twitter className="w-5 h-5" />, href: "#", color: "hover:text-[#1DA1F2] hover:bg-sky-50" },
+                                { icon: <Linkedin className="w-5 h-5" />, href: "#", color: "hover:text-[#0A66C2] hover:bg-blue-50" },
+                                { icon: <Github className="w-5 h-5" />, href: "#", color: "hover:text-slate-950 hover:bg-slate-100" },
+                                { icon: <Instagram className="w-5 h-5" />, href: "#", color: "hover:text-[#E4405F] hover:bg-rose-50" }
                             ].map((social, i) => (
                                 <motion.a
                                     key={i}
                                     href={social.href}
-                                    whileHover={{ scale: 1.15, y: -8 }}
-                                    className={`w-16 h-16 rounded-[1.5rem] bg-slate-50 border border-slate-200 flex items-center justify-center transition-all ${social.color} group shadow-sm`}
+                                    whileHover={{ scale: 1.1, y: -5 }}
+                                    className={`w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center transition-all ${social.color} group shadow-sm`}
                                 >
                                     <div className="text-slate-400 group-hover:scale-110 transition-transform">
                                         {social.icon}

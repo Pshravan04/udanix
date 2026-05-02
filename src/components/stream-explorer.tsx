@@ -47,12 +47,12 @@ const STREAMS = [
 
 export function StreamExplorer() {
     return (
-        <section className="py-24 relative overflow-hidden bg-transparent">
+        <section className="py-24 relative overflow-hidden">
             {/* Background Decorative Elements */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-udanix-blue/5 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-[120px] animate-float" />
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] mix-blend-overlay" />
+                <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-udanix-blue/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] animate-float" />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10">
@@ -62,7 +62,7 @@ export function StreamExplorer() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-slate-100 border border-slate-200 backdrop-blur-md shadow-sm"
+                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white border border-slate-200 backdrop-blur-md shadow-sm"
                     >
                         <Sparkles className="w-4 h-4 text-blue-600 animate-pulse" />
                         <span className="text-slate-600 text-[10px] font-black uppercase tracking-[0.2em]">Academic Ecosystem</span>
@@ -73,7 +73,7 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-2xl md:text-3xl font-black text-slate-950 uppercase tracking-tighter"
+                        className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter"
                     >
                         Explore Your <span className="text-brand-gradient">Stream</span>
                     </motion.h2>
@@ -89,7 +89,7 @@ export function StreamExplorer() {
                 </div>
 
                 {/* Stream Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                     {STREAMS.map((stream, idx) => (
                         <motion.div
                             key={stream.id}
@@ -97,10 +97,10 @@ export function StreamExplorer() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: idx * 0.1 }}
-                            whileHover={{ y: -10 }}
+                            whileHover={{ y: -12 }}
                             className="group relative flex flex-col h-full"
                         >
-                            <div className="relative flex flex-col h-full bg-white/40 backdrop-blur-xl rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl transition-all duration-500 hover:border-udanix-blue/30 hover:shadow-2xl">
+                            <div className="relative flex flex-col h-full bg-white rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden border border-slate-200/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] transition-all duration-500 hover:border-udanix-blue/30 hover:shadow-[0_40px_80px_-15px_rgba(14,57,154,0.12)]">
                                 {/* Image Area */}
                                 <div className="relative h-56 sm:h-64 w-full overflow-hidden">
                                     <Image 

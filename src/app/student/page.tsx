@@ -9,6 +9,7 @@ import { createClient } from '@/lib/supabase/client';
 import { Loader2, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { Profile, Session } from '@/types';
+import { QuickActions } from '@/components/dashboard/quick-actions';
 
 export default function StudentDashboard() {
   const supabase = useMemo(() => createClient(), []);
@@ -66,16 +67,13 @@ export default function StudentDashboard() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
-      {/* Mobile Top Navigation */}
-      <MobileStudentNav />
-
-      <div className="flex p-3 sm:p-4 lg:p-5 gap-5 lg:gap-8">
+      <div className="flex p-0 sm:p-4 lg:p-5 gap-5 lg:gap-8">
         {/* Desktop Sidebar */}
         <StudentSidebar />
 
-        <main className="flex-1 min-w-0 space-y-6 lg:space-y-10 pb-24 lg:pb-8 lg:pr-4">
+        <main className="flex-1 min-w-0 space-y-6 lg:space-y-10 px-4 sm:px-0 pb-32 lg:pb-8 lg:pr-4">
           {/* Header Section */}
-          <section className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 pt-3 lg:pt-4">
+          <section className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 pt-6 lg:pt-4">
             <div className="space-y-1">
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-2 mb-2">
                  <span className="px-3 py-1 rounded-full bg-udanix-blue/5 border border-udanix-blue/10 text-udanix-blue text-[10px] font-black uppercase tracking-[0.2em] shadow-sm">
@@ -119,9 +117,9 @@ export default function StudentDashboard() {
                   <UpcomingSessions sessions={sessions} />
               </div>
               
-              {/* Quick Action Card */}
+              {/* Quick Actions Column */}
               <div className="space-y-6">
-                  {/* Removed Assessment Center */}
+                  <QuickActions />
               </div>
           </div>
         </main>

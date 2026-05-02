@@ -74,12 +74,12 @@ export function CounselorSection() {
     const containerRef = useRef(null);
 
     return (
-        <section id="counselors" ref={containerRef} className="py-32 relative overflow-hidden bg-white">
+        <section id="counselors" ref={containerRef} className="py-32 relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/5 blur-[140px] rounded-full -mr-96 -mt-96 animate-pulse" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-500/5 blur-[120px] rounded-full -ml-64 -mb-64 animate-float" />
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] mix-blend-overlay" />
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 blur-[140px] rounded-full -mr-96 -mt-96 animate-pulse" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-500/10 blur-[120px] rounded-full -ml-64 -mb-64 animate-float" />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10">
@@ -134,7 +134,7 @@ export function CounselorSection() {
                             transition={{ delay: i * 0.1, duration: 0.8, ease: "circOut" }}
                             className="group"
                         >
-                            <div className="relative flex flex-col h-full bg-white backdrop-blur-3xl rounded-[2.5rem] sm:rounded-[3rem] p-3 sm:p-4 border border-slate-200/60 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-700 group-hover:-translate-y-2">
+                            <div className="relative flex flex-col h-full bg-white rounded-[2.5rem] sm:rounded-[3rem] p-3 sm:p-4 border border-slate-200/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-15px_rgba(14,57,154,0.1)] transition-all duration-700 group-hover:-translate-y-2">
                                 {/* Visual Image Container */}
                                 <div className="relative mb-6 sm:mb-8 rounded-[1.8rem] sm:rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-lg">
                                     <Image 

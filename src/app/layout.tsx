@@ -56,7 +56,7 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${nunito.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col relative bg-white pb-32 md:pb-0" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col relative bg-slate-50 pb-32 md:pb-0" suppressHydrationWarning>
         <NeuralBackground />
         <main className="flex-1">
           {children}
