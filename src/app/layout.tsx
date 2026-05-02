@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans, Geist_Mono, Space_Grotesk, Nunito } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Space_Grotesk, Nunito } from "next/font/google";
 import "./globals.css";
 import { NeuralBackground } from "@/components/ui/neural-background";
 
@@ -16,10 +16,6 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -53,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${nunito.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} ${inter.variable} ${spaceGrotesk.variable} ${nunito.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col relative bg-slate-50 pb-32 md:pb-0" suppressHydrationWarning>

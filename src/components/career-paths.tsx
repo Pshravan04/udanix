@@ -157,15 +157,15 @@ export function CareerPaths() {
     const [activeTab, setActiveTab] = useState<Category>('Science');
 
     return (
-        <section className="py-24 relative overflow-hidden">
+        <section id="paths" className="py-24 sm:py-32 relative overflow-hidden bg-white border-t border-slate-100">
             {/* Background Decorative Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-udanix-blue/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-udanix-orange/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-udanix-blue/5 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-udanix-orange/5 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
                 <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div className="max-w-[1400px] mx-auto px-6 relative z-10 font-plus-jakarta">
                 
                 {/* ─── HEADER ─── */}
                 <div className="text-center mb-20 space-y-4">
@@ -183,18 +183,18 @@ export function CareerPaths() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-950 tracking-tight uppercase"
+                        className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight uppercase"
                     >
-                        Popular <span className="text-brand-gradient">Career</span> Paths
+                        Popular <span className="text-brand-gradient drop-shadow-sm">Career</span> Paths
                     </motion.h2>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-slate-600 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-bold uppercase tracking-wide px-4"
+                        className="text-slate-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-medium font-nunito px-4"
                     >
-                        Explore trending careers across different streams with detailed insights on growth, salary, and skills required.
+                        Explore trending careers across different streams with detailed insights on growth, salary, and skills required. We help you choose the path that aligns with your passion.
                     </motion.p>
                 </div>
 
@@ -209,7 +209,7 @@ export function CareerPaths() {
                                     className={`relative px-5 sm:px-12 py-2.5 sm:py-4 rounded-[0.9rem] sm:rounded-[1.5rem] text-[10px] sm:text-sm font-black uppercase tracking-widest transition-all duration-500 ${
                                         activeTab === tab 
                                         ? 'text-white' 
-                                        : 'text-slate-500 hover:text-slate-700'
+                                        : 'text-slate-500 hover:text-slate-900'
                                     }`}
                                 >
                                     {activeTab === tab && (
@@ -267,7 +267,7 @@ export function CareerPaths() {
                                             {career.title}
                                         </h3>
 
-                                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 line-clamp-3 font-medium">
+                                        <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 line-clamp-3 font-medium font-nunito">
                                             {career.desc}
                                         </p>
 

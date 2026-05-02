@@ -74,12 +74,12 @@ export function CounselorSection() {
     const containerRef = useRef(null);
 
     return (
-        <section id="counselors" ref={containerRef} className="py-32 relative overflow-hidden">
+        <section id="counselors" ref={containerRef} className="py-32 relative overflow-hidden bg-[#df590e]">
             {/* Background elements */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 blur-[140px] rounded-full -mr-96 -mt-96 animate-pulse" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-500/10 blur-[120px] rounded-full -ml-64 -mb-64 animate-float" />
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 blur-[140px] rounded-full -mr-96 -mt-96 animate-pulse" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full -ml-64 -mb-64 animate-float" />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay" />
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10">
@@ -100,15 +100,15 @@ export function CounselorSection() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-2xl md:text-3xl lg:text-4xl font-black mb-6 md:mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950 px-1"
+                            className="text-2xl md:text-3xl lg:text-4xl font-black mb-6 md:mb-8 tracking-tighter uppercase leading-[0.9] text-white px-1"
                             style={{ fontFamily: 'var(--font-plus-jakarta)' }}
                         >
                             Expert Career <br />
-                            <span className="text-brand-gradient drop-shadow-sm">Counselors.</span>
+                            <span className="text-white opacity-80 drop-shadow-sm">Counselors.</span>
                         </motion.h2>
                         
-                        <p className="text-sm md:text-lg text-slate-600 font-bold max-w-xl leading-relaxed uppercase tracking-wide px-1">
-                            Direct access to <span className="text-slate-950">Certified Professionals</span>. Bypass the guesswork with mentors who have shaped 1M+ successful careers.
+                        <p className="text-sm md:text-lg text-white/90 font-medium font-nunito max-w-xl leading-relaxed px-1">
+                            Direct access to <span className="text-white font-bold">Certified Professionals</span>. Bypass the guesswork with mentors who have shaped thousands of successful careers worldwide.
                         </p>
                     </div>
                     
@@ -117,7 +117,7 @@ export function CounselorSection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                     >
-                        <button className="group relative bg-slate-950 text-white px-10 py-6 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3 overflow-hidden">
+                        <button className="group relative bg-white text-[#df590e] px-10 py-6 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3 overflow-hidden">
                             Explore All Experts <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </motion.div>

@@ -47,25 +47,25 @@ const STREAMS = [
 
 export function StreamExplorer() {
     return (
-        <section className="py-24 relative overflow-hidden">
+        <section id="streams" className="relative py-24 sm:py-32 bg-slate-50 overflow-hidden border-t border-slate-100">
             {/* Background Decorative Elements */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-udanix-blue/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] animate-float" />
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+                <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-udanix-blue/5 rounded-full blur-[120px]" />
+                <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-udanix-orange/5 rounded-full blur-[120px]" />
+                <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-overlay" />
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10">
                 {/* Header Section */}
-                <div className="text-center mb-24 space-y-6">
+                <div className="text-center mb-16 sm:mb-24 space-y-6">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white border border-slate-200 backdrop-blur-md shadow-sm"
+                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-sm"
                     >
-                        <Sparkles className="w-4 h-4 text-blue-600 animate-pulse" />
-                        <span className="text-slate-600 text-[10px] font-black uppercase tracking-[0.2em]">Academic Ecosystem</span>
+                        <Sparkles className="w-4 h-4 text-udanix-orange animate-pulse" />
+                        <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Academic Ecosystem</span>
                     </motion.div>
                     
                     <motion.h2 
@@ -73,7 +73,7 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter"
+                        className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter"
                     >
                         Explore Your <span className="text-brand-gradient">Stream</span>
                     </motion.h2>
@@ -82,7 +82,7 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-slate-600 max-w-2xl mx-auto text-sm md:text-base font-bold uppercase tracking-wide leading-relaxed px-4"
+                        className="text-slate-600 max-w-2xl mx-auto text-sm md:text-lg font-bold uppercase tracking-wide leading-relaxed px-4"
                     >
                         Choose your path based on your interests, skills, and career goals. Each stream opens doors to unique opportunities.
                     </motion.p>
@@ -100,16 +100,16 @@ export function StreamExplorer() {
                             whileHover={{ y: -12 }}
                             className="group relative flex flex-col h-full"
                         >
-                            <div className="relative flex flex-col h-full bg-white rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden border border-slate-200/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] transition-all duration-500 hover:border-udanix-blue/30 hover:shadow-[0_40px_80px_-15px_rgba(14,57,154,0.12)]">
+                            <div className="relative flex flex-col h-full bg-white rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all duration-500 hover:shadow-orange-glow">
                                 {/* Image Area */}
-                                <div className="relative h-56 sm:h-64 w-full overflow-hidden">
+                                <div className="relative h-56 sm:h-72 w-full overflow-hidden">
                                     <Image 
                                         src={stream.image}
                                         alt={stream.title}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
                                     
                                     {/* Icon Badge Overlay */}
                                     <div className="absolute bottom-6 left-8">
@@ -120,15 +120,15 @@ export function StreamExplorer() {
                                 </div>
 
                                 {/* Content Area */}
-                                <div className="p-6 sm:p-8 pt-6 flex flex-col flex-1">
+                                <div className="p-6 sm:p-10 pt-6 flex flex-col flex-1">
                                     <div className="space-y-4 mb-6 sm:mb-8">
                                         <div className="flex items-center justify-between">
-                                            <h3 className="text-lg sm:text-xl font-black text-slate-950 uppercase tracking-tight group-hover:text-udanix-blue transition-colors">
+                                            <h3 className="text-xl sm:text-2xl font-black text-slate-950 uppercase tracking-tight group-hover:text-udanix-blue transition-colors">
                                                 {stream.title}
                                             </h3>
                                             <TrendingUp className="w-5 h-5 text-slate-300" />
                                         </div>
-                                        <p className="text-slate-600 text-[13px] sm:text-sm font-medium leading-relaxed">
+                                        <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed">
                                             {stream.desc}
                                         </p>
                                     </div>
@@ -143,7 +143,7 @@ export function StreamExplorer() {
                                             {stream.subjects.map(subject => (
                                                 <span 
                                                     key={subject}
-                                                    className="px-4 py-2 rounded-xl bg-slate-50 text-[11px] font-bold text-slate-600 border border-slate-100 transition-all hover:bg-white hover:text-udanix-blue hover:border-udanix-blue/30"
+                                                    className="px-4 py-2 rounded-xl bg-slate-50 text-[11px] font-bold text-slate-600 border border-slate-100 transition-all hover:bg-[#0e399a] hover:text-white hover:border-transparent"
                                                 >
                                                     {subject}
                                                 </span>

@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-nunito), var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-inter), var(--font-nunito), system-ui, sans-serif;
   --font-display: var(--font-plus-jakarta), var(--font-space-grotesk), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-plus-jakarta), var(--font-space-grotesk), system-ui, sans-serif;
@@ -61,56 +61,56 @@
 
 :root {
   /* ── Brand Palette (User Specified) ── */
-  --udanix-blue:       #003E8A;
-  --udanix-orange:     #DF590E;
-  --udanix-gradient-start: #0E399A;
-  --udanix-gradient-end: #0274C1;
+  --udanix-navy:       #0e399a;
+  --udanix-orange:     #df590e;
+  --udanix-blue:       #0274c1;
+  --udanix-gradient-start: #0e399a;
+  --udanix-gradient-end: #0274c1;
   
   /* ── Secondary Palette ── */
-  --udanix-blue-mid:   #0274C1;
+  --udanix-blue-mid:   #0274c1;
   --udanix-gold:       #FBB03B;
   --udanix-cyan:       #0EA5E9;
   --udanix-green:      #10B981;
   --udanix-purple:     #7C3AED;
-  --udanix-navy:       #002D52;
-  --udanix-heading:    #002D52;
-  --udanix-body:       #4B5563;
-  --udanix-sub:        #9CA3AF;
+  --udanix-heading:    #0e399a;
+  --udanix-body:       #334155;
+  --udanix-sub:        #64748b;
   --udanix-sky:        #F0F7FF;
-  --udanix-surface:    #F9FAFB;
-  --udanix-light:      #F3F4F6;
-  --udanix-border:     #E5E7EB;
-  --udanix-shadow:     rgba(14, 57, 154, 0.10);
+  --udanix-surface:    #FFFFFF;
+  --udanix-light:      #F8FAFC;
+  --udanix-border:     #E2E8F0;
+  --udanix-shadow:     rgba(14, 57, 154, 0.08);
   --udanix-orange-shadow: rgba(223, 89, 14, 0.12);
 
   /* ── Semantic Tokens ── */
   --background:              #FFFFFF;
-  --foreground:              #111827;
+  --foreground:              #0f172a;
   --card:                    #FFFFFF;
-  --card-foreground:         #111827;
+  --card-foreground:         #0f172a;
   --popover:                 #FFFFFF;
-  --popover-foreground:      #111827;
-  --primary:                 var(--udanix-blue);
+  --popover-foreground:      #0f172a;
+  --primary:                 var(--udanix-navy);
   --primary-foreground:      #FFFFFF;
-  --secondary:               #F3F4F6;
-  --secondary-foreground:    #111827;
-  --muted:                   #F9FAFB;
-  --muted-foreground:        #9CA3AF;
+  --secondary:               #F1F5F9;
+  --secondary-foreground:    #0f172a;
+  --muted:                   #F8FAFC;
+  --muted-foreground:        #64748b;
   --accent:                  #F0F9FF;
-  --accent-foreground:       var(--udanix-blue);
+  --accent-foreground:       var(--udanix-navy);
   --destructive:             oklch(0.577 0.245 27.325);
-  --border:                  #E5E7EB;
-  --input:                   #F3F4F6;
-  --ring:                    var(--udanix-blue);
-  --radius:                  1rem; /* 16px base */
+  --border:                  #E2E8F0;
+  --input:                   #F8FAFC;
+  --ring:                    var(--udanix-navy);
+  --radius:                  1.25rem;
   --sidebar:                 #FFFFFF;
-  --sidebar-foreground:      #111827;
-  --sidebar-primary:         var(--udanix-blue);
+  --sidebar-foreground:      #0f172a;
+  --sidebar-primary:         var(--udanix-navy);
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent:          #F3F4F6;
-  --sidebar-accent-foreground: #111827;
-  --sidebar-border:          #E5E7EB;
-  --sidebar-ring:            var(--udanix-blue);
+  --sidebar-accent:          #F1F5F9;
+  --sidebar-accent-foreground: #0f172a;
+  --sidebar-border:          #E2E8F0;
+  --sidebar-ring:            var(--udanix-navy);
 }
 
 @layer base {
@@ -119,20 +119,21 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter), system-ui, sans-serif;
-    line-height: 1.7;
+    font-family: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
-    color: #374151;
+    color: var(--udanix-body);
   }
   h1, h2, h3, h4 {
     font-family: var(--font-plus-jakarta), var(--font-space-grotesk), system-ui, sans-serif;
-    @apply font-bold tracking-tight text-udanix-heading;
+    @apply font-black tracking-tight text-udanix-heading;
   }
   p, span, li, a, label {
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
   }
 }
+
 
 
   /* ── Premium Shadows ── */

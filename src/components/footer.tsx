@@ -85,10 +85,10 @@ export function Footer() {
                     <div className="lg:col-span-5 space-y-16">
                         <div className="space-y-10">
                             <Link href="/" className="inline-block hover:scale-105 transition-transform group">
-                                <div className="flex items-center gap-4 bg-white p-4 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50">
-                                    <Image src="/logo.jpg" alt="Udaanix" width={160} height={80} className="h-12 w-auto object-contain" />
-                                    <div className="h-10 w-[1px] bg-slate-200" />
-                                    <span className="text-[10px] font-black text-udanix-blue uppercase tracking-[0.5em] opacity-80 group-hover:opacity-100 transition-opacity">GLOBAL</span>
+                                <div className="flex items-center gap-6 bg-white p-6 rounded-[2.5rem] border border-slate-200 shadow-2xl shadow-slate-200/50">
+                                    <Image src="/logo.jpg" alt="Udaanix" width={400} height={200} className="h-16 sm:h-24 w-auto object-contain" />
+                                    <div className="h-12 w-[1px] bg-slate-200" />
+                                    <span className="text-[12px] font-black text-udanix-blue uppercase tracking-[0.6em] opacity-80 group-hover:opacity-100 transition-opacity">GLOBAL</span>
                                 </div>
                             </Link>
                             <p className="text-slate-600 text-xl font-medium leading-relaxed max-w-sm text-balance">
@@ -171,12 +171,16 @@ export function Footer() {
                 {/* Bottom Bar */}
                 <div className="pt-16 border-t border-slate-100 flex flex-col lg:flex-row items-center justify-between gap-12">
                     <div className="flex flex-col sm:flex-row items-center gap-10 text-center sm:text-left">
+                        <Link href="/" className="hover:scale-105 transition-transform">
+                            <Image src="/logo.jpg" alt="Udaanix" width={200} height={80} className="h-12 sm:h-10 w-auto object-contain opacity-100 transition-all" />
+                        </Link>
+                        <div className="h-4 w-[1px] bg-slate-200 hidden sm:block" />
                         <p className="text-slate-500 text-[11px] font-black uppercase tracking-[0.4em]">
                             © 2026 UDANIX GLOBAL LABS
                         </p>
                         <div className="h-1.5 w-1.5 rounded-full bg-slate-200 hidden sm:block" />
                         <div className="flex items-center gap-4 px-6 py-3 bg-slate-50 rounded-full border border-slate-100 shadow-sm">
-                            <Cpu className="w-4 h-4 text-blue-600 animate-pulse" />
+                            <Cpu className="w-4 h-4 text-udanix-blue animate-pulse" />
                             <p className="text-slate-600 text-[10px] font-black tracking-[0.2em] uppercase">
                                 Status: <span className="text-emerald-600/80">Neural Grid Active</span>
                             </p>

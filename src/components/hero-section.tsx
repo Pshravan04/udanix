@@ -7,41 +7,38 @@ import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-32 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-32 overflow-hidden">
       {/* ─── BRAND COLOR DYNAMIC BACKGROUND ─── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Top Dark (Navy) to Bottom Light (White) Gradient */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, #002d52 0%, #0e399a 30%, #0274c1 60%, #ffffff 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, #0e399a 0%, #0274c1 60%, #ffffff 100%)' }} />
         
         {/* Navy blue orb — top left */}
         <motion.div 
           animate={{ 
-            scale: [1, 1.15, 1],
-            opacity: [0.15, 0.25, 0.15],
-            x: [0, 40, 0],
-            y: [0, 20, 0]
+            scale: [1, 1.1, 1],
+            opacity: [0.1, 0.2, 0.1],
+            x: [0, 20, 0],
           }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] rounded-full blur-[130px]" 
-          style={{ background: 'rgba(14, 57, 154, 0.3)' }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-5%] left-[-5%] w-[800px] h-[800px] rounded-full blur-[120px]" 
+          style={{ background: 'rgba(14, 57, 154, 0.25)' }}
         />
         
-        {/* Orange orb accent — middle right */}
+        {/* Orange orb accent — bottom right */}
         <motion.div 
           animate={{ 
-            scale: [1.1, 1, 1.1],
-            opacity: [0.1, 0.2, 0.1],
-            x: [0, -30, 0],
-            y: [0, 25, 0]
+            scale: [1, 1.2, 1],
+            opacity: [0.05, 0.15, 0.05],
+            x: [0, -40, 0],
           }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[20%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[120px]" 
-          style={{ background: 'rgba(223, 89, 14, 0.2)' }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[100px]" 
+          style={{ background: 'rgba(223, 89, 14, 0.15)' }}
         />
 
-        {/* Noise & Grid Overlay */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:50px_50px]" />
+        {/* Subtle Grid Overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px]" />
       </div>
 
       <div className="container relative z-10 px-6 mx-auto">
@@ -51,18 +48,17 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-xl shadow-2xl"
+            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-2xl shadow-2xl"
           >
             <div className="flex -space-x-2">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="w-6 h-6 rounded-full border-2 border-slate-900 bg-slate-900 overflow-hidden">
-                  <Image src={`/images/student-${i}.png`} alt="User" width={24} height={24} className="w-full h-full object-cover" />
+                <div key={i} className="w-7 h-7 rounded-full border-2 border-udanix-navy bg-white overflow-hidden shadow-sm">
+                  <div className="w-full h-full bg-slate-200 animate-pulse" />
                 </div>
               ))}
             </div>
             <div className="h-4 w-[1px] bg-white/20 mx-1" />
-            <span className="text-white text-[10px] font-black uppercase tracking-[0.2em]">
+            <span className="text-white text-[11px] font-black uppercase tracking-[0.25em]">
               Trusted by <span className="text-udanix-orange">50k+</span> Students
             </span>
             <Sparkles className="w-4 h-4 text-udanix-orange animate-pulse" />
@@ -73,42 +69,42 @@ export function HeroSection() {
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-[0.95] tracking-tighter uppercase"
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-5xl md:text-7xl lg:text-9xl font-black text-white leading-[0.9] tracking-tighter uppercase"
               style={{ fontFamily: 'var(--font-plus-jakarta)' }}
             >
               Design Your <br />
-              <span className="bg-gradient-to-r from-udanix-orange to-white bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(223,89,14,0.3)]">Dream Career</span>
+              <span className="bg-gradient-to-r from-udanix-orange via-white to-white bg-clip-text text-transparent drop-shadow-[0_4px_30px_rgba(223,89,14,0.4)]">Dream Career</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="max-w-4xl mx-auto text-sm sm:text-lg lg:text-xl text-slate-100 font-bold leading-relaxed uppercase tracking-wide px-4 opacity-95"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="max-w-3xl mx-auto text-sm sm:text-lg lg:text-xl text-white/90 font-bold leading-relaxed uppercase tracking-wide px-4"
             >
              Personalized guidance for stream selection, entrance exams, and future-ready career paths. Empowering students to make informed decisions.
             </motion.p>
           </div>
 
-          {/* Buttons - More Responsive */}
+          {/* Buttons - Improved Responsiveness */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-6 max-w-xl mx-auto px-4"
           >
-            <Link href="/register" className="w-full sm:w-auto">
-              <button className="group relative w-full bg-white text-slate-950 text-[10px] sm:text-[13px] font-black py-4 sm:py-6 px-8 sm:px-12 rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] hover:scale-105 active:scale-95 transition-all uppercase tracking-[0.15em] sm:tracking-widest overflow-hidden">
+            <Link href="/register" className="flex-1">
+              <button className="group relative w-full bg-white text-udanix-navy text-[13px] font-black py-6 px-12 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] hover:scale-105 active:scale-95 transition-all uppercase tracking-[0.2em] overflow-hidden">
                 <span className="relative z-10 flex items-center justify-center gap-3">
-                  Start Assessment <Rocket className="w-4 h-4 sm:w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform text-udanix-blue" />
+                  Start Assessment <Rocket className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
             </Link>
             
-            <button className="group w-full sm:w-auto flex items-center justify-center gap-3 bg-white/5 text-white text-[10px] sm:text-[13px] font-black py-4 sm:py-6 px-8 sm:px-12 rounded-2xl border border-white/20 hover:bg-white/10 transition-all uppercase tracking-[0.15em] sm:tracking-widest backdrop-blur-md shadow-sm">
-              <div className="w-7 h-7 sm:w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Play className="w-3 h-3 sm:w-3.5 h-3.5 fill-white text-white ml-0.5" />
+            <button className="group flex-1 flex items-center justify-center gap-4 bg-white/10 text-white text-[13px] font-black py-6 px-12 rounded-3xl border border-white/20 hover:bg-white/20 transition-all uppercase tracking-[0.2em] backdrop-blur-xl">
+              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Play className="w-3.5 h-3.5 fill-white text-white ml-0.5" />
               </div>
               Talk to Mentor
             </button>

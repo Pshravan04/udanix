@@ -67,7 +67,9 @@ const assessments = [
 
 export function AssessmentSection() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-section-assessment">
+    <section className="relative py-24 sm:py-32 overflow-hidden bg-udanix-blue">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-udanix-blue/[0.03] rounded-full blur-[140px]" />
@@ -93,11 +95,11 @@ export function AssessmentSection() {
               <Sparkles className="w-3.5 h-3.5" />
               Scientific Methods
             </motion.div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-10 text-slate-950 tracking-tighter leading-[0.85] uppercase">
-              Career <span className="text-brand-gradient">Assessment</span> <br />Tests
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-10 text-white tracking-tighter leading-[0.85] uppercase">
+              Career <span className="text-udanix-orange">Assessment</span> <br />Tests
             </h2>
-            <p className="text-sm md:text-base lg:text-xl text-slate-500 leading-relaxed max-w-2xl font-black uppercase tracking-widest px-1">
-              Discover your <span className="text-slate-950">True Potential</span> with scientifically designed tests backed by psychological research.
+            <p className="text-sm md:text-base lg:text-lg text-white/70 leading-relaxed max-w-2xl font-medium font-nunito px-1">
+              Discover your <span className="text-white font-bold">True Potential</span> with scientifically designed tests backed by psychological research and industry data.
             </p>
           </motion.div>
         </div>

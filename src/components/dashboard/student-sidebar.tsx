@@ -11,10 +11,13 @@ import {
   TrendingUp, 
   Settings,
   Menu,
-  X
+  X,
+  ShieldCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase/client';
+import { Profile } from '@/types';
 
 const NAV_ITEMS = [
   { label: 'Home', icon: Home, href: '/' },
@@ -27,6 +30,23 @@ const NAV_ITEMS = [
 
 export function StudentSidebar() {
   const pathname = usePathname();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const supabase = createClient();
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', user.id)
+          .single();
+        setIsAdmin(profile?.role === 'admin');
+      }
+    };
+    checkAdmin();
+  }, [supabase]);
 
   return (
     <div className="hidden lg:flex w-[260px] xl:w-[280px] h-[calc(100vh-40px)] bg-white rounded-[32px] border border-[#E5E7EB] flex-col p-6 sticky top-5 shadow-sm shrink-0">
@@ -67,7 +87,30 @@ export function StudentSidebar() {
             </Link>
           );
         })}
+
+        {isAdmin && (
+          <Link
+            href="/admin"
+            className={cn(
+              "group flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all duration-200",
+              pathname === '/admin' 
+                ? "bg-rose-50 text-rose-600" 
+                : "text-[#9CA3AF] hover:bg-rose-50/50 hover:text-rose-600"
+            )}
+          >
+            <div className="flex items-center gap-3">
+              <ShieldCheck className={cn(
+                "w-5 h-5",
+                pathname === '/admin' ? "text-rose-600" : "text-[#9CA3AF] group-hover:text-rose-600"
+              )} />
+              <span className="text-[15px] font-bold tracking-tight">
+                Admin Panel
+              </span>
+            </div>
+          </Link>
+        )}
       </nav>
+
 
       {/* Version */}
       <div className="mt-auto pt-6 border-t border-gray-100 italic text-[11px] text-[#9CA3AF] text-center">
