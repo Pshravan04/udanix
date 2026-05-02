@@ -73,8 +73,8 @@ export function HeroSection() {
               className="text-5xl md:text-7xl lg:text-9xl font-black text-white leading-[0.9] tracking-tighter uppercase"
               style={{ fontFamily: 'var(--font-plus-jakarta)' }}
             >
-              Design Your <br />
-              <span className="bg-gradient-to-r from-udanix-orange via-white to-white bg-clip-text text-transparent drop-shadow-[0_4px_30px_rgba(223,89,14,0.4)]">Dream Career</span>
+              Your Career Journey <br />
+              <span className="bg-gradient-to-r from-udanix-orange via-white to-white bg-clip-text text-transparent drop-shadow-[0_4px_30px_rgba(223,89,14,0.4)]">Starts Here</span>
             </motion.h1>
 
             <motion.p
@@ -83,7 +83,7 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="max-w-3xl mx-auto text-sm sm:text-lg lg:text-xl text-white/90 font-bold leading-relaxed uppercase tracking-wide px-4"
             >
-             Personalized guidance for stream selection, entrance exams, and future-ready career paths. Empowering students to make informed decisions.
+             Get expert guidance on stream selection, career paths, entrance exams, and future opportunities. Make informed decisions with personalized counseling.
             </motion.p>
           </div>
 
