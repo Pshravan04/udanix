@@ -2,16 +2,16 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { Menu, X, LayoutDashboard, Calendar, MessageSquare, BookOpen } from 'lucide-react';
 
-interface NavLink {
-  href: string;
-  label: string;
-  icon: LucideIcon;
-}
+const NAV_LINKS = [
+  { href: '/counselor', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/counselor/schedule', label: 'Schedule', icon: Calendar },
+  { href: '/counselor/messages', label: 'Messages', icon: MessageSquare },
+  { href: '/counselor/resources', label: 'Resources', icon: BookOpen },
+];
 
-export function CounselorMobileNav({ navLinks }: { navLinks: NavLink[] }) {
+export function CounselorMobileNav() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -26,7 +26,7 @@ export function CounselorMobileNav({ navLinks }: { navLinks: NavLink[] }) {
 
       {open && (
         <div className="md:hidden fixed top-[64px] left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-xl px-4 py-3 space-y-1">
-          {navLinks.map(({ href, label, icon: Icon }) => (
+          {NAV_LINKS.map(({ href, label, icon: Icon }) => (
             <Link
               key={href}
               href={href}

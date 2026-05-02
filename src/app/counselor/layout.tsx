@@ -1,12 +1,5 @@
 import Link from "next/link";
-import { GraduationCap, Bell, Settings, LogOut, LayoutDashboard, Calendar, MessageSquare, BookOpen, Menu, X } from "lucide-react";
-
-const NAV_LINKS = [
-    { href: '/counselor', label: 'Dashboard', icon: LayoutDashboard },
-    { href: '/counselor/schedule', label: 'Schedule', icon: Calendar },
-    { href: '/counselor/messages', label: 'Messages', icon: MessageSquare },
-    { href: '/counselor/resources', label: 'Resources', icon: BookOpen },
-];
+import { GraduationCap, Bell, Settings, LogOut, LayoutDashboard, Calendar, MessageSquare, BookOpen } from "lucide-react";
 
 // Mobile nav is toggled client-side — need a small wrapper
 import { CounselorMobileNav } from "./mobile-nav";
@@ -34,18 +27,20 @@ export default function CounselorLayout({ children }: { children: React.ReactNod
                         </span>
                     </div>
 
-                    {/* Desktop Nav */}
+                    {/* Desktop Nav — inline links, no function arrays on server */}
                     <nav className="hidden md:flex items-center gap-1">
-                        {NAV_LINKS.map(({ href, label, icon: Icon }) => (
-                            <Link
-                                key={href}
-                                href={href}
-                                className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-[12px] font-bold uppercase tracking-widest text-slate-500 hover:text-udanix-blue hover:bg-udanix-blue/5 transition-all group"
-                            >
-                                <Icon className="w-4 h-4 group-hover:text-udanix-blue transition-colors" />
-                                {label}
-                            </Link>
-                        ))}
+                        <Link href="/counselor" className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-[12px] font-bold uppercase tracking-widest text-slate-500 hover:text-udanix-blue hover:bg-udanix-blue/5 transition-all group">
+                            <LayoutDashboard className="w-4 h-4 group-hover:text-udanix-blue transition-colors" /> Dashboard
+                        </Link>
+                        <Link href="/counselor/schedule" className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-[12px] font-bold uppercase tracking-widest text-slate-500 hover:text-udanix-blue hover:bg-udanix-blue/5 transition-all group">
+                            <Calendar className="w-4 h-4 group-hover:text-udanix-blue transition-colors" /> Schedule
+                        </Link>
+                        <Link href="/counselor/messages" className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-[12px] font-bold uppercase tracking-widest text-slate-500 hover:text-udanix-blue hover:bg-udanix-blue/5 transition-all group">
+                            <MessageSquare className="w-4 h-4 group-hover:text-udanix-blue transition-colors" /> Messages
+                        </Link>
+                        <Link href="/counselor/resources" className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-[12px] font-bold uppercase tracking-widest text-slate-500 hover:text-udanix-blue hover:bg-udanix-blue/5 transition-all group">
+                            <BookOpen className="w-4 h-4 group-hover:text-udanix-blue transition-colors" /> Resources
+                        </Link>
                     </nav>
 
                     <div className="flex items-center gap-2 sm:gap-4 shrink-0">
@@ -59,7 +54,7 @@ export default function CounselorLayout({ children }: { children: React.ReactNod
                             <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
                         </Link>
                         {/* Mobile menu button */}
-                        <CounselorMobileNav navLinks={NAV_LINKS} />
+                        <CounselorMobileNav />
                     </div>
                 </div>
             </header>
