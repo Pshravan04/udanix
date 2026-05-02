@@ -119,34 +119,34 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
         style={{ y }}
         whileHover={{ y: -5, scale: 1.02 }}
         className={cn(
-          "relative glass-premium rounded-[3rem] p-8 border border-white/60 shadow-premium-lg group cursor-pointer overflow-hidden mb-8",
+          "relative bg-white/5 backdrop-blur-3xl rounded-[2.5rem] p-8 border border-white/5 shadow-2xl group cursor-pointer overflow-hidden mb-10 transition-all duration-700 hover:border-white/20 hover:shadow-blue-500/10",
           item.size === 'large' ? 'min-h-[400px]' : item.size === 'medium' ? 'min-h-[300px]' : 'min-h-[220px]'
         )}
       >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-udanix-blue/10 to-transparent blur-3xl rounded-full" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-udanix-blue/20 to-transparent blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         
-        <div className="flex gap-6 items-center mb-6">
-          <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-white shadow-premium shrink-0">
-            <Image src={item.image!} width={64} height={64} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt={item.name!} />
+        <div className="flex gap-6 items-center mb-8">
+          <div className="w-16 h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shrink-0">
+            <Image src={item.image!} width={64} height={64} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" alt={item.name!} />
           </div>
           <div>
-            <p className="text-udanix-navy font-black uppercase tracking-tight">{item.name}</p>
-            <p className="text-udanix-blue font-bold uppercase tracking-widest text-[9px] leading-none">{item.role}</p>
+            <p className="text-white font-black uppercase tracking-tight text-base">{item.name}</p>
+            <p className="text-brand-gradient font-black uppercase tracking-widest text-[9px] mt-1">{item.role}</p>
           </div>
         </div>
 
         <div className="relative">
-          <Quote className="w-10 h-10 text-udanix-orange/20 absolute -top-4 -left-4 -z-10" />
-          <p className="text-slate-500 font-semibold italic leading-relaxed text-lg">
+          <Quote className="w-12 h-12 text-white/5 absolute -top-6 -left-6 -z-10" />
+          <p className="text-slate-400 font-black italic leading-relaxed text-lg group-hover:text-white transition-colors duration-500 uppercase tracking-tight">
             &quot;{item.content}&quot;
           </p>
         </div>
 
-        <div className="mt-8 flex items-center justify-between">
-          <div className="flex gap-1">
-            {[1,2,3,4,5].map(s => <Star key={s} className="w-3 h-3 text-udanix-orange fill-udanix-orange" />)}
+        <div className="mt-10 flex items-center justify-between border-t border-white/5 pt-6">
+          <div className="flex gap-1.5">
+            {[1,2,3,4,5].map(s => <Star key={s} className="w-3.5 h-3.5 text-udanix-orange fill-udanix-orange" />)}
           </div>
-          <ArrowUpRight className="w-5 h-5 text-udanix-orange opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <ArrowUpRight className="w-5 h-5 text-udanix-blue opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
         </div>
       </motion.div>
     );
@@ -158,18 +158,18 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
       <motion.div 
         ref={cardRef}
         style={{ y }}
-        className="glass-premium rounded-[2.5rem] p-8 border border-white shadow-premium flex flex-col items-center justify-center text-center gap-4 mb-8 bg-gradient-to-br from-white/40 to-slate-50/40"
+        className="bg-white/5 backdrop-blur-3xl rounded-[2.5rem] p-10 border border-white/5 shadow-2xl flex flex-col items-center justify-center text-center gap-4 mb-10 group hover:border-white/20 hover:shadow-orange-500/10 transition-all duration-700"
       >
         <div className={cn(
-          "w-14 h-14 rounded-2xl flex items-center justify-center shadow-premium mb-2",
-          item.color === 'orange' ? 'bg-udanix-orange/10 text-udanix-orange' : 'bg-udanix-blue/10 text-udanix-blue'
+          "w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500",
+          item.color === 'orange' ? 'bg-udanix-orange/10 text-udanix-orange border border-udanix-orange/20' : 'bg-udanix-blue/10 text-udanix-blue border border-udanix-blue/20'
         )}>
-          <Icon className="w-7 h-7" />
+          <Icon className="w-8 h-8" />
         </div>
-        <div className="space-y-1">
-          <p className="text-4xl font-black text-udanix-navy tracking-tighter leading-none">{item.value}</p>
-          <p className="text-udanix-navy font-bold uppercase tracking-widest text-[10px]">{item.label}</p>
-          <p className="text-slate-400 font-medium text-[10px] uppercase tracking-wider">{item.desc}</p>
+        <div className="space-y-2">
+          <p className="text-5xl font-black text-white tracking-tighter leading-none">{item.value}</p>
+          <p className="text-brand-gradient font-black uppercase tracking-widest text-[10px]">{item.label}</p>
+          <p className="text-white/20 font-black text-[9px] uppercase tracking-[0.2em]">{item.desc}</p>
         </div>
       </motion.div>
     );
@@ -182,14 +182,14 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
         style={{ y }}
         whileHover={{ scale: 1.02 }}
         className={cn(
-          "relative rounded-[3rem] overflow-hidden shadow-premium-xl group mb-8 border-4 border-white/80",
+          "relative rounded-[2.5rem] overflow-hidden shadow-2xl group mb-10 border border-white/5 hover:border-white/20 transition-all duration-700",
           item.size === 'large' ? 'h-[500px]' : 'h-[350px]'
         )}
       >
-        <Image src={item.image!} fill className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="" />
-        <div className="absolute inset-0 bg-gradient-to-t from-udanix-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-          <p className="text-white font-black uppercase tracking-widest text-[10px] bg-udanix-blue/80 backdrop-blur-md px-4 py-2 rounded-full inline-block">
+        <Image src={item.image!} fill className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-75 group-hover:brightness-100" alt="" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+        <div className="absolute bottom-8 left-8 right-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
+          <p className="text-white font-black uppercase tracking-[0.2em] text-[10px] bg-white/10 backdrop-blur-xl px-6 py-3 rounded-full inline-block border border-white/10">
             {item.label}
           </p>
         </div>
@@ -218,6 +218,10 @@ function MarqueeColumn({ items, direction = 'up', speed = 20 }: { items: typeof 
           <SuccessCard key={`${item.id}-${idx}`} item={item} />
         ))}
       </motion.div>
+      
+      {/* Gradient Fades */}
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-slate-950 to-transparent z-10" />
+      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-slate-950 to-transparent z-10" />
     </div>
   );
 }
@@ -232,67 +236,71 @@ export function SuccessGallery() {
   const col3 = [SUCCESS_STORIES[6], SUCCESS_STORIES[7], SUCCESS_STORIES[8]];
 
   return (
-    <section ref={containerRef} className="py-32 relative overflow-hidden bg-slate-50/50">
-      <div className="max-w-[1400px] mx-auto px-8 relative z-10">
+    <section ref={containerRef} className="py-32 relative overflow-hidden bg-slate-950">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-[#020617]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-udanix-blue/5 blur-[160px] rounded-full" />
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+      </div>
+
+      <div className="max-w-[1440px] mx-auto px-8 relative z-10">
         
         {/* Header Area */}
-        <div className="text-center max-w-3xl mx-auto mb-24 space-y-8">
+        <div className="text-center max-w-4xl mx-auto mb-32 space-y-10">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full glass-premium border border-white shadow-premium"
+            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 shadow-2xl backdrop-blur-xl"
           >
-            <div className="w-2 h-2 rounded-full bg-udanix-orange animate-pulse" />
-            <span className="text-udanix-blue text-[12px] font-black uppercase tracking-[0.3em]">
+            <div className="w-2 h-2 rounded-full bg-udanix-orange animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
+            <span className="text-white text-[10px] font-black uppercase tracking-[0.4em]">
               The Impact Wall
             </span>
           </motion.div>
-          <h2 className="text-[56px] sm:text-[80px] font-black text-udanix-navy tracking-tighter uppercase leading-[0.85]">
+          
+          <h2 className="text-6xl md:text-[100px] font-black text-white tracking-tighter uppercase leading-[0.85]">
             Real Results. <br />
-            <span className="text-brand-gradient">Unlimited</span> Potential.
+            <span className="text-brand-gradient drop-shadow-[0_0_30px_rgba(14,57,154,0.3)]">Unlimited</span> Potential.
           </h2>
           
-          <p className="text-slate-500 text-xl font-semibold italic">
-            &quot;Join the global network of high-achievers who transformed their professional trajectory with Udanix precision counseling.&quot;
+          <p className="text-slate-400 text-xl md:text-2xl font-black uppercase tracking-[0.2em] max-w-3xl mx-auto leading-relaxed">
+            &quot;Join the <span className="text-white">Elite Network</span> of high-achievers who transformed their professional trajectory.&quot;
           </p>
         </div>
 
         {/* Infinite Masonry Wall */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <MarqueeColumn items={col1} speed={40} direction="up" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <MarqueeColumn items={col1} speed={45} direction="up" />
           <div className="hidden md:block">
-            <MarqueeColumn items={col2} speed={30} direction="down" />
+            <MarqueeColumn items={col2} speed={35} direction="down" />
           </div>
           <div className="hidden lg:block">
-            <MarqueeColumn items={col3} speed={50} direction="up" />
+            <MarqueeColumn items={col3} speed={55} direction="up" />
           </div>
         </div>
 
-        {/* Floating Achievement Badges Overlay (Optional but premium) */}
-        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full flex justify-center gap-4 px-8">
-          <div className="glass-premium px-10 py-6 rounded-full border border-white shadow-premium-xl flex items-center gap-6">
+        {/* Floating Achievement Badges Overlay */}
+        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full flex justify-center gap-4 px-8 z-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="bg-white/5 backdrop-blur-2xl px-10 py-8 rounded-[2.5rem] border border-white/10 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] flex items-center gap-8"
+          >
             <div className="flex -space-x-4">
               {[1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                  <Image src={`https://i.pravatar.cc/100?img=${i + 10}`} width={40} height={40} alt="" />
+                <div key={i} className="w-12 h-12 rounded-full border-4 border-[#0a1120] bg-slate-800 overflow-hidden shadow-xl">
+                  <Image src={`https://i.pravatar.cc/100?img=${i + 20}`} width={48} height={48} alt="" />
                 </div>
               ))}
             </div>
-            <div className="h-8 w-[1px] bg-slate-200" />
-            <p className="text-udanix-navy font-black uppercase tracking-tight text-sm">
-              +15,000 Successful Career Shifts
+            <div className="h-10 w-[1px] bg-white/10" />
+            <p className="text-white font-black uppercase tracking-[0.1em] text-sm">
+              <span className="text-udanix-blue">+15,000</span> Successful Career Shifts
             </p>
-          </div>
+          </motion.div>
         </div>
 
       </div>
-
-      {/* Background Orbs */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none -z-10">
-        <div className="absolute top-1/4 left-0 w-[40%] h-[40%] bg-udanix-blue/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-1/4 right-0 w-[30%] h-[30%] bg-udanix-orange/5 blur-[100px] rounded-full" />
-      </div>
-
     </section>
   );
 }

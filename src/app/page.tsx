@@ -9,9 +9,11 @@ import { motion } from 'framer-motion';
 
 import { HeroSection } from '@/components/hero-section';
 import { CtaSection } from '@/components/cta-section';
-import { DoubleDashboardPreview } from '@/components/double-dashboard-preview';
 import { StreamExplorer } from '@/components/stream-explorer';
 import { CareerPaths } from '@/components/career-paths';
+import { AssessmentSection } from '@/components/assessment-section';
+import { SuccessGallery } from '@/components/success-gallery';
+import { CounselorSection } from '@/components/counselor-section';
 import { StudentLoginModal } from '@/components/auth/student-login-modal';
 
 export default function Home() {
@@ -27,10 +29,10 @@ export default function Home() {
   }, [supabase]);
 
   return (
-    <div className="min-h-screen bg-white text-[#111827] overflow-x-hidden selection:bg-udanix-blue/10 selection:text-udanix-blue">
+    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden selection:bg-udanix-blue/20 selection:text-white">
 
       {/* ─── NAV ─── */}
-      <header className="fixed top-0 inset-x-0 z-50 glass-premium border-b border-white/20 px-6 sm:px-12">
+      <header className="fixed top-0 inset-x-0 z-50 bg-slate-950/50 backdrop-blur-3xl border-b border-white/5 px-6 sm:px-12">
         <div className="max-w-[1440px] mx-auto h-[80px] flex items-center justify-between gap-8">
           <div className="flex items-center gap-12">
             <Link href="/" className="flex items-center gap-3 flex-shrink-0 hover:scale-105 transition-transform">
@@ -47,7 +49,7 @@ export default function Home() {
               {user ? (
                 <div className="flex items-center gap-4">
                   <Link href="/student/profile">
-                    <button className="text-[12px] font-black text-slate-500 hover:text-udanix-blue uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-50">
+                    <button className="text-[12px] font-black text-slate-400 hover:text-white uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-white/5">
                       Profile
                     </button>
                   </Link>
@@ -105,6 +107,15 @@ export default function Home() {
 
       {/* ─── CAREER PATHS ─── */}
       <CareerPaths />
+
+      {/* ─── ASSESSMENT SECTION ─── */}
+      <AssessmentSection />
+
+      {/* ─── SUCCESS GALLERY ─── */}
+      <SuccessGallery />
+
+      {/* ─── COUNSELOR SECTION ─── */}
+      <CounselorSection />
 
       {/* ─── CTA SECTION ─── */}
       <CtaSection />
