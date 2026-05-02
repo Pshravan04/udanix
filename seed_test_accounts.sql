@@ -106,7 +106,7 @@ INSERT INTO public.profiles (
   'rahul.student@udanix.com', 'Rahul Sharma', 'student',
   'Delhi Public School', '12th', 'Science (PCM)',
   'Aspiring software engineer with a passion for coding and problem-solving.',
-  ARRAY['Computer Science', 'AI', 'Robotics'],
+  '["Computer Science", "AI", "Robotics"]'::jsonb,
   'https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul',
   now(), now()
 ),
@@ -115,7 +115,7 @@ INSERT INTO public.profiles (
   'priya.student@udanix.com', 'Priya Patel', 'student',
   'St. Xavier''s High School', '11th', 'Commerce',
   'Future business leader interested in sustainable finance and social impact.',
-  ARRAY['Economics', 'Finance', 'Entrepreneurship'],
+  '["Economics", "Finance", "Entrepreneurship"]'::jsonb,
   'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya',
   now(), now()
 ),
@@ -124,7 +124,7 @@ INSERT INTO public.profiles (
   'arjun.student@udanix.com', 'Arjun Reddy', 'student',
   'Oakridge International', '12th', 'Science (PCB)',
   'Aspiring doctor with a love for classical music and genetics.',
-  ARRAY['Medicine', 'Biotechnology', 'Music'],
+  '["Medicine", "Biotechnology", "Music"]'::jsonb,
   'https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun',
   now(), now()
 ),
@@ -134,7 +134,7 @@ INSERT INTO public.profiles (
   'arvind.counselor@udanix.com', 'Dr. Arvind Menon', 'counselor',
   NULL, NULL, 'Psychology & Behavioral Science',
   'Expert in adolescent psychology and career transition coaching with 15+ years of experience.',
-  ARRAY['Career Counseling', 'Psychology'],
+  '["Career Counseling", "Psychology"]'::jsonb,
   'https://api.dicebear.com/7.x/avataaars/svg?seed=Arvind',
   now(), now()
 ),
@@ -143,7 +143,7 @@ INSERT INTO public.profiles (
   'sarah.counselor@udanix.com', 'Sarah Jenkins', 'counselor',
   NULL, NULL, 'Engineering & Technology',
   'Ex-Google Engineer helping students navigate the world of tech careers and overseas education.',
-  ARRAY['Engineering', 'Tech Careers', 'Abroad Studies'],
+  '["Engineering", "Tech Careers", "Abroad Studies"]'::jsonb,
   'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
   now(), now()
 ),
@@ -152,7 +152,7 @@ INSERT INTO public.profiles (
   'meera.counselor@udanix.com', 'Meera Deshmukh', 'counselor',
   NULL, NULL, 'Design & Creative Arts',
   'NID Alumna with a focus on portfolio building and entrance preparation for top design schools.',
-  ARRAY['Design', 'Portfolio', 'NID', 'NIFT'],
+  '["Design", "Portfolio", "NID", "NIFT"]'::jsonb,
   'https://api.dicebear.com/7.x/avataaars/svg?seed=Meera',
   now(), now()
 ),
@@ -161,7 +161,7 @@ INSERT INTO public.profiles (
   'c3000000-0000-0000-0000-000000000001',
   'admin@udanix.com', 'Udanix Admin', 'admin',
   NULL, NULL, NULL, 'Platform administrator.',
-  ARRAY[]::text[],
+  '[]'::jsonb,
   'https://api.dicebear.com/7.x/avataaars/svg?seed=Admin',
   now(), now()
 )
