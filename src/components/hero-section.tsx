@@ -70,7 +70,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl sm:text-7xl lg:text-9xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
+              className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
               style={{ fontFamily: 'var(--font-plus-jakarta)' }}
             >
               Your Career Journey <br />

@@ -55,19 +55,11 @@ export function CtaSection() {
             
             <div className="relative z-10 flex flex-col items-center text-center space-y-16">
               {/* Premium Tag */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-slate-100 border border-slate-200 text-slate-950 text-[10px] font-black uppercase tracking-[0.4em] shadow-sm backdrop-blur-xl"
-              >
-                  <Sparkles className="w-4 h-4 text-udanix-orange animate-pulse" />
-                  Your Future is Ready
-              </motion.div>
+
 
               {/* Mega Heading */}
               <div className="space-y-8">
-                <h2 style={{ fontFamily: 'var(--font-plus-jakarta)' }} className="text-[55px] sm:text-[90px] lg:text-[130px] font-black text-slate-950 leading-[0.85] tracking-tighter uppercase">
+                <h2 style={{ fontFamily: 'var(--font-plus-jakarta)' }} className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-950 leading-[0.85] tracking-tighter uppercase">
                   Stop <span className="text-slate-200">Guessing</span>.<br />
                   <span className="text-brand-gradient drop-shadow-sm">Start Growing.</span>
                 </h2>

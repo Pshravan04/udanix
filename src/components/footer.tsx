@@ -41,7 +41,7 @@ export function Footer() {
                         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] -mr-64 -mt-64" />
                         
                         <div className="flex-1 space-y-10 relative z-10 text-center lg:text-left">
-                            <h3 className="text-[40px] sm:text-[64px] font-black text-slate-900 leading-[1.1] tracking-tighter uppercase">
+                            <h3 className="text-3xl sm:text-4xl font-black text-slate-900 leading-[1.1] tracking-tighter uppercase">
                                 Decode the <br />
                                 <span className="text-brand-gradient">Next Frontier</span>
                             </h3>

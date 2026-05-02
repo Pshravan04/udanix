@@ -183,7 +183,7 @@ export function CareerPaths() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black text-slate-950 tracking-tight uppercase"
+                        className="text-4xl md:text-5xl font-black text-slate-950 tracking-tight uppercase"
                     >
                         Popular <span className="text-brand-gradient">Career</span> Paths
                     </motion.h2>
