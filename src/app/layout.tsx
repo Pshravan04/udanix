@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Space_Grotesk, Nunito } from "next/font/google";
 import "./globals.css";
 import { NeuralBackground } from "@/components/ui/neural-background";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -59,6 +60,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <BottomNav />
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
