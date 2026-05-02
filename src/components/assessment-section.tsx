@@ -93,16 +93,16 @@ export function AssessmentSection() {
               <Sparkles className="w-3.5 h-3.5" />
               Scientific Methods
             </motion.div>
-            <h2 className="text-3xl md:text-4xl font-black mb-10 text-slate-950 tracking-tighter leading-[0.85] uppercase">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-6 md:mb-10 text-slate-950 tracking-tighter leading-[0.85] uppercase">
               Career <span className="text-brand-gradient">Assessment</span> <br />Tests
             </h2>
-            <p className="text-base md:text-xl text-slate-500 leading-relaxed max-w-2xl font-black uppercase tracking-widest">
+            <p className="text-sm md:text-base lg:text-xl text-slate-500 leading-relaxed max-w-2xl font-black uppercase tracking-widest px-1">
               Discover your <span className="text-slate-950">True Potential</span> with scientifically designed tests backed by psychological research.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {assessments.map((test, index) => (
             <motion.div
               key={test.id}
@@ -112,7 +112,7 @@ export function AssessmentSection() {
               transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="group"
             >
-              <div className="relative h-full bg-white backdrop-blur-3xl rounded-[2.5rem] p-10 overflow-hidden border border-slate-200 hover:border-udanix-blue/30 transition-all duration-700 hover:shadow-blue-500/10 flex flex-col group-hover:-translate-y-2">
+              <div className="relative h-full bg-white backdrop-blur-3xl rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-10 overflow-hidden border border-slate-200 hover:border-udanix-blue/30 transition-all duration-700 hover:shadow-blue-500/10 flex flex-col group-hover:-translate-y-2">
                 {/* Accent Glow */}
                 <div 
                   className="absolute -top-12 -right-12 w-32 h-32 blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-700"
@@ -123,15 +123,15 @@ export function AssessmentSection() {
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-slate-100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Icon Header */}
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${test.color} flex items-center justify-center text-white mb-8 shadow-2xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${test.color} flex items-center justify-center text-white mb-6 sm:mb-8 shadow-2xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                   {test.icon}
                 </div>
 
-                <h3 className="text-2xl font-black mb-4 text-slate-950 uppercase tracking-tight leading-none group-hover:text-udanix-blue transition-colors duration-500">
+                <h3 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 text-slate-950 uppercase tracking-tight leading-none group-hover:text-udanix-blue transition-colors duration-500">
                   {test.title}
                 </h3>
                 
-                <p className="text-[10px] text-slate-500 mb-10 line-clamp-3 leading-relaxed font-black uppercase tracking-widest">
+                <p className="text-[9px] sm:text-[10px] text-slate-500 mb-8 sm:mb-10 line-clamp-3 leading-relaxed font-black uppercase tracking-widest">
                   {test.description}
                 </p>
 

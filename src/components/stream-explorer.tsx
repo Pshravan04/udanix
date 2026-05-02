@@ -73,7 +73,7 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-4xl font-black text-slate-950 uppercase tracking-tighter"
+                        className="text-2xl md:text-3xl font-black text-slate-950 uppercase tracking-tighter"
                     >
                         Explore Your <span className="text-brand-gradient">Stream</span>
                     </motion.h2>
@@ -82,14 +82,14 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg font-bold uppercase tracking-wide leading-relaxed"
+                        className="text-slate-600 max-w-2xl mx-auto text-sm md:text-base font-bold uppercase tracking-wide leading-relaxed px-4"
                     >
                         Choose your path based on your interests, skills, and career goals. Each stream opens doors to unique opportunities.
                     </motion.p>
                 </div>
 
                 {/* Stream Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {STREAMS.map((stream, idx) => (
                         <motion.div
                             key={stream.id}
@@ -100,9 +100,9 @@ export function StreamExplorer() {
                             whileHover={{ y: -10 }}
                             className="group relative flex flex-col h-full"
                         >
-                            <div className="relative flex flex-col h-full bg-white/40 backdrop-blur-xl rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl transition-all duration-500 hover:border-udanix-blue/30 hover:shadow-2xl">
+                            <div className="relative flex flex-col h-full bg-white/40 backdrop-blur-xl rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl transition-all duration-500 hover:border-udanix-blue/30 hover:shadow-2xl">
                                 {/* Image Area */}
-                                <div className="relative h-64 w-full overflow-hidden">
+                                <div className="relative h-56 sm:h-64 w-full overflow-hidden">
                                     <Image 
                                         src={stream.image}
                                         alt={stream.title}
@@ -113,22 +113,22 @@ export function StreamExplorer() {
                                     
                                     {/* Icon Badge Overlay */}
                                     <div className="absolute bottom-6 left-8">
-                                        <div className={`w-16 h-16 rounded-2xl ${stream.color} flex items-center justify-center shadow-2xl transform group-hover:-rotate-6 transition-transform duration-500 border border-slate-100 backdrop-blur-md`}>
-                                            <stream.icon className="w-8 h-8" />
+                                        <div className={`w-14 h-14 sm:w-16 h-16 rounded-2xl ${stream.color} flex items-center justify-center shadow-2xl transform group-hover:-rotate-6 transition-transform duration-500 border border-slate-100 backdrop-blur-md`}>
+                                            <stream.icon className="w-6 h-6 sm:w-8 h-8" />
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Content Area */}
-                                <div className="p-8 pt-6 flex flex-col flex-1">
-                                    <div className="space-y-4 mb-8">
+                                <div className="p-6 sm:p-8 pt-6 flex flex-col flex-1">
+                                    <div className="space-y-4 mb-6 sm:mb-8">
                                         <div className="flex items-center justify-between">
-                                            <h3 className="text-xl font-black text-slate-950 uppercase tracking-tight group-hover:text-udanix-blue transition-colors">
+                                            <h3 className="text-lg sm:text-xl font-black text-slate-950 uppercase tracking-tight group-hover:text-udanix-blue transition-colors">
                                                 {stream.title}
                                             </h3>
                                             <TrendingUp className="w-5 h-5 text-slate-300" />
                                         </div>
-                                        <p className="text-slate-600 text-sm font-medium leading-relaxed">
+                                        <p className="text-slate-600 text-[13px] sm:text-sm font-medium leading-relaxed">
                                             {stream.desc}
                                         </p>
                                     </div>

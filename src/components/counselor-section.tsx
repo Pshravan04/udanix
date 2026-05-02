@@ -100,14 +100,14 @@ export function CounselorSection() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-4xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950"
+                            className="text-2xl md:text-3xl lg:text-4xl font-black mb-6 md:mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950 px-1"
                             style={{ fontFamily: 'var(--font-plus-jakarta)' }}
                         >
                             Expert Career <br />
                             <span className="text-brand-gradient drop-shadow-sm">Counselors.</span>
                         </motion.h2>
                         
-                        <p className="text-base md:text-lg text-slate-600 font-bold max-w-xl leading-relaxed uppercase tracking-wide">
+                        <p className="text-sm md:text-lg text-slate-600 font-bold max-w-xl leading-relaxed uppercase tracking-wide px-1">
                             Direct access to <span className="text-slate-950">Certified Professionals</span>. Bypass the guesswork with mentors who have shaped 1M+ successful careers.
                         </p>
                     </div>
@@ -134,9 +134,9 @@ export function CounselorSection() {
                             transition={{ delay: i * 0.1, duration: 0.8, ease: "circOut" }}
                             className="group"
                         >
-                            <div className="relative flex flex-col h-full bg-white backdrop-blur-3xl rounded-[3rem] p-4 border border-slate-200/60 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-700 group-hover:-translate-y-2">
+                            <div className="relative flex flex-col h-full bg-white backdrop-blur-3xl rounded-[2.5rem] sm:rounded-[3rem] p-3 sm:p-4 border border-slate-200/60 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-700 group-hover:-translate-y-2">
                                 {/* Visual Image Container */}
-                                <div className="relative mb-8 rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-lg">
+                                <div className="relative mb-6 sm:mb-8 rounded-[1.8rem] sm:rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-lg">
                                     <Image 
                                         src={c.avatar} 
                                         alt={c.name} 
@@ -147,14 +147,14 @@ export function CounselorSection() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                                     
                                     {/* Badges */}
-                                    <div className="absolute top-5 right-5 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-lg flex items-center gap-2 border border-white">
-                                        <Award className="w-3.5 h-3.5 text-blue-600" />
-                                        <span className="text-[9px] font-black text-slate-950 uppercase tracking-widest">{c.badge}</span>
+                                    <div className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-white/80 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg flex items-center gap-2 border border-white">
+                                        <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-600" />
+                                        <span className="text-[8px] sm:text-[9px] font-black text-slate-950 uppercase tracking-widest">{c.badge}</span>
                                     </div>
 
-                                    <div className="absolute bottom-5 left-5 flex items-center gap-3">
-                                        <div className={`w-2.5 h-2.5 rounded-full ${c.online ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]' : 'bg-slate-300'}`} />
-                                        <span className="text-[9px] font-black text-white drop-shadow-md uppercase tracking-widest">{c.status}</span>
+                                    <div className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 flex items-center gap-2 sm:gap-3">
+                                        <div className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full ${c.online ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]' : 'bg-slate-300'}`} />
+                                        <span className="text-[8px] sm:text-[9px] font-black text-white drop-shadow-md uppercase tracking-widest">{c.status}</span>
                                     </div>
                                 </div>
 

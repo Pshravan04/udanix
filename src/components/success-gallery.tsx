@@ -119,25 +119,25 @@ function SuccessCard({ item }: { item: typeof SUCCESS_STORIES[0] }) {
         style={{ y }}
         whileHover={{ y: -5, scale: 1.02 }}
         className={cn(
-          "relative bg-white rounded-[2.5rem] p-8 border border-slate-200 shadow-2xl group cursor-pointer overflow-hidden mb-10 transition-all duration-700 hover:border-udanix-blue/30 hover:shadow-blue-500/10",
-          item.size === 'large' ? 'min-h-[400px]' : item.size === 'medium' ? 'min-h-[300px]' : 'min-h-[220px]'
+          "relative bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 border border-slate-200 shadow-2xl group cursor-pointer overflow-hidden mb-10 transition-all duration-700 hover:border-udanix-blue/30 hover:shadow-blue-500/10",
+          item.size === 'large' ? 'min-h-[350px] sm:min-h-[400px]' : item.size === 'medium' ? 'min-h-[250px] sm:min-h-[300px]' : 'min-h-[200px] sm:min-h-[220px]'
         )}
       >
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-udanix-blue/10 to-transparent blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         
-        <div className="flex gap-6 items-center mb-8">
-          <div className="w-16 h-16 rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shrink-0">
+        <div className="flex gap-4 sm:gap-6 items-center mb-6 sm:mb-8">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shrink-0">
             <Image src={item.image!} width={64} height={64} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" alt={item.name!} />
           </div>
           <div>
-            <p className="text-slate-950 font-black uppercase tracking-tight text-base">{item.name}</p>
-            <p className="text-brand-gradient font-black uppercase tracking-widest text-[9px] mt-1">{item.role}</p>
+            <p className="text-slate-950 font-black uppercase tracking-tight text-sm sm:text-base">{item.name}</p>
+            <p className="text-brand-gradient font-black uppercase tracking-widest text-[8px] sm:text-[9px] mt-1">{item.role}</p>
           </div>
         </div>
 
         <div className="relative">
-          <Quote className="w-12 h-12 text-slate-100 absolute -top-6 -left-6 -z-10" />
-          <p className="text-slate-600 font-black italic leading-relaxed text-lg group-hover:text-slate-950 transition-colors duration-500 uppercase tracking-tight">
+          <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-slate-100 absolute -top-4 -left-4 sm:-top-6 sm:-left-6 -z-10" />
+          <p className="text-slate-600 font-black italic leading-relaxed text-sm sm:text-lg group-hover:text-slate-950 transition-colors duration-500 uppercase tracking-tight">
             &quot;{item.content}&quot;
           </p>
         </div>
@@ -258,19 +258,21 @@ export function SuccessGallery() {
             </span>
           </motion.div>
           
-          <h2 className="text-3xl md:text-4xl font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
             Real Results. <br />
             <span className="text-brand-gradient drop-shadow-sm">Unlimited</span> Potential.
           </h2>
           
-          <p className="text-slate-600 text-lg md:text-xl font-black uppercase tracking-[0.2em] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-600 text-base md:text-xl font-black uppercase tracking-[0.2em] max-w-3xl mx-auto leading-relaxed px-4">
             &quot;Join the <span className="text-slate-950">Elite Network</span> of high-achievers who transformed their professional trajectory.&quot;
           </p>
         </div>
 
         {/* Infinite Masonry Wall */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <MarqueeColumn items={col1} speed={45} direction="up" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10 overflow-hidden">
+          <div className="px-4 md:px-0">
+            <MarqueeColumn items={col1} speed={45} direction="up" />
+          </div>
           <div className="hidden md:block">
             <MarqueeColumn items={col2} speed={35} direction="down" />
           </div>

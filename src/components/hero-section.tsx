@@ -70,7 +70,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
+              className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
               style={{ fontFamily: 'var(--font-plus-jakarta)' }}
             >
               Your Career Journey <br />
@@ -81,7 +81,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="max-w-4xl mx-auto text-base sm:text-xl text-slate-400 font-bold leading-relaxed uppercase tracking-wide"
+              className="max-w-4xl mx-auto text-sm sm:text-lg text-slate-400 font-bold leading-relaxed uppercase tracking-wide px-4"
             >
              Get expert guidance on stream selection, career paths, entrance exams, and future opportunities. Make informed decisions with personalized counseling.
             </motion.p>
@@ -92,19 +92,19 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-6"
           >
             <Link href="/register" className="w-full sm:w-auto">
-              <button className="group relative w-full bg-slate-950 text-white text-[13px] font-black py-6 px-12 rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] hover:scale-105 active:scale-95 transition-all uppercase tracking-widest overflow-hidden">
+              <button className="group relative w-full bg-slate-950 text-white text-[11px] sm:text-[13px] font-black py-5 sm:py-6 px-8 sm:px-12 rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] hover:scale-105 active:scale-95 transition-all uppercase tracking-widest overflow-hidden">
                 <span className="relative z-10 flex items-center justify-center gap-3">
-                  Start Free Assessment <Rocket className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                  Start Free Assessment <Rocket className="w-4 h-4 sm:w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
             </Link>
             
-            <button className="group w-full sm:w-auto flex items-center justify-center gap-3 bg-slate-50 text-slate-950 text-[13px] font-black py-6 px-12 rounded-2xl border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-all uppercase tracking-widest backdrop-blur-sm shadow-sm">
-              <div className="w-8 h-8 rounded-full bg-udanix-blue flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/20">
-                <Play className="w-3.5 h-3.5 fill-white text-white ml-0.5" />
+            <button className="group w-full sm:w-auto flex items-center justify-center gap-3 bg-slate-50 text-slate-950 text-[11px] sm:text-[13px] font-black py-5 sm:py-6 px-8 sm:px-12 rounded-2xl border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-all uppercase tracking-widest backdrop-blur-sm shadow-sm">
+              <div className="w-7 h-7 sm:w-8 h-8 rounded-full bg-udanix-blue flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/20">
+                <Play className="w-3 h-3 sm:w-3.5 h-3.5 fill-white text-white ml-0.5" />
               </div>
               Talk to Counselor
             </button>
@@ -115,7 +115,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-20 border-t border-slate-100"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 pt-16 sm:pt-20 border-t border-slate-100"
           >
             {[
               { label: 'Successful Placements', value: '50k+', sub: 'Students Reached' },
@@ -123,14 +123,14 @@ export function HeroSection() {
               { label: 'Platform Rating', value: '4.9/5', sub: 'Verified Reviews' }
             ].map((stat, i) => (
               <div key={i} className="flex flex-col items-center group cursor-default">
-                <span className="text-4xl font-black text-slate-950 mb-2 tracking-tighter group-hover:text-udanix-blue transition-colors">
+                <span className="text-3xl sm:text-4xl font-black text-slate-950 mb-2 tracking-tighter group-hover:text-udanix-blue transition-colors">
                   {stat.value}
                 </span>
-                <div className="flex flex-col items-center">
-                  <span className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-slate-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
                     {stat.label}
                   </span>
-                  <span className="text-slate-300 text-[9px] font-bold uppercase tracking-widest mt-1">
+                  <span className="text-slate-300 text-[8px] sm:text-[9px] font-bold uppercase tracking-widest mt-1">
                     {stat.sub}
                   </span>
                 </div>

@@ -31,11 +31,11 @@ export default function Home() {
     <div className="min-h-screen bg-white text-slate-950 overflow-x-hidden selection:bg-udanix-blue/10 selection:text-udanix-blue">
 
       {/* ─── NAV ─── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur-3xl border-b border-slate-200/50 px-6 sm:px-12">
-        <div className="max-w-[1440px] mx-auto h-[80px] flex items-center justify-between gap-8">
+      <header className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur-3xl border-b border-slate-200/50 px-4 sm:px-12">
+        <div className="max-w-[1440px] mx-auto h-[70px] sm:h-[80px] flex items-center justify-between gap-4 sm:gap-8">
           <div className="flex items-center gap-12">
             <Link href="/" className="flex items-center gap-3 flex-shrink-0 hover:scale-105 transition-transform">
-              <Image src="/logo.jpg" alt="Udaanix" width={120} height={40} className="h-10 w-auto" priority />
+              <Image src="/logo.jpg" alt="Udaanix" width={100} height={32} className="h-8 sm:h-10 w-auto" priority />
             </Link>
 
             <nav className="hidden xl:flex items-center gap-2">
@@ -43,28 +43,28 @@ export default function Home() {
             </nav>
           </div>
 
-          <div className="flex items-center gap-5 flex-1 justify-end max-w-2xl">
-            <div className="flex items-center gap-4 flex-shrink-0">
+          <div className="flex items-center gap-3 sm:gap-5 justify-end">
+            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
               {user ? (
-                <div className="flex items-center gap-4">
-                  <Link href="/student/profile">
-                    <button className="text-[12px] font-black text-slate-500 hover:text-slate-950 uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-100">
+                <div className="flex items-center gap-2 sm:gap-4">
+                  <Link href="/student/profile" className="hidden xs:block">
+                    <button className="text-[10px] sm:text-[12px] font-black text-slate-500 hover:text-slate-950 uppercase tracking-widest transition-all px-3 sm:px-4 py-2 rounded-xl hover:bg-slate-100">
                       Profile
                     </button>
                   </Link>
                   <Link href="/student">
-                    <button className="bg-brand-gradient text-white text-[13px] font-black py-3.5 px-8 rounded-2xl shadow-premium hover:shadow-premium-xl hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
+                    <button className="bg-brand-gradient text-white text-[11px] sm:text-[13px] font-black py-2.5 sm:py-3.5 px-5 sm:px-8 rounded-xl sm:rounded-2xl shadow-premium hover:shadow-premium-xl hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
                       Dashboard
                     </button>
                   </Link>
                 </div>
               ) : (
                 <>
-                  <div className="hidden sm:block">
+                  <div className="hidden xs:block">
                     <StudentLoginModal />
                   </div>
                   <Link href="/register">
-                    <button className="bg-brand-gradient text-white text-[13px] font-black py-3.5 px-8 rounded-2xl shadow-premium hover:shadow-premium-xl hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
+                    <button className="bg-brand-gradient text-white text-[11px] sm:text-[13px] font-black py-2.5 sm:py-3.5 px-5 sm:px-8 rounded-xl sm:rounded-2xl shadow-premium hover:shadow-premium-xl hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
                       Join Now
                     </button>
                   </Link>
