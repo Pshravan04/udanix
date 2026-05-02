@@ -53,13 +53,13 @@ export function Footer() {
                         <div className="w-full lg:w-[480px] space-y-8 relative z-10">
                             <div className="relative group">
                                 <div className="absolute -inset-1 bg-brand-gradient rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-500" />
-                                <div className="relative flex items-center bg-slate-50/80 backdrop-blur-2xl rounded-3xl border border-slate-200 overflow-hidden p-2 shadow-inner">
+                                <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-slate-50/80 backdrop-blur-2xl rounded-3xl border border-slate-200 overflow-hidden p-2 gap-2 shadow-inner">
                                     <input 
                                         type="email" 
                                         placeholder="ENTER YOUR EMAIL" 
-                                        className="flex-1 bg-transparent border-none outline-none text-slate-900 px-8 py-6 text-[10px] font-black tracking-[0.4em] placeholder:text-slate-400 uppercase"
+                                        className="flex-1 bg-transparent border-none outline-none text-slate-900 px-6 sm:px-8 py-5 sm:py-6 text-[10px] font-black tracking-[0.4em] placeholder:text-slate-400 uppercase min-w-0"
                                     />
-                                    <button className="px-10 py-5 rounded-2xl bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all active:scale-95">
+                                    <button className="px-10 py-5 rounded-2xl bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all active:scale-95 whitespace-nowrap">
                                         JOIN NOW
                                     </button>
                                 </div>
@@ -86,7 +86,7 @@ export function Footer() {
                         <div className="space-y-10">
                             <Link href="/" className="inline-block hover:scale-105 transition-transform group">
                                 <div className="flex items-center gap-4">
-                                    <Image src="/logo.jpg" alt="Udaanix" width={120} height={50} className="h-10 w-auto brightness-0 contrast-200" />
+                                    <Image src="/logo.jpg" alt="Udaanix" width={120} height={50} className="h-10 w-auto" />
                                     <div className="h-10 w-[1px] bg-slate-200" />
                                     <span className="text-[10px] font-black text-slate-900 uppercase tracking-[0.5em] opacity-40 group-hover:opacity-100 transition-opacity">Intelligence</span>
                                 </div>
