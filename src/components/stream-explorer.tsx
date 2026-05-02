@@ -73,7 +73,7 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter"
+                        className="text-4xl md:text-6xl font-black text-slate-950 uppercase tracking-tighter"
                     >
                         Explore Your <span className="text-brand-gradient">Stream</span>
                     </motion.h2>

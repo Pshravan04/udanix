@@ -100,7 +100,7 @@ export function CounselorSection() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-5xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950"
+                            className="text-4xl md:text-6xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950"
                             style={{ fontFamily: 'var(--font-plus-jakarta)' }}
                         >
                             Expert Career <br />

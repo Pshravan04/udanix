@@ -59,7 +59,7 @@ export function CtaSection() {
 
               {/* Mega Heading */}
               <div className="space-y-8">
-                <h2 style={{ fontFamily: 'var(--font-plus-jakarta)' }} className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-950 leading-[0.85] tracking-tighter uppercase">
+                <h2 style={{ fontFamily: 'var(--font-plus-jakarta)' }} className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 leading-[0.85] tracking-tighter uppercase">
                   Stop <span className="text-slate-200">Guessing</span>.<br />
                   <span className="text-brand-gradient drop-shadow-sm">Start Growing.</span>
                 </h2>

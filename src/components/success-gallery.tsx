@@ -258,7 +258,7 @@ export function SuccessGallery() {
             </span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
+          <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
             Real Results. <br />
             <span className="text-brand-gradient drop-shadow-sm">Unlimited</span> Potential.
           </h2>

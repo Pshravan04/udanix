@@ -93,7 +93,7 @@ export function AssessmentSection() {
               <Sparkles className="w-3.5 h-3.5" />
               Scientific Methods
             </motion.div>
-            <h2 className="text-4xl md:text-[45px] font-black mb-10 text-slate-950 tracking-tighter leading-[0.85] uppercase">
+            <h2 className="text-4xl md:text-6xl font-black mb-10 text-slate-950 tracking-tighter leading-[0.85] uppercase">
               Career <span className="text-brand-gradient">Assessment</span> <br />Tests
             </h2>
             <p className="text-lg md:text-2xl text-slate-500 leading-relaxed max-w-2xl font-black uppercase tracking-widest">
