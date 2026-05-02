@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Geist_Mono, Space_Grotesk, Nunito } from "next/font/google";
 import "./globals.css";
 import { NeuralBackground } from "@/components/ui/neural-background";
 
@@ -26,6 +26,13 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
+const nunito = Nunito({
+  variable: "--font-nunito",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Udaanix — Guiding the Path to Excellence",
   description: "Connect with 200+ verified counselors. Get clarity on your next big career move. Udaanix is the next-generation platform for students and professionals.",
@@ -46,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${nunito.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col relative bg-white pb-32 md:pb-0" suppressHydrationWarning>

@@ -82,20 +82,20 @@ export default function CounselorDashboard() {
   }
 
   return (
-    <div className="space-y-12 pb-24">
+    <div className="space-y-8 sm:space-y-12 pb-24 sm:pb-8">
 
       {/* ─── Header ─── */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 pt-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-8 pt-2 sm:pt-4">
         <div>
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
-            className="text-5xl font-black text-slate-900 tracking-tighter uppercase"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tighter uppercase"
           >
             Counselor Node
           </motion.h1>
-          <p className="text-slate-500 mt-2 text-xl font-medium">
+          <p className="text-slate-500 mt-2 text-base sm:text-xl font-medium">
             System identifies <span className="text-emerald-600 font-black tracking-tight">{sessions.length} ACTIVE SYNCS</span> today.
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function CounselorDashboard() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsLive(!isLive)}
-          className={`flex items-center gap-3 px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all border shadow-2xl ${isLive
+          className={`flex items-center gap-3 px-6 sm:px-10 py-3 sm:py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all border shadow-2xl self-start sm:self-auto ${isLive
             ? 'bg-emerald-50 border-emerald-100 text-emerald-600 shadow-emerald-500/10'
             : 'bg-white border-slate-100 text-slate-400 hover:text-slate-600 hover:border-slate-200 shadow-slate-200/50'
             }`}
@@ -115,7 +115,7 @@ export default function CounselorDashboard() {
       </div>
 
       {/* ─── Stats row ─── */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
         {[
           { icon: DollarSign, label: 'Earnings', value: `₹${(profile?.sessions_count || 0) * (profile?.price_per_hour || 500)}`, change: '+12%', color: 'emerald' },
           { icon: Users, label: 'Active Roster', value: students.length.toString(), change: '+3 new', color: 'blue' },
@@ -140,7 +140,7 @@ export default function CounselorDashboard() {
       </div>
 
       {/* ─── Main grid ─── */}
-      <div className="grid lg:grid-cols-3 gap-10">
+      <div className="grid lg:grid-cols-3 gap-6 lg:gap-10">
 
         {/* Today's Schedule */}
         <div className="lg:col-span-2 space-y-8">
@@ -166,7 +166,7 @@ export default function CounselorDashboard() {
                 initial="hidden"
                 animate="visible"
                 custom={i}
-                className="bg-white rounded-[2.5rem] border border-slate-100 p-8 flex flex-col sm:flex-row items-center gap-8 shadow-premium hover:shadow-2xl transition-all group"
+                className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-slate-100 p-5 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8 shadow-premium hover:shadow-2xl transition-all group"
               >
                 <div className="w-18 h-18 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-600 font-black text-2xl shadow-inner border border-slate-200 shrink-0 group-hover:scale-105 group-hover:bg-udanix-blue group-hover:text-white transition-all">
                   {s.profiles?.full_name?.charAt(0) || 'S'}
@@ -180,7 +180,7 @@ export default function CounselorDashboard() {
                     <span className="text-[10px] font-black text-udanix-blue bg-udanix-blue/5 px-4 py-1.5 rounded-full uppercase tracking-[0.15em] border border-udanix-blue/10">{s.topic}</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 shrink-0">
+                <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-end w-full sm:w-auto gap-3 sm:gap-0 shrink-0">
                   <span className="text-[10px] font-black text-slate-400 bg-slate-50 px-4 py-2 rounded-xl uppercase tracking-widest border border-slate-100">{s.type || 'Video'}</span>
                   <Button size="sm" className="h-13 px-8 bg-udanix-blue hover:bg-blue-600 text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl shadow-blue-500/10 transition-all group-hover:scale-105 active:scale-95">
                     Link <Video className="w-4 h-4 ml-2" />

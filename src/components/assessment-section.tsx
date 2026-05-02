@@ -24,8 +24,8 @@ const assessments = [
     completed: "45,000+ students",
     level: "Beginner",
     icon: <Target className="w-6 h-6" />,
-    color: "from-blue-500 to-indigo-600",
-    glow: "rgba(59, 130, 246, 0.5)"
+    color: "from-[#0e399a] to-[#0274c1]",
+    glow: "rgba(14, 57, 154, 0.5)"
   },
   {
     id: "stream",
@@ -36,8 +36,8 @@ const assessments = [
     completed: "38,000+ students",
     level: "Beginner",
     icon: <BrainCircuit className="w-6 h-6" />,
-    color: "from-orange-500 to-amber-600",
-    glow: "rgba(249, 115, 22, 0.5)"
+    color: "from-[#df590e] to-[#f97316]",
+    glow: "rgba(223, 89, 14, 0.5)"
   },
   {
     id: "aptitude",
@@ -48,8 +48,8 @@ const assessments = [
     completed: "28,000+ students",
     level: "Intermediate",
     icon: <Sparkles className="w-6 h-6" />,
-    color: "from-purple-500 to-fuchsia-600",
-    glow: "rgba(168, 85, 247, 0.5)"
+    color: "from-[#0274c1] to-[#0ea5e9]",
+    glow: "rgba(2, 116, 193, 0.5)"
   },
   {
     id: "personality",
@@ -60,18 +60,18 @@ const assessments = [
     completed: "32,000+ students",
     level: "Intermediate",
     icon: <UserCheck className="w-6 h-6" />,
-    color: "from-cyan-500 to-blue-600",
-    glow: "rgba(6, 182, 212, 0.5)"
+    color: "from-[#0e399a] to-[#df590e]",
+    glow: "rgba(14, 57, 154, 0.5)"
   }
 ];
 
 export function AssessmentSection() {
   return (
-    <section className="relative py-32 overflow-hidden bg-white">
+    <section className="relative py-24 sm:py-32 overflow-hidden bg-transparent">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-udanix-blue/5 rounded-full blur-[140px] animate-pulse" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-udanix-orange/2 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-udanix-blue/3 rounded-full blur-[140px]" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-udanix-orange/3 rounded-full blur-[140px]" style={{ animationDelay: '3s' }} />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] mix-blend-overlay" />
       </div>
 

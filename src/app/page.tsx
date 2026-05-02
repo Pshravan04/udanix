@@ -102,19 +102,29 @@ export default function Home() {
       </section>
 
       {/* ─── STREAM EXPLORER ─── */}
-      <StreamExplorer />
+      <div className="bg-section-stream">
+        <StreamExplorer />
+      </div>
 
       {/* ─── CAREER PATHS ─── */}
-      <CareerPaths />
+      <div className="bg-section-careers">
+        <CareerPaths />
+      </div>
 
       {/* ─── ASSESSMENT SECTION ─── */}
-      <AssessmentSection />
+      <div className="bg-mesh-blue">
+        <AssessmentSection />
+      </div>
 
       {/* ─── SUCCESS GALLERY ─── */}
-      <SuccessGallery />
+      <div className="bg-section-gallery">
+        <SuccessGallery />
+      </div>
 
       {/* ─── COUNSELOR SECTION ─── */}
-      <CounselorSection />
+      <div className="bg-mesh-orange">
+        <CounselorSection />
+      </div>
 
     </div>
   );

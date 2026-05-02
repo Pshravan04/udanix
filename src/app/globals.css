@@ -8,10 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-nunito), var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-plus-jakarta), var(--font-space-grotesk), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-plus-jakarta), var(--font-space-grotesk), system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -80,7 +80,8 @@
   --udanix-surface:    #F9FAFB;
   --udanix-light:      #F3F4F6;
   --udanix-border:     #E5E7EB;
-  --udanix-shadow:     rgba(0, 62, 138, 0.08);
+  --udanix-shadow:     rgba(14, 57, 154, 0.10);
+  --udanix-orange-shadow: rgba(223, 89, 14, 0.12);
 
   /* ── Semantic Tokens ── */
   --background:              #FFFFFF;
@@ -118,12 +119,18 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-nunito), var(--font-inter), system-ui, sans-serif;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    color: #374151;
   }
   h1, h2, h3, h4 {
+    font-family: var(--font-plus-jakarta), var(--font-space-grotesk), system-ui, sans-serif;
     @apply font-bold tracking-tight text-udanix-heading;
+  }
+  p, span, li, a, label {
+    font-family: var(--font-nunito), var(--font-inter), system-ui, sans-serif;
   }
 }
 
@@ -148,11 +155,27 @@
   @utility mesh-gradient-premium {
     background-color: #ffffff;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(14, 57, 154, 0.05) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(2, 116, 193, 0.05) 0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(223, 89, 14, 0.02) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(14, 57, 154, 0.05) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(2, 116, 193, 0.05) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(14, 57, 154, 0.10) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(223, 89, 14, 0.09) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(2, 116, 193, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(14, 57, 154, 0.08) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(2, 116, 193, 0.08) 0px, transparent 50%);
+  }
+
+  @utility bg-hero-light {
+    background: linear-gradient(135deg, #F0F5FF 0%, #FFFAF7 50%, #F5F8FF 100%);
+  }
+
+  @utility bg-section-navy-light {
+    background: linear-gradient(180deg, #ffffff 0%, rgba(14, 57, 154, 0.04) 100%);
+  }
+
+  @utility bg-section-orange-light {
+    background: linear-gradient(180deg, rgba(223, 89, 14, 0.04) 0%, #ffffff 100%);
+  }
+
+  @utility bg-section-blue-light {
+    background: linear-gradient(180deg, #ffffff 0%, rgba(2, 116, 193, 0.05) 100%);
   }
 
   @utility glass-card-premium {
@@ -328,19 +351,48 @@
   @utility bg-mesh-blue {
     background-color: #ffffff;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(14, 57, 154, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(2, 116, 193, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(14, 57, 154, 0.08) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(2, 116, 193, 0.08) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(14, 57, 154, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(2, 116, 193, 0.10) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(14, 57, 154, 0.10) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(2, 116, 193, 0.10) 0px, transparent 50%);
   }
 
   @utility bg-mesh-orange {
     background-color: #ffffff;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(223, 89, 14, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(251, 176, 59, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(223, 89, 14, 0.08) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, rgba(223, 89, 14, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(251, 176, 59, 0.10) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(223, 89, 14, 0.10) 0px, transparent 50%),
       radial-gradient(at 0% 100%, rgba(251, 176, 59, 0.08) 0px, transparent 50%);
+  }
+
+  /* ── Section-specific backgrounds using brand palette ── */
+
+  /* Stream Explorer: warm orange accent on top-left, blue on bottom-right */
+  @utility bg-section-stream {
+    background-color: #fff8f5;
+    background-image:
+      radial-gradient(ellipse at 0% 0%, rgba(223, 89, 14, 0.14) 0px, transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(2, 116, 193, 0.10) 0px, transparent 55%),
+      radial-gradient(ellipse at 50% 100%, rgba(14, 57, 154, 0.05) 0px, transparent 45%);
+  }
+
+  /* Career Paths: rich navy blue accent — feels authoritative */
+  @utility bg-section-careers {
+    background-color: #f5f7ff;
+    background-image:
+      radial-gradient(ellipse at 100% 0%, rgba(14, 57, 154, 0.13) 0px, transparent 55%),
+      radial-gradient(ellipse at 0% 100%, rgba(2, 116, 193, 0.10) 0px, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(223, 89, 14, 0.04) 0px, transparent 50%);
+  }
+
+  /* Success Gallery: warm orange + blue mixed — celebratory feel */
+  @utility bg-section-gallery {
+    background-color: #fffbf8;
+    background-image:
+      radial-gradient(ellipse at 100% 0%, rgba(223, 89, 14, 0.11) 0px, transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(14, 57, 154, 0.09) 0px, transparent 50%),
+      radial-gradient(ellipse at 50% 0%, rgba(2, 116, 193, 0.07) 0px, transparent 40%);
   }
 
   /* ── Animations ── */

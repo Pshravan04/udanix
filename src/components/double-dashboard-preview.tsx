@@ -36,10 +36,10 @@ export function DoubleDashboardPreview() {
             initial={{ opacity: 0, scale: 0.98, filter: 'blur(10px)' }}
             animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
             transition={{ duration: 0.5, ease: "circOut" }}
-            className="flex flex-col lg:flex-row gap-8 min-h-[700px]"
+            className="flex flex-col lg:flex-row gap-6 lg:gap-8 min-h-[auto] lg:min-h-[700px]"
           >
-            {/* Sidebar Mock */}
-            <div className="w-full lg:w-72 bg-slate-50 rounded-[2.5rem] p-8 flex flex-col gap-10 border border-slate-100">
+            {/* Sidebar Mock - hidden on mobile */}
+            <div className="hidden lg:flex w-full lg:w-64 xl:w-72 bg-slate-50 rounded-[2rem] lg:rounded-[2.5rem] p-6 lg:p-8 flex-col gap-8 lg:gap-10 border border-slate-100">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-brand-gradient flex items-center justify-center text-white font-black text-xl shadow-lg">U</div>
                   <div style={{ fontFamily: 'var(--font-space-grotesk)' }} className="font-black text-slate-900 tracking-tighter text-xl">UDANIX</div>

@@ -220,8 +220,8 @@ function MarqueeColumn({ items, direction = 'up', speed = 20 }: { items: typeof 
       </motion.div>
       
       {/* Gradient Fades */}
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent z-10" />
-      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-white to-transparent z-10" />
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#fffbf8] to-transparent z-10" />
+      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#fffbf8] to-transparent z-10" />
     </div>
   );
 }
@@ -236,9 +236,8 @@ export function SuccessGallery() {
   const col3 = [SUCCESS_STORIES[6], SUCCESS_STORIES[7], SUCCESS_STORIES[8]];
 
   return (
-    <section ref={containerRef} className="py-32 relative overflow-hidden bg-white">
+    <section ref={containerRef} className="py-32 relative overflow-hidden bg-transparent">
       <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-white" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-udanix-blue/5 blur-[160px] rounded-full" />
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.01] mix-blend-overlay" />
       </div>

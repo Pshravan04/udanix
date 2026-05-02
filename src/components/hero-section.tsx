@@ -7,37 +7,53 @@ import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-32 overflow-hidden bg-white">
-      {/* ─── ENHANCED DYNAMIC BACKGROUND ─── */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-32 overflow-hidden bg-hero-light">
+      {/* ─── BRAND COLOR DYNAMIC BACKGROUND ─── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-white" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #F2F5FF 0%, #FFFAF7 50%, #F5F8FF 100%)' }} />
         
-        {/* Animated Mesh Glows */}
+        {/* Navy blue orb — top left (matches logo navy #0e399a) */}
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.15, 1],
+            opacity: [0.35, 0.50, 0.35],
+            x: [0, 40, 0],
+            y: [0, 20, 0]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] rounded-full blur-[130px]" 
+          style={{ background: 'rgba(14, 57, 154, 0.13)' }}
+        />
+        
+        {/* Orange orb — top right (matches logo orange #df590e) */}
+        <motion.div 
+          animate={{ 
+            scale: [1.1, 1, 1.1],
+            opacity: [0.20, 0.35, 0.20],
+            x: [0, -30, 0],
+            y: [0, 25, 0]
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-5%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[120px]" 
+          style={{ background: 'rgba(223, 89, 14, 0.12)' }}
+        />
+
+        {/* Blue accent orb — bottom right (#0274c1) */}
         <motion.div 
           animate={{ 
             scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, 50, 0],
-            y: [0, 30, 0]
+            opacity: [0.15, 0.28, 0.15],
+            x: [0, -20, 0],
+            y: [0, -15, 0]
           }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-udanix-blue/10 rounded-full blur-[140px]" 
-        />
-        
-        <motion.div 
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-            x: [0, -40, 0],
-            y: [0, -20, 0]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-indigo-500/5 rounded-full blur-[120px]" 
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] rounded-full blur-[110px]" 
+          style={{ background: 'rgba(2, 116, 193, 0.10)' }}
         />
 
         {/* Noise & Grid Overlay */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.025] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0e399a08_1px,transparent_1px),linear-gradient(to_bottom,#0e399a08_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
       <div className="container relative z-10 px-6 mx-auto">

@@ -47,7 +47,7 @@ const STREAMS = [
 
 export function StreamExplorer() {
     return (
-        <section className="py-24 relative overflow-hidden bg-white">
+        <section className="py-24 relative overflow-hidden bg-transparent">
             {/* Background Decorative Elements */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-udanix-blue/5 rounded-full blur-[120px] animate-pulse" />

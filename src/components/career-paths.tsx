@@ -157,7 +157,7 @@ export function CareerPaths() {
     const [activeTab, setActiveTab] = useState<Category>('Science');
 
     return (
-        <section className="py-24 relative overflow-hidden bg-slate-50">
+        <section className="py-24 relative overflow-hidden bg-transparent">
             {/* Background Decorative Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-udanix-blue/5 rounded-full blur-[120px] animate-pulse" />
