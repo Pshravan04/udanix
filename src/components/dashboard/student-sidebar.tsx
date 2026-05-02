@@ -32,23 +32,26 @@ const NAV_ITEMS = [
 export function StudentSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [profile, setProfile] = useState<Profile | null>(null);
   const [loggingOut, setLoggingOut] = useState(false);
   const supabase = createClient();
 
   useEffect(() => {
-    const checkAdmin = async () => {
+    const loadProfile = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        const { data: profile } = await supabase
+        const { data: profileData } = await supabase
           .from('profiles')
-          .select('role')
+          .select('role, full_name, avatar_url, stream')
           .eq('id', user.id)
           .single();
-        setIsAdmin(profile?.role === 'admin');
+        
+        if (profileData) {
+          setProfile(profileData as Profile);
+        }
       }
     };
-    checkAdmin();
+    loadProfile();
   }, [supabase]);
 
   const handleLogout = async () => {
@@ -97,7 +100,7 @@ export function StudentSidebar() {
           );
         })}
 
-        {isAdmin && (
+        {profile?.role === 'admin' && (
           <Link
             href="/admin"
             className={cn(
@@ -120,8 +123,29 @@ export function StudentSidebar() {
         )}
       </nav>
 
+      {/* User Profile */}
+      <div className="mt-auto pb-4 mb-4 border-b border-gray-100">
+        <Link href="/student/profile" className="flex items-center gap-3 p-2 rounded-2xl hover:bg-gray-50 transition-all group">
+          <div className="w-11 h-11 rounded-xl bg-udanix-blue/5 border border-udanix-blue/10 overflow-hidden flex items-center justify-center text-udanix-blue font-black text-sm shadow-inner group-hover:border-udanix-blue/30">
+            {profile?.avatar_url ? (
+              <Image src={`${profile.avatar_url}?t=${Date.now()}`} alt={profile.full_name || 'User'} width={44} height={44} className="w-full h-full object-cover" />
+            ) : (
+              profile?.full_name?.charAt(0) || 'S'
+            )}
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-black text-[#111827] truncate leading-tight group-hover:text-udanix-blue transition-colors">
+              {profile?.full_name || 'Student Name'}
+            </p>
+            <p className="text-[10px] font-black text-[#9CA3AF] uppercase tracking-widest truncate opacity-80">
+              {profile?.stream || 'Exploring Streams'}
+            </p>
+          </div>
+        </Link>
+      </div>
+
       {/* Logout */}
-      <div className="mt-auto pt-4 border-t border-gray-100 space-y-3">
+      <div className="pt-2 space-y-3">
         <button
           onClick={handleLogout}
           disabled={loggingOut}
@@ -144,7 +168,26 @@ export function MobileStudentNav() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
+  const [profile, setProfile] = useState<Profile | null>(null);
   const supabase = createClient();
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profileData } = await supabase
+          .from('profiles')
+          .select('role, full_name, avatar_url, stream')
+          .eq('id', user.id)
+          .single();
+        
+        if (profileData) {
+          setProfile(profileData as Profile);
+        }
+      }
+    };
+    loadProfile();
+  }, [supabase]);
 
   const handleLogout = async () => {
     setMenuOpen(false);
@@ -160,18 +203,47 @@ export function MobileStudentNav() {
         <Link href="/">
           <Image src="/logo.jpg" alt="Udaanix" width={80} height={30} className="h-8 w-auto" />
         </Link>
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="w-10 h-10 rounded-2xl bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-udanix-blue/5 hover:text-udanix-blue transition-all"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        
+        <div className="flex items-center gap-2">
+          {profile && (
+            <Link href="/student/profile" className="w-8 h-8 rounded-lg bg-udanix-blue/5 border border-udanix-blue/10 overflow-hidden flex items-center justify-center text-udanix-blue font-black text-[10px] shadow-sm">
+              {profile.avatar_url ? (
+                <Image src={`${profile.avatar_url}?t=${Date.now()}`} alt="" width={32} height={32} className="w-full h-full object-cover" />
+              ) : (
+                profile.full_name?.charAt(0) || 'S'
+              )}
+            </Link>
+          )}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="w-10 h-10 rounded-2xl bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-udanix-blue/5 hover:text-udanix-blue transition-all"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
         <div className="lg:hidden fixed top-[57px] left-0 right-0 z-40 bg-white border-b border-gray-100 shadow-xl px-4 py-3 space-y-1">
+          {/* Mobile Profile Summary */}
+          {profile && (
+            <div className="px-4 py-4 mb-2 bg-slate-50/50 rounded-2xl border border-slate-100 flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 overflow-hidden flex items-center justify-center text-udanix-blue font-black text-sm">
+                {profile.avatar_url ? (
+                  <Image src={`${profile.avatar_url}?t=${Date.now()}`} alt="" width={40} height={40} className="w-full h-full object-cover" />
+                ) : (
+                  profile.full_name?.charAt(0) || 'S'
+                )}
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-black text-slate-900 truncate uppercase tracking-tight">{profile.full_name}</p>
+                <p className="text-[9px] font-black text-udanix-blue truncate uppercase tracking-widest opacity-70">{profile.stream || 'Exploring'}</p>
+              </div>
+            </div>
+          )}
+
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -191,6 +263,23 @@ export function MobileStudentNav() {
               </Link>
             );
           })}
+          
+          {profile?.role === 'admin' && (
+            <Link
+              href="/admin"
+              onClick={() => setMenuOpen(false)}
+              className={cn(
+                "flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200",
+                pathname === '/admin'
+                  ? "bg-rose-50 text-rose-600"
+                  : "text-rose-500 hover:bg-rose-50/50"
+              )}
+            >
+              <ShieldCheck className="w-5 h-5" />
+              <span className="text-[15px] font-semibold">Admin Panel</span>
+            </Link>
+          )}
+
           <div className="border-t border-gray-100 pt-1 mt-1">
             <button
               onClick={handleLogout}

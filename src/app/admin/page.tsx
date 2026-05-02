@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import {
@@ -245,23 +246,13 @@ export default function AdminDashboard() {
               </p>
             </div>
 
-            <div className="pt-4 space-y-4">
+            <div className="pt-4">
               <Button
-                onClick={handleElevate}
-                disabled={actionLoading === 'elevate'}
-                className="w-full h-20 bg-slate-900 hover:bg-black text-white text-sm font-black uppercase tracking-[0.25em] rounded-2xl shadow-2xl transition-all active:scale-95 group"
+                asChild
+                className="w-full h-12 bg-slate-900 hover:bg-black text-white text-sm font-bold rounded-2xl transition-all active:scale-95"
               >
-                {actionLoading === 'elevate' ? (
-                  <Loader2 className="w-6 h-6 animate-spin" />
-                ) : (
-                  <>
-                    Bypass System Controls <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                  </>
-                )}
+                <Link href="/">Return to Base</Link>
               </Button>
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest opacity-60">
-                Authorized override protocol active for dev session
-              </p>
             </div>
           </div>
         </motion.div>

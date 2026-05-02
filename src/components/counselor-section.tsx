@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useAuth } from '@/context/auth-context';
+import { useRouter } from 'next/navigation';
 
 const COUNSELORS = [
     {
@@ -72,6 +74,17 @@ const COUNSELORS = [
 
 export function CounselorSection() {
     const containerRef = useRef(null);
+    const { user, setLoginModalOpen } = useAuth();
+    const router = useRouter();
+
+    const handleAuthClick = (e: React.MouseEvent, target: string) => {
+        e.preventDefault();
+        if (!user) {
+            setLoginModalOpen(true);
+        } else {
+            router.push(target);
+        }
+    };
 
     return (
         <section id="counselors" ref={containerRef} className="py-32 relative overflow-hidden bg-[#df590e]">
@@ -117,7 +130,10 @@ export function CounselorSection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                     >
-                        <button className="group relative bg-white text-[#df590e] px-10 py-6 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3 overflow-hidden">
+                        <button 
+                            onClick={(e) => handleAuthClick(e, '/student/mentors')}
+                            className="group relative bg-white text-[#df590e] px-10 py-6 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3 overflow-hidden"
+                        >
                             Explore All Experts <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </motion.div>
@@ -195,10 +211,16 @@ export function CounselorSection() {
                                     </div>
 
                                     <div className="flex gap-3 pt-2">
-                                        <button className="flex-1 bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200 rounded-2xl font-black text-[10px] uppercase tracking-widest py-5 transition-all active:scale-95">
+                                        <button 
+                                            onClick={(e) => handleAuthClick(e, `/student/mentors?chat=${c.id}`)}
+                                            className="flex-1 bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200 rounded-2xl font-black text-[10px] uppercase tracking-widest py-5 transition-all active:scale-95"
+                                        >
                                             Message
                                         </button>
-                                        <button className="flex-[2] bg-slate-950 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest py-5 transition-all shadow-lg shadow-slate-200 active:scale-95">
+                                        <button 
+                                            onClick={(e) => handleAuthClick(e, `/student/mentors?book=${c.id}`)}
+                                            className="flex-[2] bg-slate-950 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest py-5 transition-all shadow-lg shadow-slate-200 active:scale-95"
+                                        >
                                             Book Now
                                         </button>
                                     </div>

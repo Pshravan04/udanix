@@ -1,12 +1,10 @@
 'use client';
-
+ 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/client';
-import { User } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';
-import { Profile } from '@/types';
+import { useAuth } from '@/context/auth-context';
 
 import { HeroSection } from '@/components/hero-section';
 import { StreamExplorer } from '@/components/stream-explorer';
@@ -14,29 +12,9 @@ import { CareerPaths } from '@/components/career-paths';
 import { AssessmentSection } from '@/components/assessment-section';
 import { SuccessGallery } from '@/components/success-gallery';
 import { CounselorSection } from '@/components/counselor-section';
-import { StudentLoginModal } from '@/components/auth/student-login-modal';
 
 export default function Home() {
-  const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const supabase = createClient();
-
-  useEffect(() => {
-    const checkUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      setUser(data.user);
-      
-      if (data.user) {
-        const { data: profileData } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', data.user.id)
-          .single();
-        setProfile(profileData);
-      }
-    };
-    checkUser();
-  }, [supabase]);
+  const { user, profile, setLoginModalOpen } = useAuth();
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-950 overflow-x-hidden selection:bg-udanix-blue/10 selection:text-udanix-blue">
@@ -72,8 +50,15 @@ export default function Home() {
                       </button>
                     </Link>
                   )}
-                  <Link href="/student/profile" className="hidden xs:block">
-                    <button className="text-[10px] sm:text-[12px] font-black text-slate-500 hover:text-slate-950 uppercase tracking-widest transition-all px-3 sm:px-4 py-2 rounded-xl hover:bg-slate-100">
+                  <Link href="/student/profile" className="hidden xs:flex items-center gap-2 group">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center text-udanix-blue font-black shadow-inner transition-all group-hover:border-udanix-blue group-hover:scale-105">
+                      {profile?.avatar_url ? (
+                        <Image src={profile.avatar_url} alt={profile.full_name || 'User'} width={40} height={40} className="w-full h-full object-cover" />
+                      ) : (
+                        profile?.full_name?.charAt(0) || 'U'
+                      )}
+                    </div>
+                    <button className="text-[10px] sm:text-[12px] font-black text-slate-500 group-hover:text-udanix-blue uppercase tracking-widest transition-all px-2 py-2">
                       Profile
                     </button>
                   </Link>
@@ -84,18 +69,7 @@ export default function Home() {
                   </Link>
                 </div>
 
-              ) : (
-                <>
-                  <div className="hidden xs:block">
-                    <StudentLoginModal />
-                  </div>
-                  <Link href="/register">
-                    <button className="bg-brand-gradient text-white text-[11px] sm:text-[13px] font-black py-2.5 sm:py-3.5 px-5 sm:px-8 rounded-xl sm:rounded-2xl shadow-premium hover:shadow-premium-xl hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap uppercase tracking-widest">
-                      Join Now
-                    </button>
-                  </Link>
-                </>
-              )}
+              ) : null}
             </div>
           </div>
         </div>

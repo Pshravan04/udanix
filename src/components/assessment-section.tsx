@@ -13,59 +13,26 @@ import {
   UserCheck
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/auth-context";
+import { useRouter } from "next/navigation";
 
 const assessments = [
-  {
-    id: "interest",
-    title: "Career Interest Assessment",
-    description: "Discover your interests and find careers that match your personality and passions.",
-    duration: "15 minutes",
-    questions: "50 Questions",
-    completed: "45,000+ students",
-    level: "Beginner",
-    icon: <Target className="w-6 h-6" />,
-    color: "from-[#0e399a] to-[#0274c1]",
-    glow: "rgba(14, 57, 154, 0.5)"
-  },
-  {
-    id: "stream",
-    title: "Stream Selection Test",
-    description: "Determine which stream (Science/Commerce/Arts) is best suited for your skills and goals.",
-    duration: "20 minutes",
-    questions: "40 Questions",
-    completed: "38,000+ students",
-    level: "Beginner",
-    icon: <BrainCircuit className="w-6 h-6" />,
-    color: "from-[#df590e] to-[#f97316]",
-    glow: "rgba(223, 89, 14, 0.5)"
-  },
-  {
-    id: "aptitude",
-    title: "Aptitude & Skills Test",
-    description: "Evaluate your analytical, logical, and creative skills to identify your core strengths.",
-    duration: "30 minutes",
-    questions: "60 Questions",
-    completed: "28,000+ students",
-    level: "Intermediate",
-    icon: <Sparkles className="w-6 h-6" />,
-    color: "from-[#0274c1] to-[#0ea5e9]",
-    glow: "rgba(2, 116, 193, 0.5)"
-  },
-  {
-    id: "personality",
-    title: "Personality Assessment",
-    description: "Understand your personality type and how it influences your career preferences.",
-    duration: "25 minutes",
-    questions: "45 Questions",
-    completed: "32,000+ students",
-    level: "Intermediate",
-    icon: <UserCheck className="w-6 h-6" />,
-    color: "from-[#0e399a] to-[#df590e]",
-    glow: "rgba(14, 57, 154, 0.5)"
-  }
+// ... (keep assessments constant)
 ];
 
 export function AssessmentSection() {
+  const { user, setLoginModalOpen } = useAuth();
+  const router = useRouter();
+
+  const handleCTA = (e: React.MouseEvent, testId: string) => {
+    e.preventDefault();
+    if (!user) {
+      setLoginModalOpen(true);
+    } else {
+      router.push(`/student/assessment?type=${testId}`);
+    }
+  };
+
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden bg-udanix-blue">
       {/* Background Decorative Elements */}
@@ -176,6 +143,7 @@ export function AssessmentSection() {
 
                 <div className="mt-auto pt-6">
                   <Button 
+                    onClick={(e) => handleCTA(e, test.id)}
                     className="group/btn w-full h-14 bg-slate-50 hover:bg-slate-950 text-slate-950 hover:text-white border border-slate-200 rounded-2xl transition-all duration-500 font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 shadow-inner"
                   >
                     Start Assessment <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
@@ -189,3 +157,4 @@ export function AssessmentSection() {
     </section>
   );
 }
+

@@ -121,12 +121,13 @@ export function Footer() {
                     <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-16 lg:gap-24">
                         {[
                             { 
-                                title: 'Platform', 
+                                title: 'Counselors', 
                                 links: [
-                                    { name: 'Pathways', href: '#paths' },
-                                    { name: 'Experts', href: '#counselors' },
-                                    { name: 'Streams', href: '#streams' },
-                                    { name: 'Udaanix Labs', href: '/labs' }
+                                    { name: 'Counselor Login', href: '/counselor' },
+                                    { name: 'Join as Counselor', href: '/register' },
+                                    { name: 'Training Academy', href: '/counselor/training' },
+                                    { name: 'Partner Program', href: '/partners' },
+                                    { name: 'Counselor Support', href: '/support' }
                                 ] 
                             },
                             { 

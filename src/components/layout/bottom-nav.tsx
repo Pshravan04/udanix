@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 import { Home, User, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+import { useAuth } from '@/context/auth-context';
+
 const NAV_ITEMS = [
   { label: 'Home', href: '/', icon: Home },
   { label: 'Profile', href: '/student/profile', icon: User },
@@ -13,6 +15,14 @@ const NAV_ITEMS = [
 
 export function BottomNav() {
   const pathname = usePathname();
+  const { user, setLoginModalOpen } = useAuth();
+
+  const handleNavItemClick = (e: React.MouseEvent, href: string) => {
+    if (href === '/student/profile' && !user) {
+      e.preventDefault();
+      setLoginModalOpen(true);
+    }
+  };
 
   return (
     <nav className="fixed bottom-6 inset-x-6 z-[100] lg:hidden">
@@ -25,6 +35,7 @@ export function BottomNav() {
             <Link 
               key={item.label} 
               href={item.href}
+              onClick={(e) => handleNavItemClick(e, item.href)}
               className={cn(
                 "flex flex-col items-center gap-2 transition-all duration-300 relative group",
                 isActive ? "text-udanix-blue" : "text-slate-400 hover:text-slate-600"

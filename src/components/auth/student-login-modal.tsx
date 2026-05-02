@@ -16,12 +16,13 @@ import { GraduationCap, ArrowRight, Eye, EyeOff, Sparkles, Mail, ShieldCheck, Us
 import { createClient } from '@/lib/supabase/client';
 import { GoogleLoginButton } from '@/components/auth/google-login-button';
 import { ForgotPasswordDialog } from '@/components/auth/forgot-password-dialog';
+import { useAuth } from '@/context/auth-context';
 
 type AuthMode = 'login' | 'signup';
 
 export function StudentLoginModal() {
     const router = useRouter();
-    const [isOpen, setIsOpen] = useState(false);
+    const { isLoginModalOpen, setLoginModalOpen } = useAuth();
     const [mode, setMode] = useState<AuthMode>('login');
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -85,7 +86,7 @@ export function StudentLoginModal() {
                 }
             }
 
-            setIsOpen(false);
+            setLoginModalOpen(false);
             if (window.location.pathname === '/') {
                 router.refresh();
             } else {
@@ -98,14 +99,7 @@ export function StudentLoginModal() {
     };
 
     return (
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger 
-                render={
-                    <Button variant="ghost" className="text-[11px] font-black text-slate-500 hover:text-udanix-blue uppercase tracking-widest transition-all px-4 py-2 rounded-xl hover:bg-slate-50">
-                        Sign In
-                    </Button>
-                }
-            />
+        <Dialog open={isLoginModalOpen} onOpenChange={setLoginModalOpen}>
             <DialogContent className="sm:max-w-[480px] p-0 overflow-hidden border-none shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)] rounded-[2.5rem] bg-white">
                 <div className="relative">
                     {/* Header/Banner Area */}

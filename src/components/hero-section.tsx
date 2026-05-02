@@ -3,9 +3,22 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Rocket, Play, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useAuth } from '@/context/auth-context';
+import { useRouter } from 'next/navigation';
 
 export function HeroSection() {
+  const { user, setLoginModalOpen } = useAuth();
+  const router = useRouter();
+
+  const handleCTA = (e: React.MouseEvent, target: string) => {
+    e.preventDefault();
+    if (!user) {
+      setLoginModalOpen(true);
+    } else {
+      router.push(target);
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-32 overflow-hidden">
       {/* ─── BRAND COLOR DYNAMIC BACKGROUND ─── */}
@@ -94,15 +107,19 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-6 max-w-xl mx-auto px-4"
           >
-            <Link href="/register" className="flex-1">
-              <button className="group relative w-full bg-white text-udanix-navy text-[13px] font-black py-6 px-12 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] hover:scale-105 active:scale-95 transition-all uppercase tracking-[0.2em] overflow-hidden">
-                <span className="relative z-10 flex items-center justify-center gap-3">
-                  Start Assessment <Rocket className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-            </Link>
+            <button 
+              onClick={(e) => handleCTA(e, '/student')}
+              className="flex-1 group relative w-full bg-white text-udanix-navy text-[13px] font-black py-6 px-12 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] hover:scale-105 active:scale-95 transition-all uppercase tracking-[0.2em] overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                Start Assessment <Rocket className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </button>
             
-            <button className="group flex-1 flex items-center justify-center gap-4 bg-white/10 text-white text-[13px] font-black py-6 px-12 rounded-3xl border border-white/20 hover:bg-white/20 transition-all uppercase tracking-[0.2em] backdrop-blur-xl">
+            <button 
+              onClick={(e) => handleCTA(e, '/student/mentors')}
+              className="group flex-1 flex items-center justify-center gap-4 bg-white/10 text-white text-[13px] font-black py-6 px-12 rounded-3xl border border-white/20 hover:bg-white/20 transition-all uppercase tracking-[0.2em] backdrop-blur-xl"
+            >
               <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Play className="w-3.5 h-3.5 fill-white text-white ml-0.5" />
               </div>

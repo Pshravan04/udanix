@@ -8,6 +8,8 @@ import {
     Megaphone, PenTool, Pen, Scale, Brain
 } from 'lucide-react';
 import Link from 'next/link';
+import { useAuth } from '@/context/auth-context';
+import { useRouter } from 'next/navigation';
 
 const CATEGORIES = ['Science', 'Commerce', 'Arts'];
 
@@ -155,6 +157,17 @@ const CAREERS = {
 export function CareerPaths() {
     type Category = keyof typeof CAREERS;
     const [activeTab, setActiveTab] = useState<Category>('Science');
+    const { user, setLoginModalOpen } = useAuth();
+    const router = useRouter();
+
+    const handleCTA = (e: React.MouseEvent, href: string) => {
+        e.preventDefault();
+        if (!user) {
+            setLoginModalOpen(true);
+        } else {
+            router.push(href);
+        }
+    };
 
     return (
         <section id="paths" className="py-24 sm:py-32 relative overflow-hidden bg-white border-t border-slate-100">
@@ -304,7 +317,10 @@ export function CareerPaths() {
                                         </div>
 
                                         {/* Action Button */}
-                                        <button className="mt-auto w-full py-4 px-6 bg-slate-100 hover:bg-slate-950 text-slate-950 hover:text-white border border-slate-200 rounded-2xl text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                                        <button 
+                                            onClick={(e) => handleCTA(e, `/careers/${career.title.toLowerCase().replace(/ /g, '-')}`)}
+                                            className="mt-auto w-full py-4 px-6 bg-slate-100 hover:bg-slate-950 text-slate-950 hover:text-white border border-slate-200 rounded-2xl text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                                        >
                                             View Details
                                             <ExternalLink className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                                         </button>
@@ -317,20 +333,17 @@ export function CareerPaths() {
 
                 {/* ─── BOTTOM CTA ─── */}
                 <div className="mt-24 text-center">
-                    <Link href="/careers">
-                        <motion.button 
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="group relative px-14 py-6 bg-slate-950 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] overflow-hidden transition-all duration-500 shadow-xl"
-                        >
-                            <span className="relative z-10">Explore All Careers (500+)</span>
-                            <div className="absolute inset-0 bg-brand-gradient translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-brand-gradient" />
-                            <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
-                                Explore All Careers (500+)
-                            </span>
-                        </motion.button>
-                    </Link>
+                    <button 
+                        onClick={(e) => handleCTA(e, '/careers')}
+                        className="group relative px-14 py-6 bg-slate-950 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] overflow-hidden transition-all duration-500 shadow-xl"
+                    >
+                        <span className="relative z-10">Explore All Careers (500+)</span>
+                        <div className="absolute inset-0 bg-brand-gradient translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-brand-gradient" />
+                        <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
+                            Explore All Careers (500+)
+                        </span>
+                    </button>
                 </div>
             </div>
         </section>

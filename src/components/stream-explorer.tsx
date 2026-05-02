@@ -9,6 +9,9 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { useAuth } from '@/context/auth-context';
+import { useRouter } from 'next/navigation';
+
 const STREAMS = [
     {
         id: 'science',
@@ -46,6 +49,18 @@ const STREAMS = [
 ];
 
 export function StreamExplorer() {
+    const { user, setLoginModalOpen } = useAuth();
+    const router = useRouter();
+
+    const handleCTA = (e: React.MouseEvent, target: string) => {
+        e.preventDefault();
+        if (!user) {
+            setLoginModalOpen(true);
+        } else {
+            router.push(target);
+        }
+    };
+
     return (
         <section id="streams" className="relative py-24 sm:py-32 bg-slate-50 overflow-hidden border-t border-slate-100">
             {/* Background Decorative Elements */}
@@ -156,11 +171,12 @@ export function StreamExplorer() {
                                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">Exploration Scope</span>
                                             <span className="text-[12px] font-black text-udanix-blue uppercase tracking-widest">{stream.careerCount}</span>
                                         </div>
-                                        <Link href={`/assessment`}>
-                                            <button className={`p-4 rounded-2xl ${stream.btnColor} text-white shadow-xl shadow-blue-500/10 transition-all hover:scale-110 active:scale-95 group-hover:shadow-orange-glow`}>
-                                                <ArrowRight className="w-6 h-6" />
-                                            </button>
-                                        </Link>
+                                        <button 
+                                            onClick={(e) => handleCTA(e, '/assessment')}
+                                            className={`p-4 rounded-2xl ${stream.btnColor} text-white shadow-xl shadow-blue-500/10 transition-all hover:scale-110 active:scale-95 group-hover:shadow-orange-glow`}
+                                        >
+                                            <ArrowRight className="w-6 h-6" />
+                                        </button>
                                     </div>
                                 </div>
                             </div>

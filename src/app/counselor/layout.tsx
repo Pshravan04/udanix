@@ -1,11 +1,26 @@
 import Link from "next/link";
-import { GraduationCap, Bell, Settings, LayoutDashboard, Calendar, MessageSquare, BookOpen } from "lucide-react";
+import { GraduationCap, Bell, Settings, LayoutDashboard, Calendar, MessageSquare, BookOpen, Shield } from "lucide-react";
 
 // Mobile nav is toggled client-side — need a small wrapper
 import { CounselorMobileNav } from "./mobile-nav";
 import { LogoutButton } from "./logout-button";
 
-export default function CounselorLayout({ children }: { children: React.ReactNode }) {
+import { createClient } from "@/lib/supabase/server";
+
+export default async function CounselorLayout({ children }: { children: React.ReactNode }) {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    let isAdmin = false;
+    if (user) {
+        const { data: profile } = await supabase
+            .from('profiles')
+            .select('role')
+            .eq('id', user.id)
+            .single();
+        isAdmin = profile?.role === 'admin';
+    }
+
     return (
         <div className="min-h-screen bg-white selection:bg-udanix-blue/10 text-slate-900">
             {/* ─── Background Elements ─── */}
@@ -39,9 +54,11 @@ export default function CounselorLayout({ children }: { children: React.ReactNod
                         <Link href="/counselor/messages" className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-[12px] font-bold uppercase tracking-widest text-slate-500 hover:text-udanix-blue hover:bg-udanix-blue/5 transition-all group">
                             <MessageSquare className="w-4 h-4 group-hover:text-udanix-blue transition-colors" /> Messages
                         </Link>
-                        <Link href="/counselor/resources" className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-[12px] font-bold uppercase tracking-widest text-slate-500 hover:text-udanix-blue hover:bg-udanix-blue/5 transition-all group">
-                            <BookOpen className="w-4 h-4 group-hover:text-udanix-blue transition-colors" /> Resources
-                        </Link>
+                        {isAdmin && (
+                            <Link href="/admin" className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-[12px] font-bold uppercase tracking-widest text-rose-500 hover:bg-rose-50 transition-all group">
+                                <Shield className="w-4 h-4 group-hover:text-rose-600 transition-colors" /> Admin
+                            </Link>
+                        )}
                     </nav>
 
                     <div className="flex items-center gap-2 sm:gap-4 shrink-0">

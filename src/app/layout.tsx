@@ -39,8 +39,10 @@ export const metadata: Metadata = {
   },
 };
 
+import { AuthProvider } from "@/context/auth-context";
 import { BottomNav } from "@/components/layout/bottom-nav";
 import { Footer } from "@/components/footer";
+import { StudentLoginModal } from "@/components/auth/student-login-modal";
 
 export default function RootLayout({
   children,
@@ -54,13 +56,16 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col relative bg-slate-50 pb-32 md:pb-0" suppressHydrationWarning>
-        <NeuralBackground />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <BottomNav />
-        <Toaster richColors position="top-right" />
+        <AuthProvider>
+          <NeuralBackground />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <BottomNav />
+          <StudentLoginModal />
+          <Toaster richColors position="top-right" />
+        </AuthProvider>
       </body>
     </html>
   );
