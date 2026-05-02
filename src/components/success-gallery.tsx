@@ -13,7 +13,7 @@ const SUCCESS_STORIES = [
     name: "Aryan Singh",
     role: "Software Engineer @ Google",
     content: "Udanix didn&apos;t just give me a list of careers; it gave me a roadmap to my dream job in AI.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
+    image: "/images/student-1.png",
     size: 'large',
     color: 'blue'
   },
@@ -33,14 +33,14 @@ const SUCCESS_STORIES = [
     name: "Meera Kapoor",
     role: "UX Designer @ Microsoft",
     content: "The counseling sessions were transformative. I found my passion for design here.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
+    image: "/images/student-2.png",
     size: 'medium',
     color: 'purple'
   },
   {
     id: 4,
     type: 'image',
-    image: "https://images.unsplash.com/photo-1523240715639-93f8006798e3?q=80&w=800&auto=format&fit=crop",
+    image: "/images/campus-scene.png",
     size: 'large',
     label: 'Campus Recruitment Day 2024'
   },
@@ -50,7 +50,7 @@ const SUCCESS_STORIES = [
     name: "Rahul Verma",
     role: "Data Scientist @ Meta",
     content: "Precision guidance is what sets Udanix apart. Every session was high-value.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    image: "/images/student-3.png",
     size: 'small',
     color: 'blue'
   },
@@ -70,14 +70,14 @@ const SUCCESS_STORIES = [
     name: "Sneha Patel",
     role: "Product Manager @ Amazon",
     content: "I went from confused to confident in just three sessions. Simply world-class.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=800&auto=format&fit=crop",
+    image: "/images/student-4.png",
     size: 'medium',
     color: 'green'
   },
   {
     id: 8,
     type: 'image',
-    image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop",
+    image: "/images/workshop-scene.png",
     size: 'medium',
     label: 'Interactive Workshop Session'
   },
@@ -87,7 +87,7 @@ const SUCCESS_STORIES = [
     name: "Vikram Malhotra",
     role: "AI Researcher @ OpenAI",
     content: "The depth of career mapping at Udanix is unmatched in the industry.",
-    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop",
+    image: "/images/student-5.png",
     size: 'large',
     color: 'navy'
   },
@@ -258,7 +258,7 @@ export function SuccessGallery() {
             </span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter uppercase leading-[0.85]">
             Real Results. <br />
             <span className="text-brand-gradient drop-shadow-sm">Unlimited</span> Potential.
           </h2>
@@ -289,7 +289,7 @@ export function SuccessGallery() {
             <div className="flex -space-x-4">
               {[1, 2, 3, 4, 5].map(i => (
                 <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-100 overflow-hidden shadow-xl">
-                  <Image src={`https://i.pravatar.cc/100?img=${i + 20}`} width={48} height={48} alt="" />
+                  <Image src={`/images/student-${i}.png`} width={48} height={48} alt="" />
                 </div>
               ))}
             </div>

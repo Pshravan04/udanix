@@ -55,7 +55,7 @@ export function DoubleDashboardPreview() {
                 <div className="mt-auto pt-8 border-t border-slate-100">
                   <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm">
                     <div className="w-10 h-10 rounded-full bg-slate-100 shrink-0 overflow-hidden border border-slate-200">
-                        <Image src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop" alt="Profile" width={40} height={40} className="w-full h-full object-cover grayscale" />
+                        <Image src="/images/student-1.png" alt="Profile" width={40} height={40} className="w-full h-full object-cover grayscale" />
                     </div>
                     <div className="min-w-0 text-left">
                       <p className="text-[11px] font-black text-slate-900 uppercase truncate">Alex Johnson</p>

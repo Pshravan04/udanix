@@ -53,7 +53,7 @@ export function HeroSection() {
             <div className="flex -space-x-2">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-slate-100 overflow-hidden">
-                  <Image src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" width={24} height={24} className="w-full h-full object-cover" />
+                  <Image src={`/images/student-${i}.png`} alt="User" width={24} height={24} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -70,7 +70,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
               style={{ fontFamily: 'var(--font-plus-jakarta)' }}
             >
               Your Career Journey <br />

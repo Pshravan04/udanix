@@ -21,7 +21,7 @@ const COUNSELORS = [
         sessions: 5000,
         exp: 12,
         specialties: ['Career Planning', 'Stream Selection', 'Abroad Education'],
-        avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=400&auto=format&fit=crop',
+        avatar: '/images/counselor-1.png',
         online: true,
         badge: 'Top 1% Mentor',
         status: 'Available Today'
@@ -35,7 +35,7 @@ const COUNSELORS = [
         sessions: 4200,
         exp: 15,
         specialties: ['Engineering', 'Medical', 'Entrance Exams'],
-        avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&h=400&auto=format&fit=crop',
+        avatar: '/images/counselor-2.png',
         online: true,
         badge: 'Ex-Board Member',
         status: '3 Slots Left'
@@ -49,7 +49,7 @@ const COUNSELORS = [
         sessions: 3800,
         exp: 10,
         specialties: ['Arts & Design', 'Creative Fields', 'Media'],
-        avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&h=400&auto=format&fit=crop',
+        avatar: '/images/counselor-3.png',
         online: false,
         badge: 'Creative Lead',
         status: 'Next: Monday'
@@ -63,7 +63,7 @@ const COUNSELORS = [
         sessions: 6100,
         exp: 18,
         specialties: ['Business', 'MBA', 'Finance Careers'],
-        avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&h=400&auto=format&fit=crop',
+        avatar: '/images/counselor-4.png',
         online: true,
         badge: 'Business Strategist',
         status: 'Online Now'
@@ -100,7 +100,7 @@ export function CounselorSection() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-6xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950"
+                            className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase leading-[0.9] text-slate-950"
                             style={{ fontFamily: 'var(--font-plus-jakarta)' }}
                         >
                             Expert Career <br />
@@ -162,7 +162,7 @@ export function CounselorSection() {
                                 <div className="px-4 pb-4 space-y-6 flex-grow flex flex-col text-left">
                                     <div className="flex items-start justify-between gap-4">
                                         <div>
-                                            <h3 className="text-xl font-black text-slate-950 group-hover:text-udanix-blue transition-colors uppercase tracking-tight leading-none">
+                                            <h3 className="text-lg font-black text-slate-950 group-hover:text-udanix-blue transition-colors uppercase tracking-tight leading-none">
                                                 {c.name}
                                             </h3>
                                             <p className="text-[10px] font-black text-brand-gradient uppercase tracking-[0.1em] mt-2">

@@ -19,7 +19,7 @@ const STREAMS = [
         btnColor: 'bg-[#00AEEF] hover:bg-blue-500',
         careerCount: '150+ Career Options',
         subjects: ['Physics', 'Chemistry', 'Biology', 'Mathematics', '+2 more'],
-        image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/science-stream.png',
     },
     {
         id: 'commerce',
@@ -30,7 +30,7 @@ const STREAMS = [
         btnColor: 'bg-[#00C853] hover:bg-green-600',
         careerCount: '120+ Career Options',
         subjects: ['Accountancy', 'Business Studies', 'Economics', 'Finance', '+2 more'],
-        image: 'https://images.unsplash.com/photo-1454165833767-027ffea9e81b?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/commerce-stream.png',
     },
     {
         id: 'arts',
@@ -41,7 +41,7 @@ const STREAMS = [
         btnColor: 'bg-[#D81B60] hover:bg-pink-600',
         careerCount: '100+ Career Options',
         subjects: ['History', 'Political Science', 'Psychology', 'Literature', '+2 more'],
-        image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/arts-stream.png',
     }
 ];
 
@@ -73,7 +73,7 @@ export function StreamExplorer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black text-slate-950 uppercase tracking-tighter"
+                        className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter"
                     >
                         Explore Your <span className="text-brand-gradient">Stream</span>
                     </motion.h2>
@@ -123,7 +123,7 @@ export function StreamExplorer() {
                                 <div className="p-8 pt-6 flex flex-col flex-1">
                                     <div className="space-y-4 mb-8">
                                         <div className="flex items-center justify-between">
-                                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight group-hover:text-udanix-blue transition-colors">
+                                            <h3 className="text-xl font-black text-slate-950 uppercase tracking-tight group-hover:text-udanix-blue transition-colors">
                                                 {stream.title}
                                             </h3>
                                             <TrendingUp className="w-5 h-5 text-slate-300" />

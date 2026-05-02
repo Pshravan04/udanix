@@ -59,7 +59,7 @@ export function CtaSection() {
 
               {/* Mega Heading */}
               <div className="space-y-8">
-                <h2 style={{ fontFamily: 'var(--font-plus-jakarta)' }} className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 leading-[0.85] tracking-tighter uppercase">
+                <h2 style={{ fontFamily: 'var(--font-plus-jakarta)' }} className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-950 leading-[0.85] tracking-tighter uppercase">
                   Stop <span className="text-slate-200">Guessing</span>.<br />
                   <span className="text-brand-gradient drop-shadow-sm">Start Growing.</span>
                 </h2>
@@ -92,7 +92,7 @@ export function CtaSection() {
                         {[1,2,3,4,5,6].map(i => (
                           <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-100 overflow-hidden relative z-[i] shadow-lg">
                             <Image 
-                              src={`https://i.pravatar.cc/100?img=${i+30}`} 
+                              src={`/images/student-${i}.png`} 
                               alt="Success Story" 
                               width={48} 
                               height={48} 
