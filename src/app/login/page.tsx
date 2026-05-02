@@ -6,16 +6,6 @@ import { GraduationCap, ArrowRight, UserCheck, ShieldCheck } from 'lucide-react'
 
 const PORTALS = [
   {
-    id: 'student',
-    title: 'Student Portal',
-    desc: 'Explore careers and find your path.',
-    href: '/login/student',
-    icon: GraduationCap,
-    color: 'bg-udanix-blue',
-    textColor: 'text-udanix-blue',
-    primary: true
-  },
-  {
     id: 'counselor',
     title: 'Counselor Portal',
     desc: 'Expert access to guide students.',
@@ -23,7 +13,7 @@ const PORTALS = [
     icon: UserCheck,
     color: 'bg-slate-900',
     textColor: 'text-slate-900',
-    primary: false
+    primary: true
   },
   {
     id: 'admin',
@@ -71,7 +61,7 @@ export default function LoginPage() {
         </div>
 
         {/* Portal Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto w-full">
           {PORTALS.map((portal, idx) => (
             <motion.div
               key={portal.id}

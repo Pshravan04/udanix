@@ -10,6 +10,7 @@ import { GraduationCap, ArrowRight, Eye, EyeOff, Sparkles } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { GoogleLoginButton } from '@/components/auth/google-login-button';
 import { ForgotPasswordDialog } from '@/components/auth/forgot-password-dialog';
+import { toast } from 'sonner';
 
 export default function StudentLoginPage() {
     const router = useRouter();
@@ -30,7 +31,7 @@ export default function StudentLoginPage() {
             });
 
             if (error) {
-                alert(error.message);
+                toast.error(error.message);
                 setIsLoading(false);
                 return;
             }

@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import {
   Users, AlertCircle, Clock, Search, ArrowRight, Loader2,
   Lock, Activity, Layers, Database, UserCheck, Trash2, 
@@ -35,7 +36,6 @@ const SESSION_STATUS_STYLES: Record<string, string> = {
 
 const TABS = [
   { id: 'overview', label: 'Overview', icon: Activity },
-  { id: 'students', label: 'Students', icon: Users },
   { id: 'counselors', label: 'Counselors', icon: ShieldCheck },
   { id: 'sessions', label: 'Sessions', icon: Calendar },
   { id: 'system', label: 'System Ops', icon: Database },
@@ -197,7 +197,6 @@ export default function AdminDashboard() {
                          p.email?.toLowerCase().includes(search.toLowerCase()) ||
                          p.stream?.toLowerCase().includes(search.toLowerCase());
     
-    if (activeTab === 'students') return matchesSearch && p.role === 'student';
     if (activeTab === 'counselors') return matchesSearch && p.role === 'counselor';
     return matchesSearch;
   });
@@ -247,12 +246,13 @@ export default function AdminDashboard() {
             </div>
 
             <div className="pt-4">
-              <Button
-                asChild
-                className="w-full h-12 bg-slate-900 hover:bg-black text-white text-sm font-bold rounded-2xl transition-all active:scale-95"
-              >
-                <Link href="/">Return to Base</Link>
-              </Button>
+              <Link href="/" className="w-full">
+                <Button 
+                  className="w-full h-12 bg-slate-900 hover:bg-black text-white text-sm font-bold rounded-2xl transition-all active:scale-95 flex items-center justify-center"
+                >
+                  Return to Home
+                </Button>
+              </Link>
             </div>
           </div>
         </motion.div>
@@ -331,7 +331,6 @@ export default function AdminDashboard() {
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { icon: Users, label: 'Student Traffic', value: stats.activeStudents.toString(), change: '+12% Velocity', color: 'blue' },
                 { icon: ShieldCheck, label: 'Expert Nodes', value: stats.activeCounselors.toString(), change: 'Verified Optic', color: 'emerald' },
                 { icon: Calendar, label: 'Active Sessions', value: stats.activeSessions.toString(), change: 'Live Pulse', color: 'blue' },
                 { icon: AlertCircle, label: 'Pending Ops', value: stats.pendingVerifications.toString(), change: 'Attention Req', color: 'red' },
@@ -397,7 +396,7 @@ export default function AdminDashboard() {
           </motion.div>
         )}
 
-        {(activeTab === 'students' || activeTab === 'counselors') && (
+        {activeTab === 'counselors' && (
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 20 }}

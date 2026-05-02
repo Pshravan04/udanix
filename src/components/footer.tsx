@@ -180,6 +180,16 @@ export function Footer() {
                             © 2026 UDANIX GLOBAL LABS
                         </p>
                         <div className="h-1.5 w-1.5 rounded-full bg-slate-200 hidden sm:block" />
+                        
+                        {/* Counselor Access Option */}
+                        <Link href="/login/counselor" className="group flex items-center gap-4 px-6 py-3 bg-slate-900 rounded-full border border-slate-800 shadow-2xl hover:bg-udanix-blue transition-all duration-500 active:scale-95">
+                            <ShieldCheck className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />
+                            <p className="text-white text-[10px] font-black tracking-[0.2em] uppercase">
+                                Counselor Access
+                            </p>
+                        </Link>
+
+                        <div className="h-1.5 w-1.5 rounded-full bg-slate-200 hidden sm:block" />
                         <div className="flex items-center gap-4 px-6 py-3 bg-slate-50 rounded-full border border-slate-100 shadow-sm">
                             <Cpu className="w-4 h-4 text-udanix-blue animate-pulse" />
                             <p className="text-slate-600 text-[10px] font-black tracking-[0.2em] uppercase">

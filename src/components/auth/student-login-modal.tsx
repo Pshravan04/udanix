@@ -17,6 +17,7 @@ import { createClient } from '@/lib/supabase/client';
 import { GoogleLoginButton } from '@/components/auth/google-login-button';
 import { ForgotPasswordDialog } from '@/components/auth/forgot-password-dialog';
 import { useAuth } from '@/context/auth-context';
+import { toast } from 'sonner';
 
 type AuthMode = 'login' | 'signup';
 
@@ -48,7 +49,7 @@ export function StudentLoginModal() {
                 });
 
                 if (error) {
-                    alert(error.message);
+                    toast.error(error.message);
                     setIsLoading(false);
                     return;
                 }
@@ -66,7 +67,7 @@ export function StudentLoginModal() {
                 });
 
                 if (authError) {
-                    alert(authError.message);
+                    toast.error(authError.message);
                     setIsLoading(false);
                     return;
                 }

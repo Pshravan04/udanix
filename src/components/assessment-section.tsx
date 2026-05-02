@@ -16,8 +16,68 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/auth-context";
 import { useRouter } from "next/navigation";
 
-const assessments = [
-// ... (keep assessments constant)
+interface Assessment {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  questions: string;
+  completed: string;
+  level: string;
+  icon: React.ReactNode;
+  color: string;
+  glow: string;
+}
+
+const assessments: Assessment[] = [
+  {
+    id: "interest",
+    title: "Career Interest Assessment",
+    description: "Discover your interests and find careers that match your personality and passions.",
+    duration: "15 minutes",
+    questions: "50 Questions",
+    completed: "45,000+ students",
+    level: "Beginner",
+    icon: <Target className="w-6 h-6" />,
+    color: "from-blue-500 to-indigo-600",
+    glow: "rgba(59, 130, 246, 0.5)"
+  },
+  {
+    id: "stream",
+    title: "Stream Selection Test",
+    description: "Determine which stream (Science/Commerce/Arts) is best suited for your skills and goals.",
+    duration: "20 minutes",
+    questions: "40 Questions",
+    completed: "38,000+ students",
+    level: "Beginner",
+    icon: <BrainCircuit className="w-6 h-6" />,
+    color: "from-orange-500 to-amber-600",
+    glow: "rgba(249, 115, 22, 0.5)"
+  },
+  {
+    id: "aptitude",
+    title: "Aptitude & Skills Test",
+    description: "Evaluate your analytical, logical, and creative skills to identify your core strengths.",
+    duration: "30 minutes",
+    questions: "60 Questions",
+    completed: "28,000+ students",
+    level: "Intermediate",
+    icon: <Sparkles className="w-6 h-6" />,
+    color: "from-purple-500 to-fuchsia-600",
+    glow: "rgba(168, 85, 247, 0.5)"
+  },
+  {
+    id: "personality",
+    title: "Personality Assessment",
+    description: "Understand your personality type and how it influences your career preferences.",
+    duration: "25 minutes",
+    questions: "45 Questions",
+    completed: "32,000+ students",
+    level: "Intermediate",
+    icon: <UserCheck className="w-6 h-6" />,
+    color: "from-cyan-500 to-blue-600",
+    glow: "rgba(6, 182, 212, 0.5)"
+  }
 ];
 
 export function AssessmentSection() {
