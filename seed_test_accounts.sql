@@ -4,6 +4,16 @@
 -- All passwords: Udanix@123
 -- ============================================================
 
+-- ── STEP 0: Ensure required columns exist ─────────────────
+ALTER TABLE public.profiles
+  ADD COLUMN IF NOT EXISTS sessions_count integer DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS is_verified boolean DEFAULT false,
+  ADD COLUMN IF NOT EXISTS price_per_hour numeric DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS rating numeric DEFAULT 5.0,
+  ADD COLUMN IF NOT EXISTS linkedin text,
+  ADD COLUMN IF NOT EXISTS progress text,
+  ADD COLUMN IF NOT EXISTS experience text;
+
 -- ── STUDENTS ──────────────────────────────────────────────
 
 INSERT INTO auth.users (
@@ -174,13 +184,13 @@ ON CONFLICT (id) DO UPDATE SET
 
 -- ── UPDATE COUNSELOR EXTRA FIELDS ─────────────────────────
 
-UPDATE public.profiles SET price_per_hour = 1200, rating = 4.9, total_sessions = 450, is_verified = true
+UPDATE public.profiles SET price_per_hour = 1200, rating = 4.9, sessions_count = 450, is_verified = true
   WHERE id = 'b2000000-0000-0000-0000-000000000001';
 
-UPDATE public.profiles SET price_per_hour = 2500, rating = 5.0, total_sessions = 120, is_verified = true
+UPDATE public.profiles SET price_per_hour = 2500, rating = 5.0, sessions_count = 120, is_verified = true
   WHERE id = 'b2000000-0000-0000-0000-000000000002';
 
-UPDATE public.profiles SET price_per_hour = 1500, rating = 4.7, total_sessions = 85,  is_verified = false
+UPDATE public.profiles SET price_per_hour = 1500, rating = 4.7, sessions_count = 85,  is_verified = false
   WHERE id = 'b2000000-0000-0000-0000-000000000003';
 
 -- ── DONE ──────────────────────────────────────────────────
