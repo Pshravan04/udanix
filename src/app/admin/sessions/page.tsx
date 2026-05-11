@@ -167,11 +167,13 @@ export default function SessionsAdminPage() {
                  </div>
                  <div>
                     <h4 className="text-sm font-black text-white uppercase leading-none">Market Efficiency</h4>
-                    <p className="text-[10px] text-slate-500 mt-1">98.5% Completion Rate</p>
+                    <p className="text-[10px] text-slate-500 mt-1">
+                      {stats.totalSessions > 0 ? Math.round((stats.completedSessions / stats.totalSessions) * 100) : 0}% Completion Rate
+                    </p>
                  </div>
               </div>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Total system revenue from completed sessions has exceeded ₹1.2M this month.
+                Total system revenue from completed sessions has reached ₹{(stats.totalGMV / 1000).toFixed(1)}k this timeframe.
               </p>
            </div>
 

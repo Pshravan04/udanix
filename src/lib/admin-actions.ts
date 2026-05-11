@@ -134,7 +134,7 @@ export async function getDetailedStats() {
     .select(`
       *,
       student:profiles!student_id(full_name, email),
-      counselor:profiles!counselor_id(full_name, email, price_per_hour)
+      counselor:profiles!counselor_id(full_name, email, price_per_hour, stream)
     `);
 
   return { profiles, sessions };
@@ -147,9 +147,14 @@ export async function purgeAllData() {
   return { sessionError, profileError };
 }
 
-// Mock system for recording actions since we don't have a dedicated audit_logs table yet
+// System for recording actions
 export async function recordSystemAction(action: string, entity: string, details: string) {
-  console.log(`[SYSTEM AUDIT] ${action} on ${entity}: ${details}`);
-  // In a real app, this would write to an 'audit_logs' table
-  return { success: true };
+  const timestamp = new Date().toISOString();
+  console.log(`[SYSTEM AUDIT] [${timestamp}] ${action} | ${entity} | ${details}`);
+  
+  // Future implementation: Write to 'audit_logs' table
+  // const supabase = createClient();
+  // await supabase.from('audit_logs').insert({ action, entity, details, timestamp });
+  
+  return { success: true, timestamp };
 }

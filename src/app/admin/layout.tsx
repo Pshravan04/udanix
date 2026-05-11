@@ -11,8 +11,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 {/* ─── Top Navigation ─── */}
                 <header className="h-20 border-b border-[var(--admin-border)] flex items-center justify-between px-8 bg-[var(--admin-bg)]/80 backdrop-blur-xl sticky top-0 z-40">
                     <div>
-                        <h1 className="text-xl font-bold tracking-tight text-white uppercase">Command Center</h1>
-                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">Platform Neural Network</p>
+                        <h1 className="text-xl font-bold tracking-tight text-white uppercase">Admin Dashboard</h1>
+                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">Management Portal</p>
                     </div>
 
                     <div className="flex items-center gap-6">

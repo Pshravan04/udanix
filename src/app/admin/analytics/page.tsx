@@ -68,40 +68,34 @@ export default function AnalyticsAdminPage() {
         {/* Revenue Trends */}
         <div className="glass-admin p-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8 flex items-center justify-between">
-            Growth Propagation
-            <span className="text-[10px] text-emerald-400">User Influx</span>
+            Financial Flux
+            <span className="text-[10px] text-emerald-400">Revenue Stream</span>
           </h3>
-          <FinancialsChart data={stats.growthData} />
+          <FinancialsChart data={stats.revenueChartData} />
         </div>
 
         {/* Stream Performance */}
         <div className="glass-admin p-8">
-          <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Stream Revenue distribution</h3>
+          <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Revenue by Expertise</h3>
           <StreamRevenueChart data={stats.streamRevenue} />
         </div>
 
-        {/* Activity Grid */}
+        {/* User Distribution */}
         <div className="glass-admin p-8">
-          <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Peak Load Analysis</h3>
-          <ActivityHeatmap data={stats.activityHeatmap} />
+          <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Node Distribution</h3>
+          <UserDonutChart data={stats.userTypeData} />
         </div>
 
-        {/* Rating Spread */}
+        {/* Satisfaction Heuristics */}
         <div className="glass-admin p-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Satisfaction Heuristics</h3>
           <RatingDistribution data={stats.ratingDistribution} />
         </div>
 
-        {/* Topic Popularity (Keeping mock for now as it's not in stats yet) */}
+        {/* Knowledge Vectors */}
         <div className="glass-admin p-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Knowledge Vectors</h3>
-          <TopicPopularity data={[
-            { topic: 'Entrance Exams', count: 85 },
-            { topic: 'Career Path', count: 64 },
-            { topic: 'College Selection', count: 42 },
-            { topic: 'Scholarships', count: 31 },
-            { topic: 'Study Abroad', count: 25 },
-          ]} />
+          <TopicPopularity data={stats.topicPopularity} />
         </div>
 
         {/* System Load */}

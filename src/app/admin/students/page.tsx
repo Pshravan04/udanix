@@ -79,7 +79,7 @@ export default function StudentsAdminPage() {
                 <TrendingUp className="w-7 h-7 text-emerald-500" />
               </div>
               <div>
-                <p className="text-3xl font-black text-white">+12%</p>
+                <p className="text-3xl font-black text-white">{stats.growthMetrics.students > 0 ? '+' : ''}{stats.growthMetrics.students}%</p>
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Weekly Growth</p>
               </div>
             </div>

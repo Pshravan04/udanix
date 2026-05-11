@@ -83,15 +83,15 @@
   --udanix-shadow:     rgba(14, 57, 154, 0.08);
   --udanix-orange-shadow: rgba(223, 89, 14, 0.12);
 
-  /* ── Aeux Dark Dashboard Palette ── */
-  --admin-bg: #030a0d;
-  --admin-card: rgba(10, 39, 42, 0.4);
-  --admin-sidebar: #061e21;
-  --admin-accent: #10B981;
-  --admin-accent-glow: rgba(16, 185, 129, 0.2);
-  --admin-border: rgba(255, 255, 255, 0.08);
+  /* ── Professional Admin Dashboard Palette ── */
+  --admin-bg: #050505;
+  --admin-card: rgba(20, 20, 20, 0.4);
+  --admin-sidebar: #0a0a0a;
+  --admin-accent: #3b82f6;
+  --admin-accent-glow: rgba(59, 130, 246, 0.2);
+  --admin-border: rgba(255, 255, 255, 0.06);
   --admin-text-main: #f8fafc;
-  --admin-text-muted: #94a3b8;
+  --admin-text-muted: #64748b;
 
   /* ── Semantic Tokens ── */
   --background:              #FFFFFF;
@@ -227,11 +227,11 @@
   }
 
   @utility glass-admin {
-    background: rgba(10, 39, 42, 0.4);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
   }
 
   @utility admin-accent-glow {
