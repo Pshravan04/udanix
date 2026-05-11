@@ -92,6 +92,29 @@ export async function updateSessionStatus(id: string, status: string) {
   return { error };
 }
 
+export async function updateProfileDetails(id: string, updates: Partial<Profile>) {
+  const supabase = createClient();
+  const { error } = await supabase
+    .from('profiles')
+    .update(updates)
+    .eq('id', id);
+  return { error };
+}
+
+export async function getAdminAnalytics() {
+  const supabase = createClient();
+  
+  // Get profiles for role distribution and streams
+  const { data: profiles } = await supabase.from('profiles').select('role, stream, created_at');
+  
+  // Get sessions for propagation and revenue
+  const { data: sessions } = await supabase
+    .from('sessions')
+    .select('scheduled_at, status, counselor_id, profiles!counselor_id(price_per_hour)');
+
+  return { profiles, sessions };
+}
+
 export async function purgeAllData() {
   const supabase = createClient();
   // Profiles delete cascade to sessions and achievements usually, 

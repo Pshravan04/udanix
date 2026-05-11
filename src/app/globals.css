@@ -83,6 +83,16 @@
   --udanix-shadow:     rgba(14, 57, 154, 0.08);
   --udanix-orange-shadow: rgba(223, 89, 14, 0.12);
 
+  /* ── Aeux Dark Dashboard Palette ── */
+  --admin-bg: #030a0d;
+  --admin-card: rgba(10, 39, 42, 0.4);
+  --admin-sidebar: #061e21;
+  --admin-accent: #10B981;
+  --admin-accent-glow: rgba(16, 185, 129, 0.2);
+  --admin-border: rgba(255, 255, 255, 0.08);
+  --admin-text-main: #f8fafc;
+  --admin-text-muted: #94a3b8;
+
   /* ── Semantic Tokens ── */
   --background:              #FFFFFF;
   --foreground:              #0f172a;
@@ -111,6 +121,16 @@
   --sidebar-accent-foreground: #0f172a;
   --sidebar-border:          #E2E8F0;
   --sidebar-ring:            var(--udanix-navy);
+}
+
+.admin-dark {
+  --background: var(--admin-bg);
+  --foreground: var(--admin-text-main);
+  --card: var(--admin-card);
+  --card-foreground: var(--admin-text-main);
+  --border: var(--admin-border);
+  --muted: rgba(0, 0, 0, 0.2);
+  --muted-foreground: var(--admin-text-muted);
 }
 
 @layer base {
@@ -206,9 +226,16 @@
     padding: 2px;
   }
 
-  @keyframes rotate-beam {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @utility glass-admin {
+    background: rgba(10, 39, 42, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  @utility admin-accent-glow {
+    box-shadow: 0 0 20px var(--admin-accent-glow);
   }
 
   @utility text-stroke-white {

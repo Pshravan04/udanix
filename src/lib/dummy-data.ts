@@ -158,28 +158,56 @@ export const DUMMY_SESSIONS = [
     topic: "Career in AI & Machine Learning",
     status: "completed",
     duration_minutes: 60,
-    scheduled_at: new Date(Date.now() - 86400000 * 2).toISOString(), // 2 days ago
+    scheduled_at: new Date(Date.now() - 86400000 * 0).toISOString(),
     notes: "Detailed discussion on roadmap and college selection."
   },
   {
     topic: "MBBS vs BDS: Making the choice",
-    status: "confirmed",
+    status: "completed",
     duration_minutes: 45,
-    scheduled_at: new Date(Date.now() + 86400000 * 1).toISOString(), // Tomorrow
+    scheduled_at: new Date(Date.now() - 86400000 * 1).toISOString(),
     notes: "Focus on future prospects and workload."
   },
   {
     topic: "Preparing for CA Foundation",
-    status: "pending",
+    status: "completed",
     duration_minutes: 60,
-    scheduled_at: new Date(Date.now() + 86400000 * 3).toISOString(), // 3 days from now
+    scheduled_at: new Date(Date.now() - 86400000 * 2).toISOString(),
     notes: "Strategy for first attempt."
   },
   {
     topic: "Portfolio Review for Design",
-    status: "confirmed",
+    status: "completed",
     duration_minutes: 90,
-    scheduled_at: new Date(Date.now() + 86400000 * 5).toISOString(),
+    scheduled_at: new Date(Date.now() - 86400000 * 3).toISOString(),
     notes: "Focus on sketching and digital art samples."
+  },
+  {
+    topic: "Studying Engineering Abroad",
+    status: "completed",
+    duration_minutes: 60,
+    scheduled_at: new Date(Date.now() - 86400000 * 4).toISOString(),
+    notes: "University shortlisting for US and Germany."
+  },
+  {
+    topic: "Psychology as a Career",
+    status: "completed",
+    duration_minutes: 45,
+    scheduled_at: new Date(Date.now() - 86400000 * 5).toISOString(),
+    notes: "Clinical vs Industrial psychology paths."
+  },
+  {
+    topic: "Law Entrance Preparation",
+    status: "completed",
+    duration_minutes: 60,
+    scheduled_at: new Date(Date.now() - 86400000 * 6).toISOString(),
+    notes: "CLAT mock test analysis."
+  },
+  {
+    topic: "Economics Honours Roadmap",
+    status: "confirmed",
+    duration_minutes: 45,
+    scheduled_at: new Date(Date.now() + 86400000 * 1).toISOString(),
+    notes: "CUET prep and college list."
   }
 ];

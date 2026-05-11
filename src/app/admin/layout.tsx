@@ -1,63 +1,46 @@
-import Link from "next/link";
-import { GraduationCap, Bell, Settings, LogOut, LayoutDashboard, Users, Shield, BarChart3 } from "lucide-react";
-
-const NAV_LINKS = [
-    { href: '/admin', label: 'Overview', icon: LayoutDashboard },
-    { href: '/admin/counselors', label: 'Counselors', icon: Users },
-    { href: '/admin/reports', label: 'Reports', icon: BarChart3 },
-    { href: '/admin/settings', label: 'Settings', icon: Settings },
-];
+import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { Bell, Search, Settings } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="min-h-screen bg-white selection:bg-udanix-blue/10 text-slate-900 font-sans">
-            {/* ─── Background Elements ─── */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-udanix-blue/[0.03] rounded-full blur-[150px] opacity-100" />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-rose-500/[0.02] rounded-full blur-[120px] opacity-100" />
+        <div className="min-h-screen admin-dark bg-[var(--admin-bg)] text-[var(--admin-text-main)] font-sans flex">
+            <AdminSidebar />
+            
+            <div className="flex-1 ml-64 flex flex-col">
+                {/* ─── Top Navigation ─── */}
+                <header className="h-20 border-b border-[var(--admin-border)] flex items-center justify-between px-8 bg-[var(--admin-bg)]/80 backdrop-blur-xl sticky top-0 z-40">
+                    <div>
+                        <h1 className="text-xl font-bold tracking-tight text-white">Command Center</h1>
+                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">System Status: Optimal</p>
+                    </div>
+
+                    <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-black/20 rounded-xl border border-white/5">
+                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Live: 24 Users</span>
+                        </div>
+                        
+                        <div className="flex items-center gap-3">
+                            <button className="p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400">
+                                <Bell className="w-5 h-5" />
+                            </button>
+                            <button className="p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400">
+                                <Settings className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                <main className="flex-1 p-8 overflow-y-auto">
+                    {children}
+                </main>
             </div>
 
-            <header className="sticky top-0 z-40 glass border-b border-slate-100 shadow-sm backdrop-blur-3xl">
-                <div className="max-w-7xl mx-auto px-6 h-22 flex items-center justify-between">
-                    <div className="flex items-center gap-8">
-                        <Link href="/" className="flex items-center gap-3.5 group">
-                            <div className="w-11 h-11 bg-slate-900 rounded-2xl flex items-center justify-center shadow-2xl group-hover:bg-udanix-blue transition-all duration-500">
-                                <GraduationCap className="w-6 h-6 text-white" />
-                            </div>
-                            <span style={{ fontFamily: 'var(--font-space-grotesk)' }} className="font-black text-2xl text-slate-900 tracking-tighter uppercase whitespace-nowrap">UDANIX</span>
-                        </Link>
-                        <span className="hidden sm:flex items-center gap-2 text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-100 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-sm">
-                            <Shield className="w-3.5 h-3.5" /> Security Node
-                        </span>
-                    </div>
-
-                    <nav className="hidden md:flex items-center gap-2">
-                        {NAV_LINKS.map(({ href, label, icon: Icon }) => (
-                            <Link
-                                key={href}
-                                href={href}
-                                className="flex items-center gap-3 px-6 py-2.5 rounded-2xl text-[13px] font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-all group"
-                            >
-                                <Icon className="w-4.5 h-4.5 group-hover:text-udanix-blue transition-colors" />
-                                {label}
-                            </Link>
-                        ))}
-                    </nav>
-
-                    <div className="flex items-center gap-4">
-                        <button className="w-12 h-12 rounded-2xl text-slate-500 hover:text-udanix-blue hover:bg-slate-50 flex items-center justify-center transition-all border border-slate-100">
-                            <Bell className="w-5.5 h-5.5" />
-                        </button>
-                        <Link href="/login" className="w-12 h-12 rounded-2xl text-rose-400 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition-all border border-slate-100 ml-2">
-                            <LogOut className="w-5.5 h-5.5" />
-                        </Link>
-                    </div>
-                </div>
-            </header>
-
-            <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-[#F8FAFC]/50 min-h-[calc(100vh-5.5rem)]">
-                {children}
-            </main>
+            {/* ─── Background Glows ─── */}
+            <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+                <div className="absolute top-[-10%] right-[10%] w-[500px] h-[500px] bg-[var(--admin-accent)]/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[0%] left-[10%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px]" />
+            </div>
         </div>
     );
 }
