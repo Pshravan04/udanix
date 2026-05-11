@@ -161,7 +161,7 @@ export function useAdminData() {
     const avgSessionPrice = completedSessions.length > 0 ? Math.round(totalGMV / completedSessions.length) : 0;
     
     // Revenue by stream
-    const streams = Array.from(new Set(profiles.map(p => p.stream).filter(Boolean)));
+    const streams = Array.from(new Set(profiles.map(p => p.stream).filter((s): s is string => !!s)));
     const streamData = streams.map(stream => ({
       name: stream,
       value: profiles.filter(p => p.stream === stream).length,
@@ -173,6 +173,7 @@ export function useAdminData() {
         .filter(s => s.status === 'completed' && s.counselor?.stream === stream)
         .reduce((acc, s) => acc + (s.counselor?.price_per_hour || 0), 0),
     }));
+
 
     // Topic Popularity
     const topics = sessions.map(s => s.topic).filter(Boolean);
@@ -202,11 +203,12 @@ export function useAdminData() {
 
     // Recent Activity Feed
     const recentActivity = [
-      ...profiles.map(p => ({ type: 'USER', date: p.created_at, label: `New ${p.role}: ${p.full_name}` })),
-      ...sessions.map(s => ({ type: 'SESSION', date: s.created_at, label: `Session scheduled: ${s.student?.full_name}` }))
+      ...profiles.map(p => ({ type: 'USER', date: p.created_at || undefined, label: `New ${p.role}: ${p.full_name}` })),
+      ...sessions.map(s => ({ type: 'SESSION', date: s.scheduled_at || undefined, label: `Session scheduled: ${s.student?.full_name}` }))
     ]
     .sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime())
     .slice(0, 8);
+
 
     const topCounselors = counselors
       .map(c => ({
