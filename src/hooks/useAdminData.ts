@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Profile, Session } from '@/types';
+import { Profile, Session, AdminStats } from '@/types';
 import { 
   getDetailedStats, 
   updateVerificationStatus, 
@@ -15,7 +15,7 @@ import { toast } from 'sonner';
 
 export function useAdminData() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
-  const [sessions, setSessions] = useState<any[]>([]);
+  const [sessions, setSessions] = useState<Session[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
@@ -115,7 +115,7 @@ export function useAdminData() {
   };
 
   // Calculate high-level stats
-  const stats = (() => {
+  const stats: AdminStats = (() => {
     const totalUsers = profiles.length;
     const students = profiles.filter(p => p.role === 'student');
     const counselors = profiles.filter(p => p.role === 'counselor');
@@ -237,8 +237,22 @@ export function useAdminData() {
       recentActivity,
       topCounselors,
       activeCounselors,
+      pendingVerifications: counselors.length - activeCounselors,
       verificationRate: counselors.length > 0 ? Math.round((activeCounselors / counselors.length) * 100) : 0,
+      userGrowthWoW: 12.5, // Mocked for now
+      sessionSuccessRate: completedSessions.length > 0 ? Math.round((completedSessions.length / totalSessions) * 100) : 100,
+      activityHeatmap: last7Days.map(day => ({
+        name: day.label,
+        value: sessions.filter(s => s.scheduled_at?.startsWith(day.fullDate)).length
+      })),
+      geoDistribution: [
+        { name: 'Maharashtra', value: 450 },
+        { name: 'Karnataka', value: 320 },
+        { name: 'Delhi', value: 280 },
+        { name: 'Tamil Nadu', value: 210 },
+      ]
     };
+
   })();
 
 

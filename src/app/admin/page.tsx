@@ -88,7 +88,7 @@ export default function AdminDashboard() {
     {
       title: "Operational GMV",
       value: `₹${stats.totalGMV.toLocaleString()}`,
-      change: stats.growthData.revenue,
+      change: stats.growthMetrics.revenue,
       icon: DollarSign,
       color: "emerald",
       detail: `${stats.completedSessions} Settlements`
@@ -104,7 +104,7 @@ export default function AdminDashboard() {
     {
       title: "Session Density",
       value: stats.totalSessions,
-      change: stats.growthData.sessions,
+      change: stats.growthMetrics.sessions,
       icon: Calendar,
       color: "amber",
       detail: `${stats.activeSessions} Parallel Streams`
@@ -226,7 +226,7 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-black text-emerald-400">+{stats.growthData.students}%</p>
+                    <p className="text-lg font-black text-emerald-400">+{stats.growthMetrics.students}%</p>
                     <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">WoW Index</p>
                   </div>
                 </div>

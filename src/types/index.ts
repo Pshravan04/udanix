@@ -35,3 +35,38 @@ export interface Session {
   counselor?: Partial<Profile>;
   scheduled_at?: string;
 }
+
+export interface AdminStats {
+  totalUsers: number;
+  students: number;
+  counselors: number;
+  totalSessions: number;
+  completedSessions: number;
+  activeSessions: number;
+  totalGMV: number;
+  avgSessionPrice: number;
+  sessionChartData: { name: string; sessions: number }[];
+  studentGrowthData: { name: string; users: number }[];
+  revenueChartData: { name: string; revenue: number }[];
+  growthMetrics: {
+    revenue: number;
+    sessions: number;
+    students: number;
+  };
+  streamData: { name: string; value: number }[];
+  streamRevenue: { name: string; value: number }[];
+  topicPopularity: { topic: string; count: number }[];
+  ratingDistribution: { star: string; count: number }[];
+  userTypeData: { name: string; value: number; color: string }[];
+  recentActivity: { type: string; date: string | undefined; label: string }[];
+  topCounselors: any[];
+  activeCounselors: number;
+  pendingVerifications: number;
+  verificationRate: number;
+  userGrowthWoW: number;
+  sessionSuccessRate: number;
+  activityHeatmap: { name: string; value: number }[];
+  geoDistribution: { name: string; value: number }[];
+}
+
+
