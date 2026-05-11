@@ -31,23 +31,6 @@ export default function StudentsAdminPage() {
     setIsModalOpen(true);
   };
 
-  // Mock growth data for students
-  const growthData = [
-    { name: 'Mon', users: 12 },
-    { name: 'Tue', users: 19 },
-    { name: 'Wed', users: 15 },
-    { name: 'Thu', users: 22 },
-    { name: 'Fri', users: 30 },
-    { name: 'Sat', users: 25 },
-    { name: 'Sun', users: 35 },
-  ];
-
-  // Stream distribution for students
-  const streamData = [
-    { name: 'Engineering', value: 45, color: '#0EA5E9' },
-    { name: 'Medicine', value: 30, color: '#10B981' },
-    { name: 'Commerce', value: 25, color: '#FBB03B' },
-  ];
 
   if (loading) return null; // Handled by layout or main admin loading state
   if (!isAdmin) return null;
@@ -147,7 +130,7 @@ export default function StudentsAdminPage() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-sm text-slate-500 font-medium">
-                        {new Date(student.created_at).toLocaleDateString()}
+                        {student.created_at ? new Date(student.created_at).toLocaleDateString() : 'N/A'}
                       </td>
                       <td className="px-6 py-4 text-right">
                         <Button 
@@ -170,12 +153,12 @@ export default function StudentsAdminPage() {
         <div className="space-y-8">
            <div className="glass-admin p-8">
               <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Growth Distribution</h3>
-              <GrowthChart data={growthData} />
+              <GrowthChart data={stats.studentGrowthData} />
            </div>
 
            <div className="glass-admin p-8">
               <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Stream Allocation</h3>
-              <StreamDistribution data={streamData} />
+              <StreamDistribution data={stats.streamData} />
            </div>
 
            <div className="glass-admin p-8 border-l-4 border-amber-500">

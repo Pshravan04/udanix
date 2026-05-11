@@ -1,4 +1,5 @@
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { SystemStatusBar } from "@/components/admin/SystemStatusBar";
 import { Bell, Search, Settings } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -10,19 +11,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 {/* ─── Top Navigation ─── */}
                 <header className="h-20 border-b border-[var(--admin-border)] flex items-center justify-between px-8 bg-[var(--admin-bg)]/80 backdrop-blur-xl sticky top-0 z-40">
                     <div>
-                        <h1 className="text-xl font-bold tracking-tight text-white">Command Center</h1>
-                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">System Status: Optimal</p>
+                        <h1 className="text-xl font-bold tracking-tight text-white uppercase">Command Center</h1>
+                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">Platform Neural Network</p>
                     </div>
 
                     <div className="flex items-center gap-6">
-                        <div className="flex items-center gap-2 px-4 py-2 bg-black/20 rounded-xl border border-white/5">
-                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Live: 24 Users</span>
-                        </div>
-                        
                         <div className="flex items-center gap-3">
-                            <button className="p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400">
+                            <button className="p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400 relative">
                                 <Bell className="w-5 h-5" />
+                                <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[var(--admin-accent)] rounded-full border-2 border-[var(--admin-bg)]" />
                             </button>
                             <button className="p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400">
                                 <Settings className="w-5 h-5" />
@@ -30,6 +27,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         </div>
                     </div>
                 </header>
+
+                <SystemStatusBar />
 
                 <main className="flex-1 p-8 overflow-y-auto">
                     {children}

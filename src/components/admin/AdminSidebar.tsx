@@ -9,11 +9,13 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import { useAdminData } from '@/hooks/useAdminData';
+
 const MENU_ITEMS = [
   { icon: LayoutDashboard, label: 'Overview', href: '/admin' },
   { icon: GraduationCap, label: 'Students', href: '/admin/students' },
-  { icon: Users, label: 'Counselors', href: '/admin/counselors' },
-  { icon: Calendar, label: 'Sessions', href: '/admin/sessions' },
+  { icon: Users, label: 'Counselors', href: '/admin/counselors', badge: 'pendingVerifications' },
+  { icon: Calendar, label: 'Sessions', href: '/admin/sessions', badge: 'pendingSessions' },
   { icon: BarChart3, label: 'Analytics', href: '/admin/analytics' },
   { icon: Shield, label: 'Security', href: '/admin/security' },
   { icon: Settings, label: 'Settings', href: '/admin/settings' },
@@ -21,6 +23,14 @@ const MENU_ITEMS = [
 
 export function AdminSidebar() {
   const pathname = usePathname();
+  const { stats, sessions } = useAdminData();
+
+  const getBadgeValue = (key?: string) => {
+    if (!key) return 0;
+    if (key === 'pendingVerifications') return stats.pendingVerifications;
+    if (key === 'pendingSessions') return sessions.filter(s => s.status === 'pending').length;
+    return 0;
+  };
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-[var(--admin-sidebar)] border-r border-[var(--admin-border)] z-50 flex flex-col">
@@ -47,6 +57,8 @@ export function AdminSidebar() {
       <nav className="flex-1 px-4 space-y-1 overflow-y-auto custom-scrollbar">
         {MENU_ITEMS.map((item) => {
           const isActive = pathname === item.href;
+          const badgeValue = getBadgeValue(item.badge);
+
           return (
             <Link 
               key={item.href} 
@@ -64,7 +76,13 @@ export function AdminSidebar() {
                 />
               )}
               <item.icon className={`w-5 h-5 relative z-10 ${isActive ? 'text-[var(--admin-accent)]' : 'group-hover:text-[var(--admin-accent)]'} transition-colors`} />
-              <span className="text-sm font-medium relative z-10">{item.label}</span>
+              <span className="text-sm font-medium relative z-10 flex-1">{item.label}</span>
+              
+              {badgeValue > 0 && (
+                <span className="relative z-10 px-2 py-0.5 rounded-full bg-rose-500 text-[10px] font-black text-white min-w-[20px] text-center">
+                  {badgeValue}
+                </span>
+              )}
             </Link>
           );
         })}

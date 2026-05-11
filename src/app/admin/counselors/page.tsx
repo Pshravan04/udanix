@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useAdminData } from '@/hooks/useAdminData';
 import { EntityDetailModal } from '@/components/admin/EntityDetailModal';
-import { UserDonutChart, StreamDistribution } from '@/components/admin/AdminCharts';
+import { UserDonutChart, StreamDistribution, RatingDistribution } from '@/components/admin/AdminCharts';
 
 export default function CounselorsAdminPage() {
   const { 
@@ -152,41 +152,68 @@ export default function CounselorsAdminPage() {
         </div>
 
         <div className="space-y-8">
-           <div className="glass-admin p-8">
-              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Verification Ratio</h3>
-              <UserDonutChart data={statusData} />
-           </div>
+          {/* Stream Distribution Chart */}
+          <div className="glass-admin p-8">
+              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Expertise Density</h3>
+              <StreamDistribution data={stats.streamRevenue} />
+          </div>
 
-           <div className="glass-admin p-8 border-l-4 border-emerald-500">
-              <h4 className="text-sm font-black text-white uppercase mb-4">Top Performance</h4>
-              <div className="space-y-4">
-                 {counselors.filter(c => c.is_verified).slice(0, 3).map(c => (
-                   <div key={c.id} className="flex items-center justify-between p-3 rounded-xl bg-white/5">
-                      <div className="flex items-center gap-3">
-                         <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-500 font-black text-[10px]">
-                            {c.full_name?.charAt(0)}
-                         </div>
-                         <p className="text-xs font-bold text-white">{c.full_name}</p>
+          {/* Top Performance Chart */}
+          <div className="glass-admin p-8">
+              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Satisfaction Spread</h3>
+              <RatingDistribution data={stats.ratingDistribution} />
+          </div>
+
+          {/* Performance Leaderboard */}
+          <div className="glass-admin p-8">
+              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6 flex items-center justify-between">
+                Top Performing Entities
+                <TrendingUp className="w-4 h-4 text-emerald-500" />
+              </h3>
+              <div className="space-y-6">
+                {stats.topCounselors.map((c: any, i: number) => (
+                  <div key={c.id} className="flex items-center gap-4 group cursor-pointer" onClick={() => openProfileDetail(c)}>
+                    <div className="relative">
+                      <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 text-blue-500 font-bold text-xs">
+                        {c.full_name?.charAt(0)}
                       </div>
-                      <div className="flex items-center gap-1 text-amber-400">
-                         <Star className="w-3 h-3 fill-current" />
-                         <span className="text-[10px] font-bold">4.9</span>
+                      <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-blue-600 border-2 border-[#050505] flex items-center justify-center text-[8px] font-black text-white">
+                        {i + 1}
                       </div>
-                   </tr>
-                 ))}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-black text-white truncate group-hover:text-blue-400 transition-colors">{c.full_name}</p>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <div className="flex items-center gap-1 text-[10px] text-amber-500 font-bold">
+                           <Star className="w-2.5 h-2.5 fill-current" />
+                           {c.rating || 0}
+                        </div>
+                        <span className="text-[10px] text-slate-500 font-black uppercase tracking-tighter">
+                          {c.completedCount} Sessions
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-           </div>
-
-           <div className="glass-admin p-8 bg-gradient-to-br from-emerald-500/10 to-transparent border-emerald-500/20">
-              <ShieldAlert className="w-10 h-10 text-emerald-500 mb-4" />
-              <h4 className="text-sm font-black text-white uppercase">Quality Assurance</h4>
-              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Counselors with less than 4.0 average rating are automatically flagged for system review.
-              </p>
-              <Button className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest rounded-xl">
-                 Run Compliance Check
+              <Button variant="ghost" className="w-full mt-8 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-white hover:bg-white/5 py-6">
+                View Full Leaderboard
               </Button>
-           </div>
+          </div>
+
+          <div className="glass-admin p-8 border-l-4 border-blue-500">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
+                  <ShieldAlert className="w-5 h-5 text-blue-500" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-black text-white uppercase">System Integrity</h4>
+                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                    All counselors must complete Phase 2 verification before they can accept premium sessions.
+                  </p>
+                </div>
+              </div>
+          </div>
         </div>
       </div>
     </div>

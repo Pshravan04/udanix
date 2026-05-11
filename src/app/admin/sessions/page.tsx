@@ -38,16 +38,6 @@ export default function SessionsAdminPage() {
     setIsModalOpen(true);
   };
 
-  // Mock session propagation data
-  const sessionChartData = [
-    { name: 'Mon', sessions: 8 },
-    { name: 'Tue', sessions: 12 },
-    { name: 'Wed', sessions: 15 },
-    { name: 'Thu', sessions: 10 },
-    { name: 'Fri', sessions: 25 },
-    { name: 'Sat', sessions: 30 },
-    { name: 'Sun', sessions: 28 },
-  ];
 
   if (loading) return null;
   if (!isAdmin) return null;
@@ -135,10 +125,10 @@ export default function SessionsAdminPage() {
                       </td>
                       <td className="px-6 py-4">
                         <div className="text-xs font-bold text-white">
-                          {new Date(session.scheduled_at).toLocaleDateString()}
+                          {session.scheduled_at ? new Date(session.scheduled_at).toLocaleDateString() : 'N/A'}
                         </div>
                         <div className="text-[10px] text-slate-500 uppercase">
-                          {new Date(session.scheduled_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          {session.scheduled_at ? new Date(session.scheduled_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
                         </div>
                       </td>
                       <td className="px-6 py-4">
@@ -167,7 +157,7 @@ export default function SessionsAdminPage() {
         <div className="space-y-8">
            <div className="glass-admin p-8">
               <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Traffic Volume</h3>
-              <SessionsChart data={sessionChartData} />
+              <SessionsChart data={stats.sessionChartData} />
            </div>
 
            <div className="glass-admin p-8 bg-gradient-to-br from-blue-500/10 to-transparent border-blue-500/20">

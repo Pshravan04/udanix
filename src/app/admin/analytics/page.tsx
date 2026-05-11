@@ -17,44 +17,6 @@ export default function AnalyticsAdminPage() {
     loading, isAdmin, stats, loadAdminData
   } = useAdminData();
 
-  // Mock data for analytics
-  const financialChartData = [
-    { name: 'Mon', revenue: 4500 },
-    { name: 'Tue', revenue: 5200 },
-    { name: 'Wed', revenue: 4800 },
-    { name: 'Thu', revenue: 6100 },
-    { name: 'Fri', revenue: 7500 },
-    { name: 'Sat', revenue: 8900 },
-    { name: 'Sun', revenue: 8200 },
-  ];
-
-  const streamRevenueData = [
-    { name: 'Eng', revenue: 12000, color: '#0EA5E9' },
-    { name: 'Med', revenue: 8500, color: '#10B981' },
-    { name: 'Comm', revenue: 5600, color: '#FBB03B' },
-  ];
-
-  const peakActivityData = [
-    { day: 'Mon', value: 8 }, { day: 'Tue', value: 12 }, { day: 'Wed', value: 15 },
-    { day: 'Thu', value: 10 }, { day: 'Fri', value: 25 }, { day: 'Sat', value: 30 }, { day: 'Sun', value: 28 },
-  ];
-
-  const ratingData = [
-    { rating: '5 Star', count: 120 },
-    { rating: '4 Star', count: 45 },
-    { rating: '3 Star', count: 12 },
-    { rating: '2 Star', count: 5 },
-    { rating: '1 Star', count: 2 },
-  ];
-
-  const topicData = [
-    { topic: 'Entrance Exams', count: 85 },
-    { topic: 'Career Path', count: 64 },
-    { topic: 'College Selection', count: 42 },
-    { topic: 'Scholarships', count: 31 },
-    { topic: 'Study Abroad', count: 25 },
-  ];
-
   if (loading) return null;
   if (!isAdmin) return null;
 
@@ -87,8 +49,8 @@ export default function AnalyticsAdminPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
           { label: 'Platform GMV', value: `₹${(stats.totalGMV / 1000).toFixed(1)}k`, sub: '+12.5% vs LW', icon: DollarSign, color: 'text-emerald-500' },
-          { label: 'Avg Session Rating', value: '4.85', sub: '98% Positive', icon: Star, color: 'text-amber-400' },
-          { label: 'Conversion Rate', value: '3.2%', sub: '+0.4% Improvement', icon: Target, color: 'text-blue-500' },
+          { label: 'Total Nodes', value: stats.totalUsers.toString(), sub: `${stats.students} Students / ${stats.counselors} Counselors`, icon: Users, color: 'text-blue-400' },
+          { label: 'Active Sessions', value: stats.activeSessions.toString(), sub: `${stats.completedSessions} Completed`, icon: Activity, color: 'text-blue-500' },
           { label: 'System Uptime', value: '99.99%', sub: 'No outages detected', icon: Zap, color: 'text-purple-500' },
         ].map((s) => (
           <div key={s.label} className="glass-admin p-8 relative overflow-hidden group">
@@ -106,34 +68,40 @@ export default function AnalyticsAdminPage() {
         {/* Revenue Trends */}
         <div className="glass-admin p-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8 flex items-center justify-between">
-            Financial Propagation
-            <span className="text-[10px] text-emerald-400">Live Forecast</span>
+            Growth Propagation
+            <span className="text-[10px] text-emerald-400">User Influx</span>
           </h3>
-          <FinancialsChart data={financialChartData} />
+          <FinancialsChart data={stats.growthData} />
         </div>
 
         {/* Stream Performance */}
         <div className="glass-admin p-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Stream Revenue distribution</h3>
-          <StreamRevenueChart data={streamRevenueData} />
+          <StreamRevenueChart data={stats.streamRevenue} />
         </div>
 
         {/* Activity Grid */}
         <div className="glass-admin p-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Peak Load Analysis</h3>
-          <ActivityHeatmap data={peakActivityData} />
+          <ActivityHeatmap data={stats.activityHeatmap} />
         </div>
 
         {/* Rating Spread */}
         <div className="glass-admin p-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Satisfaction Heuristics</h3>
-          <RatingDistribution data={ratingData} />
+          <RatingDistribution data={stats.ratingDistribution} />
         </div>
 
-        {/* Topic Popularity */}
+        {/* Topic Popularity (Keeping mock for now as it's not in stats yet) */}
         <div className="glass-admin p-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest mb-8">Knowledge Vectors</h3>
-          <TopicPopularity data={topicData} />
+          <TopicPopularity data={[
+            { topic: 'Entrance Exams', count: 85 },
+            { topic: 'Career Path', count: 64 },
+            { topic: 'College Selection', count: 42 },
+            { topic: 'Scholarships', count: 31 },
+            { topic: 'Study Abroad', count: 25 },
+          ]} />
         </div>
 
         {/* System Load */}
