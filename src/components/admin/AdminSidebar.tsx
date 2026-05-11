@@ -60,7 +60,7 @@ export function AdminSidebar() {
                   layoutId="active-nav"
                   className="absolute inset-0 bg-gradient-to-r from-[var(--admin-accent)]/20 to-transparent border-l-2 border-[var(--admin-accent)] rounded-xl"
                   initial={false}
-                  transition={{ type: "spring", stiffness: 300, damping: 30px }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
               <item.icon className={`w-5 h-5 relative z-10 ${isActive ? 'text-[var(--admin-accent)]' : 'group-hover:text-[var(--admin-accent)]'} transition-colors`} />

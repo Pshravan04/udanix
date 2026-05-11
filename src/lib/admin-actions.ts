@@ -1,5 +1,6 @@
 import { createClient } from './supabase/client';
 import { DUMMY_STUDENTS, DUMMY_COUNSELORS, DUMMY_SESSIONS } from './dummy-data';
+import { Profile } from '@/types';
 
 export async function seedDummyData() {
   const supabase = createClient();
@@ -115,11 +116,40 @@ export async function getAdminAnalytics() {
   return { profiles, sessions };
 }
 
+export async function updateUserRole(id: string, role: string) {
+  const supabase = createClient();
+  const { error } = await supabase
+    .from('profiles')
+    .update({ role })
+    .eq('id', id);
+  return { error };
+}
+
+export async function getDetailedStats() {
+  const supabase = createClient();
+  
+  const { data: profiles } = await supabase.from('profiles').select('*');
+  const { data: sessions } = await supabase
+    .from('sessions')
+    .select(`
+      *,
+      student:profiles!student_id(full_name, email),
+      counselor:profiles!counselor_id(full_name, email, price_per_hour)
+    `);
+
+  return { profiles, sessions };
+}
+
 export async function purgeAllData() {
   const supabase = createClient();
-  // Profiles delete cascade to sessions and achievements usually, 
-  // but let's be explicit if needed.
   const { error: sessionError } = await supabase.from('sessions').delete().neq('id', '00000000-0000-0000-0000-000000000000');
   const { error: profileError } = await supabase.from('profiles').delete().neq('role', 'admin');
   return { sessionError, profileError };
+}
+
+// Mock system for recording actions since we don't have a dedicated audit_logs table yet
+export async function recordSystemAction(action: string, entity: string, details: string) {
+  console.log(`[SYSTEM AUDIT] ${action} on ${entity}: ${details}`);
+  // In a real app, this would write to an 'audit_logs' table
+  return { success: true };
 }

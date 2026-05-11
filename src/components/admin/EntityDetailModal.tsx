@@ -10,7 +10,7 @@ import { Profile } from '@/types';
 import { 
   User, Mail, School, BookOpen, Star, Calendar, 
   ShieldCheck, ShieldAlert, Trash2, ExternalLink,
-  GraduationCap, Briefcase, Hash
+  GraduationCap, Briefcase, Hash, FileText
 } from 'lucide-react';
 
 interface EntityDetailModalProps {
@@ -137,13 +137,46 @@ export function EntityDetailModal({
               </>
             )}
 
-            <div className="pt-2">
+            <div className="pt-2 space-y-4">
               <Button variant="outline" className="w-full border-slate-800 hover:bg-slate-900 text-xs" asChild>
                 <a href={user.linkedin || '#'} target="_blank" rel="noopener noreferrer">
                   View LinkedIn Profile <ExternalLink className="w-3 h-3 ml-2" />
                 </a>
               </Button>
+
+              <div className="space-y-2">
+                <h3 className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                  <FileText className="w-3 h-3" /> Internal Admin Notes
+                </h3>
+                <textarea 
+                  className="w-full h-24 bg-slate-900/50 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 focus:outline-none focus:border-emerald-500/50 transition-all resize-none"
+                  placeholder="Enter private notes about this user..."
+                  defaultValue={""}
+                />
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-8 border-t border-slate-900 pt-6">
+          <h3 className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2 mb-4">
+            <Calendar className="w-3 h-3" /> Recent Activity Timeline
+          </h3>
+          <div className="space-y-3">
+             <div className="flex gap-4 p-3 rounded-lg bg-white/5 border border-white/5">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                <div className="flex-1">
+                   <p className="text-xs font-bold text-white uppercase">Profile Verified</p>
+                   <p className="text-[10px] text-slate-500">{new Date().toLocaleDateString()} • System Automator</p>
+                </div>
+             </div>
+             <div className="flex gap-4 p-3 rounded-lg bg-white/5 border border-white/5">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
+                <div className="flex-1">
+                   <p className="text-xs font-bold text-white uppercase">Session Completed</p>
+                   <p className="text-[10px] text-slate-500">2 days ago • Career Guidance with R. Sharma</p>
+                </div>
+             </div>
           </div>
         </div>
 

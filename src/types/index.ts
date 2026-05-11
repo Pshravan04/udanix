@@ -25,9 +25,12 @@ export interface Session {
   counselor_id: string;
   start_time: string;
   end_time: string;
-  status: 'scheduled' | 'completed' | 'cancelled';
+  status: 'scheduled' | 'completed' | 'cancelled' | 'confirmed' | 'pending';
   topic: string;
   type: 'video' | 'audio' | 'chat';
   rating?: number | null;
   profiles?: Partial<Profile>;
+  student?: Partial<Profile>;
+  counselor?: Partial<Profile>;
+  scheduled_at?: string;
 }

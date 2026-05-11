@@ -265,3 +265,65 @@ export function ActivityHeatmap({ data = [] }: ChartProps) {
   );
 }
 
+export function GrowthChart({ data = [] }: ChartProps) {
+  return (
+    <div className="w-full h-[300px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart data={data}>
+          <defs>
+            <linearGradient id="colorGrowth" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3}/>
+              <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
+          <XAxis dataKey="name" stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} dy={10} />
+          <YAxis stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
+          <Tooltip 
+            contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #ffffff10', borderRadius: '12px', fontSize: '12px' }} 
+            itemStyle={{ color: '#8b5cf6' }}
+          />
+          <Area type="monotone" dataKey="users" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorGrowth)" strokeWidth={2} />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+export function RatingDistribution({ data = [] }: ChartProps) {
+  return (
+    <div className="w-full h-[300px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
+          <XAxis dataKey="rating" stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
+          <YAxis stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
+          <Tooltip 
+            cursor={{ fill: '#ffffff05' }}
+            contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #ffffff10', borderRadius: '12px', fontSize: '12px' }} 
+          />
+          <Bar dataKey="count" fill="#10B981" radius={[4, 4, 0, 0]} barSize={40} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+export function TopicPopularity({ data = [] }: ChartProps) {
+  return (
+    <div className="w-full h-[300px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data} layout="vertical">
+          <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" horizontal={false} />
+          <XAxis type="number" hide />
+          <YAxis dataKey="topic" type="category" stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} width={100} />
+          <Tooltip 
+            cursor={{ fill: '#ffffff05' }}
+            contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #ffffff10', borderRadius: '12px', fontSize: '12px' }} 
+          />
+          <Bar dataKey="count" fill="#3b82f6" radius={[0, 4, 4, 0]} barSize={20} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
