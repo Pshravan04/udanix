@@ -9,6 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useAdminData } from '@/hooks/useAdminData';
 import { EntityDetailModal } from '@/components/admin/EntityDetailModal';
+import { EntityPreviewCard } from '@/components/admin/EntityPreviewCard';
 import { UserDonutChart, StreamDistribution, RatingDistribution } from '@/components/admin/AdminCharts';
 
 export default function CounselorsAdminPage() {
@@ -73,8 +74,8 @@ export default function CounselorsAdminPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {/* List Section */}
-          <div className="glass-admin overflow-hidden">
-            <div className="p-6 border-b border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-6">
+            <div className="glass-admin p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                 <input 
@@ -87,66 +88,21 @@ export default function CounselorsAdminPage() {
               </div>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead className="bg-white/[0.02]">
-                  <tr>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Counselor</th>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Expertise</th>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Status</th>
-                    <th className="px-6 py-4 text-right text-[10px] font-black text-slate-500 uppercase tracking-widest">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/5">
-                  {counselors.map((counselor) => (
-                    <tr key={counselor.id} className="hover:bg-white/[0.02] transition-colors group">
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-10 h-10 rounded-full flex items-center justify-center border font-bold text-xs ${
-                            counselor.is_verified ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' : 'bg-slate-500/10 border-white/10 text-slate-400'
-                          }`}>
-                            {counselor.full_name?.charAt(0)}
-                          </div>
-                          <div>
-                            <p className="text-sm font-bold text-white">{counselor.full_name}</p>
-                            <p className="text-[10px] text-slate-500">{counselor.email}</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-2">
-                           <span className="px-3 py-1 rounded-full bg-emerald-500/5 border border-emerald-500/10 text-[10px] font-bold text-emerald-400 uppercase">
-                             {counselor.stream}
-                           </span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        {counselor.is_verified ? (
-                          <div className="flex items-center gap-1.5 text-emerald-500">
-                             <CheckCircle2 className="w-3 h-3" />
-                             <span className="text-[10px] font-black uppercase tracking-widest">Verified</span>
-                          </div>
-                        ) : (
-                          <div className="flex items-center gap-1.5 text-amber-500">
-                             <Clock className="w-3 h-3" />
-                             <span className="text-[10px] font-black uppercase tracking-widest">Pending</span>
-                          </div>
-                        )}
-                      </td>
-                      <td className="px-6 py-4 text-right">
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
-                          className="h-9 w-9 p-0 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white"
-                          onClick={() => openProfileDetail(counselor)}
-                        >
-                          <Eye className="w-4 h-4" />
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 gap-4">
+              {counselors.map((counselor) => (
+                <EntityPreviewCard 
+                  key={counselor.id}
+                  user={counselor}
+                  onView={openProfileDetail}
+                  onDelete={handleDelete}
+                />
+              ))}
+              {counselors.length === 0 && (
+                <div className="glass-admin p-20 text-center">
+                   <Users className="w-12 h-12 text-slate-700 mx-auto mb-4" />
+                   <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">No active nodes in this sector</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -170,30 +126,15 @@ export default function CounselorsAdminPage() {
                 Top Performing Entities
                 <TrendingUp className="w-4 h-4 text-emerald-500" />
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {stats.topCounselors.map((c: any, i: number) => (
-                  <div key={c.id} className="flex items-center gap-4 group cursor-pointer" onClick={() => openProfileDetail(c)}>
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 text-blue-500 font-bold text-xs">
-                        {c.full_name?.charAt(0)}
-                      </div>
-                      <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-blue-600 border-2 border-[#050505] flex items-center justify-center text-[8px] font-black text-white">
-                        {i + 1}
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs font-black text-white truncate group-hover:text-blue-400 transition-colors">{c.full_name}</p>
-                      <div className="flex items-center gap-2 mt-0.5">
-                        <div className="flex items-center gap-1 text-[10px] text-amber-500 font-bold">
-                           <Star className="w-2.5 h-2.5 fill-current" />
-                           {c.rating || 0}
-                        </div>
-                        <span className="text-[10px] text-slate-500 font-black uppercase tracking-tighter">
-                          {c.completedCount} Sessions
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                  <EntityPreviewCard 
+                    key={c.id}
+                    user={c}
+                    variant="compact"
+                    rank={i + 1}
+                    onView={openProfileDetail}
+                  />
                 ))}
               </div>
               <Button variant="ghost" className="w-full mt-8 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-white hover:bg-white/5 py-6">

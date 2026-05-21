@@ -1,27 +1,40 @@
+'use client';
+
+import { useState } from "react";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { SystemStatusBar } from "@/components/admin/SystemStatusBar";
-import { Bell, Search, Settings } from "lucide-react";
+import { Bell, Search, Settings, Menu, X } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
     return (
-        <div className="min-h-screen admin-dark bg-[var(--admin-bg)] text-[var(--admin-text-main)] font-sans flex">
-            <AdminSidebar />
+        <div className="min-h-screen admin-dark bg-[var(--admin-bg)] text-[var(--admin-text-main)] font-sans flex overflow-x-hidden">
+            <AdminSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
             
-            <div className="flex-1 ml-64 flex flex-col">
+            <div className="flex-1 lg:ml-64 flex flex-col min-w-0">
                 {/* ─── Top Navigation ─── */}
-                <header className="h-20 border-b border-[var(--admin-border)] flex items-center justify-between px-8 bg-[var(--admin-bg)]/80 backdrop-blur-xl sticky top-0 z-40">
-                    <div>
-                        <h1 className="text-xl font-bold tracking-tight text-white uppercase">Admin Dashboard</h1>
-                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">Management Portal</p>
+                <header className="h-20 border-b border-[var(--admin-border)] flex items-center justify-between px-4 md:px-8 bg-[var(--admin-bg)]/80 backdrop-blur-xl sticky top-0 z-40">
+                    <div className="flex items-center gap-4">
+                        <button 
+                            onClick={() => setIsSidebarOpen(true)}
+                            className="p-2 lg:hidden text-slate-400 hover:text-white transition-colors"
+                        >
+                            <Menu className="w-6 h-6" />
+                        </button>
+                        <div>
+                            <h1 className="text-lg md:text-xl font-bold tracking-tight text-white uppercase truncate">Admin Dashboard</h1>
+                            <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black hidden sm:block">Management Portal</p>
+                        </div>
                     </div>
 
-                    <div className="flex items-center gap-6">
-                        <div className="flex items-center gap-3">
-                            <button className="p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400 relative">
+                    <div className="flex items-center gap-3 md:gap-6">
+                        <div className="flex items-center gap-2 md:gap-3">
+                            <button className="p-2 md:p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400 relative">
                                 <Bell className="w-5 h-5" />
                                 <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[var(--admin-accent)] rounded-full border-2 border-[var(--admin-bg)]" />
                             </button>
-                            <button className="p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400">
+                            <button className="hidden sm:flex p-2.5 rounded-xl border border-[var(--admin-border)] hover:bg-white/5 transition-colors text-slate-400">
                                 <Settings className="w-5 h-5" />
                             </button>
                         </div>
@@ -30,7 +43,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
                 <SystemStatusBar />
 
-                <main className="flex-1 p-8 overflow-y-auto">
+                <main className="flex-1 p-4 md:p-8">
                     {children}
                 </main>
             </div>

@@ -9,6 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useAdminData } from '@/hooks/useAdminData';
 import { EntityDetailModal } from '@/components/admin/EntityDetailModal';
+import { EntityPreviewCard } from '@/components/admin/EntityPreviewCard';
 import { GrowthChart, StreamDistribution } from '@/components/admin/AdminCharts';
 
 export default function StudentsAdminPage() {
@@ -46,15 +47,15 @@ export default function StudentsAdminPage() {
         onUpdateRole={handleUpdateRole}
       />
 
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-black text-white tracking-tighter uppercase mb-2">
+          <h1 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase mb-2 leading-none">
             Student <span className="text-[var(--admin-accent)]">Management</span>
           </h1>
-          <p className="text-slate-400 font-medium">Monitoring {stats.students} active student entities.</p>
+          <p className="text-slate-400 font-medium text-sm md:text-base">Monitoring {stats.students} active student entities.</p>
         </div>
         <div className="flex gap-4">
-           <Button variant="outline" className="glass-admin border-white/5 text-white gap-2">
+           <Button variant="outline" className="glass-admin border-white/5 text-white gap-2 flex-1 md:flex-none">
              <FileDown className="w-4 h-4" />
              Export Data
            </Button>
@@ -86,8 +87,8 @@ export default function StudentsAdminPage() {
           </div>
 
           {/* List Section */}
-          <div className="glass-admin overflow-hidden">
-            <div className="p-6 border-b border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-6">
+            <div className="glass-admin p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                 <input 
@@ -100,52 +101,21 @@ export default function StudentsAdminPage() {
               </div>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead className="bg-white/[0.02]">
-                  <tr>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Entity</th>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Stream</th>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Joined</th>
-                    <th className="px-6 py-4 text-right text-[10px] font-black text-slate-500 uppercase tracking-widest">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/5">
-                  {students.map((student) => (
-                    <tr key={student.id} className="hover:bg-white/[0.02] transition-colors group">
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20 text-blue-500 font-bold text-xs">
-                            {student.full_name?.charAt(0)}
-                          </div>
-                          <div>
-                            <p className="text-sm font-bold text-white">{student.full_name}</p>
-                            <p className="text-[10px] text-slate-500">{student.email}</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-bold text-slate-400 uppercase">
-                          {student.stream || 'General'}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-500 font-medium">
-                        {student.created_at ? new Date(student.created_at).toLocaleDateString() : 'N/A'}
-                      </td>
-                      <td className="px-6 py-4 text-right">
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
-                          className="h-9 w-9 p-0 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white"
-                          onClick={() => openProfileDetail(student)}
-                        >
-                          <Eye className="w-4 h-4" />
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 gap-4">
+              {students.map((student) => (
+                <EntityPreviewCard 
+                  key={student.id}
+                  user={student}
+                  onView={openProfileDetail}
+                  onDelete={handleDelete}
+                />
+              ))}
+              {students.length === 0 && (
+                <div className="glass-admin p-20 text-center">
+                   <Users className="w-12 h-12 text-slate-700 mx-auto mb-4" />
+                   <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">No entities found in this sector</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

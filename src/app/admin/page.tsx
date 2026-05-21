@@ -33,6 +33,8 @@ import {
 } from '@/components/admin/AdminCharts';
 import { LiveActivityFeed } from '@/components/admin/LiveActivityFeed';
 import { SystemHealthMonitor } from '@/components/admin/SystemHealthMonitor';
+import { EntityPreviewCard } from '@/components/admin/EntityPreviewCard';
+import { EntityDetailModal } from '@/components/admin/EntityDetailModal';
 
 const StatCard = ({ title, value, change, icon: Icon, color, detail }: any) => (
   <motion.div
@@ -65,7 +67,18 @@ const StatCard = ({ title, value, change, icon: Icon, color, detail }: any) => (
 );
 
 export default function AdminDashboard() {
-  const { stats, loading, loadAdminData } = useAdminData();
+  const { 
+    stats, loading, loadAdminData, profiles,
+    handleVerify, handleDelete, handleUpdateRole 
+  } = useAdminData();
+
+  const [selectedProfile, setSelectedProfile] = React.useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const openProfileDetail = (profile: any) => {
+    setSelectedProfile(profile);
+    setIsModalOpen(true);
+  };
 
   if (loading) {
     return (
@@ -120,7 +133,15 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="max-w-[1600px] mx-auto space-y-8 pb-20 animate-in fade-in zoom-in-95 duration-1000 ease-out">
+    <div className="max-w-[1600px] mx-auto space-y-8 pb-20 animate-in fade-in zoom-in-95 duration-1000 ease-out px-4 md:px-0">
+      <EntityDetailModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        user={selectedProfile}
+        onVerify={handleVerify}
+        onDelete={handleDelete}
+        onUpdateRole={handleUpdateRole}
+      />
       {/* ─── Superior Header ─── */}
       <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-8 bg-white/[0.02] backdrop-blur-md p-8 rounded-[2.5rem] border border-white/5 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--admin-accent)]/5 blur-[120px] -mr-32 -mt-32" />
@@ -318,32 +339,20 @@ export default function AdminDashboard() {
 
           <div className="flex-1 space-y-4">
             {stats.topCounselors.map((counselor: any, idx: number) => (
-              <motion.div 
-                key={counselor.id} 
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-3xl group hover:bg-white/[0.05] transition-all cursor-pointer relative overflow-hidden"
-              >
-                <div className="absolute inset-y-0 left-0 w-1 bg-amber-500 transform -translate-x-full group-hover:translate-x-0 transition-transform" />
-                <div className="w-12 h-12 rounded-2xl overflow-hidden border border-white/10 shrink-0 shadow-lg">
-                  <img src={counselor.avatar_url || `https://ui-avatars.com/api/?name=${counselor.full_name}&background=8b5cf6&color=fff`} className="w-full h-full object-cover" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-bold text-white truncate">{counselor.full_name}</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-[9px] text-slate-500 font-black uppercase tracking-widest">{counselor.stream || 'Professional'}</span>
-                    <div className="w-1 h-1 rounded-full bg-slate-700" />
-                    <span className="text-[9px] text-emerald-400 font-bold">★ {counselor.rating || '5.0'}</span>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className="text-xs font-black text-[var(--admin-accent)] tabular-nums">{counselor.completedCount} SESSIONS</p>
-                  <p className="text-[9px] text-slate-600 font-black uppercase tracking-widest mt-1">Rank #{idx + 1}</p>
-                </div>
-              </motion.div>
+              <EntityPreviewCard 
+                key={counselor.id}
+                user={counselor}
+                variant="compact"
+                rank={idx + 1}
+                onView={openProfileDetail}
+              />
             ))}
           </div>
 
-          <button className="mt-8 w-full py-4 bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 rounded-[1.25rem] text-[10px] font-black text-slate-400 hover:text-white uppercase tracking-[0.3em] transition-all">
+          <button 
+            onClick={() => window.location.href = '/admin/counselors'}
+            className="mt-8 w-full py-4 bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 rounded-[1.25rem] text-[10px] font-black text-slate-400 hover:text-white uppercase tracking-[0.3em] transition-all"
+          >
             Open Global Directory
           </button>
         </div>

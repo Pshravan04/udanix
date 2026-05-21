@@ -21,7 +21,12 @@ const MENU_ITEMS = [
   { icon: Settings, label: 'Settings', href: '/admin/settings' },
 ];
 
-export function AdminSidebar() {
+interface AdminSidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
   const { stats, sessions } = useAdminData();
 
@@ -33,7 +38,18 @@ export function AdminSidebar() {
   };
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-[var(--admin-sidebar)] border-r border-[var(--admin-border)] z-50 flex flex-col">
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] lg:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      <aside className={`fixed left-0 top-0 h-screen w-64 bg-[var(--admin-sidebar)] border-r border-[var(--admin-border)] z-[70] flex flex-col transition-transform duration-300 lg:translate-x-0 ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
       <div className="p-6">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 bg-gradient-to-br from-[var(--admin-accent)] to-[#0EA5E9] rounded-xl flex items-center justify-center shadow-lg admin-accent-glow">
@@ -110,5 +126,6 @@ export function AdminSidebar() {
         </div>
       </div>
     </aside>
+    </>
   );
 }
