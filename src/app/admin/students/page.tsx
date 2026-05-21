@@ -49,13 +49,13 @@ export default function StudentsAdminPage() {
 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase mb-2 leading-none">
+          <h1 className="text-3xl md:text-5xl font-black text-[var(--admin-text-main)] tracking-tighter uppercase mb-2 leading-none">
             Student <span className="text-[var(--admin-accent)]">Management</span>
           </h1>
-          <p className="text-slate-400 font-medium text-sm md:text-base">Monitoring {stats.students} active student entities.</p>
+          <p className="text-[var(--admin-text-muted)] font-medium text-sm md:text-base">Monitoring {stats.students} active student entities.</p>
         </div>
         <div className="flex gap-4">
-           <Button variant="outline" className="glass-admin border-white/5 text-white gap-2 flex-1 md:flex-none">
+           <Button variant="outline" className="glass-admin border-[var(--admin-border)] text-[var(--admin-text-main)] hover:bg-[var(--admin-item-hover)] gap-2 flex-1 md:flex-none">
              <FileDown className="w-4 h-4" />
              Export Data
            </Button>
@@ -71,8 +71,8 @@ export default function StudentsAdminPage() {
                 <Users className="w-7 h-7 text-blue-500" />
               </div>
               <div>
-                <p className="text-3xl font-black text-white">{stats.students}</p>
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Students</p>
+                <p className="text-3xl font-black text-[var(--admin-text-main)]">{stats.students}</p>
+                <p className="text-[10px] font-black text-[var(--admin-text-muted)] uppercase tracking-widest">Total Students</p>
               </div>
             </div>
             <div className="glass-admin p-6 flex items-center gap-6">
@@ -80,8 +80,8 @@ export default function StudentsAdminPage() {
                 <TrendingUp className="w-7 h-7 text-emerald-500" />
               </div>
               <div>
-                <p className="text-3xl font-black text-white">{stats.growthMetrics.students > 0 ? '+' : ''}{stats.growthMetrics.students}%</p>
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Weekly Growth</p>
+                <p className="text-3xl font-black text-[var(--admin-text-main)]">{stats.growthMetrics.students > 0 ? '+' : ''}{stats.growthMetrics.students}%</p>
+                <p className="text-[10px] font-black text-[var(--admin-text-muted)] uppercase tracking-widest">Weekly Growth</p>
               </div>
             </div>
           </div>
@@ -90,11 +90,11 @@ export default function StudentsAdminPage() {
           <div className="space-y-6">
             <div className="glass-admin p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--admin-text-muted)]" />
                 <input 
                   type="text" 
                   placeholder="Search by name or email..." 
-                  className="w-full bg-black/20 border border-white/5 rounded-xl py-3 pl-10 pr-4 text-sm text-slate-300 focus:outline-none focus:border-[var(--admin-accent)]/50 transition-all"
+                  className="w-full bg-[var(--admin-item-bg)] border border-[var(--admin-border)] rounded-xl py-3 pl-10 pr-4 text-sm text-[var(--admin-text-main)] placeholder-[var(--admin-text-muted)] focus:outline-none focus:border-[var(--admin-accent)]/50 transition-all"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
@@ -112,8 +112,8 @@ export default function StudentsAdminPage() {
               ))}
               {students.length === 0 && (
                 <div className="glass-admin p-20 text-center">
-                   <Users className="w-12 h-12 text-slate-700 mx-auto mb-4" />
-                   <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">No entities found in this sector</p>
+                   <Users className="w-12 h-12 text-[var(--admin-border)] mx-auto mb-4" />
+                   <p className="text-[var(--admin-text-muted)] font-bold uppercase tracking-widest text-xs">No entities found in this sector</p>
                 </div>
               )}
             </div>
@@ -122,12 +122,12 @@ export default function StudentsAdminPage() {
 
         <div className="space-y-8">
            <div className="glass-admin p-8">
-              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Growth Distribution</h3>
+              <h3 className="text-sm font-black text-[var(--admin-text-main)] uppercase tracking-widest mb-6">Growth Distribution</h3>
               <GrowthChart data={stats.studentGrowthData} />
            </div>
 
            <div className="glass-admin p-8">
-              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Stream Allocation</h3>
+              <h3 className="text-sm font-black text-[var(--admin-text-main)] uppercase tracking-widest mb-6">Stream Allocation</h3>
               <StreamDistribution data={stats.streamData} />
            </div>
 
@@ -137,8 +137,8 @@ export default function StudentsAdminPage() {
                   <ShieldAlert className="w-5 h-5 text-amber-500" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-black text-white uppercase">System Alert</h4>
-                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  <h4 className="text-sm font-black text-[var(--admin-text-main)] uppercase">System Alert</h4>
+                  <p className="text-xs text-[var(--admin-text-muted)] mt-1 leading-relaxed">
                     Student registrations have increased by 24% in the last 48 hours. Ensure session capacity is optimal.
                   </p>
                 </div>

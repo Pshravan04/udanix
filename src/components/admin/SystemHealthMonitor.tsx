@@ -13,36 +13,40 @@ import {
   Radio
 } from 'lucide-react';
 
-const Metric = ({ label, value, subValue, color, icon: Icon, percentage }: any) => (
-  <div className="space-y-4">
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <div className={`p-2.5 rounded-xl bg-${color}-500/10 text-${color}-400 border border-${color}-500/20`}>
-          <Icon className="w-4 h-4" />
+const Metric = ({ label, value, subValue, color, icon: Icon, percentage }: any) => {
+  const textColorClass = color === 'blue' ? 'text-blue-600' : color === 'emerald' ? 'text-emerald-600' : color === 'amber' ? 'text-amber-600' : 'text-purple-600';
+  
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className={`p-2.5 rounded-xl bg-${color}-500/10 border border-${color}-500/20 ${textColorClass}`}>
+            <Icon className="w-4 h-4" />
+          </div>
+          <div>
+            <p className="text-[10px] font-black text-[var(--admin-text-muted)] uppercase tracking-[0.2em]">{label}</p>
+            <p className="text-sm font-bold text-[var(--admin-text-main)] tabular-nums">{value}</p>
+          </div>
         </div>
-        <div>
-          <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">{label}</p>
-          <p className="text-sm font-bold text-white tabular-nums">{value}</p>
+        <div className="text-right">
+          <p className="text-[10px] font-black text-[var(--admin-text-main)]">{percentage}%</p>
+          <p className="text-[9px] font-bold text-[var(--admin-text-muted)] uppercase tracking-widest">{subValue}</p>
         </div>
       </div>
-      <div className="text-right">
-        <p className="text-[10px] font-black text-white">{percentage}%</p>
-        <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">{subValue}</p>
+      <div className="h-1.5 w-full bg-[var(--admin-item-bg)] rounded-full overflow-hidden p-[2px]">
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={{ width: `${percentage}%` }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className={`h-full rounded-full bg-${color}-500 shadow-[0_0_10px_rgba(var(--${color}-rgb),0.5)]`}
+          style={{ 
+              backgroundColor: color === 'blue' ? '#3b82f6' : color === 'emerald' ? '#10b981' : color === 'amber' ? '#f59e0b' : '#8b5cf6' 
+          }}
+        />
       </div>
     </div>
-    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden p-[2px]">
-      <motion.div 
-        initial={{ width: 0 }}
-        animate={{ width: `${percentage}%` }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className={`h-full rounded-full bg-${color}-500 shadow-[0_0_10px_rgba(var(--${color}-rgb),0.5)]`}
-        style={{ 
-            backgroundColor: color === 'blue' ? '#3b82f6' : color === 'emerald' ? '#10b981' : color === 'amber' ? '#f59e0b' : '#8b5cf6' 
-        }}
-      />
-    </div>
-  </div>
-);
+  );
+};
 
 export function SystemHealthMonitor() {
   const [metrics, setMetrics] = useState({
@@ -65,19 +69,19 @@ export function SystemHealthMonitor() {
   }, []);
 
   return (
-    <div className="bg-[#0A0B10]/80 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-8 shadow-2xl shadow-black/50 flex flex-col h-full">
+    <div className="glass-admin rounded-[2.5rem] p-8 flex flex-col h-full">
       <div className="flex items-center justify-between mb-10">
         <div className="flex items-center gap-4">
-          <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-inner">
+          <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 shadow-inner">
             <Activity className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-sm font-black text-white uppercase tracking-wider">Node Status</h3>
-            <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.2em]">Infrastructure Integrity</p>
+            <h3 className="text-sm font-black text-[var(--admin-text-main)] uppercase tracking-wider">Node Status</h3>
+            <p className="text-[9px] font-black text-[var(--admin-text-muted)] uppercase tracking-[0.2em]">Infrastructure Integrity</p>
           </div>
         </div>
-        <div className="p-2 rounded-xl bg-white/[0.03] border border-white/10">
-            <Workflow className="w-4 h-4 text-slate-500" />
+        <div className="p-2 rounded-xl bg-[var(--admin-item-bg)] border border-[var(--admin-border)]">
+            <Workflow className="w-4 h-4 text-[var(--admin-text-muted)]" />
         </div>
       </div>
 
@@ -116,15 +120,15 @@ export function SystemHealthMonitor() {
         />
       </div>
 
-      <div className="mt-12 p-6 rounded-[1.5rem] bg-white/[0.02] border border-white/5 relative overflow-hidden group">
+      <div className="mt-12 p-6 rounded-[1.5rem] bg-[var(--admin-item-bg)] border border-[var(--admin-border-subtle)] relative overflow-hidden group">
          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
          <div className="flex items-center gap-4 relative z-10">
             <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
-               <ShieldCheck className="w-5 h-5 text-emerald-400" />
+               <ShieldCheck className="w-5 h-5 text-emerald-500" />
             </div>
             <div>
-               <p className="text-[10px] font-black text-white uppercase tracking-widest">Security Protocol</p>
-               <p className="text-[9px] font-medium text-slate-500 uppercase tracking-widest mt-0.5">Level-4 Shield Active</p>
+               <p className="text-[10px] font-black text-[var(--admin-text-main)] uppercase tracking-widest">Security Protocol</p>
+               <p className="text-[9px] font-medium text-[var(--admin-text-muted)] uppercase tracking-widest mt-0.5">Level-4 Shield Active</p>
             </div>
          </div>
       </div>

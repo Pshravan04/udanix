@@ -14,24 +14,24 @@ interface ChartProps {
 const CustomTooltip = ({ active, payload, label, prefix = '', suffix = '' }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-[#0f172a]/95 backdrop-blur-3xl border border-white/10 p-6 rounded-[2rem] shadow-2xl ring-1 ring-white/10">
+      <div className="bg-[var(--admin-card)] backdrop-blur-3xl border border-[var(--admin-border)] p-6 rounded-[2rem] shadow-2xl ring-1 ring-[var(--admin-border-subtle)]">
         <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4">{label}</p>
         <div className="space-y-3">
           {payload.map((item: any, index: number) => (
             <div key={index} className="flex items-center justify-between gap-6">
               <div className="flex items-center gap-3">
-                <div className="w-2.5 h-2.5 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.3)]" style={{ backgroundColor: item.color }} />
+                <div className="w-2.5 h-2.5 rounded-full shadow-[0_0_12px_rgba(0,0,0,0.1)]" style={{ backgroundColor: item.color }} />
                 <p className="text-[11px] font-black text-slate-400 uppercase tracking-widest">{item.name}</p>
               </div>
-              <p className="text-sm font-black text-white tabular-nums">
+              <p className="text-sm font-black text-[var(--admin-text-main)] tabular-nums">
                 {prefix}{item.value.toLocaleString()}{suffix}
               </p>
             </div>
           ))}
         </div>
-        {payload[0].payload.growth && (
-          <div className="mt-4 pt-4 border-t border-white/5">
-            <p className={`text-[10px] font-black flex items-center justify-center gap-2 py-1.5 rounded-xl bg-white/[0.03] ${payload[0].payload.growth >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+        {payload[0].payload.growth !== undefined && (
+          <div className="mt-4 pt-4 border-t border-[var(--admin-border-subtle)]">
+            <p className={`text-[10px] font-black flex items-center justify-center gap-2 py-1.5 rounded-xl bg-[var(--admin-item-bg)] ${payload[0].payload.growth >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
               {payload[0].payload.growth >= 0 ? '↗' : '↘'} {Math.abs(payload[0].payload.growth)}% <span className="text-slate-500">GROWTH</span>
             </p>
           </div>
@@ -63,7 +63,7 @@ export function SessionAnalytics({ data = [] }: ChartProps) {
               </feMerge>
             </filter>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#ffffff03" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--admin-charts-grid)" vertical={false} />
           <XAxis 
             dataKey="name" 
             stroke="#475569" 
@@ -99,13 +99,13 @@ export function SessionAnalytics({ data = [] }: ChartProps) {
           <Bar 
             dataKey="sessions" 
             barSize={4} 
-            fill="rgba(255,255,255,0.02)" 
+            fill="var(--admin-item-bg)" 
             radius={[4, 4, 0, 0]} 
           />
           <Line 
             type="monotone" 
             dataKey="sessions" 
-            stroke="white" 
+            stroke="var(--admin-text-main)" 
             strokeWidth={1} 
             dot={false} 
             strokeOpacity={0.1} 
@@ -161,7 +161,7 @@ export function StudentGrowth({ data = [] }: ChartProps) {
               <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#ffffff03" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--admin-charts-grid)" vertical={false} />
           <XAxis 
             dataKey="name" 
             stroke="#475569" 
@@ -202,12 +202,12 @@ export function ActivityHeatmap({ data = [] }: ChartProps) {
               transition={{ delay: i * 0.01 }}
               className="w-full aspect-square rounded-lg cursor-help relative group"
               style={{ 
-                backgroundColor: val === 0 ? 'rgba(255,255,255,0.02)' : `rgba(59, 130, 246, ${0.1 + (val / 10) * 0.9})`,
-                boxShadow: val > 8 ? '0 0 20px rgba(59, 130, 246, 0.4)' : 'none'
+                backgroundColor: val === 0 ? 'var(--admin-item-bg)' : `rgba(14, 57, 154, ${0.15 + (val / 10) * 0.85})`,
+                boxShadow: val > 8 ? '0 0 20px var(--admin-accent-glow)' : 'none'
               }}
             >
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-black/95 border border-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-all z-50 pointer-events-none shadow-2xl scale-90 group-hover:scale-100">
-                <p className="text-[10px] font-black text-white whitespace-nowrap uppercase tracking-widest">{val} Interactions</p>
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-[var(--admin-card)] border border-[var(--admin-border)] rounded-xl opacity-0 group-hover:opacity-100 transition-all z-50 pointer-events-none shadow-2xl scale-90 group-hover:scale-100">
+                <p className="text-[10px] font-black text-[var(--admin-text-main)] whitespace-nowrap uppercase tracking-widest">{val} Interactions</p>
               </div>
             </motion.div>
           );
@@ -228,7 +228,7 @@ export function FinancialsChart({ data = [] }: ChartProps) {
     <div className="w-full h-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#ffffff03" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--admin-charts-grid)" vertical={false} />
           <XAxis 
             dataKey="name" 
             stroke="#475569" 
@@ -290,7 +290,7 @@ export function TopicPopularity({ data = [] }: ChartProps) {
     <div className="w-full h-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#ffffff03" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--admin-charts-grid)" vertical={false} />
           <XAxis 
             dataKey="topic" 
             stroke="#64748b" 

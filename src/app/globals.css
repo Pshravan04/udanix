@@ -92,6 +92,14 @@
   --admin-border: rgba(255, 255, 255, 0.06);
   --admin-text-main: #f8fafc;
   --admin-text-muted: #64748b;
+  --admin-item-bg: rgba(255, 255, 255, 0.02);
+  --admin-item-hover: rgba(255, 255, 255, 0.05);
+  --admin-border-subtle: rgba(255, 255, 255, 0.03);
+  --admin-charts-grid: rgba(255, 255, 255, 0.02);
+  --admin-inner-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  --admin-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
+  --admin-card-glow: 0 0 40px -10px rgba(59, 130, 246, 0.15);
+  --admin-header-bg: rgba(5, 5, 5, 0.8);
 
   /* ── Semantic Tokens ── */
   --background:              #FFFFFF;
@@ -130,6 +138,33 @@
   --card-foreground: var(--admin-text-main);
   --border: var(--admin-border);
   --muted: rgba(0, 0, 0, 0.2);
+  --muted-foreground: var(--admin-text-muted);
+}
+
+.admin-light {
+  --admin-bg: #F8FAFC;
+  --admin-card: rgba(255, 255, 255, 0.75);
+  --admin-sidebar: #FFFFFF;
+  --admin-accent: #0e399a;
+  --admin-accent-glow: rgba(14, 57, 154, 0.1);
+  --admin-border: rgba(0, 0, 0, 0.08);
+  --admin-text-main: #0f172a;
+  --admin-text-muted: #64748b;
+  --admin-item-bg: rgba(0, 0, 0, 0.03);
+  --admin-item-hover: rgba(0, 0, 0, 0.06);
+  --admin-border-subtle: rgba(0, 0, 0, 0.04);
+  --admin-charts-grid: rgba(0, 0, 0, 0.05);
+  --admin-inner-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+  --admin-shadow: 0 10px 30px -10px rgba(14, 57, 154, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --admin-card-glow: 0 10px 40px -10px rgba(14, 57, 154, 0.08);
+  --admin-header-bg: rgba(248, 250, 252, 0.85);
+
+  --background: var(--admin-bg);
+  --foreground: var(--admin-text-main);
+  --card: var(--admin-card);
+  --card-foreground: var(--admin-text-main);
+  --border: var(--admin-border);
+  --muted: #F1F5F9;
   --muted-foreground: var(--admin-text-muted);
 }
 
@@ -227,11 +262,11 @@
   }
 
   @utility glass-admin {
-    background: rgba(15, 15, 15, 0.6);
+    background: var(--admin-card);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--admin-border);
+    box-shadow: var(--admin-shadow);
   }
 
   @utility admin-accent-glow {

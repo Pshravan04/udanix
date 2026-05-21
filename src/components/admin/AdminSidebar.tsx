@@ -55,38 +55,38 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
           <div className="w-10 h-10 bg-gradient-to-br from-[var(--admin-accent)] to-[#0EA5E9] rounded-xl flex items-center justify-center shadow-lg admin-accent-glow">
             <GraduationCap className="w-6 h-6 text-white" />
           </div>
-          <span className="font-black text-xl text-white tracking-tighter uppercase">UDANIX</span>
+          <span className="font-black text-xl text-[var(--admin-text-main)] tracking-tighter uppercase">UDANIX</span>
         </Link>
       </div>
-
+ 
       <div className="px-4 mb-6">
         <div className="relative group">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-[var(--admin-accent)] transition-colors" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--admin-text-muted)] group-focus-within:text-[var(--admin-accent)] transition-colors" />
           <input 
             type="text" 
             placeholder="Global Search..." 
-            className="w-full bg-black/20 border border-white/5 rounded-xl py-2 pl-10 pr-4 text-xs text-slate-300 focus:outline-none focus:border-[var(--admin-accent)]/50 transition-all"
+            className="w-full bg-[var(--admin-item-bg)] border border-[var(--admin-border)] rounded-xl py-2 pl-10 pr-4 text-xs text-[var(--admin-text-main)] focus:outline-none focus:border-[var(--admin-accent)]/50 transition-all placeholder:text-[var(--admin-text-muted)]/55"
           />
         </div>
       </div>
-
+ 
       <nav className="flex-1 px-4 space-y-1 overflow-y-auto custom-scrollbar">
         {MENU_ITEMS.map((item) => {
           const isActive = pathname === item.href;
           const badgeValue = getBadgeValue(item.badge);
-
+ 
           return (
             <Link 
               key={item.href} 
               href={item.href}
               className={`relative flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${
-                isActive ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'
+                isActive ? 'text-[var(--admin-text-main)]' : 'text-[var(--admin-text-muted)] hover:text-[var(--admin-text-main)] hover:bg-[var(--admin-item-hover)]'
               }`}
             >
               {isActive && (
                 <motion.div 
                   layoutId="active-nav"
-                  className="absolute inset-0 bg-gradient-to-r from-[var(--admin-accent)]/20 to-transparent border-l-2 border-[var(--admin-accent)] rounded-xl"
+                  className="absolute inset-0 bg-gradient-to-r from-[var(--admin-accent)]/15 to-transparent border-l-2 border-[var(--admin-accent)] rounded-xl"
                   initial={false}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
@@ -103,19 +103,19 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
           );
         })}
       </nav>
-
-      <div className="p-4 border-t border-white/5 bg-black/40 backdrop-blur-xl">
-        <div className="relative group p-3 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-300">
+ 
+      <div className="p-4 border-t border-[var(--admin-border-subtle)] bg-[var(--admin-card)] backdrop-blur-xl">
+        <div className="relative group p-3 rounded-xl border border-[var(--admin-border-subtle)] bg-[var(--admin-item-bg)] hover:bg-[var(--admin-item-hover)] transition-all duration-300">
           <div className="flex items-center gap-3">
             <div className="relative">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--admin-accent)] to-blue-600 flex items-center justify-center font-bold text-white shadow-lg shadow-[var(--admin-accent)]/20">
                 AD
               </div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-[#0A0B10] shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-[var(--admin-bg)] shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-bold text-white truncate uppercase tracking-wider">System Operator</p>
-              <p className="text-[10px] text-slate-500 truncate">admin@udanix.com</p>
+              <p className="text-xs font-bold text-[var(--admin-text-main)] truncate uppercase tracking-wider">System Operator</p>
+              <p className="text-[10px] text-[var(--admin-text-muted)] truncate">admin@udanix.com</p>
             </div>
           </div>
           

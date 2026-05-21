@@ -31,7 +31,7 @@ export function EntityDetailModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl bg-[#0A0B10] border-white/10 text-slate-200 p-0 overflow-hidden flex flex-col max-h-[90vh] md:max-h-[85vh] rounded-[2rem]">
+      <DialogContent className="max-w-2xl bg-[var(--admin-sidebar)] border-[var(--admin-border)] text-[var(--admin-text-main)] p-0 overflow-hidden flex flex-col max-h-[90vh] md:max-h-[85vh] rounded-[2rem]">
         <div className="p-6 md:p-8 overflow-y-auto custom-scrollbar flex-1 space-y-8">
           <DialogHeader className="text-left relative">
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] -z-10 rounded-full" />
@@ -42,7 +42,7 @@ export function EntityDetailModal({
                   {user.full_name?.[0] || 'U'}
                 </div>
                 {user.is_verified && (
-                  <div className="absolute -bottom-2 -right-2 p-3 rounded-2xl bg-[#0A0B10] border border-emerald-500/30 shadow-xl shadow-emerald-500/10">
+                  <div className="absolute -bottom-2 -right-2 p-3 rounded-2xl bg-[var(--admin-bg)] border border-emerald-500/30 shadow-xl shadow-emerald-500/10">
                     <ShieldCheck className="w-6 h-6 text-emerald-400" />
                   </div>
                 )}
@@ -50,21 +50,21 @@ export function EntityDetailModal({
               
               <div className="space-y-3 flex-1">
                 <div>
-                  <DialogTitle className="text-3xl md:text-5xl font-black text-white tracking-tighter leading-none mb-2">
+                  <DialogTitle className="text-3xl md:text-5xl font-black text-[var(--admin-text-main)] tracking-tighter leading-none mb-2">
                     {user.full_name || 'Anonymous User'}
                   </DialogTitle>
-                  <DialogDescription className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] flex flex-wrap items-center gap-x-4 gap-y-2">
-                    <span className="flex items-center gap-2 text-blue-400"><Calendar className="w-3 h-3" /> Joined {new Date(user.updated_at || '').toLocaleDateString()}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-800" />
+                  <DialogDescription className="text-[var(--admin-text-muted)] font-bold uppercase tracking-[0.2em] text-[10px] flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <span className="flex items-center gap-2 text-blue-500"><Calendar className="w-3 h-3" /> Joined {new Date(user.updated_at || '').toLocaleDateString()}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--admin-border-subtle)]" />
                     <span>ID: {user.id.slice(0, 12)}</span>
                   </DialogDescription>
                 </div>
                 
                 <div className="flex flex-wrap gap-3">
-                  <Badge variant="outline" className="uppercase tracking-[0.2em] text-[9px] font-black bg-white/5 border-white/10 px-4 py-1.5 rounded-xl text-slate-300">
+                  <Badge variant="outline" className="uppercase tracking-[0.2em] text-[9px] font-black bg-[var(--admin-item-bg)] border-[var(--admin-border-subtle)] px-4 py-1.5 rounded-xl text-[var(--admin-text-main)]">
                     {user.role}
                   </Badge>
-                  <Badge className={`uppercase tracking-[0.2em] text-[9px] font-black px-4 py-1.5 rounded-xl ${user.is_verified ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'}`}>
+                  <Badge className={`uppercase tracking-[0.2em] text-[9px] font-black px-4 py-1.5 rounded-xl ${user.is_verified ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'}`}>
                     {user.is_verified ? 'Verified Entity' : 'Pending Authorization'}
                   </Badge>
                 </div>
@@ -76,23 +76,23 @@ export function EntityDetailModal({
             {/* Profile Section */}
             <div className="space-y-6">
               <div className="space-y-4">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 flex items-center gap-3">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-[var(--admin-text-muted)] flex items-center gap-3">
                   <div className="w-1.5 h-4 bg-blue-500 rounded-full" />
                   Core Identity
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { label: 'Email', value: user.email, icon: Mail, color: 'text-blue-400' },
-                    { label: 'School/Org', value: user.school || 'Not set', icon: School, color: 'text-indigo-400' },
-                    { label: 'Academic Level', value: user.class || 'N/A', icon: GraduationCap, color: 'text-purple-400' },
-                    { label: 'Stream', value: user.stream || 'General', icon: BookOpen, color: 'text-emerald-400' },
+                    { label: 'Email', value: user.email, icon: Mail, color: 'text-blue-500' },
+                    { label: 'School/Org', value: user.school || 'Not set', icon: School, color: 'text-indigo-500' },
+                    { label: 'Academic Level', value: user.class || 'N/A', icon: GraduationCap, color: 'text-purple-500' },
+                    { label: 'Stream', value: user.stream || 'General', icon: BookOpen, color: 'text-emerald-500' },
                   ].map((field) => (
-                    <div key={field.label} className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 space-y-2 group hover:bg-white/[0.05] transition-all">
+                    <div key={field.label} className="bg-[var(--admin-item-bg)] border border-[var(--admin-border-subtle)] rounded-2xl p-4 space-y-2 group hover:bg-[var(--admin-item-hover)] transition-all">
                       <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">{field.label}</span>
+                        <span className="text-[9px] font-black text-[var(--admin-text-muted)] uppercase tracking-widest">{field.label}</span>
                         <field.icon className={`w-3.5 h-3.5 ${field.color} opacity-50 group-hover:opacity-100 transition-opacity`} />
                       </div>
-                      <p className="text-sm font-bold text-white truncate break-all">
+                      <p className="text-sm font-bold text-[var(--admin-text-main)] truncate break-all">
                         {field.value}
                       </p>
                     </div>
@@ -101,18 +101,18 @@ export function EntityDetailModal({
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 flex items-center gap-3">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-[var(--admin-text-muted)] flex items-center gap-3">
                   <div className="w-1.5 h-4 bg-amber-500 rounded-full" />
                   Platform Stats
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-5 group hover:bg-white/[0.05] transition-all">
-                    <p className="text-[9px] text-slate-600 uppercase font-black tracking-widest mb-1">Sessions</p>
-                    <p className="text-3xl font-black text-white">{user.sessions_count || 0}</p>
+                  <div className="bg-[var(--admin-item-bg)] border border-[var(--admin-border-subtle)] rounded-3xl p-5 group hover:bg-[var(--admin-item-hover)] transition-all">
+                    <p className="text-[9px] text-[var(--admin-text-muted)] uppercase font-black tracking-widest mb-1">Sessions</p>
+                    <p className="text-3xl font-black text-[var(--admin-text-main)]">{user.sessions_count || 0}</p>
                   </div>
-                  <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-5 group hover:bg-white/[0.05] transition-all">
-                    <p className="text-[9px] text-slate-600 uppercase font-black tracking-widest mb-1">Avg Rating</p>
-                    <p className="text-3xl font-black text-emerald-400">{user.rating?.toFixed(1) || '5.0'}</p>
+                  <div className="bg-[var(--admin-item-bg)] border border-[var(--admin-border-subtle)] rounded-3xl p-5 group hover:bg-[var(--admin-item-hover)] transition-all">
+                    <p className="text-[9px] text-[var(--admin-text-muted)] uppercase font-black tracking-widest mb-1">Avg Rating</p>
+                    <p className="text-3xl font-black text-emerald-500">{user.rating?.toFixed(1) || '5.0'}</p>
                   </div>
                 </div>
               </div>
@@ -121,28 +121,28 @@ export function EntityDetailModal({
             {/* Context & Professional Section */}
             <div className="space-y-6">
               <div className="space-y-4">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 flex items-center gap-3">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-[var(--admin-text-muted)] flex items-center gap-3">
                   <div className="w-1.5 h-4 bg-purple-500 rounded-full" />
                   Bio & Context
                 </h3>
-                <div className="bg-white/[0.02] border border-white/5 rounded-[2rem] p-6 relative overflow-hidden group hover:bg-white/[0.04] transition-all">
+                <div className="bg-[var(--admin-item-bg)] border border-[var(--admin-border-subtle)] rounded-[2rem] p-6 relative overflow-hidden group hover:bg-[var(--admin-item-hover)] transition-all">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 blur-3xl rounded-full" />
-                  <p className="text-sm text-slate-300 leading-relaxed font-medium italic relative z-10">
+                  <p className="text-sm text-[var(--admin-text-main)] leading-relaxed font-medium italic relative z-10">
                     "{user.bio || 'This entity has not defined a core narrative yet.'}"
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2 relative z-10">
                     {user.interests?.map((interest, i) => (
-                      <span key={i} className="text-[9px] font-black bg-blue-500/5 px-3 py-1.5 rounded-xl text-blue-400/70 border border-blue-500/10 hover:border-blue-500/30 hover:text-blue-400 transition-all cursor-default">
+                      <span key={i} className="text-[9px] font-black bg-blue-500/5 px-3 py-1.5 rounded-xl text-blue-500/70 border border-blue-500/10 hover:border-blue-500/30 hover:text-blue-500 transition-all cursor-default">
                         #{interest.toUpperCase()}
                       </span>
-                    )) || <span className="text-[9px] font-black text-slate-700 uppercase tracking-widest">No interest mapping</span>}
+                    )) || <span className="text-[9px] font-black text-[var(--admin-text-muted)] uppercase tracking-widest">No interest mapping</span>}
                   </div>
                 </div>
               </div>
 
               {isCounselor && (
                 <div className="space-y-4">
-                  <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 flex items-center gap-3">
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-[var(--admin-text-muted)] flex items-center gap-3">
                     <div className="w-1.5 h-4 bg-emerald-500 rounded-full" />
                     Revenue Node
                   </h3>
@@ -159,19 +159,19 @@ export function EntityDetailModal({
               )}
 
               <div className="pt-2 space-y-6">
-                <Button variant="outline" className="w-full h-14 border-white/10 bg-white/[0.02] hover:bg-white/[0.05] text-xs font-black uppercase tracking-[0.2em] rounded-2xl group" asChild>
+                <Button variant="outline" className="w-full h-14 border-[var(--admin-border)] bg-[var(--admin-item-bg)] hover:bg-[var(--admin-item-hover)] text-xs font-black uppercase tracking-[0.2em] rounded-2xl group text-[var(--admin-text-main)]" asChild>
                   <a href={user.linkedin || '#'} target="_blank" rel="noopener noreferrer">
                     Connect via LinkedIn <ExternalLink className="w-4 h-4 ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
                 </Button>
 
                 <div className="space-y-4">
-                  <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 flex items-center gap-3">
-                    <div className="w-1.5 h-4 bg-slate-700 rounded-full" />
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-[var(--admin-text-muted)] flex items-center gap-3">
+                    <div className="w-1.5 h-4 bg-[var(--admin-border)] rounded-full" />
                     Neural Metadata
                   </h3>
                   <textarea 
-                    className="w-full h-32 bg-white/[0.02] border border-white/10 rounded-[2rem] p-6 text-xs text-slate-300 focus:outline-none focus:border-blue-500/50 transition-all resize-none shadow-inner font-medium placeholder:text-slate-800"
+                    className="w-full h-32 bg-[var(--admin-item-bg)] border border-[var(--admin-border)] rounded-[2rem] p-6 text-xs text-[var(--admin-text-main)] focus:outline-none focus:border-[var(--admin-accent)]/50 transition-all resize-none shadow-inner font-medium placeholder:text-[var(--admin-text-muted)]/50"
                     placeholder="Enter private administrative notes..."
                     defaultValue={""}
                   />
@@ -180,31 +180,31 @@ export function EntityDetailModal({
             </div>
           </div>
 
-          <div className="pt-8 border-t border-white/5 space-y-6">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 flex items-center gap-3">
+          <div className="pt-8 border-t border-[var(--admin-border-subtle)] space-y-6">
+            <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-[var(--admin-text-muted)] flex items-center gap-3">
               <div className="w-1.5 h-4 bg-blue-500 rounded-full animate-pulse" />
               Event Timeline
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-               <div className="flex gap-5 p-5 rounded-[1.5rem] bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all group">
+               <div className="flex gap-5 p-5 rounded-[1.5rem] bg-[var(--admin-item-bg)] border border-[var(--admin-border-subtle)] hover:bg-[var(--admin-item-hover)] transition-all group">
                   <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 shadow-[0_0_15px_rgba(16,185,129,0.5)] shrink-0" />
                   <div>
-                     <p className="text-[11px] font-black text-white uppercase tracking-wider group-hover:text-emerald-400 transition-colors">Profile Verified</p>
-                     <p className="text-[10px] font-bold text-slate-600 mt-1">{new Date().toLocaleDateString()} • System Automator</p>
+                     <p className="text-[11px] font-black text-[var(--admin-text-main)] uppercase tracking-wider group-hover:text-emerald-400 transition-colors">Profile Verified</p>
+                     <p className="text-[10px] font-bold text-[var(--admin-text-muted)] mt-1">{new Date().toLocaleDateString()} • System Automator</p>
                   </div>
                </div>
-               <div className="flex gap-5 p-5 rounded-[1.5rem] bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all group">
+               <div className="flex gap-5 p-5 rounded-[1.5rem] bg-[var(--admin-item-bg)] border border-[var(--admin-border-subtle)] hover:bg-[var(--admin-item-hover)] transition-all group">
                   <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 shadow-[0_0_15px_rgba(59,130,246,0.5)] shrink-0" />
                   <div>
-                     <p className="text-[11px] font-black text-white uppercase tracking-wider group-hover:text-blue-400 transition-colors">Session Completed</p>
-                     <p className="text-[10px] font-bold text-slate-600 mt-1">2 days ago • Career Guidance</p>
+                     <p className="text-[11px] font-black text-[var(--admin-text-main)] uppercase tracking-wider group-hover:text-blue-400 transition-colors">Session Completed</p>
+                     <p className="text-[10px] font-bold text-[var(--admin-text-muted)] mt-1">2 days ago • Career Guidance</p>
                   </div>
                </div>
             </div>
           </div>
         </div>
 
-        <DialogFooter className="p-6 md:p-8 bg-black/40 border-t border-white/5">
+        <DialogFooter className="p-6 md:p-8 bg-[var(--admin-item-bg)] border-t border-[var(--admin-border)]">
           <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex w-full sm:w-auto gap-3">
               <Button 
@@ -218,7 +218,7 @@ export function EntityDetailModal({
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="flex-1 sm:flex-none h-12 px-6 border-white/10 bg-white/[0.03] hover:bg-white/[0.08] text-white font-black text-[10px] uppercase tracking-widest rounded-xl"
+                className="flex-1 sm:flex-none h-12 px-6 border-[var(--admin-border)] bg-[var(--admin-item-bg)] hover:bg-[var(--admin-item-hover)] text-[var(--admin-text-main)] font-black text-[10px] uppercase tracking-widest rounded-xl"
                 onClick={() => onUpdateRole(user.id, user.role === 'admin' ? 'counselor' : 'admin')}
               >
                 {user.role === 'admin' ? 'Revoke Access' : 'Elevate Admin'}
@@ -238,7 +238,6 @@ export function EntityDetailModal({
           </div>
         </DialogFooter>
       </DialogContent>
-
     </Dialog>
   );
 }

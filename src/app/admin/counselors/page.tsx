@@ -55,17 +55,17 @@ export default function CounselorsAdminPage() {
 
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
-          <h1 className="text-4xl font-black text-white tracking-tighter uppercase mb-2">
-            Counselor <span className="text-emerald-500">Fleet</span>
+          <h1 className="text-4xl font-black text-[var(--admin-text-main)] tracking-tighter uppercase mb-2">
+            Counselor <span className="text-[var(--admin-accent)]">Fleet</span>
           </h1>
-          <p className="text-slate-400 font-medium">Verifying and managing {stats.counselors} expert nodes.</p>
+          <p className="text-[var(--admin-text-muted)] font-medium">Verifying and managing {stats.counselors} expert nodes.</p>
         </div>
         <div className="flex gap-4">
            <div className="px-6 py-3 rounded-2xl glass-admin border-emerald-500/20 flex items-center gap-4">
               <ShieldCheck className="w-6 h-6 text-emerald-500" />
               <div>
-                <p className="text-sm font-black text-white leading-none">{stats.activeCounselors}</p>
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-1">Verified Nodes</p>
+                <p className="text-sm font-black text-[var(--admin-text-main)] leading-none">{stats.activeCounselors}</p>
+                <p className="text-[10px] font-black text-[var(--admin-text-muted)] uppercase tracking-widest mt-1">Verified Nodes</p>
               </div>
            </div>
         </div>
@@ -77,11 +77,11 @@ export default function CounselorsAdminPage() {
           <div className="space-y-6">
             <div className="glass-admin p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--admin-text-muted)]" />
                 <input 
                   type="text" 
                   placeholder="Search by name, email or expertise..." 
-                  className="w-full bg-black/20 border border-white/5 rounded-xl py-3 pl-10 pr-4 text-sm text-slate-300 focus:outline-none focus:border-emerald-500/50 transition-all"
+                  className="w-full bg-[var(--admin-item-bg)] border border-[var(--admin-border)] rounded-xl py-3 pl-10 pr-4 text-sm text-[var(--admin-text-main)] placeholder-[var(--admin-text-muted)] focus:outline-none focus:border-[var(--admin-accent)]/50 transition-all"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
@@ -99,8 +99,8 @@ export default function CounselorsAdminPage() {
               ))}
               {counselors.length === 0 && (
                 <div className="glass-admin p-20 text-center">
-                   <Users className="w-12 h-12 text-slate-700 mx-auto mb-4" />
-                   <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">No active nodes in this sector</p>
+                   <Users className="w-12 h-12 text-[var(--admin-text-muted)] opacity-50 mx-auto mb-4" />
+                   <p className="text-[var(--admin-text-muted)] font-bold uppercase tracking-widest text-xs">No active nodes in this sector</p>
                 </div>
               )}
             </div>
@@ -110,19 +110,19 @@ export default function CounselorsAdminPage() {
         <div className="space-y-8">
           {/* Stream Distribution Chart */}
           <div className="glass-admin p-8">
-              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Expertise Density</h3>
+              <h3 className="text-sm font-black text-[var(--admin-text-main)] uppercase tracking-widest mb-6">Expertise Density</h3>
               <StreamDistribution data={stats.streamRevenue} />
           </div>
 
           {/* Top Performance Chart */}
           <div className="glass-admin p-8">
-              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Satisfaction Spread</h3>
+              <h3 className="text-sm font-black text-[var(--admin-text-main)] uppercase tracking-widest mb-6">Satisfaction Spread</h3>
               <RatingDistribution data={stats.ratingDistribution} />
           </div>
 
           {/* Performance Leaderboard */}
           <div className="glass-admin p-8">
-              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6 flex items-center justify-between">
+              <h3 className="text-sm font-black text-[var(--admin-text-main)] uppercase tracking-widest mb-6 flex items-center justify-between">
                 Top Performing Entities
                 <TrendingUp className="w-4 h-4 text-emerald-500" />
               </h3>
@@ -137,19 +137,19 @@ export default function CounselorsAdminPage() {
                   />
                 ))}
               </div>
-              <Button variant="ghost" className="w-full mt-8 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-white hover:bg-white/5 py-6">
+              <Button variant="ghost" className="w-full mt-8 text-[10px] font-black uppercase tracking-widest text-[var(--admin-text-muted)] hover:text-[var(--admin-text-main)] hover:bg-[var(--admin-item-hover)] py-6">
                 View Full Leaderboard
               </Button>
           </div>
 
-          <div className="glass-admin p-8 border-l-4 border-blue-500">
+          <div className="glass-admin p-8 border-l-4 border-[var(--admin-accent)]">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
-                  <ShieldAlert className="w-5 h-5 text-blue-500" />
+                <div className="w-10 h-10 rounded-xl bg-[var(--admin-accent-glow)] flex items-center justify-center shrink-0">
+                  <ShieldAlert className="w-5 h-5 text-[var(--admin-accent)]" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-black text-white uppercase">System Integrity</h4>
-                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  <h4 className="text-sm font-black text-[var(--admin-text-main)] uppercase">System Integrity</h4>
+                  <p className="text-xs text-[var(--admin-text-muted)] mt-1 leading-relaxed">
                     All counselors must complete Phase 2 verification before they can accept premium sessions.
                   </p>
                 </div>
