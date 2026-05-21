@@ -39,7 +39,7 @@ export function EntityPreviewCard({ user, variant = 'full', onView, onDelete, ra
         <div className="relative shrink-0">
           <div className="w-12 h-12 rounded-2xl overflow-hidden border border-[var(--admin-border)] shadow-lg bg-gradient-to-br from-[var(--admin-item-bg)] to-transparent flex items-center justify-center text-[var(--admin-text-main)] font-black">
              {user.avatar_url ? (
-               <img src={user.avatar_url} className="w-full h-full object-cover" alt={user.full_name} />
+               <img src={user.avatar_url} className="w-full h-full object-cover" alt={user.full_name || undefined} />
              ) : (
                user.full_name?.[0] || 'U'
              )}
@@ -97,7 +97,7 @@ export function EntityPreviewCard({ user, variant = 'full', onView, onDelete, ra
             user.is_verified ? 'bg-emerald-500/10' : 'bg-slate-500/10'
           }`}>
              {user.avatar_url ? (
-               <img src={user.avatar_url} className="w-full h-full object-cover" alt={user.full_name} />
+               <img src={user.avatar_url} className="w-full h-full object-cover" alt={user.full_name || undefined} />
              ) : (
                user.full_name?.[0] || 'U'
              )}
