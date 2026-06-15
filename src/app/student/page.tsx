@@ -51,12 +51,9 @@ export default function StudentDashboard() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#F8FAFC]">
+      <div className="flex items-center justify-center min-h-screen bg-[#f5f5f7]">
         <div className="relative">
-           <Loader2 className="w-16 h-16 text-udanix-blue animate-spin" />
-           <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-2 h-2 bg-udanix-blue rounded-full animate-ping" />
-           </div>
+           <Loader2 className="w-10 h-10 text-[#007AFF] animate-spin" />
         </div>
       </div>
     );
@@ -66,28 +63,24 @@ export default function StudentDashboard() {
   const nextSession = sessions[0];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#f5f5f7]">
       <div className="flex p-0 sm:p-4 lg:p-5 gap-5 lg:gap-8">
         {/* Desktop Sidebar */}
         <StudentSidebar />
 
-        <main className="flex-1 min-w-0 space-y-6 lg:space-y-10 px-4 sm:px-0 pb-32 lg:pb-8 lg:pr-4">
+        <main className="flex-1 min-w-0 space-y-6 lg:space-y-8 px-4 sm:px-0 pb-32 lg:pb-8 lg:pr-4 pt-6 lg:pt-0">
           {/* Header Section */}
-          <section className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 pt-6 lg:pt-4">
-            <div className="space-y-1">
-              <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-2 mb-2">
-                 <span className="px-3 py-1 rounded-full bg-udanix-blue/5 border border-udanix-blue/10 text-udanix-blue text-[10px] font-black uppercase tracking-[0.2em] shadow-sm">
-                    Active Node
+          <section className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 pt-2">
+            <div className="space-y-2">
+              <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-2 mb-1">
+                 <span className="px-3 py-1 rounded-full bg-white border border-slate-200 text-[#515154] text-xs font-medium shadow-sm">
+                    Student Portal
                  </span>
-                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               </motion.div>
-              <h1 
-                className="text-2xl sm:text-3xl lg:text-[42px] font-black text-[#111827] tracking-tighter leading-none uppercase"
-                style={{ fontFamily: 'var(--font-space-grotesk)' }}
-              >
-                Good Morning, <span className="text-udanix-blue">{firstName}</span>! 👋
+              <h1 className="text-3xl sm:text-4xl font-semibold text-[#1d1d1f] tracking-tight">
+                Good Morning, {firstName}
               </h1>
-              <p className="text-[#9CA3AF] text-sm sm:text-base lg:text-lg font-medium">
+              <p className="text-[#86868b] text-sm sm:text-base font-medium">
                 {nextSession 
                   ? `Your next session is ${new Date(nextSession.start_time).toLocaleDateString('en-US', { weekday: 'long', hour: '2-digit', minute: '2-digit' })}`
                   : 'No upcoming sessions scheduled.'
@@ -96,8 +89,8 @@ export default function StudentDashboard() {
             </div>
 
             <Link href="/student/directory" className="shrink-0">
-              <button className="bg-udanix-blue text-white px-6 sm:px-10 py-3 sm:py-4 rounded-2xl text-sm font-black shadow-2xl shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 uppercase tracking-widest w-full sm:w-auto justify-center">
-                <Plus className="w-5 h-5" /> Book Session
+              <button className="bg-[#007AFF] hover:bg-[#0066CC] text-white px-6 sm:px-8 py-3 rounded-full text-sm font-medium shadow-sm transition-colors flex items-center gap-2 w-full sm:w-auto justify-center">
+                <Plus className="w-4 h-4" /> Book Session
               </button>
             </Link>
           </section>

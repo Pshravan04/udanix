@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Rocket, Play, ChevronRight } from 'lucide-react';
+import { Rocket, Play, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { useAuth } from '@/context/auth-context';
 import { useRouter } from 'next/navigation';
@@ -20,146 +20,90 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-32 overflow-hidden">
-      {/* ─── BRAND COLOR DYNAMIC BACKGROUND ─── */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Top Dark (Navy) to Bottom Light (White) Gradient */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, #0e399a 0%, #0274c1 60%, #ffffff 100%)' }} />
-        
-        {/* Navy blue orb — top left */}
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.1, 1],
-            opacity: [0.1, 0.2, 0.1],
-            x: [0, 20, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-5%] left-[-5%] w-[800px] h-[800px] rounded-full blur-[120px]" 
-          style={{ background: 'rgba(14, 57, 154, 0.25)' }}
-        />
-        
-        {/* Orange orb accent — bottom right */}
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.05, 0.15, 0.05],
-            x: [0, -40, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[100px]" 
-          style={{ background: 'rgba(223, 89, 14, 0.15)' }}
-        />
-
-        {/* Subtle Grid Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px]" />
-      </div>
-
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-32 overflow-hidden bg-[#f5f5f7]">
       <div className="container relative z-10 px-6 mx-auto">
-        <div className="max-w-5xl mx-auto text-center space-y-12">
+        <div className="max-w-4xl mx-auto text-center space-y-10">
           
-          {/* Elite Tag */}
+          {/* Subtle Tag */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-2xl shadow-2xl"
+            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm"
           >
-            <div className="flex -space-x-2">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="w-7 h-7 rounded-full border-2 border-udanix-navy bg-white overflow-hidden shadow-sm">
-                  <div className="w-full h-full bg-slate-200 animate-pulse" />
-                </div>
-              ))}
-            </div>
-            <div className="h-4 w-[1px] bg-white/20 mx-1" />
-            <span className="text-white text-[11px] font-black uppercase tracking-[0.25em]">
-              Trusted by <span className="text-udanix-orange">50k+</span> Students
+            <span className="text-slate-600 text-xs font-medium tracking-tight">
+              Trusted by 50,000+ students globally.
             </span>
-            <Sparkles className="w-4 h-4 text-udanix-orange animate-pulse" />
           </motion.div>
 
           {/* Main Content */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl md:text-7xl lg:text-9xl font-black text-white leading-[0.9] tracking-tighter uppercase"
-              style={{ fontFamily: 'var(--font-plus-jakarta)' }}
+              className="text-5xl md:text-7xl font-semibold text-[#1d1d1f] tracking-tight leading-tight"
             >
-              Your Career Journey <br />
-              <span className="bg-gradient-to-r from-udanix-orange via-white to-white bg-clip-text text-transparent drop-shadow-[0_4px_30px_rgba(223,89,14,0.4)]">Starts Here</span>
+              Your career journey. <br className="hidden sm:block" />
+              <span className="text-[#007AFF]">Mapped with precision.</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="max-w-3xl mx-auto text-sm sm:text-lg lg:text-xl text-white/90 font-bold leading-relaxed uppercase tracking-wide px-4"
+              className="max-w-2xl mx-auto text-lg md:text-xl text-[#515154] font-medium leading-relaxed px-4"
             >
-             Get expert guidance on stream selection, career paths, entrance exams, and future opportunities. Make informed decisions with personalized counseling.
+              Get expert guidance on stream selection, career paths, entrance exams, and future opportunities. Make informed decisions with personalized counseling.
             </motion.p>
           </div>
 
-          {/* Buttons - Improved Responsiveness */}
+          {/* Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-6 max-w-xl mx-auto px-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4"
           >
             <button 
               onClick={(e) => handleCTA(e, '/student')}
-              className="flex-1 group relative w-full bg-white text-udanix-navy text-[13px] font-black py-6 px-12 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] hover:scale-105 active:scale-95 transition-all uppercase tracking-[0.2em] overflow-hidden"
+              className="w-full sm:w-auto bg-[#007AFF] text-white text-sm font-medium py-3.5 px-8 rounded-full shadow-sm hover:bg-[#0066CC] transition-colors"
             >
-              <span className="relative z-10 flex items-center justify-center gap-3">
-                Start Assessment <Rocket className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-              </span>
+              Start Assessment
             </button>
             
             <button 
               onClick={(e) => handleCTA(e, '/student/mentors')}
-              className="group flex-1 flex items-center justify-center gap-4 bg-white/10 text-white text-[13px] font-black py-6 px-12 rounded-3xl border border-white/20 hover:bg-white/20 transition-all uppercase tracking-[0.2em] backdrop-blur-xl"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-[#1d1d1f] text-sm font-medium py-3.5 px-8 rounded-full border border-slate-200 hover:bg-slate-50 transition-colors shadow-sm"
             >
-              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Play className="w-3.5 h-3.5 fill-white text-white ml-0.5" />
-              </div>
+              <Play className="w-4 h-4" />
               Talk to Mentor
             </button>
           </motion.div>
 
-          {/* Stats Section - Bento Style */}
+          {/* Minimal Stats Section */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 pt-16 sm:pt-20 border-t border-slate-100"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 pt-20"
           >
             {[
-              { label: 'Successful Placements', value: '50k+', sub: 'Students Reached' },
-              { label: 'Certified Mentors', value: '200+', sub: 'Global Experts' },
-              { label: 'Platform Rating', value: '4.9/5', sub: 'Verified Reviews' }
+              { label: 'Students Reached', value: '50k+' },
+              { label: 'Verified Mentors', value: '200+' },
+              { label: 'Platform Rating', value: '4.9/5' }
             ].map((stat, i) => (
-              <div key={i} className="flex flex-col items-center group cursor-default">
-                <span className="text-3xl sm:text-4xl font-black text-slate-950 mb-2 tracking-tighter group-hover:text-udanix-blue transition-colors">
+              <div key={i} className="flex flex-col items-center">
+                <span className="text-3xl md:text-4xl font-semibold text-[#1d1d1f] tracking-tight">
                   {stat.value}
                 </span>
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-slate-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
-                    {stat.label}
-                  </span>
-                  <span className="text-slate-300 text-[8px] sm:text-[9px] font-bold uppercase tracking-widest mt-1">
-                    {stat.sub}
-                  </span>
-                </div>
+                <span className="text-[#86868b] text-sm font-medium mt-1">
+                  {stat.label}
+                </span>
               </div>
             ))}
           </motion.div>
         </div>
       </div>
-
-      {/* Floating Decorative Elements */}
-      <div className="absolute top-1/4 right-10 w-24 h-24 bg-brand-gradient opacity-10 blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 left-10 w-32 h-32 bg-udanix-blue opacity-10 blur-3xl animate-float" />
     </section>
   );
 }
